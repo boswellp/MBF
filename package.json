@@ -9,14 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SarahSays/BotWorks.git"
+    "url": "git+https://github.com/boswellp/MBF.git"
   },
-  "author": "Sarah Sexton",
-  "license": "ISC",
+  "author": "PGB",
   "bugs": {
-    "url": "https://github.com/SarahSays/BotWorks/issues"
+    "url": "https://github.com/boswellp/MBF/issues"
   },
-  "homepage": "https://github.com/SarahSays/BotWorks#readme",
+  "homepage": "https://github.com/boswellp/MBF#readme",
   "dependencies": {
     "botbuilder": "^1.0.0",
     "restify": "^4.1.0"
