@@ -2,8 +2,11 @@
 var restify = require('restify');
 var builder = require('botbuilder');
 
-var appId = process.env.MY_APP_ID || "Missing your app ID";
-var appSecret = process.env.MY_APP_SECRET || "Missing your app secret";
+//var appId = process.env.MY_APP_ID || "Missing your app ID";
+//var appSecret = process.env.MY_APP_SECRET || "Missing your app secret";
+
+var appId = "fidicbot"";
+var appSecret = "o9YT-dmN-k8.cwA.fqA.BH8c24LSoFQ8_vTXnft9RYpgmoLnhEIjcu9gBSzW59Y";
 
 // Create bot and add dialogs
 var bot = new builder.BotConnectorBot
