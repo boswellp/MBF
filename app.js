@@ -5,7 +5,7 @@ var builder = require('botbuilder');
 //var appId = process.env.MY_APP_ID || "Missing your app ID";
 //var appSecret = process.env.MY_APP_SECRET || "Missing your app secret";
 
-var appId = "fidicbot";
+var appId = "8d44e30d-f422-48fa-ac8f-88270b448699";
 var appSecret = "o9YT-dmN-k8.cwA.fqA.BH8c24LSoFQ8_vTXnft9RYpgmoLnhEIjcu9gBSzW59Y";
 
 // Create bot and add dialogs
