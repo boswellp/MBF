@@ -10,7 +10,7 @@ var appSecret = process.env.MY_APP_SECRET || "Missing your app secret";
 
 // Create bot and add dialogs
 var bot = new builder.BotConnectorBot
-({appId: process.env.MY_APP_ID, appSecret: process.env.MY_APP_SECRET});
+({appId: "8d44e30d-f422-48fa-ac8f-88270b448699", appSecret: "o9YT-dmN-k8.cwA.fqA.BH8c24LSoFQ8_vTXnft9RYpgmoLnhEIjcu9gBSzW59Y"});
 bot.add('/', new builder.SimpleDialog( function (session) {
 session.send('Hello World');
 }));
