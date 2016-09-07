@@ -15,12 +15,11 @@ session.send('Hello World');
 var server = restify.createServer();
 server.post('/api/messages', bot.verifyBotFramework(), bot.listen());
 server.listen(process.env.port || 3000, function () {
-console.log('%s listening to %s', server.name, server.url);
+console.log('%s FDICbotmbf listening to %s', server.name, server.url);
 });
 
 server.get('/', restify.serveStatic({
     directory: __dirname,
     default: '/index.html'
     
-    ///console.log('FIDICbotmdf listening at http://%s:%s', host, port);
 }));
