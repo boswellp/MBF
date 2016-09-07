@@ -4,7 +4,7 @@ A simple "Hello World" bot for the Microsoft Bot Framework.
 
 var restify = require('restify');
 //var builder = require('../../core/');
-var builder = require('core/');
+var builder = require('core');
 
 //=========================================================
 // Bot Setup
@@ -28,6 +28,6 @@ server.post('/api/messages', connector.listen());
 // Bots Dialogs
 //=========================================================
 
-bot.dialog('index.html', function (session) {
+bot.dialog('/index.html', function (session) {
     session.send("Hello World");
 });
