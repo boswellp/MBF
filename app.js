@@ -9,7 +9,7 @@ var appSecret = process.env.MY_APP_SECRET || "Missing your app secret";
 var bot = new builder.BotConnectorBot
 ({appId: process.env.MY_APP_ID, appSecret: process.env.MY_APP_SECRET});
 bot.add('/', new builder.SimpleDialog( function (session) {
-session.send('Hello World');
+session.send('Hello World from FIDICbot');
 }));
 // Setup Restify Server
 var server = restify.createServer();
