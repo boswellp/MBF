@@ -1,5 +1,9 @@
+/*-----------------------------------------------------------------------------
+A simple "Hello World" bot for the Microsoft Bot Framework. 
+-----------------------------------------------------------------------------*/
+
 var restify = require('restify');
-var builder = require('botbuilder');
+var builder = require('../../core/');
 
 //=========================================================
 // Bot Setup
