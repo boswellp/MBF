@@ -13,7 +13,7 @@
   },
   "author": "PGB",
   "dependencies": {
-    "botbuilder": "^1.0.0",
+    "botbuilder": "^3.2.0",
     "restify": "^4.1.0"
   }
 }
