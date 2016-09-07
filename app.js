@@ -14,7 +14,7 @@ session.send('Hello World');
 // Setup Restify Server
 var server = restify.createServer();
 server.post('/api/messages', bot.verifyBotFramework(), bot.listen());
-server.listen(process.env.port || 3000, function () {
+server.listen(process.env.port || 5000, function () {
 console.log('%s FDICbotmbf listening to %s', server.name, server.url);
 });
 
