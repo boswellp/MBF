@@ -14,7 +14,7 @@ session.send('Hello World');
 // Setup Restify Server
 var server = restify.createServer();
 server.post('/api/messages', bot.verifyBotFramework(), bot.listen());
-server.listen(process.env.port || 8000, function () {
+server.listen(process.env.port || 80, function () {
 console.log('%s listening to %s', server.name, server.url);
 });
 
