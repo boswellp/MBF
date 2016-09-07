@@ -1,10 +1,5 @@
-/*-----------------------------------------------------------------------------
-A simple "Hello World" bot for the Microsoft Bot Framework. 
------------------------------------------------------------------------------*/
-
 var restify = require('restify');
-//var builder = require('../../core/');
-var builder = require('core');
+var builder = require('botbuilder');
 
 //=========================================================
 // Bot Setup
@@ -18,8 +13,8 @@ server.listen(process.env.port || process.env.PORT || 3978, function () {
   
 // Create chat bot
 var connector = new builder.ChatConnector({
-    appId: 'a941c219-b3d0-470f-a032-a3ed13c28070',
-    appPassword: 'HRGGD3coOVosqQJ38DV0EQE'
+    appId: "a941c219-b3d0-470f-a032-a3ed13c28070",
+    appPassword: "HRGGD3coOVosqQJ38DV0EQE"
 });
 var bot = new builder.UniversalBot(connector);
 server.post('/api/messages', connector.listen());
