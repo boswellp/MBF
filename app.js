@@ -22,4 +22,6 @@ console.log('%s listening to %s', server.name, server.url);
 server.get('/', restify.serveStatic({
     directory: __dirname,
     default: '/index.html'
+    
+    console.log('FIDICbotmdf listening at http://%s:%s', host, port);
 }));
