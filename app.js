@@ -11,7 +11,6 @@ var bot = new builder.BotConnectorBot
 bot.add('/', new builder.SimpleDialog( function (session) {
 session.send('Hello World');
 }));
-
 // Setup Restify Server
 var server = restify.createServer();
 server.post('/api/messages', bot.verifyBotFramework(), bot.listen());
