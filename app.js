@@ -33,6 +33,6 @@ server.listen(server.port,server.host, function () {
        console.log('%s FDICbotmbf listening to %s', server.name, server.url);
 });
 
-connector.dialog('/', function (session) {
+bot.dialog('/', function (session) {
     session.send("Hello World");
 });
