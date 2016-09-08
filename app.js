@@ -10,14 +10,7 @@ var builder = require('botbuilder');
 // Bot Setup
 //=========================================================
 
-// Setup Restify Server
-var server = restify.createServer();
-server.post('/api/messages', bot.verifyBotFramework(), bot.listen());
-server.port = process.env.port || process.env.PORT || 80;
-server.host = process.env.port || '0.0.0.0';
-server.listen(server.port,server.host, function () {
-       console.log('%s FDICbotmbf listening to %s', server.name, server.url);
-});
+
   
 // Create chat bot
 var connector = new builder.ChatConnector({
@@ -30,6 +23,15 @@ server.post('/api/messages', connector.listen());
 //=========================================================
 // Bots Dialogs
 //=========================================================
+
+// Setup Restify Server
+var server = restify.createServer();
+server.post('/api/messages', bot.verifyBotFramework(), bot.listen());
+server.port = process.env.port || process.env.PORT || 80;
+server.host = process.env.port || '0.0.0.0';
+server.listen(server.port,server.host, function () {
+       console.log('%s FDICbotmbf listening to %s', server.name, server.url);
+});
 
 bot.dialog('/', function (session) {
     session.send("Hello World");
