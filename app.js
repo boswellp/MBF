@@ -405,3 +405,8 @@ bot.dialog('/weather', [
     }
 ]);
 bot.beginDialogAction('weather', '/weather');   // <-- no 'matches' option means this can only be triggered by a button.
+
+server.get('/', restify.serveStatic({
+    directory: __dirname,
+    default: '/index.html'
+}));
