@@ -6,7 +6,7 @@ var appId = process.env.MY_APP_ID;
 var appSecret = process.env.MY_APP_PASSWORD;
 
 // Create bot and add dialogs
-var bot = new builder.BotConnectorBot
+var bot = new builder.ChatConnector
 ({appId: process.env.MY_APP_ID, appSecret: process.env.MY_APP_SECRET});
 bot.add('/', new builder.SimpleDialog( function (session) {
 session.send('Hello World from FIDICbot');
