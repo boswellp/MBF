@@ -26,13 +26,13 @@ var bot = new builder.UniversalBot(connector);
 
 // Setup Restify Server
 var server = restify.createServer();
-server.post('/api/messages', bot.listen());
+server.post('/api/messages', connector.listen());
 server.port = process.env.port || process.env.PORT || 80;
 server.host = process.env.port || '0.0.0.0';
 server.listen(server.port,server.host, function () {
        console.log('%s FDICbotmbf listening to %s', server.name, server.url);
 });
 
-bot.dialog('/', function (session) {
+connector.dialog('/', function (session) {
     session.send("Hello World");
 });
