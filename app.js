@@ -57,7 +57,7 @@ bot.on('contactRelationUpdate', function (message) {
         var name = message.user ? message.user.name : null;
         var reply = new builder.Message()
                 .address(message.address)
-                .text("Hello %s... Thanks for adding me. Say 'hello' to see some great demos.", name || 'there');
+                .text("Hello %s... Say 'hello' to see some demos.", name || 'there');
         bot.send(reply);
     } else {
         // delete their data
@@ -98,7 +98,7 @@ bot.dialog('/', [
             ]);
         var msg = new builder.Message(session).attachments([card]);
         session.send(msg);
-        session.send("Hi... I'm the Microsoft Bot Framework demo bot for Skype. I can show you everything you can use our Bot Builder SDK to do on Skype.");
+        session.send("This is Microsoft Bot Framework demo bot.");
         session.beginDialog('/help');
     },
     function (session, results) {
@@ -107,13 +107,13 @@ bot.dialog('/', [
     },
     function (session, results) {
         // Always say goodbye
-        session.send("Ok... See you later!");
+        session.send("OK... See you later");
     }
 ]);
 
 bot.dialog('/menu', [
     function (session) {
-        builder.Prompts.choice(session, "What demo would you like to run?", "prompts|picture|cards|list|carousel|receipt|actions|(quit)");
+        builder.Prompts.choice(session, "Which demo would you like to run?", "prompts|picture|cards|list|carousel|receipt|actions|(quit)");
     },
     function (session, results) {
         if (results.response && results.response.entity != '(quit)') {
@@ -132,7 +132,7 @@ bot.dialog('/menu', [
 
 bot.dialog('/help', [
     function (session) {
-        session.endDialog("Global commands that are available anytime:\n\n* menu - Exits a demo and returns to the menu.\n* goodbye - End this conversation.\n* help - Displays these commands.");
+        session.endDialog("Prompts available anytime:\n\n* menu - Exits a demo and returns to the menu.\n* goodbye - End this conversation.\n* help - Displays these commands.");
     }
 ]);
 
