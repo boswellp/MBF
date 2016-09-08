@@ -34,7 +34,7 @@ server.listen(server.port,server.host, function () {
 });
 
 bot.dialog('/', function (session) {
-    session.send("Hello World");
+    session.send("Hello. We have only recently (10 September 2016) started development of the FIDICbot for the Microsoft platform for integration with Skype and hopefully KiK. Meanwhile, a fully developed FIDICbot for the FIDIC contracts runs @FIDICbot on Telegram, Messenger, LINE, SMS (+41 79 807 1730) and web (fidic.pw). For these platforms the bot uses Smooch as the integrator. Please check back later or use another messenger service.");
 });
 
 server.get('/', restify.serveStatic({
