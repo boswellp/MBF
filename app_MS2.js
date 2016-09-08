@@ -12,8 +12,11 @@ var builder = require('botbuilder');
 
 // Setup Restify Server
 var server = restify.createServer();
-server.listen(process.env.port || process.env.PORT || 3978, function () {
-   console.log('%s listening to %s', server.name, server.url); 
+server.post('/api/messages', bot.verifyBotFramework(), bot.listen());
+server.port = process.env.port || process.env.PORT || 80;
+server.host = process.env.port || '0.0.0.0';
+server.listen(server.port,server.host, function () {
+       console.log('%s FDICbotmbf listening to %s', server.name, server.url);
 });
   
 // Create chat bot
