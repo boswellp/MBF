@@ -14,6 +14,13 @@
   "author": "PGB",
   "dependencies": {
     "botbuilder": "^3.2.0",
-    "restify": "^4.1.0"
+    "restify": "^4.1.0",
+    "rsa-pem-from-mod": "^0.8.4",
+    "sprintf-js": "^1.0.3",
+    "mode-uuid": "^1.4.7",
+    "async": "^1.5.2",
+    "base64url": "^1.0.6",
+    "chrono-node": "^1.2.4",
+    "jsonwebtoken": "^7.0.1"
   }
 }
