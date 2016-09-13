@@ -10,7 +10,8 @@ var connector = new builder.ChatConnector({
 var bot = new builder.UniversalBot(connector);
 var arr0 = [];
 var arr1 = [];
-var found ="";
+var iFound = 0;
+var clauseTitleFound = "";
 
 
 var server = restify.createServer();
@@ -56,12 +57,15 @@ var jsonData = JSON.parse(data);
 
 for (var i = 0; i < jsonData.clauses.length; i++) {
     var clause = jsonData.clauses[i];
-    arr0.push({ "clauseNumber":clause.clauseNumber });
-    arr1.push({ "clauseTitle":clause.clauseTitle });
+    //arr0.push({ "clauseNumber":clause.clauseNumber });
+    //arr1.push({ "clauseTitle":clause.clauseTitle });
+    arr0.push({ clause.clauseNumber });
+    arr1.push({ clause.clauseTitle });
 
     }
     
-var found = arr0.indexOf(key)
+var iFound = arr0.indexOf(key);
+var clauseTitleFound = arr1[iFound];
 }
 
 var intents = new builder.IntentDialog();  
@@ -91,7 +95,7 @@ intents.matches(/^info?/i, [
         //} else {  
            // session.send('Title:' + book.title + " Price: NOT FOR SALE");  
        // }  
-        session.send('clauseNumber is:' + found);  
+        session.send('clause title is:' + clauseTitleFound);  
     }  
 ]);  
 intents.onDefault(builder.DialogAction.send('Hi there! How can I help you today?'));  
