@@ -171,9 +171,8 @@ bot.dialog('/select', [
         session.send('Books for topic - %s - are available. Submit "info" to choose.', results.response);  
         var b = [];  
         getBooksData(results.response);  
-    },
-        session.endDialog(msg);
-    }
+    };
+
 ]);
 
 bot.dialog('/prompts', [
