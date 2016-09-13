@@ -45,11 +45,14 @@ function getBooksData(key) {
 
 function getBooksData1(key) {
 arr = [];
-var data = '{"name": "mkyong","age": 30,"address": {"streetAddress": "88 8nd Street","city": "New York"},"phoneNumber": [{"type": "home","number": "111 111-1111"},{"type": "fax","number": "222 222-2222"}]}';
-var json = JSON.parse(data);
-console.log("xxxxxxxxxxxxxxxxxxxxx Name is = " + json["name"]); 
-arr.push({"name":json["name"]});
-arr.push({"name":json["name"]});
+var data = '{"clauses":[' +
+'{"clauseTitle":"CT1111" },' +
+'{"clauseTitle":"CT122222" },' +
+'{"clauseTitle":"CT13333" }]}';
+var jsonData = JSON.parse(data);
+
+for (var i = 0; i < jsonData.clauses.length; i++) {
+    arr.push({"clauseTitle":jsonData.clauses[i]});
 }
 
 var intents = new builder.IntentDialog();  
@@ -78,7 +81,7 @@ intents.matches(/^info?/i, [
         //} else {  
            // session.send('Title:' + book.title + " Price: NOT FOR SALE");  
        // }  
-        session.send('Name is:' + book.name);  
+        session.send('Name is:' + book.clauseTitle);  
     }  
 ]);  
 intents.onDefault(builder.DialogAction.send('Hi there! How can I help you today?'));  
