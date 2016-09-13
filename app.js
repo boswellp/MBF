@@ -31,7 +31,7 @@ function getBooksData(key) {
             var e = JSON.parse(d);  
             for (i = 0; i < e.items.length; i++) {  
                 console.log(i + 1 + ":" + e.items[i].volumeInfo.title);  
-                session.send(i + 1 + ":" + e.items[i].volumeInfo.title);
+                //session.send(i + 1 + ":" + e.items[i].volumeInfo.title);
             }  
         });  
     });  
