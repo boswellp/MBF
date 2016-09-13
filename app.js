@@ -46,10 +46,10 @@ var intents = new builder.IntentDialog();
 bot.dialog('/', intents);  
 intents.matches(/^Hi/i, [  
     function(session) {  
-        builder.Prompts.text(session, 'Hey, I am a BookBot. Welcome to Book Searching through Chat!.To start, which books you would like to search?');  
+        builder.Prompts.text(session, 'Books on which topic do you want?');  
     },  
     function(session, results) {  
-        session.send('Here are books for topic - %s.', results.response);  
+        session.send('Books for topic - %s - are available. Submit "info" to choose.', results.response);  
         var b = [];  
         getBooksData(results.response);  
     },  
