@@ -46,14 +46,6 @@ function getBooksData(key) {
     });  
 }  
 
-function objectFindByKey(array, key, value) {
-    for (var i = 0; i < array.length; i++) {
-        if (array[i][key] === value) {
-            return array[i];
-        }
-    }
-    return null;
-}
 
 function getBooksData1(key) {
 arr0 = [];
@@ -75,7 +67,7 @@ for (var i = 0; i < jsonData.clauses.length; i++) {
     }
     
 
-var iFound = objectFindByKey(arr0, 'clauseNumber', key);
+iFound = arr0.findIndex(x => x.clauseNumber == key);
 var clauseTitleFound = arr1[iFound];
 console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound); 
 }
