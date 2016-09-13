@@ -171,6 +171,8 @@ bot.dialog('/select', [
     },
     function (session, results) {
         session.send('Books for topic - %s - are available. Submit "info" to choose.', results.response);
+        var b = [];  
+        getBooksData(results.response); 
         builder.Prompts.text(session, "Prompts.text()\n\nSay info to get information.");
     },
     function (session, results) {
