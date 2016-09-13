@@ -138,7 +138,7 @@ bot.dialog('/', [
 
 bot.dialog('/menu', [
     function (session) {
-        builder.Prompts.choice(session, "Which demo would you like to run?", "select|prompts|picture|cards|list|carousel|receipt|actions|(quit)");
+        builder.Prompts.choice(session, "Which demo would you like to run?", "prompts|picture|cards|list|carousel|receipt|actions|(quit)");
     },
     function (session, results) {
         if (results.response && results.response.entity != '(quit)') {
@@ -161,13 +161,9 @@ bot.dialog('/help', [
     }
 ]);
 
-bot.dialog('/select', [
-    function (session) {
-        session.send("Select. Saying 'something'.");
-        builder.Prompts.text(session, "Prompts.text()\n\nBooks on which topic do you want?");
-    };
 
-]);
+    
+
 
 bot.dialog('/prompts', [
     function (session) {
