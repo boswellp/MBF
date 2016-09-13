@@ -79,10 +79,13 @@ intents.matches(/^Hi/i, [
         builder.Prompts.text(session, 'Clause number?');  
     },  
     function(session, results) {  
-        session.send('Books for topic - %s - are available. Submit "info" to choose.', results.response);  
-        var b0 = []; 
-        var b1 = []; 
-        getBooksData1(results.response);  
+        //session.send('Books for topic - %s - are available. Submit "info" to choose.', results.response);  
+        //var b0 = []; 
+        //var b1 = []; 
+        getBooksData1(results.response); 
+        var book = clauseTitleFound[0];
+        console.log("clauseTitleFound = " + book.clauseTitle); 
+        session.send('Clause title is:' + book.clauseTitle); 
     }  
   
 ]);  
