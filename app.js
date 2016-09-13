@@ -113,7 +113,7 @@ bot.dialog('/', [
 
 bot.dialog('/menu', [
     function (session) {
-        builder.Prompts.choice(session, "Which demo would you like to run?", "prompts|picture|cards|list|carousel|receipt|actions|(quit)");
+        builder.Prompts.choice(session, "Which demo would you like to run?", "select|prompts|picture|cards|list|carousel|receipt|actions|(quit)");
     },
     function (session, results) {
         if (results.response && results.response.entity != '(quit)') {
@@ -133,6 +133,18 @@ bot.dialog('/menu', [
 bot.dialog('/help', [
     function (session) {
         session.endDialog("Prompts available anytime:\n\n* menu - Exits a demo and returns to the menu.\n* goodbye - End this conversation.\n* help - Displays these commands.");
+    }
+]);
+
+bot.dialog('/select', [
+    function (session) {
+        session.send("Select - you can send pictures to a user...");
+        var msg = new builder.Message(session)
+            .attachments([{
+                contentType: "image/jpeg",
+                contentUrl: "http://www.theoldrobots.com/images62/Bender-18.JPG"
+            }]);
+        session.endDialog(msg);
     }
 ]);
 
