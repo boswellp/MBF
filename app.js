@@ -53,6 +53,7 @@ var jsonData = JSON.parse(data);
 
 for (var i = 0; i < jsonData.clauses.length; i++) {
     arr.push({ "clauseTitle":jsonData.clauses[i] });
+     }
 }
 
 var intents = new builder.IntentDialog();  
