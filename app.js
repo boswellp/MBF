@@ -18,6 +18,8 @@ server.listen(server.port,server.host, function () {
        console.log('%s FDICbotmbf listening to %s', server.name, server.url);
 });
 
+var arr = [];
+
 function getBooksData(key) {  
     https.get("https://www.googleapis.com/books/v1/volumes?q=" + key + "&maxResults=5", function(res) {  
         var d = '';  
