@@ -44,8 +44,11 @@ function getBooksData(key) {
 }  
 
 function getBooksData1(key) {
+arr = [];
 var data = '{"name": "mkyong","age": 30,"address": {"streetAddress": "88 8nd Street","city": "New York"},"phoneNumber": [{"type": "home","number": "111 111-1111"},{"type": "fax","number": "222 222-2222"}]}';
 var json = JSON.parse(data);
+console.log("xxxxxxxxxxxxxxxxxxxxx Name is = " + json["name"]); 
+arr.push(json["name"]);
 arr.push(json["name"]);
 }
 
