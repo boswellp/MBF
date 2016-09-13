@@ -46,15 +46,17 @@ function getBooksData(key) {
 function getBooksData1(key) {
 arr = [];
 var data = '{"clauses":[' +
-'{"clauseTitle":"CT1111"},' +
-'{"clauseTitle":"CT122222"},' +
-'{"clauseTitle":"CT13333"}]}';
+'{"clauseNumber":"1.1","clauseTitle":"CT1111"},' +
+'{"clauseNumber":"1.2","clauseTitle":"CT122222"},' +
+'{"clauseNumber":"1.3","clauseTitle":"CT13333"}]}';
 var jsonData = JSON.parse(data);
 
 for (var i = 0; i < jsonData.clauses.length; i++) {
     var clause = jsonData.clauses[i];
     arr.push({ "clauseTitle":clause.clauseTitle });
-     }
+    arr[i]["clauseNumber"] = clause.clauseNumber;
+    arr[i]["clauseTitle"] = clause.clauseTitle;
+    }
 }
 
 var intents = new builder.IntentDialog();  
@@ -77,13 +79,13 @@ intents.matches(/^info?/i, [
         builder.Prompts.choice(session, "Which book's info you need?", "1|2|3|4|5");  
     },  
     function(session, results) {  
-        var book = arr[results.response.entity - 1];  
+        var book = arr[results.response.entity - 1][0];  
         //if (book.saleability == 'FOR_SALE') {  
             //session.send('Title:' + book.title + " Price:" + book.price.amount + " " + book.price.currencyCode);  
         //} else {  
            // session.send('Title:' + book.title + " Price: NOT FOR SALE");  
        // }  
-        session.send('clauseTitle is:' + book.clauseTitle);  
+        session.send('clauseNumber is:' + book.clauseNumber);  
     }  
 ]);  
 intents.onDefault(builder.DialogAction.send('Hi there! How can I help you today?'));  
