@@ -42,6 +42,13 @@ function getBooksData(key) {
         });  
     });  
 }  
+
+function getBooksData(key) {
+var data = '{"name": "mkyong","age": 30,"address": {"streetAddress": "88 8nd Street","city": "New York"},"phoneNumber": [{"type": "home","number": "111 111-1111"},{"type": "fax","number": "222 222-2222"}]}';
+var json = JSON.parse(data);
+arr.push(json["name"]);
+}
+
 var intents = new builder.IntentDialog();  
 bot.dialog('/', intents);  
 intents.matches(/^Hi/i, [  
@@ -51,7 +58,7 @@ intents.matches(/^Hi/i, [
     function(session, results) {  
         session.send('Books for topic - %s - are available. Submit "info" to choose.', results.response);  
         var b = [];  
-        getBooksData(results.response);  
+        getBooksData1(results.response);  
     },  
     function(session) {  
         builder.Prompts.text(session, 'which books');  
@@ -63,12 +70,12 @@ intents.matches(/^info?/i, [
     },  
     function(session, results) {  
         var book = arr[results.response.entity - 1];  
-        if (book.saleability == 'FOR_SALE') {  
-            session.send('Title:' + book.title + " Price:" + book.price.amount + " " + book.price.currencyCode);  
-        } else {  
-            session.send('Title:' + book.title + " Price: NOT FOR SALE");  
-        }  
-        session.send('Description:' + book.description);  
+        //if (book.saleability == 'FOR_SALE') {  
+            //session.send('Title:' + book.title + " Price:" + book.price.amount + " " + book.price.currencyCode);  
+        //} else {  
+           // session.send('Title:' + book.title + " Price: NOT FOR SALE");  
+       // }  
+        session.send('Name is:' + book.name);  
     }  
 ]);  
 intents.onDefault(builder.DialogAction.send('Hi there! How can I help you today?'));  
