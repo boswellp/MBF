@@ -2,6 +2,7 @@ var restify = require('restify');
 var https = require('https');
 var builder = require('botbuilder');
 
+
 var connector = new builder.ChatConnector({
     appId: process.env.MY_APP_ID,
     appPassword: process.env.MY_APP_PASSWORD
@@ -17,7 +18,6 @@ server.host = process.env.port || '0.0.0.0';
 server.listen(server.port,server.host, function () {
        console.log('%s FDICbotmbf listening to %s', server.name, server.url);
 });
-
 
 
 function getBooksData(key) {  
