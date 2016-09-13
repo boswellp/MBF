@@ -33,7 +33,6 @@ function getBooksData(key) {
                 console.log(i + 1 + ":" + e.items[i].volumeInfo.title);  
                 //session.send(i + 1 + ":" + e.items[i].volumeInfo.title);
             }  
-            builder.Prompts.text('xxxxxxxxxxxxxxxxxx');
         });  
     });  
 }  
