@@ -190,13 +190,14 @@ bot.dialog('/prompts', [
 
 bot.dialog('/picture', [
     function (session) {
-        session.send("You can easily send pictures to a user...");
+        //session.send("Books on which topic do you want?");
+        builder.Prompts.text(session, 'Books on which topic do you want?');
         var msg = new builder.Message(session)
             .attachments([{
                 contentType: "image/jpeg",
                 contentUrl: "http://www.theoldrobots.com/images62/Bender-18.JPG"
             }]);
-        session.endDialog(msg);
+        //session.endDialog(msg);
     }
 ]);
 
