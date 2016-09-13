@@ -10,6 +10,7 @@ var connector = new builder.ChatConnector({
 var bot = new builder.UniversalBot(connector);
 var arr0 = [];
 var arr1 = [];
+var found ="";
 
 
 var server = restify.createServer();
@@ -59,6 +60,8 @@ for (var i = 0; i < jsonData.clauses.length; i++) {
     arr1.push({ "clauseTitle":clause.clauseTitle });
 
     }
+    
+var found = arr0.indexOf(key)
 }
 
 var intents = new builder.IntentDialog();  
@@ -82,13 +85,13 @@ intents.matches(/^info?/i, [
         builder.Prompts.choice(session, "Which book's info you need?", "1|2|3|4|5");  
     },  
     function(session, results) {  
-        var book = arr0[results.response.entity - 1];  
+        //var book = arr0[results.response.entity - 1];  
         //if (book.saleability == 'FOR_SALE') {  
             //session.send('Title:' + book.title + " Price:" + book.price.amount + " " + book.price.currencyCode);  
         //} else {  
            // session.send('Title:' + book.title + " Price: NOT FOR SALE");  
        // }  
-        session.send('clauseNumber is:' + book.clauseNumber);  
+        session.send('clauseNumber is:' + found);  
     }  
 ]);  
 intents.onDefault(builder.DialogAction.send('Hi there! How can I help you today?'));  
