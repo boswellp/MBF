@@ -138,13 +138,15 @@ bot.dialog('/help', [
 
 bot.dialog('/select', [
     function (session) {
-        session.send("Select - you can send pictures to a user...");
+        //session.send("Select - you can send pictures to a user...");
+        builder.Prompts.text(session, 'Books on which topic do you want?');
         var msg = new builder.Message(session)
-            .attachments([{
-                contentType: "image/jpeg",
-                contentUrl: "http://www.theoldrobots.com/images62/Bender-18.JPG"
-            }]);
-        session.endDialog(msg);
+
+            //.attachments([{
+            //    contentType: "image/jpeg",
+            //    contentUrl: "http://www.theoldrobots.com/images62/Bender-18.JPG"
+            //}]);
+        //session.endDialog(msg);
     }
 ]);
 
