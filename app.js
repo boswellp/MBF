@@ -8,7 +8,8 @@ var connector = new builder.ChatConnector({
     appPassword: process.env.MY_APP_PASSWORD
 });
 var bot = new builder.UniversalBot(connector);
-var arr = [[]]; 
+var arr0 = [];
+var arr1 = [];
 
 
 var server = restify.createServer();
@@ -44,7 +45,8 @@ function getBooksData(key) {
 }  
 
 function getBooksData1(key) {
-arr = [[]];
+arr0 = [];
+arr1 = [];
 var data = '{"clauses":[' +
 '{"clauseNumber":"1.1","clauseTitle":"CT1111"},' +
 '{"clauseNumber":"1.2","clauseTitle":"CT122222"},' +
@@ -53,9 +55,9 @@ var jsonData = JSON.parse(data);
 
 for (var i = 0; i < jsonData.clauses.length; i++) {
     var clause = jsonData.clauses[i];
-    //arr.push({ "clauseTitle":clause.clauseTitle });
-    arr[i][0] = clause.clauseNumber;
-    arr[i][1] = clause.clauseTitle;
+    arr0.push({ "clauseNumber":clause.clauseNumber });
+    arr1.push({ "clauseTitle":clause.clauseTitle });
+
     }
 }
 
@@ -80,13 +82,13 @@ intents.matches(/^info?/i, [
         builder.Prompts.choice(session, "Which book's info you need?", "1|2|3|4|5");  
     },  
     function(session, results) {  
-        var clauseNumber = arr[results.response.entity - 1][0];  
+        var book = arr0[results.response.entity - 1];  
         //if (book.saleability == 'FOR_SALE') {  
             //session.send('Title:' + book.title + " Price:" + book.price.amount + " " + book.price.currencyCode);  
         //} else {  
            // session.send('Title:' + book.title + " Price: NOT FOR SALE");  
        // }  
-        session.send('clauseNumber is:' + clauseNumber);  
+        session.send('clauseNumber is:' + book.clauseNumber);  
     }  
 ]);  
 intents.onDefault(builder.DialogAction.send('Hi there! How can I help you today?'));  
