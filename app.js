@@ -52,7 +52,8 @@ var data = '{"clauses":[' +
 var jsonData = JSON.parse(data);
 
 for (var i = 0; i < jsonData.clauses.length; i++) {
-    arr.push({ "clauseTitle":jsonData.clauses[i] });
+    var clause = jsonData.clauses[i];
+    arr.push({ "clauseTitle":clause.clauseTitle });
      }
 }
 
