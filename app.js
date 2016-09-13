@@ -66,6 +66,7 @@ for (var i = 0; i < jsonData.clauses.length; i++) {
     
 var iFound = arr0.indexOf(key);
 var clauseTitleFound = arr1[iFound];
+console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound); 
 }
 
 var intents = new builder.IntentDialog();  
@@ -94,7 +95,8 @@ intents.matches(/^info?/i, [
             //session.send('Title:' + book.title + " Price:" + book.price.amount + " " + book.price.currencyCode);  
         //} else {  
            // session.send('Title:' + book.title + " Price: NOT FOR SALE");  
-       // }  
+       // } 
+        console.log("clauseTitleFound = " + clauseTitleFound); 
         session.send('clause title is:' + clauseTitleFound);  
     }  
 ]);  
