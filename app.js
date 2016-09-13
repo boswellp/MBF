@@ -46,6 +46,15 @@ function getBooksData(key) {
     });  
 }  
 
+function objectFindByKey(array, key, value) {
+    for (var i = 0; i < array.length; i++) {
+        if (array[i][key] === value) {
+            return array[i];
+        }
+    }
+    return null;
+}
+
 function getBooksData1(key) {
 arr0 = [];
 arr1 = [];
@@ -63,11 +72,10 @@ for (var i = 0; i < jsonData.clauses.length; i++) {
     //arr0.push( clause.clauseNumber );
     //arr1.push( clause.clauseTitle );
     console.log("arr0 = " + arr0[i] + "; arr1 = " + arr0[i]); 
-
-
     }
     
-var iFound = arr0.indexOf(key);
+
+var iFound = objectFindByKey(arr0, 'clauseNumber', key);
 var clauseTitleFound = arr1[iFound];
 console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound); 
 }
@@ -93,7 +101,8 @@ intents.matches(/^info?/i, [
         builder.Prompts.choice(session, "Which book's info you need?", "1|2|3|4|5");  
     },  
     function(session, results) {  
-        var book = clauseTitleFound[results.response.entity - 1];  
+        //var book = clauseTitleFound[results.response.entity - 1];
+        var book = clauseTitleFound[0];
         //if (book.saleability == 'FOR_SALE') {  
             //session.send('Title:' + book.title + " Price:" + book.price.amount + " " + book.price.currencyCode);  
         //} else {  
