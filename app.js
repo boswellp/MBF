@@ -68,7 +68,7 @@ for (var i = 0; i < jsonData.clauses.length; i++) {
     
 
 iFound = arr0.findIndex(x => x.clauseNumber == key);
-var clauseTitleFound = arr1[iFound];
+var clauseTitleFound[0] = arr1[iFound];
 console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound); 
 }
 
