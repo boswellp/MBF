@@ -18,6 +18,29 @@ server.listen(server.port,server.host, function () {
        console.log('%s FDICbotmbf listening to %s', server.name, server.url);
 });
 
+function getBooksData(key) {  
+    https.get("https://www.googleapis.com/books/v1/volumes?q=" + key + "&maxResults=5", function(res) {  
+        var d = '';  
+        var i;  
+        arr = [];  
+        res.on('data', function(chunk) {  
+            d += chunk;  
+        });  
+        res.on('end', function() {  
+            var e = JSON.parse(d);  
+            for (i = 0; i < e.items.length; i++) {  
+                console.log(i + 1 + ":" + e.items[i].volumeInfo.title);  
+                arr.push({  
+                    "description": e.items[i].volumeInfo.description,  
+                    "title": e.items[i].volumeInfo.title,  
+                    "saleability": e.items[i].saleInfo.saleability,  
+                    "price": e.items[i].saleInfo.listPrice  
+                });  
+            }  
+        });  
+    });  
+} 
+
 
 //=========================================================
 // Activity Events
@@ -142,12 +165,11 @@ bot.dialog('/select', [
         builder.Prompts.text(session, "Prompts.text()\n\nBooks on which topic do you want?");
     },
   
-    function (session, results) {
-        var msg = new builder.Message(session)
-            .ntext("I got %d attachment.", "I got %d attachments.", results.response.length);
-        results.response.forEach(function (attachment) {
-            msg.addAttachment(attachment);    
-        });
+    function(session, results) {  
+        session.send('Books for topic - %s - are available. Submit "info" to choose.', results.response);  
+        var b = [];  
+        getBooksData(results.response);  
+    },
         session.endDialog(msg);
     }
 ]);
