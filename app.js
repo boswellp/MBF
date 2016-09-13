@@ -59,6 +59,7 @@ for (var i = 0; i < jsonData.clauses.length; i++) {
     var clause = jsonData.clauses[i];
     arr0.push({ "clauseNumber":clause.clauseNumber });
     arr1.push({ "clauseTitle":clause.clauseTitle });
+    console.log("arr0 = " + arr0[i] + "; arr1 = " + arr0[i]); 
     //arr0.push({ clause.clauseNumber });
     //arr1.push({ clause.clauseTitle });
 
