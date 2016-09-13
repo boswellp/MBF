@@ -32,7 +32,6 @@ function getBooksData(key) {
             for (i = 0; i < e.items.length; i++) {  
                 console.log(i + 1 + ":" + e.items[i].volumeInfo.title);  
             }  
-            bot.dialog ( '/', function (session) {session.send ( 'xxxxxxxx'); } );
         });  
     });  
 }  
