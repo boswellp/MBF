@@ -165,12 +165,6 @@ bot.dialog('/select', [
     function (session) {
         session.send("Select. Saying 'something'.");
         builder.Prompts.text(session, "Prompts.text()\n\nBooks on which topic do you want?");
-    },
-  
-    function(session, results) {  
-        session.send('Books for topic - %s - are available. Submit "info" to choose.', results.response);  
-        var b = [];  
-        getBooksData(results.response);  
     };
 
 ]);
