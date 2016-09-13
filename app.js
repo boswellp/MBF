@@ -46,13 +46,13 @@ function getBooksData(key) {
 function getBooksData1(key) {
 arr = [];
 var data = '{"clauses":[' +
-'{"clauseTitle":"CT1111" },' +
-'{"clauseTitle":"CT122222" },' +
-'{"clauseTitle":"CT13333" }]}';
+'{"clauseTitle":"CT1111"},' +
+'{"clauseTitle":"CT122222"},' +
+'{"clauseTitle":"CT13333"}]}';
 var jsonData = JSON.parse(data);
 
 for (var i = 0; i < jsonData.clauses.length; i++) {
-    arr.push({"clauseTitle":jsonData.clauses[i]});
+    arr.push({ "clauseTitle":jsonData.clauses[i] });
 }
 
 var intents = new builder.IntentDialog();  
@@ -81,7 +81,7 @@ intents.matches(/^info?/i, [
         //} else {  
            // session.send('Title:' + book.title + " Price: NOT FOR SALE");  
        // }  
-        session.send('Name is:' + book.clauseTitle);  
+        session.send('clauseTitle is:' + book.clauseTitle);  
     }  
 ]);  
 intents.onDefault(builder.DialogAction.send('Hi there! How can I help you today?'));  
