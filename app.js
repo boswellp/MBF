@@ -170,8 +170,8 @@ bot.dialog('/select', [
         builder.Prompts.text(session, "Prompts.text()\n\nBooks on which topic do you want?");
     },
     function (session, results) {
-        session.send("You entered '%s'", results.response);
-        builder.Prompts.number(session, "Prompts.number()\n\nNow enter a number.");
+        session.send('Books for topic - %s - are available. Submit "info" to choose.', results.response);
+        builder.Prompts.text(session, "Prompts.text()\n\nSay info to get information.");
     },
     function (session, results) {
         session.send("You entered '%s'", results.response);
