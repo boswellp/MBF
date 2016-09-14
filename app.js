@@ -41,10 +41,28 @@ console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound);
 
 var intents = new builder.IntentDialog();  
 bot.dialog('/', intents);  
+
 intents.matches(/^Hi/i, [  
+    
+    function (session) {
+        builder.Prompts.choice(session, "Which demo would you like to run?", "prompts|picture|cards|list|carousel|receipt|actions|(quit)");
+    },
+    function (session, results) {
+        if (results.response && results.response.entity != '(quit)') {
+            // Launch demo dialog
+            session.beginDialog('/' + results.response.entity);
+        } else {
+            // Exit the menu
+            session.endDialog();
+        }
+    },
+    
+    
     function(session) {  
         builder.Prompts.text(session, 'Clause number?');  
-    },  
+    }, 
+    
+    
     function(session, results) {  
         getData(results.response); 
         var book = clauseTitleFound[0];
