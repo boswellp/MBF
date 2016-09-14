@@ -24,12 +24,19 @@ server.listen(server.port,server.host, function () {
 function getData(session,key) {
 clauseTitleFound = [];
 
+var data = "";
 if (session.userData.name == 'c')
-    //{var data = {"0":"","1.1":"CT1111","1.2":"CT122222","1.3":"CT13333"};}
-    {var data = scriptRulesClauses;}
-    else
-    //{var data = {"0":"","1.1":"xxxCT1111","1.2":"xxxCT122222","1.3":"xxxCT13333"};}
-    {var data = scriptRulesClausesPlant;}
+        if (session.userData.type == 'c')
+            {data = scriptRulesClauses;}
+            else if (session.userData.type == 'n'){data = scriptRulesIndex;}
+            else {data = ""}
+            
+if (session.userData.name == 'p')
+        if (session.userData.type == 'c')
+            {data = scriptRulesClausesPlant;}
+            else if (session.userData.type == 'n'){data = scriptRulesPlantIndex;}
+            else {data = ""}
+
 
 var clausesAry = [];
 for (var i in data)
@@ -149,7 +156,10 @@ intents.matches(/^search/i, [
 
     
     function(session, results) {  
-        builder.Prompts.text(session, 'Clause number?');  
+        if (session.userData.type == 'c')
+           {builder.Prompts.text(session, 'Clause number?');} 
+           else
+           {builder.Prompts.text(session, 'Keyword?');} 
                       }, 
     
     function(session, results) {  
