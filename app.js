@@ -116,53 +116,13 @@ bot.dialog('/type', [
     }
 ]);
 
-
-
-//bot.dialog('/select', [
-intents.matches(/^change/i, [
-    function (session) {
-        builder.Prompts.text(session, 'Contract: Construction (say "c") or Plant (say "p")?');
-    },
-    function (session, results) {
-        session.userData.name = results.response;
-        builder.Prompts.text(session, 'Say "type" to choose search type.');
-    }
-]);
-
-//bot.dialog('/select', [
-intents.matches(/^type/i, [
-    function (session) {
-        builder.Prompts.text(session, 'Search in: clause numbers (say "n") or index (say "i")?');
-    },
-    function (session, results) {
-        session.userData.type = results.response;
-        session.endDialog();
-    }
-]);
-
-//bot.dialog('/select', [
-intents.matches(/^select/i, [
-    function (session) {
-        builder.Prompts.text(session, 'Contract: Construction (say "c") or Plant (say "p")?');
-    },
-    function (session, results) {
-        session.userData.name = results.response;
-        builder.Prompts.text(session, 'Say "type" to choose search type.');
-    }
-]);
-
 intents.matches(/^help/i, [function (session) {session.endDialog("Prompts:\n\n* select - Select a contract. \n* search - Search a contract.\n* change - Change contract.\n* help - Display prompts.");}]);
 
-
 intents.matches(/^search/i, [
-
-    
     function(session, results) {  
-        if (session.userData.type == 'c')
-           {builder.Prompts.text(session, 'Clause number?');} 
-           else
-           {builder.Prompts.text(session, 'Keyword?');} 
-                      }, 
+        if (session.userData.type == 'n'){builder.Prompts.text(session, 'Clause number?');} 
+           else {builder.Prompts.text(session, 'Keyword?');} 
+           }, 
     
     function(session, results) {  
         getData(session,results.response); 
@@ -179,8 +139,28 @@ intents.matches(/^search/i, [
             } 
             session.send('\nSay "search" to search again in the same way. Say "change" to change the contract and/or search type.');
     }  
-  
-]);  
+]); 
+
+intents.matches(/^change/i, [
+    function (session) {builder.Prompts.text(session, 'Contract: Construction (say "c") or Plant (say "p")?');},
+    function (session, results) {
+        session.userData.name = results.response;
+        builder.Prompts.text(session, 'Say "type" to choose search type.');}
+]);
+
+intents.matches(/^type/i, [
+    function (session) {builder.Prompts.text(session, 'Search in: clause numbers (say "n") or index (say "i")?');},
+    function (session, results) {
+        session.userData.type = results.response;
+        session.endDialog();}
+]);
+
+intents.matches(/^select/i, [
+    function (session) {builder.Prompts.text(session, 'Contract: Construction (say "c") or Plant (say "p")?');},
+    function (session, results) {
+        session.userData.name = results.response;
+        builder.Prompts.text(session, 'Say "type" to choose search type.');}
+]);
   
 server.get('/', restify.serveStatic({
     directory: __dirname,
