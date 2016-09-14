@@ -51,9 +51,16 @@ intents.matches(/^hi/i, [
         var card = new builder.HeroCard(session)
             .title("FIDIC Contracts bot")
             .text("Search the contracts and access guidance.")
-            .images([
-                 builder.CardImage.create(session, "http://docs.botframework.com/images/demo_bot_image.png")
-            ]);
+            .images([builder.CardImage.create(session, "http://docs.botframework.com/images/demo_bot_image.png")])
+            "attachments": [{"contentType": "application/vnd.microsoft.card.hero",
+                "content": {
+                        "text": "What kind of sandwich would you like on your sandwich? ",
+                        "buttons": [{
+                                "type": "imBack",
+                                "title": "BLT",
+                                "value": "1"}]
+                            }
+                    }];
         var msg = new builder.Message(session).attachments([card]);
         session.send(msg);
         session.send("Start a search anytime.");
