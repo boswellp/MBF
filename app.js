@@ -33,8 +33,7 @@ if (session.userData.name == 'c')
 
 var clausesAry = [];
 for (var i in data)
-    {clausesAry.push([i, data [i]]);
-    console.log("clausesAry = " + clausesAry[0][i]);}
+    {clausesAry.push([i, data [i]]);}
 var iFound = 0;
 for (var i = 0; i < clausesAry.length; i++) {
   if (clausesAry[i][0] == key) {
@@ -44,8 +43,8 @@ for (var i = 0; i < clausesAry.length; i++) {
 
 if (iFound != 0){clauseTitleFound[0] = clausesAry[iFound][1];}
      else {clauseTitleFound[0] = clausesAry[0][1];}
-console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound); 
-}
+//console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound); 
+     }
 
 var intents = new builder.IntentDialog();  
 
@@ -133,7 +132,7 @@ intents.matches(/^search/i, [
     function(session, results) {  
         getData(session,results.response); 
         var book = clauseTitleFound[0];
-        console.log("clauseTitleFound = " + book);
+        console.log(book);
         if (book == "")
             {
             session.send('Clause not in contract. Say "search" to search the same contract again. Say "change" to change the contract.');
