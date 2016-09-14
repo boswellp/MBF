@@ -61,12 +61,10 @@ bot.dialog('/', [
     
     //function (session, results) {session.send('Selected %s!', session.userData.name);},
     
-   function (session, results) {
-        session.send('Selected contract: %s', session.userData.name);
-        builder.Prompts.text(session, 'Construction Contract (say "c") or Plant Contract (say "p")?');
-        session.send('Selected contract: %s', session.userData.name);
-        session.beginDialog('/start');
-    },
+  // function (session, results) {session.send('Selected contract: %s', session.userData.name);
+  //     builder.Prompts.text(session, 'Construction Contract (say "c") or Plant Contract (say "p")?');
+  //      session.send('Selected contract: %s', session.userData.name);
+  //      session.beginDialog('/start');},
     
     //function (session, results) {
     //    session.userData.name = results.response;
@@ -83,13 +81,35 @@ bot.dialog('/', [
 //bot.dialog('/help', [function (session) {session.endDialog("Prompts available anytime:\n\n* select - Select a contract. \n* start - Start a search.\n* end - End this conversation.\n* help - Display these prompts.");}]);
 
 
+bot.dialog('/start', [
+    function (session, args, next) {
+        if (!session.userData.name) {
+            session.beginDialog('/profile');
+        } else {
+            next();
+        }
+    },
+    function (session, results) {
+        session.send('Hello %s!', session.userData.name);
+    }
+]);
+
+bot.dialog('/profile', [
+    function (session) {
+        builder.Prompts.text(session, 'Hi! What is your name?');
+    },
+    function (session, results) {
+        session.userData.name = results.response;
+        session.endDialog();
+    }
+]);
 
 
 
 
 
 var intents = new builder.IntentDialog();  
-bot.dialog('/start', intents); 
+bot.dialog('/contract', intents); 
 
 //bot.endConversationAction('end', 'Goodbye', { matches: /^end/i });
 //bot.beginDialogAction('help', '/help', { matches: /^help/i });
