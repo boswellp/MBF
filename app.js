@@ -66,7 +66,7 @@ bot.dialog('/', [
     },
     function (session, results) {
         session.send('Selected %s!', session.userData.name);
-    }
+    },
     
     
     
