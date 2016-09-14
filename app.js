@@ -4,6 +4,8 @@ var builder = require('botbuilder');
 
 const scriptRulesClauses = require('./scriptClauses.json');
 const scriptRulesClausesPlant = require('./scriptClausesPlant.json');
+const scriptRulesIndex = require('./scriptIndex.json');
+const scriptRulesIndexPlant = require('./scriptIndexPlant.json');
 
 var connector = new builder.ChatConnector({
     appId: process.env.MY_APP_ID,
@@ -34,7 +36,7 @@ if (session.userData.name == 'c')
 if (session.userData.name == 'p')
         if (session.userData.type == 'c')
             {data = scriptRulesClausesPlant;}
-            else if (session.userData.type == 'n'){data = scriptRulesPlantIndex;}
+            else if (session.userData.type == 'n'){data = scriptRulesIndexPlant;}
             else {data = ""}
 
 
