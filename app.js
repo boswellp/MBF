@@ -52,12 +52,12 @@ bot.dialog('/', new builder.IntentDialog()
 
 //intents.matches(/^Hi/i, [ 
 
-bot.endConversationAction('goodbye', 'Goodbye :)', { matches: /^goodbye/i });
+bot.endConversationAction('end', 'Goodbye', { matches: /^end/i });
 bot.beginDialogAction('help', '/help', { matches: /^help/i });
 
 bot.dialog('/help', [
     function (session) {
-        session.endDialog("Prompts available anytime:\n\n* start - start a search.\n* goodbye - End this conversation.\n* help - Display these prompts.");
+        session.endDialog("Prompts available anytime:\n\n* start - Start a search.\n* end - End this conversation.\n* help - Display these prompts.");
     }
 ]);
 
