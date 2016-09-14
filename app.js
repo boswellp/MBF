@@ -113,7 +113,7 @@ bot.dialog('/select', [
 
 
 var intents = new builder.IntentDialog();  
-bot.dialog('/contract', intents); 
+bot.dialog('/', intents); 
 
 //bot.endConversationAction('end', 'Goodbye', { matches: /^end/i });
 //bot.beginDialogAction('help', '/help', { matches: /^help/i });
