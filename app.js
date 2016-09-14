@@ -54,7 +54,7 @@ bot.dialog('/', [
         session.beginDialog('/help');
     },
     function (session, results) {
-        session.beginDialog('/start');
+        session.beginDialog('/contract');
     },
     function (session, results) {
         session.send("OK... See you later");
@@ -95,7 +95,7 @@ bot.dialog('/profile', [
 
 
 var intents = new builder.IntentDialog();  
-bot.dialog('/start', intents); 
+bot.dialog('/contract', intents); 
 
 //bot.endConversationAction('end', 'Goodbye', { matches: /^end/i });
 //bot.beginDialogAction('help', '/help', { matches: /^help/i });
