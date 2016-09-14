@@ -28,13 +28,13 @@ clauseTitleFound = [];
 
 var data = "";
 if (session.userData.name == 'c')
-        if (session.userData.type == 'c')
+        if (session.userData.type == 'n')
             {data = scriptRulesClauses;}
             else if (session.userData.type == 'i'){data = scriptRulesIndex;}
             else {data = ""}
             
 if (session.userData.name == 'p')
-        if (session.userData.type == 'c')
+        if (session.userData.type == 'n')
             {data = scriptRulesClausesPlant;}
             else if (session.userData.type == 'i'){data = scriptRulesIndexPlant;}
             else {data = ""}
@@ -174,7 +174,8 @@ intents.matches(/^search/i, [
             }
             else
             {
-            session.send(book);
+              if (session.userData.type == 'c'){session.send(book);}
+                 else {session.send('Keyword is in index, see clause: ' + book);}
             } 
             session.send('Say "search" to search again in the same way. Say "change" to change the contract and/or search type.');
     }  
