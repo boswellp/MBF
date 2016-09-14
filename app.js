@@ -80,17 +80,10 @@ bot.dialog('/select', [
     },
     function (session, results) {
         session.userData.name = results.response;
-        //session.endDialog();
-        session.beginDialog('/start');
+        session.endDialog();
+        //session.beginDialog('/start');
     }
 ]);
-
-
-
-
-
-
-
 
 
 var intents = new builder.IntentDialog();  
