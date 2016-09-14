@@ -53,10 +53,6 @@ bot.dialog('/', [
         session.beginDialog('/help');
     },
     
-    //function (session, results) {
-        //session.beginDialog('/select');
-    //},
-    
     function (session, args, next) {
         if (!session.userData.name) {
             session.beginDialog('/profile');
@@ -67,6 +63,11 @@ bot.dialog('/', [
     function (session, results) {
         session.send('Selected %s!', session.userData.name);
     },
+    
+   function (session, results) {
+        session.beginDialog('/select');
+    },
+    
     
     
     
