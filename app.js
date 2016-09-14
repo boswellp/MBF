@@ -23,31 +23,8 @@ server.listen(server.port,server.host, function () {
 });
 
 
-function getBooksData(key) {  
-    https.get("https://www.googleapis.com/books/v1/volumes?q=" + key + "&maxResults=5", function(res) {  
-        var d = '';  
-        var i;  
-        arr = [];  
-        res.on('data', function(chunk) {  
-            d += chunk;  
-        });  
-        res.on('end', function() {  
-            var e = JSON.parse(d);  
-            for (i = 0; i < e.items.length; i++) {  
-                console.log(i + 1 + ":" + e.items[i].volumeInfo.title);  
-                arr.push({  
-                    "description": e.items[i].volumeInfo.description,  
-                    "title": e.items[i].volumeInfo.title,  
-                    "saleability": e.items[i].saleInfo.saleability,  
-                    "price": e.items[i].saleInfo.listPrice  
-                });  
-            }  
-        });  
-    });  
-}  
-
-
-function getBooksData1(key) {
+ 
+function getData(key) {
 arr0 = [];
 arr1 = [];
 clauseTitleFound = [];
@@ -95,13 +72,8 @@ intents.matches(/^Hi/i, [
         builder.Prompts.text(session, 'Clause number?');  
     },  
     function(session, results) {  
-        //session.send('Books for topic - %s - are available. Submit "info" to choose.', results.response);  
-        //var b0 = []; 
-        //var b1 = []; 
-        getBooksData1(results.response); 
+        getData(results.response); 
         var book = clauseTitleFound[0];
-        //console.log("clauseTitleFound = " + book.clauseTitle); 
-        //session.send('Clause title is:' + book.clauseTitle); 
         console.log("clauseTitleFound = " + book);
         if (book == "")
             {session.send('Try again');}
@@ -115,13 +87,7 @@ intents.matches(/^info?/i, [
         builder.Prompts.choice(session, "Which book's info you need?", "1|2|3|4|5");  
     },  
     function(session, results) {  
-        //var book = clauseTitleFound[results.response.entity - 1];
         var book = clauseTitleFound[0];
-        //if (book.saleability == 'FOR_SALE') {  
-            //session.send('Title:' + book.title + " Price:" + book.price.amount + " " + book.price.currencyCode);  
-        //} else {  
-           // session.send('Title:' + book.title + " Price: NOT FOR SALE");  
-       // } 
         console.log("clauseTitleFound = " + book.clauseTitle); 
         session.send('clause title is:' + book.clauseTitle);  
     }  
