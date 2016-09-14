@@ -20,7 +20,12 @@ server.listen(server.port,server.host, function () {
 
 function getData(key) {
 clauseTitleFound = [];
-var data = {"0":"","1.1":"CT1111","1.2":"CT122222","1.3":"CT13333"};
+
+if (session.userData.name == 'c')
+    {var data = {"0":"","1.1":"CT1111","1.2":"CT122222","1.3":"CT13333"};}
+    else
+    {var data = {"0":"","1.1":"xxxCT1111","1.2":"xxxCT122222","1.3":"xxxCT13333"};}
+
 var clausesAry = [];
 for (var i in data)
     {clausesAry.push([i, data [i]]);
@@ -98,9 +103,7 @@ bot.dialog('/select', [
 
 intents.matches(/^start/i, [ 
 
-    function (session) {
-        builder.Prompts.text(session, "Search Construction (say c) or Plant (say p)?");
-                     },
+    //function (session) {builder.Prompts.text(session, "Search Construction (say c) or Plant (say p)?");},
     
     function(session, results) {  
         builder.Prompts.text(session, 'Clause number?');  
