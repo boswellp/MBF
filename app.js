@@ -50,7 +50,7 @@ bot.dialog('/', [
         var msg = new builder.Message(session).attachments([card]);
         session.send(msg);
         session.send("Start a search anytime.");
-        session.beginDialog('/contract');
+        session.beginDialog('/start');
     },
     
     //function (session, args, next) {
