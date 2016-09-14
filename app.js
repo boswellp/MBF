@@ -62,7 +62,6 @@ intents.matches(/^Hi/i, [
         builder.Prompts.text(session, 'Clause number?');  
     }, 
     
-    
     function(session, results) {  
         getData(results.response); 
         var book = clauseTitleFound[0];
