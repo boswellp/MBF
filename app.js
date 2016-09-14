@@ -50,12 +50,9 @@ bot.dialog('/', [
         var msg = new builder.Message(session).attachments([card]);
         session.send(msg);
         session.send("Start a search anytime.");
-        //session.beginDialog('/select');
-    },
-    
-    function (session, results) {
         session.beginDialog('/select');
     },
+  
 
     function (session, results) {
         session.send("OK... See you later");
