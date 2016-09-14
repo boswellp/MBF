@@ -2,7 +2,6 @@ var restify = require('restify');
 var https = require('https');
 var builder = require('botbuilder');
 
-
 var connector = new builder.ChatConnector({
     appId: process.env.MY_APP_ID,
     appPassword: process.env.MY_APP_PASSWORD
