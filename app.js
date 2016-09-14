@@ -23,16 +23,11 @@ server.listen(server.port,server.host, function () {
 
 function getData(key) {
 clauseTitleFound = [];
-
-
 var data = {"0":"","1.1":"CT1111","1.2":"CT122222","1.3":"CT13333"};
-
 var clausesAry = [];
 for (var i in data)
     {clausesAry.push([i, data [i]]);
     console.log("clausesAry = " + clausesAry[0][i]);}
-    
-
 var iFound = 0;
 for (var i = 0; i < clausesAry.length; i++) {
   if (clausesAry[i][0] == key) {
@@ -43,9 +38,9 @@ for (var i = 0; i < clausesAry.length; i++) {
 
 if (iFound != 0){clauseTitleFound[0] = clausesAry[iFound][1];}
      else {clauseTitleFound[0] = clausesAry[0][1];}
-
 console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound); 
 }
+
 
 var intents = new builder.IntentDialog();  
 bot.dialog('/', intents);  
