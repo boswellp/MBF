@@ -74,7 +74,7 @@ for (var i in data)
 
 //iFound = arr0.findIndex(x => x.clauseNumber == key);
 
-var iFound;
+var iFound = 0;
 for (var i = 0; i < clausesAry.length; i++) {
   if (clausesAry[i][0] == key) {
     iFound = i;
@@ -82,7 +82,8 @@ for (var i = 0; i < clausesAry.length; i++) {
   }
 }
 
-clauseTitleFound[0] = clausesAry[iFound][1];
+if (iFound != 0){clauseTitleFound[0] = clausesAry[iFound][1];]
+     else {clauseTitleFound[0] = "";}
 //clauseTitleFound[0] = arr1[iFound];
 console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound); 
 }
@@ -101,8 +102,11 @@ intents.matches(/^Hi/i, [
         var book = clauseTitleFound[0];
         //console.log("clauseTitleFound = " + book.clauseTitle); 
         //session.send('Clause title is:' + book.clauseTitle); 
-        console.log("clauseTitleFound = " + book); 
-        session.send('Clause title is :' + book); 
+        console.log("clauseTitleFound = " + book);
+        if (book == "")
+            {session.send('Try again');}
+            else
+            {session.send('Clause title is :' + book);} 
     }  
   
 ]);  
