@@ -51,6 +51,7 @@ bot.dialog('/', [
         session.send(msg);
         session.send("Start a search anytime.");
         session.beginDialog('/select');
+        session.beginDialog('/contract');
     },
   
 
@@ -80,7 +81,7 @@ bot.dialog('/select', [
     },
     function (session, results) {
         session.userData.name = results.response;
-        session.endDialog();
+        session.endDialog();   //back to root?
         //session.beginDialog('/start');
     }
 ]);
