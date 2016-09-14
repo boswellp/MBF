@@ -50,7 +50,7 @@ bot.dialog('/', [
         var msg = new builder.Message(session).attachments([card]);
         session.send(msg);
         session.send("Start a search anytime.");
-        //session.beginDialog('/help');
+        session.beginDialog('/start');
     },
     
     //function (session, args, next) {
@@ -65,7 +65,7 @@ bot.dialog('/', [
         session.send('Selected contract: %s', session.userData.name);
         builder.Prompts.text(session, 'Construction Contract (say "c") or Plant Contract (say "p")?');
         session.send('Selected contract: %s', session.userData.name);
-        //session.beginDialog('/contract');
+        session.beginDialog('/start');
     },
     
     //function (session, results) {
