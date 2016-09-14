@@ -51,7 +51,7 @@ intents.matches(/^Hi/i, [
         if (results.response && results.response.entity != '(quit)') 
             {session.beginDialog('/' + results.response.entity);} 
             else {session.endDialog();}
-                               };
+                               }
     ]); 
     
     intents.matches(/^c/i, [
