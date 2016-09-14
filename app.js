@@ -59,13 +59,13 @@ bot.dialog('/', [
     //    } else {next();}
     //},
     
-    function (session, results) {
-        session.send('Selected %s!', session.userData.name);
-    },
+    //function (session, results) {session.send('Selected %s!', session.userData.name);},
     
    function (session, results) {
+        session.send('Selected contract: %s', session.userData.name);
         builder.Prompts.text(session, 'Construction Contract (say "c") or Plant Contract (say "p")?');
     },
+    
     function (session, results) {
         session.userData.name = results.response;
         session.beginDialog('/help');
