@@ -60,7 +60,7 @@ intents.matches(/^hi/i, [
         var msg = new builder.Message(session).attachments([card]);
         session.send(msg);
         session.send("Start a search anytime.");
-        session.beginDialog('/select');
+        session.beginDialog('/profile');
     },
     function (session, results) {
         session.beginDialog('/help');
@@ -74,10 +74,10 @@ bot.dialog('/help', [function (session) {session.endDialog("Prompts available an
 bot.dialog('/profile', [
     function (session, args, next) {
         if (!session.userData.name) {
-            session.beginDialog('/contract');
+            session.beginDialog('/select');
         } else {next();}
     },
-    function (session, results) {session.send('Hello %s!', session.userData.name);}
+    function (session, results) {session.send('Contract selected: %s', session.userData.name);}
 ]);
 
 bot.dialog('/select', [
