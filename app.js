@@ -43,6 +43,12 @@ console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound);
 }
 
 var intents = new builder.IntentDialog();  
+intents.onBegin(function (session, args, next) {
+    session.dialogData.name = args.name;
+    session.send("Searching contract: %s...", args.name);
+    next();
+});
+
 bot.dialog('/', intents); 
 intents.matches(/^hi/i, [
 //bot.dialog('/', [
