@@ -91,10 +91,10 @@ bot.dialog('/select', [
     }
 ]);
 
-bot.dialog('/select', [
+bot.dialog('/profile', [
     function (session, args, next) {
         if (!session.userData.name) {
-            session.beginDialog('/start');
+            session.beginDialog('/contract');
         } else {
             next();
         }
