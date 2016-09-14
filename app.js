@@ -53,13 +53,12 @@ bot.dialog('/', [
         session.beginDialog('/help');
     },
     
-    function (session, args, next) {
-        if (!session.userData.name) {
-            session.beginDialog('/profile');
-        } else {
-            next();
-        }
-    },
+    //function (session, args, next) {
+    //    if (!session.userData.name) {
+    //        session.beginDialog('/profile');
+    //    } else {next();}
+    //},
+    
     function (session, results) {
         session.send('Selected %s!', session.userData.name);
     },
