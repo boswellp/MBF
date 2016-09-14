@@ -51,12 +51,12 @@ bot.dialog('/', [
         session.send(msg);
         session.send("Start a search anytime.");
         session.beginDialog('/select');
-        session.beginDialog('/contract');
+
     },
   
 
     function (session, results) {
-        session.send("OK... See you later");
+                session.beginDialog('/contract'); //back to here
     }
 ]);
 
