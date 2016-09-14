@@ -43,11 +43,7 @@ console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound);
 }
 
 var intents = new builder.IntentDialog();  
-intents.onBegin(function (session, args, next) {
-    session.dialogData.name = args.name;
-    session.send("Searching contract: %s...", args.name);
-    next();
-});
+
 
 bot.dialog('/', intents); 
 intents.matches(/^hi/i, [
@@ -68,6 +64,11 @@ intents.matches(/^hi/i, [
         session.send('Say "start" to start searching.');
     }
 ]);
+
+intents.onBegin(function (session, args, next) {
+    session.dialogData.name = args.name;
+    session.send("Searching contract: %s...", args.name);
+    next();});
 
 bot.dialog('/help', [function (session) {session.endDialog("Prompts available anytime:\n\n* select - Select a contract. \n* start - Start a search.\n* end - End this conversation.\n* help - Display these prompts.");}]);
 
