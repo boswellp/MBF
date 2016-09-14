@@ -49,9 +49,7 @@ bot.dialog('/', intents);
 
 intents.onDefault(builder.DialogAction.send('Say "hi" to start.'));
 
-intents.matches(/^quit/i, [
-    session.endDialog();
-]);
+intents.matches(/^quit/i, [function (session) {session.endDialog();}]);
 
 intents.matches(/^hi/i, [
 //bot.dialog('/', [
