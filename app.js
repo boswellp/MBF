@@ -69,7 +69,7 @@ var jsonData = JSON.parse(data);
 var clausesAry = [];
 for (var i in data)
     {clausesAry.push([i, data [i]]);
-    console.log("clausesAry = " + clausesAry[i,0] + " : " clausesAry[i,1]);}
+    console.log("clausesAry = " + clausesAry[i,0] + " : " + clausesAry[i,1]);}
     
 
 iFound = arr0.findIndex(x => x.clauseNumber == key);
