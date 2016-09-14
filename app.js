@@ -69,7 +69,7 @@ intents.matches(/^hi/i, [
 ]);
 
 
-bot.dialog('/help', [function (session) {session.endDialog("Prompts available anytime:\n\n* select - Select a contract. \n* start - Start a search.\n* end - End this conversation.\n* help - Display these prompts.");}]);
+bot.dialog('/help', [function (session) {session.endDialog("Prompts:\n\n* select - Select a contract. \n* start - Start a search.\n* change - Change contract.\n* help - Display prompts.");}]);
 
 bot.dialog('/profile', [
     function (session, args, next) {
@@ -102,6 +102,9 @@ intents.matches(/^change/i, [
         session.endDialog();
     }
 ]);
+
+intents.matches(/^help/i, [function (session) {session.endDialog("Prompts:\n\n* select - Select a contract. \n* start - Start a search.\n* change - Change contract.\n* help - Display prompts.");}]);
+
 
 intents.matches(/^start/i, [
 
