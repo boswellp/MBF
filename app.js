@@ -49,7 +49,7 @@ bot.dialog('/', intents);
 
 intents.onDefault(builder.DialogAction.send('Say "hi" to start.'));
 
-intents.matches(/^quit/i, [function (session) {session.endDialog();}]);
+intents.matches(/^quit/i, [function (session) {session.endDialog('OK... Goodbye');}]);
 
 intents.matches(/^hi/i, [
 //bot.dialog('/', [
@@ -67,10 +67,6 @@ intents.matches(/^hi/i, [
     function (session, results) {
         session.beginDialog('/help');
         session.send('Say "search" to start searching.');
-    },
-    
-    function (session, results) {
-        session.send("OK... Goodbye");
     }
 ]);
 
