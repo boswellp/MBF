@@ -71,7 +71,9 @@ bot.dialog('/', [
         session.endDialog();
     },
     
-    
+   function (session, results) {
+        session.beginDialog('/contract');
+    },
 
     function (session, results) {
         session.send("OK... See you later");
