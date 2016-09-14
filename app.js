@@ -46,6 +46,9 @@ var intents = new builder.IntentDialog();
 
 
 bot.dialog('/', intents); 
+
+intents.onDefault(builder.DialogAction.send('Say "hi" to start searhing.'));
+
 intents.matches(/^hi/i, [
 //bot.dialog('/', [
     function (session) {
@@ -101,9 +104,9 @@ intents.matches(/^start/i, [
         console.log("clauseTitleFound = " + book);
         if (book == "")
             {
-            //session.send('Clause not in contract. Say "start" to search the same contract again.');
-            intents.onDefault(builder.DialogAction.send('Clause not in contract. Say "start" to search the same contract again.'));
-                
+            session.send('Clause not in contract. Say "start" to search the same contract again.');
+           
+              
             }
             else
             {
