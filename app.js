@@ -61,8 +61,9 @@ intents.matches(/^hi/i, [
     },
     function (session, results) {
         session.beginDialog('/help');
-        var style = builder.ListStyle[results.response.entity];
-        builder.Prompts.choice(session, "Prompts.choice()\n\nNow start.", "start", { listStyle: button });
+        //var style = builder.ListStyle[results.response.entity];
+        //builder.Prompts.choice(session, "Prompts.choice()\n\nNow start.", "start", { listStyle: button });
+        builder.Prompts.choice(session, "Prompts.choice()\n\nNow start.", "start");
     }
 ]);
 
