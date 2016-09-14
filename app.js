@@ -103,6 +103,17 @@ intents.matches(/^change/i, [
     }
 ]);
 
+//bot.dialog('/select', [
+intents.matches(/^select/i, [
+    function (session) {
+        builder.Prompts.text(session, 'Contract: Construction (say "c") or Plant (say "p")?');
+    },
+    function (session, results) {
+        session.userData.name = results.response;
+        session.endDialog();
+    }
+]);
+
 intents.matches(/^help/i, [function (session) {session.endDialog("Prompts:\n\n* select - Select a contract. \n* search - Search a contract.\n* change - Change contract.\n* help - Display prompts.");}]);
 
 
