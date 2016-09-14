@@ -54,11 +54,9 @@ bot.dialog('/', [
         session.beginDialog('/help');
     },
     function (session, results) {
-        // Display menu
-        session.beginDialog('/menu');
+        session.beginDialog('/start');
     },
     function (session, results) {
-        // Always say goodbye
         session.send("OK... See you later");
     }
 ]);
@@ -69,7 +67,7 @@ bot.dialog('/', [
 
 
 var intents = new builder.IntentDialog();  
-bot.dialog('/', intents); 
+bot.dialog('/start', intents); 
 
 //bot.endConversationAction('end', 'Goodbye', { matches: /^end/i });
 //bot.beginDialogAction('help', '/help', { matches: /^help/i });
