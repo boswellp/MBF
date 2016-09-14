@@ -37,8 +37,10 @@ if (iFound != 0){clauseTitleFound[0] = clausesAry[iFound][1];}
 console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound); 
 }
 
-
-bot.dialog('/', [
+var intents = new builder.IntentDialog();  
+bot.dialog('/', intents); 
+intents.matches(/^/i, [
+//bot.dialog('/', [
     function (session) {
         // Send a greeting and show help.
         var card = new builder.HeroCard(session)
@@ -81,8 +83,8 @@ bot.dialog('/select', [
 ]);
 
 
-var intents = new builder.IntentDialog();  
-bot.dialog('/contract', intents); 
+//var intents = new builder.IntentDialog();  
+//bot.dialog('/contract', intents); 
 
 //bot.endConversationAction('end', 'Goodbye', { matches: /^end/i });
 //bot.beginDialogAction('help', '/help', { matches: /^help/i });
