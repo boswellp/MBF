@@ -82,18 +82,19 @@ bot.dialog('/', [
 
 bot.dialog('/profile', [
     function (session) {
-        builder.Prompts.text(session, 'Hi! What is your name?');
+        builder.Prompts.text(session, 'Construction Contract (say "c") or Plant Contract (say "p")?');
     },
     function (session, results) {
         session.userData.name = results.response;
         //session.endDialog();
+        session.beginDialog('/start');
     }
 ]);
 
-bot.dialog('/start', [
+bot.dialog('/select', [
     function (session, args, next) {
         if (!session.userData.name) {
-            session.beginDialog('/profile');
+            session.beginDialog('/start');
         } else {
             next();
         }
