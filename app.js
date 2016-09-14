@@ -39,7 +39,7 @@ console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound);
 
 var intents = new builder.IntentDialog();  
 bot.dialog('/', intents); 
-intents.matches(/^Hi/i, [
+intents.matches(/^hi/i, [
 //bot.dialog('/', [
     function (session) {
         // Send a greeting and show help.
@@ -53,6 +53,9 @@ intents.matches(/^Hi/i, [
         session.send(msg);
         session.send("Start a search anytime.");
         session.beginDialog('/select');
+    },
+    function (session, results) {
+        session.beginDialog('/help');
     }
 ]);
 
