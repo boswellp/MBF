@@ -83,7 +83,7 @@ bot.dialog('/help', [
 ]);
 
 
-bot.dialog('/profile', [
+bot.dialog('/select', [
     function (session) {
         builder.Prompts.text(session, 'Construction Contract (say "c") or Plant Contract (say "p")?');
     },
