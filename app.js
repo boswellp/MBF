@@ -52,9 +52,9 @@ bot.dialog('/', [
         session.send("Start a search anytime.");
         session.beginDialog('/help');
     },
-    function (session, results) {
-        session.beginDialog('/select');
-    },
+    //function (session, results) {
+        //session.beginDialog('/select');
+    //},
     function (session, results) {
         session.send("OK... See you later");
     }
