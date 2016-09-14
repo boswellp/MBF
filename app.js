@@ -99,17 +99,9 @@ bot.dialog('/contract', intents);
 //bot.endConversationAction('end', 'Goodbye', { matches: /^end/i });
 //bot.beginDialogAction('help', '/help', { matches: /^help/i });
 
-intents.matches(/^start/i, [
-    function (session) {
-        session.endDialog("Search FIDIC contracts. Prompts available anytime:\n\n* start \n* end \n* help ");
-    }
-]);
+//intents.matches(/^start/i, [function (session) {session.endDialog("Search FIDIC contracts. Prompts available anytime:\n\n* start \n* end \n* help ");}]);
 
-intents.matches(/^help/i, [
-    function (session) {
-        session.endDialog("Prompts available anytime:\n\n* start - Start a search.\n* end - End this conversation.\n* help - Display these prompts.");
-    }
-]);
+intents.matches(/^help/i, [function (session) {session.endDialog("Prompts available anytime:\n\n* start - Start a search.\n* end - End this conversation.\n* help - Display these prompts."); }]);
 
 intents.matches(/^start/i, [ 
 
