@@ -46,12 +46,9 @@ intents.matches(/^Hi/i, [
     
     function (session) {
         builder.Prompts.text(session, "Search Construction (say c) or Plant (say p)?");
-                     }
-    ]); 
+                     },
     
-intents.matches(/^c/i, [
-    
-    function(session) {  
+    function(session, results) {  
         builder.Prompts.text(session, 'Clause number?');  
                       }, 
     
