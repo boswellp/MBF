@@ -51,8 +51,6 @@ bot.dialog('/', [
         session.send(msg);
         session.send("Start a search anytime.");
         session.beginDialog('/select');
-        session.beginDialog('/help'); //back to here
-
     }
 ]);
 
