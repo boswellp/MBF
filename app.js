@@ -39,10 +39,19 @@ console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound);
 }
 
 
-var intents = new builder.IntentDialog();  
-bot.dialog('/', intents);  
+//var intents = new builder.IntentDialog();  
+//bot.dialog('/', intents); 
 
-intents.matches(/^Hi/i, [  
+bot.dialog('/', new builder.IntentDialog()
+    .matches(/^Hi/i, '/start')
+    .matches(/^change/i, '/changeTask')
+    .matches(/^delete/i, '/deleteTask')
+    .onDefault(builder.DialogAction.send("Sorry. Not understood."))
+);
+
+//intents.matches(/^Hi/i, [ 
+
+bot.dialog('/start', [
     
     function (session) {
         builder.Prompts.text(session, "Search Construction (say c) or Plant (say p)?");
