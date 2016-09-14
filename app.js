@@ -59,9 +59,7 @@ intents.matches(/^hi/i, [
     },
     function (session, results) {
         session.beginDialog('/help');
-        //var style = builder.ListStyle[results.response.entity];
-        //builder.Prompts.choice(session, "Prompts.choice()\n\nNow start.", "start", { listStyle: button });
-        builder.Prompts.choice(session, "Prompts.choice()\n\nNow start.", "start");
+        session.send('Say "start" to start searching.');
     }
 ]);
 
@@ -80,32 +78,9 @@ bot.dialog('/profile', [
     }
 ]);
 
-bot.dialog('/select', [
-    function (session) {
-        builder.Prompts.text(session, 'Construction Contract (say "c") or Plant Contract (say "p")?');
-    },
-    function (session, results) {
-        session.userData.name = results.response;
-        session.endDialog();   //back to root?
-        //session.beginDialog('/start');
-    }
-]);
 
+intents.matches(/^start/i, [
 
-//var intents = new builder.IntentDialog();  
-//bot.dialog('/contract', intents); 
-
-//bot.endConversationAction('end', 'Goodbye', { matches: /^end/i });
-//bot.beginDialogAction('help', '/help', { matches: /^help/i });
-
-//intents.matches(/^start/i, [function (session) {session.endDialog("Search FIDIC contracts. Prompts available anytime:\n\n* start \n* end \n* help ");}]);
-
-//intents.matches(/^help/i, [function (session) {session.endDialog("Prompts available anytime:\n\n* start - Start a search.\n* end - End this conversation.\n* help - Display these prompts."); }]);
-
-//intents.matches(/^start/i, [ 
-intents.matches(/^1/i, [
-
-    //function (session) {builder.Prompts.text(session, "Search Construction (say c) or Plant (say p)?");},
     
     function(session, results) {  
         builder.Prompts.text(session, 'Clause number?');  
