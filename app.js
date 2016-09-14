@@ -134,7 +134,7 @@ intents.matches(/^search/i, [
             }
             else
             {
-              if (session.userData.type == 'c'){session.send(book);}
+              if (session.userData.type == 'n'){session.send(book);}
                  else {session.send('Keyword is in index, see clause: ' + book);}
             } 
             session.send('\nSay "search" to search again in the same way. Say "change" to change the contract and/or search type.');
