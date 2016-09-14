@@ -45,22 +45,20 @@ bot.dialog('/', intents);
 intents.matches(/^Hi/i, [  
     
     function (session) {
-        builder.Prompts.choice(session, "Which demo would you like to run?", "prompts|picture|cards|list|carousel|receipt|actions|(quit)");
-    },
+        builder.Prompts.choice(session, "Search which contract (c: Construction; p: Plant)?", "c|p|(quit)");
+                     },
     function (session, results) {
-        if (results.response && results.response.entity != '(quit)') {
-            // Launch demo dialog
-            session.beginDialog('/' + results.response.entity);
-        } else {
-            // Exit the menu
-            session.endDialog();
-        }
-    },
+        if (results.response && results.response.entity != '(quit)') 
+            {session.beginDialog('/' + results.response.entity);} 
+            else {session.endDialog();}
+                               };
+    ]); 
     
+    intents.matches(/^c/i, [
     
     function(session) {  
         builder.Prompts.text(session, 'Clause number?');  
-    }, 
+                      }, 
     
     function(session, results) {  
         getData(results.response); 
