@@ -99,7 +99,9 @@ intents.matches(/^start/i, [
         if (book == "")
             {session.send('Clause not in contract. Say "start".');}
             else
-            {session.send('Clause title is:' + book);} 
+            {session.send('Clause title is:' + book);
+            session.send('Say "start" to search again.');
+            } 
     }  
   
 ]);  
