@@ -2,6 +2,9 @@ var restify = require('restify');
 var https = require('https');
 var builder = require('botbuilder');
 
+const scriptRulesClauses = require('./scriptClauses.json');
+const scriptRulesClausesPlant = require('./scriptClausesPlant.json');
+
 var connector = new builder.ChatConnector({
     appId: process.env.MY_APP_ID,
     appPassword: process.env.MY_APP_PASSWORD
@@ -22,9 +25,11 @@ function getData(session,key) {
 clauseTitleFound = [];
 
 if (session.userData.name == 'c')
-    {var data = {"0":"","1.1":"CT1111","1.2":"CT122222","1.3":"CT13333"};}
+    //{var data = {"0":"","1.1":"CT1111","1.2":"CT122222","1.3":"CT13333"};}
+    {var data = scriptRulesClauses;}
     else
-    {var data = {"0":"","1.1":"xxxCT1111","1.2":"xxxCT122222","1.3":"xxxCT13333"};}
+    //{var data = {"0":"","1.1":"xxxCT1111","1.2":"xxxCT122222","1.3":"xxxCT13333"};}
+    {var data = scriptRulesClausesPlant;}
 
 var clausesAry = [];
 for (var i in data)
