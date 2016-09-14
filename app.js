@@ -86,7 +86,7 @@ bot.dialog('/select', [
     },
     function (session, results) {
         session.userData.name = results.response;
-        session.endDialog();
+        //session.endDialog();
         session.beginDialog('/contract');
     }
 ]);
