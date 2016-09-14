@@ -68,7 +68,7 @@ var jsonData = JSON.parse(data);
     
 var clausesAry = [];
 for (var i in data)
-    {clausesAry.push([i, jsonData [i]]);
+    {clausesAry.push([i, data [i]]);
     console.log("clausesAry = " + clausesAry[i,0] + " : " + clausesAry[i,1]);}
     
 
