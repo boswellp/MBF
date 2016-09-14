@@ -50,28 +50,12 @@ bot.dialog('/', [
         var msg = new builder.Message(session).attachments([card]);
         session.send(msg);
         session.send("Start a search anytime.");
-        session.beginDialog('/select');
+        //session.beginDialog('/select');
     },
     
-    //function (session, args, next) {
-    //    if (!session.userData.name) {
-    //        session.beginDialog('/profile');
-    //    } else {next();}
-    //},
-    
-    //function (session, results) {session.send('Selected %s!', session.userData.name);},
-    
-  // function (session, results) {session.send('Selected contract: %s', session.userData.name);
-  //     builder.Prompts.text(session, 'Construction Contract (say "c") or Plant Contract (say "p")?');
-  //      session.send('Selected contract: %s', session.userData.name);
-  //      session.beginDialog('/start');},
-    
-    //function (session, results) {
-    //    session.userData.name = results.response;
-    //    session.beginDialog('/help');
-    //    //session.endDialog();},
-    
-   //function (session, results) {session.beginDialog('/contract');},
+    function (session, results) {
+        session.beginDialog('/select');
+    },
 
     function (session, results) {
         session.send("OK... See you later");
