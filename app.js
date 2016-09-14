@@ -81,8 +81,8 @@ bot.dialog('/profile', [
     function (session, results) {session.send('Contract selected: %s. Say "start" to search; "xxx" to change contract.', session.userData.name);}
 ]);
 
-//bot.dialog('/select', [
-intents.matches(/^select/i, [
+bot.dialog('/select', [
+//intents.matches(/^select/i, [
     function (session) {
         builder.Prompts.text(session, 'Contract: Construction (say "c") or Plant (say "p")?');
     },
