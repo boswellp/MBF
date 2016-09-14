@@ -63,11 +63,33 @@ bot.dialog('/', [
 
 bot.dialog('/help', [
     function (session) {
-        session.endDialog("Prompts available anytime:\n\n* start - Start a search.\n* end - End this conversation.\n* help - Display these prompts.");
+        session.endDialog("Prompts available anytime:\n\n* select - Select a contract. \n* start - Start a search.\n* end - End this conversation.\n* help - Display these prompts.");
     }
 ]);
 
 
+bot.dialog('/select', [
+    function (session, args, next) {
+        if (!session.userData.name) {
+            session.beginDialog('/profile');
+        } else {
+            next();
+        }
+    },
+    function (session, results) {
+        session.send('Hello %s!', session.userData.name);
+    }
+]);
+
+bot.dialog('/profile', [
+    function (session) {
+        builder.Prompts.text(session, 'Hi! What is your name?');
+    },
+    function (session, results) {
+        session.userData.name = results.response;
+        session.endDialog();
+    }
+]);
 
 
 
