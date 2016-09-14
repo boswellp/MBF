@@ -87,7 +87,7 @@ bot.dialog('/profile', [
     function (session, results) {
         session.userData.name = results.response;
         //session.endDialog();
-        session.beginDialog('/start');
+        session.beginDialog('/contract');
     }
 ]);
 
