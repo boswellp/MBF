@@ -80,11 +80,7 @@ bot.dialog('/', [
     }
 ]);
 
-bot.dialog('/help', [
-    function (session) {
-        session.endDialog("Prompts available anytime:\n\n* select - Select a contract. \n* start - Start a search.\n* end - End this conversation.\n* help - Display these prompts.");
-    }
-]);
+//bot.dialog('/help', [function (session) {session.endDialog("Prompts available anytime:\n\n* select - Select a contract. \n* start - Start a search.\n* end - End this conversation.\n* help - Display these prompts.");}]);
 
 
 
