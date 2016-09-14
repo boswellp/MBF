@@ -13,7 +13,6 @@ var arr1 = [];
 var iFound = 0;
 var clauseTitleFound = [];
 
-
 var server = restify.createServer();
 server.post('/api/messages', connector.listen());
 server.port = process.env.port || process.env.PORT || 80;
@@ -22,11 +21,7 @@ server.listen(server.port,server.host, function () {
        console.log('%s FDICbotmbf listening to %s', server.name, server.url);
 });
 
-
- 
 function getData(key) {
-arr0 = [];
-arr1 = [];
 clauseTitleFound = [];
 var data1 = '{"clauses":[' +
 '{"clauseNumber":"1.1","clauseTitle":"CT1111"},' +
@@ -36,12 +31,10 @@ var data1 = '{"clauses":[' +
 var data = {"0":"","1.1":"CT1111","1.2":"CT122222","1.3":"CT13333"};
 
 //var jsonData = JSON.parse(data);
-
 //for (var i = 0; i < jsonData.clauses.length; i++) {
 //    var clause = jsonData.clauses[i];
 //    arr0.push({ "clauseNumber":clause.clauseNumber });
 //    arr1.push({ "clauseTitle":clause.clauseTitle });
-//    console.log("arr0 = " + arr0[i] + "; arr1 = " + arr0[i]);}
     
 var clausesAry = [];
 for (var i in data)
