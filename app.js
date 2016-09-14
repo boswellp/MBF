@@ -23,26 +23,15 @@ server.listen(server.port,server.host, function () {
 
 function getData(key) {
 clauseTitleFound = [];
-var data1 = '{"clauses":[' +
-'{"clauseNumber":"1.1","clauseTitle":"CT1111"},' +
-'{"clauseNumber":"1.2","clauseTitle":"CT122222"},' +
-'{"clauseNumber":"1.3","clauseTitle":"CT13333"}]}';
+
 
 var data = {"0":"","1.1":"CT1111","1.2":"CT122222","1.3":"CT13333"};
 
-//var jsonData = JSON.parse(data);
-//for (var i = 0; i < jsonData.clauses.length; i++) {
-//    var clause = jsonData.clauses[i];
-//    arr0.push({ "clauseNumber":clause.clauseNumber });
-//    arr1.push({ "clauseTitle":clause.clauseTitle });
-    
 var clausesAry = [];
 for (var i in data)
     {clausesAry.push([i, data [i]]);
     console.log("clausesAry = " + clausesAry[0][i]);}
     
-
-//iFound = arr0.findIndex(x => x.clauseNumber == key);
 
 var iFound = 0;
 for (var i = 0; i < clausesAry.length; i++) {
@@ -54,7 +43,7 @@ for (var i = 0; i < clausesAry.length; i++) {
 
 if (iFound != 0){clauseTitleFound[0] = clausesAry[iFound][1];}
      else {clauseTitleFound[0] = clausesAry[0][1];}
-//clauseTitleFound[0] = arr1[iFound];
+
 console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound); 
 }
 
