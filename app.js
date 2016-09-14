@@ -61,6 +61,7 @@ intents.matches(/^hi/i, [
     },
     function (session, results) {
         session.beginDialog('/help');
+        builder.Prompts.choice(session, "Prompts.choice()\n\nNow start.", "start", { listStyle: button });
     }
 ]);
 
