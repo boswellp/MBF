@@ -92,6 +92,17 @@ bot.dialog('/select', [
     }
 ]);
 
+//bot.dialog('/select', [
+intents.matches(/^change/i, [
+    function (session) {
+        builder.Prompts.text(session, 'Contract: Construction (say "c") or Plant (say "p")?');
+    },
+    function (session, results) {
+        session.userData.name = results.response;
+        session.endDialog();
+    }
+]);
+
 intents.matches(/^start/i, [
 
     
