@@ -44,6 +44,7 @@ console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound);
 
 bot.dialog('/', new builder.IntentDialog()
     .matches(/^Hi/i, '/start')
+    .matches(/^start/i, '/start')
     .matches(/^change/i, '/changeTask')
     .matches(/^delete/i, '/deleteTask')
     .onDefault(builder.DialogAction.send("Sorry. Not understood."))
