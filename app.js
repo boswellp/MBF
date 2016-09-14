@@ -43,14 +43,14 @@ bot.dialog('/', [
     function (session) {
         // Send a greeting and show help.
         var card = new builder.HeroCard(session)
-            .title("Microsoft Bot Framework")
-            .text("Your bots - wherever your users are talking.")
+            .title("FIDIC Contracts bot")
+            .text("Search the contracts and access guidance.")
             .images([
                  builder.CardImage.create(session, "http://docs.botframework.com/images/demo_bot_image.png")
             ]);
         var msg = new builder.Message(session).attachments([card]);
         session.send(msg);
-        session.send("This is Microsoft Bot Framework demo bot.");
+        session.send("Start a search anytime.");
         session.beginDialog('/help');
     },
     function (session, results) {
@@ -58,6 +58,12 @@ bot.dialog('/', [
     },
     function (session, results) {
         session.send("OK... See you later");
+    }
+]);
+
+bot.dialog('/help', [
+    function (session) {
+        session.endDialog("Prompts available anytime:\n\n* start - Start a search.\n* end - End this conversation.\n* help - Display these prompts.");
     }
 ]);
 
