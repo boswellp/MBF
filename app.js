@@ -49,7 +49,6 @@ console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound);
 
 var intents = new builder.IntentDialog();  
 
-
 bot.dialog('/', intents); 
 
 intents.onDefault(builder.DialogAction.send('Say "hi" to start.'));
