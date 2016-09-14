@@ -76,13 +76,13 @@ bot.dialog('/select', [
         }
     },
     function (session, results) {
-        session.send('Hello %s!', session.userData.name);
+        session.send('Selected %s!', session.userData.name);
     }
 ]);
 
 bot.dialog('/profile', [
     function (session) {
-        builder.Prompts.text(session, 'Hi! What is your name?');
+        builder.Prompts.text(session, 'Construction Contract (say "c") or Plant Contract (say "p")?');
     },
     function (session, results) {
         session.userData.name = results.response;
