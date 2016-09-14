@@ -65,12 +65,15 @@ bot.dialog('/', [
     },
     
    function (session, results) {
-        session.beginDialog('/select');
+        builder.Prompts.text(session, 'Construction Contract (say "c") or Plant Contract (say "p")?');
+    },
+    function (session, results) {
+        session.userData.name = results.response;
+        session.endDialog();
     },
     
     
-    
-    
+
     function (session, results) {
         session.send("OK... See you later");
     }
@@ -83,15 +86,7 @@ bot.dialog('/help', [
 ]);
 
 
-bot.dialog('/select', [
-    function (session) {
-        builder.Prompts.text(session, 'Construction Contract (say "c") or Plant Contract (say "p")?');
-    },
-    function (session, results) {
-        session.userData.name = results.response;
-        session.endDialog();
-    }
-]);
+
 
 
 
