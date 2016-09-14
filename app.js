@@ -45,16 +45,11 @@ bot.dialog('/', intents);
 intents.matches(/^Hi/i, [  
     
     function (session) {
-        builder.Prompts.text(session, "Search which contract (c: Construction; p: Plant)?");
-                     },
-    function (session, results) {
-        if (results.response && results.response.entity != '(quit)') 
-            {session.beginDialog('/' + results.response.entity);} 
-            else {session.endDialog();}
-                               }
+        builder.Prompts.text(session, "Search Construction (say c) or Plant (say p)?");
+                     }
     ]); 
     
-    intents.matches(/^c/i, [
+intents.matches(/^c/i, [
     
     function(session) {  
         builder.Prompts.text(session, 'Clause number?');  
