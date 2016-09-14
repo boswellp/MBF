@@ -8,8 +8,6 @@ var connector = new builder.ChatConnector({
     appPassword: process.env.MY_APP_PASSWORD
 });
 var bot = new builder.UniversalBot(connector);
-var arr0 = [];
-var arr1 = [];
 var iFound = 0;
 var clauseTitleFound = [];
 
@@ -32,8 +30,7 @@ var iFound = 0;
 for (var i = 0; i < clausesAry.length; i++) {
   if (clausesAry[i][0] == key) {
     iFound = i;
-    break;
-  }
+    break;}
 }
 
 if (iFound != 0){clauseTitleFound[0] = clausesAry[iFound][1];}
