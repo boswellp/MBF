@@ -69,6 +69,10 @@ intents.matches(/^hi/i, [
     function (session, results) {
         session.beginDialog('/help');
         session.send('Say "search" to start searching.');
+    },
+    
+    function (session, results) {
+        session.send("OK... Goodbye");
     }
 ]);
 
