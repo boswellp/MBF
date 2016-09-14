@@ -52,6 +52,15 @@ bot.dialog('/', new builder.IntentDialog()
 
 //intents.matches(/^Hi/i, [ 
 
+bot.endConversationAction('goodbye', 'Goodbye :)', { matches: /^goodbye/i });
+bot.beginDialogAction('help', '/help', { matches: /^help/i });
+
+bot.dialog('/help', [
+    function (session) {
+        session.endDialog("Prompts available anytime:\n\n* menu - Exits a demo and returns to the menu.\n* goodbye - End this conversation.\n* help - Displays these commands.");
+    }
+]);
+
 bot.dialog('/start', [
     
     function (session) {
