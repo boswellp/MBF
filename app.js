@@ -39,7 +39,7 @@ console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound);
 
 var intents = new builder.IntentDialog();  
 bot.dialog('/', intents); 
-intents.matches(/^/i, [
+intents.matches(/^Hi/i, [
 //bot.dialog('/', [
     function (session) {
         // Send a greeting and show help.
