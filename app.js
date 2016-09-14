@@ -69,12 +69,18 @@ bot.dialog('/profile', [
     function (session, args, next) {
         if (!session.userData.name) {
             session.beginDialog('/contract');
-        } else {
-            next();
-        }
+        } else {next();}
+    },
+    function (session, results) {session.send('Hello %s!', session.userData.name);}
+]);
+
+bot.dialog('/select', [
+    function (session) {
+        builder.Prompts.text(session, 'Contract: Construction (say "c") or Plant (say "p")?');
     },
     function (session, results) {
-        session.send('Hello %s!', session.userData.name);
+        session.userData.name = results.response;
+        session.endDialog();
     }
 ]);
 
