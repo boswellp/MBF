@@ -74,13 +74,15 @@ bot.dialog('/help', [function (session) {session.endDialog("Prompts available an
 bot.dialog('/profile', [
     function (session, args, next) {
         if (!session.userData.name) {
-            session.beginDialog('/select');
+            //session.beginDialog('/select');
+            session.endDialog('Say "select" to change contract.');
         } else {next();}
     },
     function (session, results) {session.send('Contract selected: %s. Say "start" to search; "xxx" to change contract.', session.userData.name);}
 ]);
 
-bot.dialog('/select', [
+//bot.dialog('/select', [
+intents.matches(/^select/i, [
     function (session) {
         builder.Prompts.text(session, 'Contract: Construction (say "c") or Plant (say "p")?');
     },
