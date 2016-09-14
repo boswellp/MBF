@@ -158,16 +158,13 @@ intents.matches(/^search/i, [
         console.log(book);
         if (book == "")
             {
-            session.send('Clause not in contract. Say "search" to search the same contract again. Say "change" to change the contract.');
-           
-              
+            session.send('Clause not in contract or keyword not in index.');
             }
             else
             {
             session.send(book);
-            session.send('Say "search" to search again in the same contract. Say "change" to change the contract.');
-
             } 
+            session.send('Say "search" to search again in the same way. Say "change" to change the contract and/or search type.');
     }  
   
 ]);  
