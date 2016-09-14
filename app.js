@@ -54,7 +54,7 @@ intents.matches(/^Hi/i, [
                                }
     ]); 
     
-    intents.matches(/^c/i, [
+    intents.matches(/^1/i, [
     
     function(session) {  
         builder.Prompts.text(session, 'Clause number?');  
