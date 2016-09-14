@@ -104,7 +104,8 @@ bot.dialog('/select', [
 
 //intents.matches(/^help/i, [function (session) {session.endDialog("Prompts available anytime:\n\n* start - Start a search.\n* end - End this conversation.\n* help - Display these prompts."); }]);
 
-intents.matches(/^start/i, [ 
+//intents.matches(/^start/i, [ 
+intents.matches(/^1/i, [
 
     //function (session) {builder.Prompts.text(session, "Search Construction (say c) or Plant (say p)?");},
     
