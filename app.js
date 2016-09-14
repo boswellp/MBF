@@ -108,6 +108,7 @@ bot.dialog('/type', [
 ]);
 
 
+
 //bot.dialog('/select', [
 intents.matches(/^change/i, [
     function (session) {
@@ -115,17 +116,17 @@ intents.matches(/^change/i, [
     },
     function (session, results) {
         session.userData.name = results.response;
-        session.endDialog();
+        builder.Prompts.text(session, 'Say "type" to choose search type.');
     }
 ]);
 
 //bot.dialog('/select', [
 intents.matches(/^type/i, [
     function (session) {
-        builder.Prompts.text(session, 'Contract: Construction (say "c") or Plant (say "p")?');
+        builder.Prompts.text(session, 'Search in: clause numbers (say "n") or index (say "i")?');
     },
     function (session, results) {
-        session.userData.name = results.response;
+        session.userData.type = results.response;
         session.endDialog();
     }
 ]);
@@ -137,7 +138,7 @@ intents.matches(/^select/i, [
     },
     function (session, results) {
         session.userData.name = results.response;
-        session.endDialog();
+        builder.Prompts.text(session, 'Say "type" to choose search type.');
     }
 ]);
 
