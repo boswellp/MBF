@@ -39,6 +39,35 @@ console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound);
 }
 
 
+bot.dialog('/', [
+    function (session) {
+        // Send a greeting and show help.
+        var card = new builder.HeroCard(session)
+            .title("Microsoft Bot Framework")
+            .text("Your bots - wherever your users are talking.")
+            .images([
+                 builder.CardImage.create(session, "http://docs.botframework.com/images/demo_bot_image.png")
+            ]);
+        var msg = new builder.Message(session).attachments([card]);
+        session.send(msg);
+        session.send("This is Microsoft Bot Framework demo bot.");
+        session.beginDialog('/help');
+    },
+    function (session, results) {
+        // Display menu
+        session.beginDialog('/menu');
+    },
+    function (session, results) {
+        // Always say goodbye
+        session.send("OK... See you later");
+    }
+]);
+
+
+
+
+
+
 var intents = new builder.IntentDialog();  
 bot.dialog('/', intents); 
 
