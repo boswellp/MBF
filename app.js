@@ -72,8 +72,18 @@ for (var i in data)
     console.log("clausesAry = " + clausesAry[i,0] + " : " + clausesAry[i,1]);}
     
 
-iFound = arr0.findIndex(x => x.clauseNumber == key);
-clauseTitleFound[0] = arr1[iFound];
+//iFound = arr0.findIndex(x => x.clauseNumber == key);
+
+var iFound;
+for (var i = 0; i < clausesAry.length; i++) {
+  if (clausesAry[i][0] == key) {
+    iFound = i;
+    break;
+  }
+}
+
+clauseTitleFound[0] = clausesAry[iFound][1];
+//clauseTitleFound[0] = arr1[iFound];
 console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound); 
 }
 
