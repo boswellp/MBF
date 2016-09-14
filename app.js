@@ -65,7 +65,7 @@ bot.dialog('/', [
         session.send('Selected contract: %s', session.userData.name);
         builder.Prompts.text(session, 'Construction Contract (say "c") or Plant Contract (say "p")?');
         session.send('Selected contract: %s', session.userData.name);
-        session.beginDialog('/contract');
+        //session.beginDialog('/contract');
     },
     
     //function (session, results) {
