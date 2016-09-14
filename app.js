@@ -100,10 +100,16 @@ intents.matches(/^start/i, [
         var book = clauseTitleFound[0];
         console.log("clauseTitleFound = " + book);
         if (book == "")
-            {session.send('Clause not in contract. Say "start".');}
+            {
+            session.send('Clause not in contract. Say "start".');
+            intents.onDefault(builder.DialogAction.send('Clause not in contract. Say "start" to search again.'));
+                
+            }
             else
-            {session.send('Clause title is:' + book);
+            {
+            session.send('Clause title is:' + book);
             session.send('Say "start" to search again.');
+
             } 
     }  
   
