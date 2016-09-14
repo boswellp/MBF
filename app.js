@@ -97,9 +97,9 @@ intents.matches(/^start/i, [
         var book = clauseTitleFound[0];
         console.log("clauseTitleFound = " + book);
         if (book == "")
-            {session.send('Try again');}
+            {session.send('Clause not in contract. Say "start".');}
             else
-            {session.send('Clause title is :' + book);} 
+            {session.send('Clause title is:' + book);} 
     }  
   
 ]);  
