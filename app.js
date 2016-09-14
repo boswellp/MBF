@@ -69,7 +69,7 @@ var data = {"1.1":"CT1111","1.2":"CT122222","1.3":"CT13333"};
 var clausesAry = [];
 for (var i in data)
     {clausesAry.push([i, data [i]]);
-    console.log("clausesAry = " + clausesAry[i,0] + " : " + clausesAry[i,1]);}
+    console.log("clausesAry = " + clausesAry[i];}
     
 
 //iFound = arr0.findIndex(x => x.clauseNumber == key);
