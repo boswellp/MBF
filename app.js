@@ -39,18 +39,8 @@ console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound);
 }
 
 
-//var intents = new builder.IntentDialog();  
-//bot.dialog('/', intents); 
-
-bot.dialog('/', new builder.IntentDialog()
-    .matches(/^Hi/i, '/start')
-    .matches(/^start/i, '/start')
-    .matches(/^change/i, '/changeTask')
-    .matches(/^delete/i, '/deleteTask')
-    .onDefault(builder.DialogAction.send("Sorry. Not understood."))
-);
-
-//intents.matches(/^Hi/i, [ 
+var intents = new builder.IntentDialog();  
+bot.dialog('/', intents); 
 
 bot.endConversationAction('end', 'Goodbye', { matches: /^end/i });
 bot.beginDialogAction('help', '/help', { matches: /^help/i });
@@ -61,8 +51,8 @@ bot.dialog('/help', [
     }
 ]);
 
-bot.dialog('/start', [
-    
+intents.matches(/^Hi/i, [ 
+
     function (session) {
         builder.Prompts.text(session, "Search Construction (say c) or Plant (say p)?");
                      },
