@@ -78,7 +78,7 @@ bot.dialog('/profile', [
             session.beginDialog('Say "select" to choose contract.');
         } else {next();}
     },
-    function (session, results) {session.send('Contract selected: %s. Say "start" to search; say "select" to change contract.', session.userData.name);}
+    function (session, results) {session.send('Contract selected: %s. Say "search" to search; say "change" to change contract.', session.userData.name);}
 ]);
 
 bot.dialog('/select', [
@@ -103,7 +103,7 @@ intents.matches(/^change/i, [
     }
 ]);
 
-intents.matches(/^help/i, [function (session) {session.endDialog("Prompts:\n\n* select - Select a contract. \n* start - Start a search.\n* change - Change contract.\n* help - Display prompts.");}]);
+intents.matches(/^help/i, [function (session) {session.endDialog("Prompts:\n\n* select - Select a contract. \n* search - Search a contract.\n* change - Change contract.\n* help - Display prompts.");}]);
 
 
 intents.matches(/^search/i, [
