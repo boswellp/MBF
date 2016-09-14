@@ -99,8 +99,10 @@ intents.matches(/^Hi/i, [
         //var b1 = []; 
         getBooksData1(results.response); 
         var book = clauseTitleFound[0];
-        console.log("clauseTitleFound = " + book.clauseTitle); 
-        session.send('Clause title is:' + book.clauseTitle); 
+        //console.log("clauseTitleFound = " + book.clauseTitle); 
+        //session.send('Clause title is:' + book.clauseTitle); 
+        console.log("clauseTitleFound = " + book); 
+        session.send('Clause title is :' + book); 
     }  
   
 ]);  
