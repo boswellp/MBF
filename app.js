@@ -82,7 +82,7 @@ for (var i = 0; i < clausesAry.length; i++) {
   }
 }
 
-if (iFound != 0){clauseTitleFound[0] = clausesAry[iFound][1];]
+if (iFound != 0){clauseTitleFound[0] = clausesAry[iFound][1];}
      else {clauseTitleFound[0] = "";}
 //clauseTitleFound[0] = arr1[iFound];
 console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound); 
