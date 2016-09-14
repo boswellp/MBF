@@ -61,7 +61,6 @@ intents.matches(/^hi/i, [
         var card = new builder.HeroCard(session)
             .title("FIDIC Contracts bot")
             .text("Search the contracts and access guidance.")
-            .images([builder.CardImage.create(session, "http://docs.botframework.com/images/demo_bot_image.png")]);
         var msg = new builder.Message(session).attachments([card]);
         session.send(msg);
         session.send("Start a search anytime.");
