@@ -47,7 +47,7 @@ var intents = new builder.IntentDialog();
 
 bot.dialog('/', intents); 
 
-intents.onDefault(builder.DialogAction.send('Say "hi" to start searhing.'));
+intents.onDefault(builder.DialogAction.send('Say "hi" to start.'));
 
 intents.matches(/^hi/i, [
 //bot.dialog('/', [
