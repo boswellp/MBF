@@ -100,7 +100,7 @@ bot.dialog('/start', intents);
 //bot.endConversationAction('end', 'Goodbye', { matches: /^end/i });
 //bot.beginDialogAction('help', '/help', { matches: /^help/i });
 
-intents.matches(/^Hi/i, [
+intents.matches(/^start/i, [
     function (session) {
         session.endDialog("Search FIDIC contracts. Prompts available anytime:\n\n* start \n* end \n* help ");
     }
