@@ -42,10 +42,10 @@ console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound);
 var intents = new builder.IntentDialog();  
 bot.dialog('/', intents); 
 
-bot.endConversationAction('end', 'Goodbye', { matches: /^end/i });
-bot.beginDialogAction('help', '/help', { matches: /^help/i });
+//bot.endConversationAction('end', 'Goodbye', { matches: /^end/i });
+//bot.beginDialogAction('help', '/help', { matches: /^help/i });
 
-bot.dialog('/help', [
+intents.matches('/help', [
     function (session) {
         session.endDialog("Prompts available anytime:\n\n* start - Start a search.\n* end - End this conversation.\n* help - Display these prompts.");
     }
