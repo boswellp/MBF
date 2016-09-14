@@ -30,13 +30,13 @@ var data = "";
 if (session.userData.name == 'c')
         if (session.userData.type == 'c')
             {data = scriptRulesClauses;}
-            else if (session.userData.type == 'n'){data = scriptRulesIndex;}
+            else if (session.userData.type == 'i'){data = scriptRulesIndex;}
             else {data = ""}
             
 if (session.userData.name == 'p')
         if (session.userData.type == 'c')
             {data = scriptRulesClausesPlant;}
-            else if (session.userData.type == 'n'){data = scriptRulesIndexPlant;}
+            else if (session.userData.type == 'i'){data = scriptRulesIndexPlant;}
             else {data = ""}
 
 
