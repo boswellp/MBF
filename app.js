@@ -64,12 +64,12 @@ intents.matches(/^hi/i, [
     },
     function (session, results) {
         session.beginDialog('/help');
-        session.send('Say "start" to start searching.');
+        session.send('Say "search" to start searching.');
     }
 ]);
 
 
-bot.dialog('/help', [function (session) {session.endDialog("Prompts:\n\n* select - Select a contract. \n* start - Start a search.\n* change - Change contract.\n* help - Display prompts.");}]);
+bot.dialog('/help', [function (session) {session.endDialog("Prompts:\n\n* select - Select a contract. \n* search - Search contract.\n* change - Change contract.\n* help - Display prompts.");}]);
 
 bot.dialog('/profile', [
     function (session, args, next) {
@@ -106,7 +106,7 @@ intents.matches(/^change/i, [
 intents.matches(/^help/i, [function (session) {session.endDialog("Prompts:\n\n* select - Select a contract. \n* start - Start a search.\n* change - Change contract.\n* help - Display prompts.");}]);
 
 
-intents.matches(/^start/i, [
+intents.matches(/^search/i, [
 
     
     function(session, results) {  
@@ -119,14 +119,14 @@ intents.matches(/^start/i, [
         console.log("clauseTitleFound = " + book);
         if (book == "")
             {
-            session.send('Clause not in contract. Say "start" to search the same contract again. Say "change" to change the contract.');
+            session.send('Clause not in contract. Say "search" to search the same contract again. Say "change" to change the contract.');
            
               
             }
             else
             {
             session.send('Clause title is:' + book);
-            session.send('Say "start" to search again in the same contract. Say "change" to change the contract.');
+            session.send('Say "search" to search again in the same contract. Say "change" to change the contract.');
 
             } 
     }  
