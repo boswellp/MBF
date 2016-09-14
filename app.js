@@ -59,9 +59,9 @@ bot.dialog('/', [
     //    } else {next();}
     //},
     
-    //function (session, results) {
-    //    session.send('Selected %s!', session.userData.name);
-    //},
+    function (session, results) {
+        session.send('Selected %s!', session.userData.name);
+    },
     
    function (session, results) {
         builder.Prompts.text(session, 'Construction Contract (say "c") or Plant Contract (say "p")?');
