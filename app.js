@@ -45,7 +45,7 @@ bot.dialog('/', intents);
 intents.matches(/^Hi/i, [  
     
     function (session) {
-        builder.Prompts.choice(session, "Search which contract (c: Construction; p: Plant)?", "c|p|(quit)");
+        builder.Prompts.text(session, "Search which contract (c: Construction; p: Plant)?");
                      },
     function (session, results) {
         if (results.response && results.response.entity != '(quit)') 
