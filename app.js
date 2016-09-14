@@ -75,7 +75,7 @@ bot.dialog('/profile', [
     function (session, args, next) {
         if (!session.userData.name) {
             //session.beginDialog('/select');
-            session.endDialog('Say "select" to change contract.');
+            session.beginDialog('Say "select" to choose contract.');
         } else {next();}
     },
     function (session, results) {session.send('Contract selected: %s. Say "start" to search; say "select" to change contract.', session.userData.name);}
