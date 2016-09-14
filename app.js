@@ -45,7 +45,7 @@ bot.dialog('/', intents);
 //bot.endConversationAction('end', 'Goodbye', { matches: /^end/i });
 //bot.beginDialogAction('help', '/help', { matches: /^help/i });
 
-intents.matches('/help', [
+intents.matches(/^help/i, [
     function (session) {
         session.endDialog("Prompts available anytime:\n\n* start - Start a search.\n* end - End this conversation.\n* help - Display these prompts.");
     }
