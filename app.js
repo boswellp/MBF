@@ -58,7 +58,7 @@ var data1 = '{"clauses":[' +
 
 var data = {"1.1":"CT1111","1.2":"CT122222","1.3":"CT13333"};
 
-var jsonData = JSON.parse(data);
+//var jsonData = JSON.parse(data);
 
 //for (var i = 0; i < jsonData.clauses.length; i++) {
 //    var clause = jsonData.clauses[i];
