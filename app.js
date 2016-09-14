@@ -77,7 +77,7 @@ bot.dialog('/profile', [
             session.beginDialog('/select');
         } else {next();}
     },
-    function (session, results) {session.send('Contract selected: %s', session.userData.name);}
+    function (session, results) {session.send('Contract selected: %s. Say "start".', session.userData.name);}
 ]);
 
 bot.dialog('/select', [
