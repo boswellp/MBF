@@ -89,16 +89,16 @@ bot.dialog('/', [
 
 
 var intents = new builder.IntentDialog();  
-bot.dialog('/contract', intents); 
+bot.dialog('/start', intents); 
 
 //bot.endConversationAction('end', 'Goodbye', { matches: /^end/i });
 //bot.beginDialogAction('help', '/help', { matches: /^help/i });
 
 //intents.matches(/^start/i, [function (session) {session.endDialog("Search FIDIC contracts. Prompts available anytime:\n\n* start \n* end \n* help ");}]);
 
-intents.matches(/^help/i, [function (session) {session.endDialog("Prompts available anytime:\n\n* start - Start a search.\n* end - End this conversation.\n* help - Display these prompts."); }]);
+//intents.matches(/^help/i, [function (session) {session.endDialog("Prompts available anytime:\n\n* start - Start a search.\n* end - End this conversation.\n* help - Display these prompts."); }]);
 
-intents.matches(/^start/i, [ 
+//intents.matches(/^start/i, [ 
 
     function (session) {
         builder.Prompts.text(session, "Search Construction (say c) or Plant (say p)?");
