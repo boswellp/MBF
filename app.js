@@ -72,18 +72,7 @@ bot.dialog('/start', [
     }  
   
 ]);  
-intents.matches(/^info?/i, [  
-    function(session) {  
-        builder.Prompts.choice(session, "Which book's info you need?", "1|2|3|4|5");  
-    },  
-    function(session, results) {  
-        var book = clauseTitleFound[0];
-        console.log("clauseTitleFound = " + book.clauseTitle); 
-        session.send('clause title is:' + book.clauseTitle);  
-    }  
-]);  
-intents.onDefault(builder.DialogAction.send('Hi there! How can I help you today?'));  
-
+  
 server.get('/', restify.serveStatic({
     directory: __dirname,
     default: '/index.html'
