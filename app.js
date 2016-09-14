@@ -65,10 +65,6 @@ intents.matches(/^hi/i, [
     }
 ]);
 
-intents.onBegin(function (session, args, next) {
-    session.dialogData.name = args.name;
-    session.send("Searching contract: %s...", args.name);
-    next();});
 
 bot.dialog('/help', [function (session) {session.endDialog("Prompts available anytime:\n\n* select - Select a contract. \n* start - Start a search.\n* end - End this conversation.\n* help - Display these prompts.");}]);
 
