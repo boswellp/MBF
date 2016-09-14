@@ -164,7 +164,7 @@ intents.matches(/^search/i, [
             }
             else
             {
-            session.send('Clause title is:' + book);
+            session.send(book);
             session.send('Say "search" to search again in the same contract. Say "change" to change the contract.');
 
             } 
