@@ -116,14 +116,14 @@ intents.matches(/^start/i, [
         console.log("clauseTitleFound = " + book);
         if (book == "")
             {
-            session.send('Clause not in contract. Say "start" to search the same contract again.');
+            session.send('Clause not in contract. Say "start" to search the same contract again. Say "change" to change the contract.');
            
               
             }
             else
             {
             session.send('Clause title is:' + book);
-            session.send('Say "start" to search again in the same contract.');
+            session.send('Say "start" to search again in the same contract. Say "change" to change the contract.');
 
             } 
     }  
