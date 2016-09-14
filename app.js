@@ -57,7 +57,7 @@ bot.beginDialogAction('help', '/help', { matches: /^help/i });
 
 bot.dialog('/help', [
     function (session) {
-        session.endDialog("Prompts available anytime:\n\n* menu - Exits a demo and returns to the menu.\n* goodbye - End this conversation.\n* help - Displays these commands.");
+        session.endDialog("Prompts available anytime:\n\n* start - start a search.\n* goodbye - End this conversation.\n* help - Display these prompts.");
     }
 ]);
 
