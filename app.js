@@ -56,7 +56,7 @@ var data1 = '{"clauses":[' +
 '{"clauseNumber":"1.2","clauseTitle":"CT122222"},' +
 '{"clauseNumber":"1.3","clauseTitle":"CT13333"}]}';
 
-var data = {"1.1":"CT1111","1.2":"CT122222","1.3":"CT13333"};
+var data = {"0":"","1.1":"CT1111","1.2":"CT122222","1.3":"CT13333"};
 
 //var jsonData = JSON.parse(data);
 
@@ -83,7 +83,7 @@ for (var i = 0; i < clausesAry.length; i++) {
 }
 
 if (iFound != 0){clauseTitleFound[0] = clausesAry[iFound][1];}
-     else {clauseTitleFound[0] = "";}
+     else {clauseTitleFound[0] = clausesAry[0][1];}
 //clauseTitleFound[0] = arr1[iFound];
 console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound); 
 }
