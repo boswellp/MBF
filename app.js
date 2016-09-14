@@ -18,7 +18,7 @@ server.listen(server.port,server.host, function () {
        console.log('%s FDICbotmbf listening to %s', server.name, server.url);
 });
 
-function getData(key) {
+function getData(session,key) {
 clauseTitleFound = [];
 
 if (session.userData.name == 'c')
@@ -110,7 +110,7 @@ intents.matches(/^start/i, [
                       }, 
     
     function(session, results) {  
-        getData(results.response); 
+        getData(session,results.response); 
         var book = clauseTitleFound[0];
         console.log("clauseTitleFound = " + book);
         if (book == "")
