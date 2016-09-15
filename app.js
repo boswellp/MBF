@@ -165,8 +165,8 @@ bot.dialog('/search', [
         console.log(book);
         if (book == "notFound")
                 {
-                if (session.userData.type == 'n'){session.send('Keyword not in index.');}
-                    else {session.send('Clause number not in contract.');}
+                if (session.userData.type == 'n'){session.send('Clause number not in contract.');}
+                    else {session.send('Keyword not in index.');}
                 }
                 else
                 {
