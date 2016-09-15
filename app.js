@@ -126,6 +126,7 @@ bot.dialog('/select', [ //not got store search variables
     },
     function (session, results) {
         session.userData.name = results.response;
+        session.userData.result = '';
         session.endDialog();
         session.beginDialog('/type');
     }
