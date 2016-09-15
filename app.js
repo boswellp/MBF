@@ -210,7 +210,7 @@ bot.dialog('/search', [
                         if (bookAry.length == 1)
                                 {session.endDialog('Say "y" to search again, "n" to quit.');} 
                                 else
-                                {session.endDialog('Say "clauses" to see clauses ' + bookAry[0] + ', "y" to search again, "n" to quit.');} 
+                                {session.endDialog('Say "clauses" to see clauses ' + bookAry[1] + ', "y" to search again, "n" to quit.');} 
                             
                         }
                         else 
