@@ -167,6 +167,8 @@ intents.matches(/^type/i, [
         session.send('Say "search".');
     }
 ]);
+
+intents.onDefault(builder.DialogAction.send(' How can we help?')); 
   
 server.get('/', restify.serveStatic({
     directory: __dirname,
