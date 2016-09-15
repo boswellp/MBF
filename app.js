@@ -43,7 +43,7 @@ for (var i in data)
     {clausesAry.push([i, data [i]]);}
 var iFound = 0;
 for (var i = 0; i < clausesAry.length; i++) {
-  if (clausesAry[i][0] == key.toUpperCase() {
+  if (clausesAry[i][0] == key.toUpperCase()) {
     iFound = i;
     break;}
 }
