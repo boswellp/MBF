@@ -105,7 +105,7 @@ bot.dialog('/profile', [
 
 bot.dialog('/select', [
     function (session) {
-        builder.Prompts.text(session, 'Contract: Construction (say "c") or Plant (say "p")?');
+        builder.Prompts.text(session, 'Contract: ' + session.userData.name + ', Search type: ' + session.userData.type + '. Contract: same (say "s"), Construction (say "c"), Plant (say "p")?');
     },
     function (session, results) {
         session.userData.name = results.response;
