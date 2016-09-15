@@ -102,7 +102,9 @@ intents.matches(/^y/i, [
 ]);
 
 intents.matches(/^see/i, [
-    function (session) {session.beginDialog('/search');},
+    function (session) {
+                console.log("......see - session.userData.result = " +session.userData.result);
+                session.beginDialog('/search');},
 ]);
 
 /////////////////profile
