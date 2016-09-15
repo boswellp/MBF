@@ -30,14 +30,12 @@ var data = "";
 if (session.userData.name == 'c')
         if (session.userData.type == 'n')
             {data = scriptRulesClauses;}
-            else if (session.userData.type == 'i'){data = scriptRulesIndex;}
-            else {data = ""}
+            else {data = scriptRulesIndex;}
             
 if (session.userData.name == 'p')
         if (session.userData.type == 'n')
             {data = scriptRulesClausesPlant;}
-            else if (session.userData.type == 'i'){data = scriptRulesIndexPlant;}
-            else {data = ""}
+            else {data = scriptRulesIndexPlant;}
 
 
 var clausesAry = [];
