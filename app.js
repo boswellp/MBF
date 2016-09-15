@@ -99,6 +99,10 @@ intents.matches(/^select/i, [
     function (session) {session.beginDialog('/profile');},
 ]);
 
+intents.matches(/^y/i, [
+    function (session) {session.beginDialog('/profile');},
+]);
+
 /////////////////profile
 
 bot.dialog('/profile', [
@@ -165,11 +169,10 @@ bot.dialog('/search', [
                  else {session.send('Keyword is in index, see clause: ' + book);}} 
             //session.send('\nSay "search" to search again in the same way. Say "change" to change the contract and/or search type.');
             
-        session.send("Search again ....");
         //session.beginDialog('/select'); //cannot get out of
         //session.replaceDialog('/select'); //blocks before type
         //session.cancelDialog('/select'); //get oops
-        session.endDialog('Continue?'); 
+        session.endDialog('Say "y" to search again or "n" to quit.'); 
 
             }
         
