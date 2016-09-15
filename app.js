@@ -178,14 +178,14 @@ bot.dialog('/search', [
     
     function(session, results) {
         console.log("......see - search 3333 - session.userData.result = " +session.userData.result);
-        if (results.response)
-            {var keyIn = results.response;}
-            else
-            {
-            var keyIn = session.userData.result;
-            session.userData.type = 'n';
-            session.userData.name = 'c';
-            }
+        if (session.userData.result != "")
+                {var keyIn = results.response;}
+                else
+                {
+                var keyIn = session.userData.result;
+                session.userData.type = 'n';
+                session.userData.name = 'c';
+                }
 
         console.log("xxxxxxxkeyIn = " + keyIn);
         console.log("xxxxxxxsession.userData.name = " + session.userData.name);
