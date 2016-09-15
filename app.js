@@ -150,7 +150,8 @@ intents.matches(/^change/i, [
     function (session, results) {builder.Prompts.text(session, 'Search in: clause numbers (say "n") or index (say "i")?');},
     function (session, results) {
         session.userData.type = results.response;
-        session.endDialog();
+        //session.endDialog();
+        builder.Prompts.text(session, 'Say "search".');
         
     }
 ]);
