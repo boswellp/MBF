@@ -24,6 +24,8 @@ server.listen(server.port,server.host, function () {
 });
 
 function getData(session,key) {
+    
+session.userData.result == "";
 clauseTitleFound = [];
 
 var data = "";
@@ -48,11 +50,11 @@ for (var i = 0; i < clausesAry.length; i++) {
     break;}
 }
 
-console.log("key,clauseTitleFound[0] = " + key +" , " + clauseTitleFound[0]);
+//console.log("key,clauseTitleFound[0] = " + key +" , " + clauseTitleFound[0]);
 
 if (iFound != 0){clauseTitleFound[0] = clausesAry[iFound][1];}
      else {clauseTitleFound[0] = 'notFound';}
-console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound); 
+//console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound); 
      }
 
 //////////////////intents
@@ -100,6 +102,10 @@ intents.matches(/^select/i, [
 ]);
 
 intents.matches(/^y/i, [
+    function (session) {session.beginDialog('/profile');},
+]);
+
+intents.matches(/^clause/i, [
     function (session) {session.beginDialog('/profile');},
 ]);
 
@@ -167,13 +173,14 @@ bot.dialog('/search', [
                 {
                 if (session.userData.type == 'n'){session.send('Clause number not in contract.');}
                     else {session.send('Keyword not in index.');}
+                session.endDialog('Say "y" to search again or "n" to quit.'); 
                 }
                 else
                 {
-                if (session.userData.type == 'n'){session.send(book);}
-                    else {session.send('Keyword is in index, see clause: ' + book);}
+                if (session.userData.type == 'n'){session.send(book); session.endDialog('Say "y" to search again or "n" to quit.'); }
+                    else {session.send('Keyword is in index, see clause: ' + book); session.userData.result = book; session.endDialog('Say "see" to see clause ' + book + ', "y" to search again or "n" to quit.'); }
                 } 
-        session.endDialog('Say "y" to search again or "n" to quit.'); 
+
             }
         
 ]); 
