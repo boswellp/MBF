@@ -68,13 +68,19 @@ intents.matches(/^quit/i, [function (session) {session.endDialog('OK... Goodbye'
 
 intents.matches(/^hi/i, [
     function (session) {
+        
         session.userData.result = '';
         var card = new builder.HeroCard(session)
             .title("FIDIC Contracts bot")
             .text("Search the contracts and access guidance.")
-            .tap(builder.CardAction.openUrl(session, "http://www.fidic.tips"))
+            .buttons([
+                        builder.CardAction.openUrl(session, "https://en.wikipedia.org/wiki/Space_Needle", "Wikipedia"),
+                        builder.CardAction.imBack(session, "select:100", "Select")
+                    ]),
         var msg = new builder.Message(session).attachments([card]);
         session.send(msg);
+        
+        
         session.send("Start a search anytime.");
         session.beginDialog('/help');
     },
