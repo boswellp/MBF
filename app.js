@@ -168,7 +168,7 @@ intents.matches(/^type/i, [
     }
 ]);
 
-intents.onDefault(builder.DialogAction.send(' How can we help?')); 
+intents.onDefault(builder.DialogAction.send('Please say "hi" to start.')); 
   
 server.get('/', restify.serveStatic({
     directory: __dirname,
