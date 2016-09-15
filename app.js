@@ -146,7 +146,7 @@ intents.matches(/^change/i, [
     function (session, results) {session.userData.name = results.response;},
     function (session) {builder.Prompts.text(session, 'Search in: clause numbers (say "n") or index (say "i")?');},
         function (session, results) {session.userData.name = results.response;
-        session.send('Say "search".')};
+        session.send('Say "search".');
     }
 ]);
 
