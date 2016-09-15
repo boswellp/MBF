@@ -25,6 +25,7 @@ server.listen(server.port,server.host, function () {
 });
 
 function getData(session,key) {
+  
     
 session.userData.result = '';
 clauseTitleFound = [];
