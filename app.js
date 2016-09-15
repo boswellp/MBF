@@ -110,7 +110,7 @@ bot.dialog('/select', [ //not got store search variables
     function (session, results) {
         session.userData.name = results.response;
         //session.beginDialog('/type');
-        session.replaceDialog('/type');
+        session.beginDialog('/type');
     }
 ]);
 
@@ -122,7 +122,7 @@ bot.dialog('/no_change', [ //got store search variables
         if (results.response == 'c' || results.response == 'p')
             {session.userData.name = results.response; session.replaceDialog('/type');}
             else
-            {session.replaceDialog('/search');}
+            {session.beginDialog('/search');}
     }
 ]);
 
