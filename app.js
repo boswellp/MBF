@@ -116,7 +116,7 @@ intents.matches(/^clause/i, [
                     else
                     {session.beginDialog('/search');}
                     
-                },
+                }
 ]);
 
 bot.dialog('/clause_split', [
