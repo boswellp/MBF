@@ -129,7 +129,7 @@ bot.dialog('/clause_split', [
         builder.Prompts.choice(session, "Choose clause: ", msg);
     },
     function (session, results) {
-        session.userData.result = msg[results.response.entity];
+        session.userData.result = results.response.entity;
         session.beginDialog('/search');
     }
 ]);
