@@ -173,7 +173,7 @@ bot.dialog('/select', [ //not got store search variables
 
 bot.dialog('/no_change', [ //got store search variables
     function (session) {
-        builder.Prompts.text(session, 'Contract: ' + session.userData.name + ' | Search type: ' + session.userData.type + '\n\n Same search (say "s") | Change: Construction (say "c") | Change: Plant (say "p")?');
+        builder.Prompts.text(session, 'Save settings | Contract: ' + session.userData.name + ' | Search type: ' + session.userData.type + '| \n\n Same search (say "s") | Change: Construction (say "c") | Change: Plant (say "p")?');
     },
     function (session, results) {
         if (results.response == 'c' || results.response == 'p')
@@ -227,7 +227,7 @@ bot.dialog('/search', [
                 {
                 if (session.userData.type == 'n'){session.send('Clause number not in contract.');}
                     else {session.send('Keyword not in index.');}
-                session.endDialog('Say "y" to search again | "n" to quit'); 
+                session.endDialog('Say | "y" to search again | "n" to quit'); 
                 }
                 else
                 {
@@ -236,16 +236,16 @@ bot.dialog('/search', [
                         var bookAry = book.split('#');
                         session.send(bookAry[0]); 
                         if (bookAry.length == 1)
-                                {session.endDialog('Say "y" to search again | "n" to quit.');} 
+                                {session.endDialog('Say | "y" to search again | "n" to quit.');} 
                                 else
                                 {session.userData.result = bookAry[1];
-                                session.endDialog('Say "get" to get clause ' + bookAry[1] + ' | "y" to search again | "n" to quit');} 
+                                session.endDialog('Say | "get" to get clause ' + bookAry[1] + ' | "y" to search again | "n" to quit');} 
                             
                         }
                         else 
                         {session.send('Keyword is in index, see clause: ' + book); 
                         session.userData.result = book; 
-                        session.endDialog('Say "see" to see clause ' + book + ' | "y" to search again | "n" to quit'); }
+                        session.endDialog('Say | "see" to see clause ' + book + ' | "y" to search again | "n" to quit'); }
                 } 
             }
 ]); 
