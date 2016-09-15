@@ -55,11 +55,13 @@ if (iFound != 0){clauseTitleFound[0] = clausesAry[iFound][1];}
 //console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound); 
      }
 
+//////////////////intents
+
 var intents = new builder.IntentDialog();  
 
 bot.dialog('/', intents); 
 
-intents.onDefault(builder.DialogAction.send('Say "hi" to start.'));
+intents.onDefault(builder.DialogAction.send('Please say "hi" to start.')); 
 
 intents.matches(/^quit/i, [function (session) {session.endDialog('OK... Goodbye');}]);
 
@@ -87,6 +89,11 @@ intents.matches(/^hi/i, [
 
 bot.dialog('/help', [function (session) {session.endDialog("Prompts:\n\n* select - Select a contract. \n* search - Search contract.\n* change - Change contract.\n* help - Display prompts.");}]);
 
+intents.matches(/^help/i, [function (session) {session.endDialog("Prompts:\n\n* select - Select a contract. \n* search - Search a contract.\n* change - Change contract.\n* help - Display prompts.");}]);
+
+intents.matches(/^change/i, [
+    function (session) {session.beginDialog('/profile');},
+]);
 
 /////////////////profile
 
@@ -138,10 +145,6 @@ bot.dialog('/type', [
     }
 ]);
 
-intents.matches(/^help/i, [function (session) {session.endDialog("Prompts:\n\n* select - Select a contract. \n* search - Search a contract.\n* change - Change contract.\n* help - Display prompts.");}]);
-
-
-//intents.matches(/^search/i, [
 bot.dialog('/search', [
     function(session, results) {  
         if (session.userData.type == 'n'){builder.Prompts.text(session, 'Clause number?');} 
@@ -166,37 +169,11 @@ bot.dialog('/search', [
 
             }
         
-        
 ]); 
 
-intents.matches(/^change/i, [
-    function (session) {builder.Prompts.text(session, 'Contract: Construction (say "c") or Plant (say "p")?');},
-    function (session, results) {
-        session.userData.name = results.response;
-        session.send('Say "type" to choose search type.');
-    }
-]);
 
-intents.matches(/^select/i, [
-    function (session) {builder.Prompts.text(session, 'Contract: Construction (say "c") or Plant (say "p")?');},
-    function (session, results) {
-        session.userData.name = results.response;
-        //builder.Prompts.text(session, 'Say "type" to choose search type.');
-        session.send('Say "type" to choose search type.');
-    }
-]);
 
-intents.matches(/^type/i, [
-    function (session) {builder.Prompts.text(session, 'Search in: clause numbers (say "n") or index (say "i")?');},
-    function (session, results) {
-        session.userData.type = results.response;
-        //session.endDialog();
-        session.send('Say "search".');
-    }
-]);
 
-intents.onDefault(builder.DialogAction.send('Please say "hi" to start.')); 
-  
 server.get('/', restify.serveStatic({
     directory: __dirname,
     default: '/index.html'
