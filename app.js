@@ -119,9 +119,11 @@ bot.dialog('/no_change', [ //got store search variables
         builder.Prompts.text(session, 'Contract: ' + session.userData.name + ', Search type: ' + session.userData.type + '.  Same search (say "s"). Or change: Construction (say "c"), Plant (say "p")?');
     },
     function (session, results) {
-        if (results.response == 'c' || results.response == 'p'){session.userData.name = results.response;};
+        session.userData.change = 'n';
+        if (results.response == 'c' || results.response == 'p'){session.userData.name = results.response; session.userData.change = 'y';};
         //session.beginDialog('/type');
-        session.replaceDialog('/type');
+        if (session.userData.change = 'y'){session.replaceDialog('/type');}
+            else {session.replaceDialog('/search');}
     }
 ]);
 
