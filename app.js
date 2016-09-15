@@ -136,6 +136,7 @@ intents.matches(/^search/i, [
             },
             
     function (session, results) {
+        session.send("Search again ....");
         session.beginDialog('/help');}
         
         
