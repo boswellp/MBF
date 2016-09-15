@@ -103,7 +103,8 @@ bot.dialog('/select', [
     },
     function (session, results) {
         session.userData.name = results.response;
-        session.beginDialog('/type');
+        //session.beginDialog('/type');
+        session.replaceDialog('/type');
     }
 ]);
 
