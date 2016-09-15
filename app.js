@@ -180,7 +180,11 @@ bot.dialog('/search', [
                         else
                         {builder.Prompts.text(session, 'Keyword?');} 
                 }
-                //else{builder.Prompts.text(session, 'Say "y" to continue?');}
+                else
+                {
+                //builder.Prompts.text(session, 'Say "y" to continue?');
+                next();   
+                }
                
            }, 
     
