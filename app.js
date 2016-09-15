@@ -31,29 +31,32 @@ session.userData.result = '';
 clauseTitleFound = [];
 var data = "";
 if (session.userData.name == 'c')
-        if (session.userData.type == 'n')
+        {if (session.userData.type == 'n')
             {data = scriptRulesClauses;}
             else {data = scriptRulesIndex;}
+        }
             
 if (session.userData.name == 'p')
-        if (session.userData.type == 'n')
+        {if (session.userData.type == 'n')
             {data = scriptRulesClausesPlant;}
             else {data = scriptRulesIndexPlant;}
-
+        }
 
 var clausesAry = [];
 for (var i in data)
     {clausesAry.push([i, data [i]]);}
 var iFound = 0;
-for (var i = 0; i < clausesAry.length; i++) {
-  if (clausesAry[i][0] == key.toUpperCase()) {
-    iFound = i;
-    break;}
-}
+for (var i = 0; i < clausesAry.length; i++)
+    {
+    if (clausesAry[i][0] == key.toUpperCase()) {
+        iFound = i;
+        break;}
+    }
 
 if (iFound != 0){clauseTitleFound[0] = clausesAry[iFound][1];}
      else {clauseTitleFound[0] = 'notFound';}
-     }
+     
+}
      
      
 var intents = new builder.IntentDialog();  
