@@ -199,7 +199,7 @@ bot.dialog('/search', [
                 }
                 else
                 {
-                builder.Prompts.text(session, 'say "y" to continue?');
+                builder.Prompts.text(session, 'Say "y" to continue?');
                 }
                
            }, 
