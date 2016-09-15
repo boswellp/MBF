@@ -172,7 +172,7 @@ bot.dialog('/type', [
 ]);
 
 bot.dialog('/search', [
-    function(session, results) {
+    function(session) {
         if (session.userData.result == "")
                 {
                 if (session.userData.type == 'n')
@@ -180,10 +180,7 @@ bot.dialog('/search', [
                         else
                         {builder.Prompts.text(session, 'Keyword?');} 
                 }
-                else
-                {
-                builder.Prompts.text(session, 'Say "y" to continue?');
-                }
+                //else{builder.Prompts.text(session, 'Say "y" to continue?');}
                
            }, 
     
