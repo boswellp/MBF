@@ -73,11 +73,13 @@ intents.matches(/^hi/i, [
         var msg = new builder.Message(session).attachments([card]);
         session.send(msg);
         session.send("Start a search anytime.");
-        session.beginDialog('/select');
+        //session.beginDialog('/select');
+        session.beginDialog('/help');
     },
     function (session, results) {
-        session.beginDialog('/help');
-        session.send('Say "search" to start searching.');
+        //session.beginDialog('/help');
+        //session.send('Say "search" to start searching.');
+        session.beginDialog('/select');
     }
 ]);
 
