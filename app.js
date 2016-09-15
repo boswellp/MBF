@@ -2,6 +2,7 @@
 var restify = require('restify');
 var https = require('https');
 var builder = require('botbuilder');
+const _ = require('lodash');
 
 
 var connector = new builder.ChatConnector({
