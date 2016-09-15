@@ -164,7 +164,7 @@ bot.dialog('/search', [
         //session.cancelDialog('/select'); //get oops
         //session.endDialog('Say "search" to search as before; say "change" to change the search parameters.'); 
         session.endDialog('Search again ....');
-        session.beginDialog('/profile');
+        session.replaceDialog('/profile');
             }
         
         
