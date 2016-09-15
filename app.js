@@ -112,12 +112,12 @@ intents.matches(/^clause/i, [function (session) {
 bot.dialog('/clause_split', [
     function (session) {
         var clauseAry = session.userData.result.split(',')
-        //var msg = clauseAry[0];
-        //for (i = 1; i < clauseAry.length; i++)
-        //    {msg = msg + '|' + clauseAry[i];} //these are the clause number, get titles
+        var msg = clauseAry[0];
+        for (i = 1; i < clauseAry.length; i++)
+            {msg = msg + '|' + clauseAry[i];} //these are the clause number, get titles
             
   ///////get clause titles
-        msg = '';
+        msgList = '';
         for (i = 0; i < clauseAry.length; i++) 
                 {if (!_.has(scriptRulesClauses, clauseAry[i])){} //leaves out clause if not in clause json
                         else 
@@ -126,14 +126,14 @@ bot.dialog('/clause_split', [
                         var titleStart = titleClause.indexOf("-",0); //Find clause title
                         var titleEnd = titleClause.indexOf(":",titleStart+1);
                         var title = titleClause.substr(titleStart, titleEnd-titleStart).trim();
-                        msg = msg + clauseAry[i] + title + '|';
+                        msgList = msgList + clauseAry[i] + title + '\n';
                         };                 
                 };
-        msg = msg + 'quit'
+
                                     
 /////// //////           
             
-        builder.Prompts.choice(session, "Choose clause: ", msg);
+        builder.Prompts.choice(session, msgList + "Choose clause: ", msg);
     },
     function (session, results) {
         session.userData.result = results.response.entity;
