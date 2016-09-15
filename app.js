@@ -159,18 +159,24 @@ bot.dialog('/search', [
     function(session, results) {
         if (session.userData.result == "")
                 {
-                if (session.userData.type == 'n'){builder.Prompts.text(session, 'Clause number?');} 
-                    else {builder.Prompts.text(session, 'Keyword?');} 
+                if (session.userData.type == 'n')
+                        {builder.Prompts.text(session, 'Clause number?');} 
+                        else
+                        {builder.Prompts.text(session, 'Keyword?');} 
                 }
-                else
-                {
-                 session.userData.type = 'n';
-                 session.userData.name = 'c';
-                }
+               
            }, 
     
-    function(session, results) {  
-        getData(session,results.response); 
+    function(session, results) {
+        if (results.response == '')
+            {
+            var keyIn = session.userData.result;
+            session.userData.type = 'n';
+            session.userData.name = 'c';
+            }
+            else
+            {var keyIn = results.response;}
+        getData(session,keyIn); 
         var book = clauseTitleFound[0];
         console.log(book);
         if (book == "notFound")
@@ -181,8 +187,13 @@ bot.dialog('/search', [
                 }
                 else
                 {
-                if (session.userData.type == 'n'){session.send(book); session.endDialog('Say "y" to search again or "n" to quit.'); }
-                    else {session.send('Keyword is in index, see clause: ' + book); session.userData.result = book; session.endDialog('Say "see" to see clause ' + book + ', "y" to search again or "n" to quit.'); }
+                if (session.userData.type == 'n')
+                        {session.send(book); 
+                        session.endDialog('Say "y" to search again or "n" to quit.'); }
+                        else 
+                        {session.send('Keyword is in index, see clause: ' + book); 
+                        session.userData.result = book; 
+                        session.endDialog('Say "see" to see clause ' + book + ', "y" to search again or "n" to quit.'); }
                 } 
 
             }
