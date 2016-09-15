@@ -68,7 +68,6 @@ intents.onDefault(builder.DialogAction.send('Please say "hi" to start.'));
 intents.matches(/^quit/i, [function (session) {session.endDialog('OK... Goodbye');}]);
 
 intents.matches(/^hi/i, [
-//bot.dialog('/', [
     function (session) {
         session.userData.result = '';
         var card = new builder.HeroCard(session)
@@ -77,14 +76,11 @@ intents.matches(/^hi/i, [
         var msg = new builder.Message(session).attachments([card]);
         session.send(msg);
         session.send("Start a search anytime.");
-        //session.beginDialog('/select');
         session.beginDialog('/help');
     },
     function (session, results) {
         session.endDialog();
         session.beginDialog('/profile');
-        //session.send('Say "search" to start searching.');
-        //session.cancelDialog('/select'); //get oops
     }
 ]);
 
@@ -114,8 +110,8 @@ intents.matches(/^see/i, [
 bot.dialog('/profile', [
     function (session, args, next) {
         if (!session.userData.name) {
-            session.endDialog('/select');
-            //session.beginDialog('Say "select" to choose contract.');
+        session.endDialog();
+        session.beginDialog('/select');
         } else {next();}
     },
     //function (session, results) {session.send('Contract selected: %s. Say "search" to search; say "change" to change contract.', session.userData.name);}
