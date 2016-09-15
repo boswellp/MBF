@@ -178,7 +178,7 @@ bot.dialog('/search', [
     
     function(session, results) {
         console.log("......see - search 3333 - session.userData.result = " +session.userData.result);
-        if (session.userData.result != "")
+        if (session.userData.result == "")
                 {var keyIn = results.response;}
                 else
                 {
