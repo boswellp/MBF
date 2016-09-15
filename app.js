@@ -128,22 +128,14 @@ intents.matches(/^search/i, [
         getData(session,results.response); 
         var book = clauseTitleFound[0];
         console.log(book);
-        if (book == "")
-            {
-            session.send('Clause not in contract or keyword not in index.');
-            }
-            else
-            {
+        if (book == ""){session.send('Clause not in contract or keyword not in index.');}
+            else{
               if (session.userData.type == 'n'){session.send(book);}
-                 else {session.send('Keyword is in index, see clause: ' + book);}
-            } 
-            
+                 else {session.send('Keyword is in index, see clause: ' + book);}} 
             session.send('\nSay "search" to search again in the same way. Say "change" to change the contract and/or search type.');
-    
-    },
+            }
         
         
-    }  
 ]); 
 
 intents.matches(/^change/i, [
