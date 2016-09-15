@@ -176,6 +176,12 @@ bot.dialog('/search', [
             }
             else
             {var keyIn = results.response;}
+            
+        console.log("xxxxxxxkeyIn = " + keyIn);
+        console.log("xxxxxxxsession.userData.name = " + session.userData.name);
+        console.log("xxxxxxxsession.userData.type = " + session.userData.type);
+        
+    
         getData(session,keyIn); 
         var book = clauseTitleFound[0];
         console.log(book);
