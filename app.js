@@ -87,20 +87,36 @@ intents.matches(/^hi/i, [
 
 bot.dialog('/help', [function (session) {session.endDialog("Prompts:\n\n* select - Select a contract. \n* search - Search contract.\n* change - Change contract.\n* help - Display prompts.");}]);
 
+
+/////////////////profile
+
 bot.dialog('/profile', [
     function (session, args, next) {
         if (!session.userData.name) {
-            //session.beginDialog('/select');
-            session.beginDialog('Say "select" to choose contract.');
+            session.beginDialog('/select');
+            //session.beginDialog('Say "select" to choose contract.');
         } else {next();}
     },
-    function (session, results) {session.send('Contract selected: %s. Say "search" to search; say "change" to change contract.', session.userData.name);}
+    //function (session, results) {session.send('Contract selected: %s. Say "search" to search; say "change" to change contract.', session.userData.name);}
+    function (session, results) {session.beginDialog('/no_change');}
 ]);
 
+/////////////////profile
+
 bot.dialog('/select', [
-//intents.matches(/^select/i, [
     function (session) {
         builder.Prompts.text(session, 'Contract: Construction (say "c") or Plant (say "p")?');
+    },
+    function (session, results) {
+        session.userData.name = results.response;
+        //session.beginDialog('/type');
+        session.replaceDialog('/type');
+    }
+]);
+
+bot.dialog('/no_change', [
+    function (session) {
+        builder.Prompts.text(session, 'As before.... Contract: Construction (say "c") or Plant (say "p")?');
     },
     function (session, results) {
         session.userData.name = results.response;
