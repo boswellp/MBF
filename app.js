@@ -83,9 +83,9 @@ intents.matches(/^hi/i, [
 ]);
 
 
-bot.dialog('/help', [function (session) {session.endDialog("Prompts:\n\n* select - Select or change a search type. \n* search - Search contract.\n* help - Display prompts.\n\nSearches:\n\n* contracts: Construction or Plant & Design-Build. \n* search types: by clause number or by keyword in index.");}]);
+bot.dialog('/help', [function (session) {session.endDialog("Prompts:\n\n* select - Select or change a search type. \n* search - Search contract.\n* help - Display prompts.\n* hi - Start.\n\nSearches:\n\n* contracts: Construction or Plant & Design-Build. \n* search types: by clause number or by keyword in index.");}]);
 
-intents.matches(/^help/i, [function (session) {session.endDialog("Prompts:\n\n* select - Select or change a search type. \n* search - Search contract.\n* help - Display prompts.\n\nSearches:\n\n* contracts: Construction or Plant & Design-Build. \n* search types: by clause number or by keyword in index.");}]);
+intents.matches(/^help/i, [function (session) {session.endDialog("Prompts:\n\n* select - Select or change a search type. \n* search - Search contract.\n* help - Display prompts.\n* hi - Start.\n\nSearches:\n\n* contracts: Construction or Plant & Design-Build. \n* search types: by clause number or by keyword in index.");}]);
 
 intents.matches(/^search/i, [function (session) {session.beginDialog('/profile');},
 ]);
@@ -118,8 +118,10 @@ bot.dialog('/clause_split', [
             
   ///////get clause titles
         msgList = '';
+        var fileName = scriptRulesClauses;
+        if (session.userData.name == 'p'){var fileName = scriptRulesClausesPlant}
         for (i = 0; i < clauseAry.length; i++) 
-                {if (!_.has(scriptRulesClauses, clauseAry[i])){} //leaves out clause if not in clause json
+                {if (!_.has(fileName, clauseAry[i])){} //leaves out clause if not in clause json
                         else 
                         {
                         var titleClause = scriptRulesClauses[clauseAry[i]];
