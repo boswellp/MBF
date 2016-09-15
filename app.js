@@ -76,7 +76,7 @@ intents.matches(/^hi/i, [
             .buttons([
                         builder.CardAction.openUrl(session, "https://en.wikipedia.org/wiki/Space_Needle", "Wikipedia"),
                         builder.CardAction.imBack(session, "select:100", "Select")
-                    ]),
+                    ])
         var msg = new builder.Message(session).attachments([card]);
         session.send(msg);
         
