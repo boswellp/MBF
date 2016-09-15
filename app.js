@@ -57,6 +57,7 @@ if (iFound != 0){clauseTitleFound[0] = clausesAry[iFound][1];}
 //console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound); 
      }
 
+
 //////////////////intents
 
 var intents = new builder.IntentDialog();  
