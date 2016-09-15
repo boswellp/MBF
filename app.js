@@ -105,8 +105,8 @@ intents.matches(/^y/i, [
     function (session) {session.beginDialog('/profile');},
 ]);
 
-intents.matches(/^clause/i, [
-    function (session) {session.beginDialog('/profile');},
+intents.matches(/^see/i, [
+    function (session) {session.beginDialog('/search');},
 ]);
 
 /////////////////profile
@@ -160,9 +160,17 @@ bot.dialog('/type', [
 ]);
 
 bot.dialog('/search', [
-    function(session, results) {  
-        if (session.userData.type == 'n'){builder.Prompts.text(session, 'Clause number?');} 
-           else {builder.Prompts.text(session, 'Keyword?');} 
+    function(session, results) {
+        if (session.userData.type == "")
+                {
+                if (session.userData.type == 'n'){builder.Prompts.text(session, 'Clause number?');} 
+                    else {builder.Prompts.text(session, 'Keyword?');} 
+                }
+                else
+                {
+                 session.userData.type = 'n';
+                 session.userData.name = 'c';
+                }
            }, 
     
     function(session, results) {  
