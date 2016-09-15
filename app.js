@@ -162,8 +162,8 @@ bot.dialog('/search', [
         //session.beginDialog('/select'); //cannot get out of
         //session.replaceDialog('/select'); //blocks before type
         //session.cancelDialog('/select'); //get oops
-        //session.endDialog('Say "search" to search as before; say "change" to change the search parameters.'); 
-        session.endDialog('/profile');
+        session.endDialog('Continue?'); 
+
             }
         
         
