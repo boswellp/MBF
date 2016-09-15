@@ -28,7 +28,6 @@ function getData(session,key) {
   
 session.userData.result = '';
 clauseTitleFound = [];
-
 var data = "";
 if (session.userData.name == 'c')
         if (session.userData.type == 'n')
