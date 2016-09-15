@@ -169,6 +169,10 @@ bot.dialog('/search', [
                         else
                         {builder.Prompts.text(session, 'Keyword?');} 
                 }
+                else
+                {
+                builder.Prompts.text(session, 'say "y" to continue?');
+                }
                
            }, 
     
