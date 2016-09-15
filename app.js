@@ -143,7 +143,8 @@ bot.dialog('/search', [
             
         session.send("Search again ....");
         //session.beginDialog('/select'); //cannot get out of
-        session.replaceDialog('/select'); //blocks before type
+        //session.replaceDialog('/select'); //blocks before type
+        session.cancelDialog('/select');
             }
         
         
