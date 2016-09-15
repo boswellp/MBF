@@ -136,7 +136,7 @@ intents.matches(/^search/i, [
             
         session.send("Search again ....");
         //session.beginDialog('/help');
-        session.replaceDialog('/');
+        session.replaceDialog('/select');
             }
         
         
