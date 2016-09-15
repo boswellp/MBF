@@ -19,7 +19,6 @@ server.listen(server.port,server.host, function () {
 });
 
 
-
 function getBooksData(key) {  
     https.get("https://www.googleapis.com/books/v1/volumes?q=" + key + "&maxResults=5", function(res) {  
         var d = '';  
