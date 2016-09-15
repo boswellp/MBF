@@ -25,7 +25,7 @@ server.listen(server.port,server.host, function () {
 
 function getData(session,key) {
     
-session.userData.result == "";
+session.userData.result = '';
 clauseTitleFound = [];
 
 var data = "";
@@ -70,7 +70,7 @@ intents.matches(/^quit/i, [function (session) {session.endDialog('OK... Goodbye'
 intents.matches(/^hi/i, [
 //bot.dialog('/', [
     function (session) {
-        // Send a greeting and show help.
+        session.userData.result = '';
         var card = new builder.HeroCard(session)
             .title("FIDIC Contracts bot")
             .text("Search the contracts and access guidance.")
