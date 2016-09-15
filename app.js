@@ -145,7 +145,8 @@ intents.matches(/^change/i, [
     function (session) {builder.Prompts.text(session, 'Contract: Construction (say "c") or Plant (say "p")?');},
     function (session, results) {
         session.userData.name = results.response;
-        builder.Prompts.text(session, 'Say "type" to choose search type.');
+        //builder.Prompts.text(session, 'Say "type" to choose search type.');
+        session.send('Say "type" to choose search type.');
     }
 ]);
 
