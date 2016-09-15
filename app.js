@@ -172,7 +172,7 @@ bot.dialog('/type', [
 ]);
 
 bot.dialog('/search', [
-    function(session) {
+    function(session, args, next) {
         if (session.userData.result == "")
                 {
                 if (session.userData.type == 'n')
