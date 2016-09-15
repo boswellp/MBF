@@ -103,9 +103,9 @@ bot.dialog('/profile', [
 
 /////////////////profile
 
-bot.dialog('/select', [
+bot.dialog('/select', [ //not got store search variables
     function (session) {
-        builder.Prompts.text(session, 'Contract: ' + session.userData.name + ', Search type: ' + session.userData.type + '. Contract: same (say "s"), Construction (say "c"), Plant (say "p")?');
+        builder.Prompts.text(session, 'Contract: Construction (say "c"), Plant (say "p")?');
     },
     function (session, results) {
         session.userData.name = results.response;
@@ -114,12 +114,12 @@ bot.dialog('/select', [
     }
 ]);
 
-bot.dialog('/no_change', [
+bot.dialog('/no_change', [ //got store search variables
     function (session) {
-        builder.Prompts.text(session, 'As before.... Contract: Construction (say "c") or Plant (say "p")?');
+        builder.Prompts.text(session, 'Contract: ' + session.userData.name + ', Search type: ' + session.userData.type + '.  Same search (say "s"). Or change: Construction (say "c"), Plant (say "p")?');
     },
     function (session, results) {
-        session.userData.name = results.response;
+        if (results.response == 'c' ¦¦ results.response == 'p' ){session.userData.name = results.response;};
         //session.beginDialog('/type');
         session.replaceDialog('/type');
     }
