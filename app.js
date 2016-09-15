@@ -142,11 +142,19 @@ intents.matches(/^search/i, [
 ]); 
 
 intents.matches(/^change/i, [
-    
     function (session) {builder.Prompts.text(session, 'Contract: Construction (say "c") or Plant (say "p")?');},
-        function (session, results) {
-            session.userData.name = results.response;
-            builder.Prompts.text(session, 'Say "type" to choose search type.');}
+    function (session, results) {
+        session.userData.name = results.response;
+        builder.Prompts.text(session, 'Say "type" to choose search type.');
+    }
+]);
+
+intents.matches(/^select/i, [
+    function (session) {builder.Prompts.text(session, 'Contract: Construction (say "c") or Plant (say "p")?');},
+    function (session, results) {
+        session.userData.name = results.response;
+        builder.Prompts.text(session, 'Say "type" to choose search type.');
+    }
 ]);
 
 intents.matches(/^type/i, [
@@ -155,13 +163,6 @@ intents.matches(/^type/i, [
         session.userData.type = results.response;
         session.endDialog();
     }
-]);
-
-intents.matches(/^select/i, [
-    function (session) {builder.Prompts.text(session, 'Contract: Construction (say "c") or Plant (say "p")?');},
-    function (session, results) {
-        session.userData.name = results.response;
-        builder.Prompts.text(session, 'Say "type" to choose search type.');}
 ]);
   
 server.get('/', restify.serveStatic({
