@@ -173,7 +173,7 @@ bot.dialog('/select', [ //not got store search variables
 
 bot.dialog('/no_change', [ //got store search variables
     function (session) {
-        builder.Prompts.text(session, 'Stored settings - | Contract: ' + session.userData.name + ' | Search type: ' + session.userData.type + '| \n\nSame settings (say "s") | Change: Construction (say "c") | Change: Plant (say "p") |');
+        builder.Prompts.text(session, 'Stored settings - | Contract: ' + session.userData.name + ' | Search type: ' + session.userData.type + ' | \n\nUse settings (say "s") | Change: Construction (say "c") | Change: Plant (say "p") |');
     },
     function (session, results) {
         if (results.response == 'c' || results.response == 'p')
