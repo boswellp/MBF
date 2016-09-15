@@ -150,7 +150,7 @@ bot.dialog('/select', [ //not got store search variables
 
 bot.dialog('/no_change', [ //got store search variables
     function (session) {
-        builder.Prompts.text(session, 'Contract: ' + session.userData.name + ', Search type: ' + session.userData.type + '.\nSame search (say "s"). Or change: Construction (say "c"), Plant (say "p")?');
+        builder.Prompts.text(session, 'Contract: ' + session.userData.name + ', Search type: ' + session.userData.type + '.\n Same search (say "s"). Or change: Construction (say "c"), Plant (say "p")?');
     },
     function (session, results) {
         if (results.response == 'c' || results.response == 'p')
