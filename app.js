@@ -160,8 +160,10 @@ bot.dialog('/type', [
 
 bot.dialog('/search', [
     function(session, results) {
+         console.log("......see - search 1111 - session.userData.result = " +session.userData.result);
         if (session.userData.result == "")
                 {
+                console.log("......see - search 22222 - session.userData.result = " +session.userData.result);
                 if (session.userData.type == 'n')
                         {builder.Prompts.text(session, 'Clause number?');} 
                         else
@@ -171,6 +173,7 @@ bot.dialog('/search', [
            }, 
     
     function(session, results) {
+        console.log("......see - search 3333 - session.userData.result = " +session.userData.result);
         if (results.response)
             {var keyIn = results.response;}
             else
