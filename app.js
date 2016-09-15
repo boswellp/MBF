@@ -51,7 +51,7 @@ for (var i = 0; i < clausesAry.length; i++) {
 }
 
 if (iFound != 0){clauseTitleFound[0] = clausesAry[iFound][1];}
-     else {clauseTitleFound[0] = 'Clause not in contract.';}
+     else {clauseTitleFound[0] = 'notFound';}
 //console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound); 
      }
 
@@ -163,17 +163,17 @@ bot.dialog('/search', [
         getData(session,results.response); 
         var book = clauseTitleFound[0];
         console.log(book);
-        if (book == ""){session.send('Clause not in contract or keyword not in index.');}
-            else{
-              if (session.userData.type == 'n'){session.send(book);}
-                 else {session.send('Keyword is in index, see clause: ' + book);}} 
-            //session.send('\nSay "search" to search again in the same way. Say "change" to change the contract and/or search type.');
-            
-        //session.beginDialog('/select'); //cannot get out of
-        //session.replaceDialog('/select'); //blocks before type
-        //session.cancelDialog('/select'); //get oops
+        if (book == "notFound")
+                {
+                if (session.userData.type == 'n'){session.send('Keyword not in index.');}
+                    else {session.send('Clause number not in contract.');}
+                }
+                else
+                {
+                if (session.userData.type == 'n'){session.send(book);}
+                    else {session.send('Keyword is in index, see clause: ' + book);}
+                } 
         session.endDialog('Say "y" to search again or "n" to quit.'); 
-
             }
         
 ]); 
