@@ -54,7 +54,6 @@ for (var i = 0; i < clausesAry.length; i++) {
 
 if (iFound != 0){clauseTitleFound[0] = clausesAry[iFound][1];}
      else {clauseTitleFound[0] = 'notFound';}
-//console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound); 
      }
 
 
@@ -144,8 +143,7 @@ bot.dialog('/profile', [
         session.beginDialog('/select');
         } else {next();}
     },
-    //function (session, results) {session.send('Contract selected: %s. Say "search" to search; say "change" to change contract.', session.userData.name);}
-    function (session, results) {session.beginDialog('/no_change');}
+   function (session, results) {session.beginDialog('/no_change');}
 ]);
 
 /////////////////profile
@@ -175,7 +173,6 @@ bot.dialog('/no_change', [ //got store search variables
 ]);
 
 bot.dialog('/type', [
-//intents.matches(/^select/i, [
     function (session) {
         builder.Prompts.text(session, 'Search in: clause numbers (say "n") or index (say "i")?');
     },
@@ -188,10 +185,8 @@ bot.dialog('/type', [
 
 bot.dialog('/search', [
     function(session, results) {
-         console.log("......see - search 1111 - session.userData.result = " +session.userData.result);
         if (session.userData.result == "")
                 {
-                console.log("......see - search 22222 - session.userData.result = " +session.userData.result);
                 if (session.userData.type == 'n')
                         {builder.Prompts.text(session, 'Clause number?');} 
                         else
@@ -205,7 +200,6 @@ bot.dialog('/search', [
            }, 
     
     function(session, results) {
-        console.log("......see - search 3333 - session.userData.result = " +session.userData.result);
         if (session.userData.result == "")
                 {var keyIn = results.response;}
                 else
@@ -215,14 +209,8 @@ bot.dialog('/search', [
                 session.userData.name = 'c';
                 }
 
-        console.log("xxxxxxxkeyIn = " + keyIn);
-        console.log("xxxxxxxsession.userData.name = " + session.userData.name);
-        console.log("xxxxxxxsession.userData.type = " + session.userData.type);
-        
-    
         getData(session,keyIn); 
         var book = clauseTitleFound[0];
-        console.log(book);
         if (book == "notFound")
                 {
                 if (session.userData.type == 'n'){session.send('Clause number not in contract.');}
@@ -247,12 +235,8 @@ bot.dialog('/search', [
                         session.userData.result = book; 
                         session.endDialog('Say "see" to see clause ' + book + ', "y" to search again, "n" to quit.'); }
                 } 
-
             }
-        
 ]); 
-
-
 
 
 server.get('/', restify.serveStatic({
