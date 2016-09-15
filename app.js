@@ -204,12 +204,19 @@ bot.dialog('/search', [
                 else
                 {
                 if (session.userData.type == 'n')
-                        {session.send(book); 
-                        session.endDialog('Say "y" to search again or "n" to quit.'); }
+                        {
+                        var bookAry = book.split('#');
+                        session.send(bookAry[0]); 
+                        if (bookAry.length == 1)
+                                {session.endDialog('Say "y" to search again, "n" to quit.');} 
+                                else
+                                {session.endDialog('Say "clauses" to see clauses ' + bookAry[0] + ', "y" to search again, "n" to quit.');} 
+                            
+                        }
                         else 
                         {session.send('Keyword is in index, see clause: ' + book); 
                         session.userData.result = book; 
-                        session.endDialog('Say "see" to see clause ' + book + ', "y" to search again or "n" to quit.'); }
+                        session.endDialog('Say "see" to see clause ' + book + ', "y" to search again, "n" to quit.'); }
                 } 
 
             }
