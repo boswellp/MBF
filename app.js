@@ -3,11 +3,6 @@ var restify = require('restify');
 var https = require('https');
 var builder = require('botbuilder');
 
-const _ = require('lodash');
-const scriptRulesClauses = require('./scriptClauses.json');
-const scriptRulesClausesPlant = require('./scriptClausesPlant.json');
-const scriptRulesIndex = require('./scriptIndex.json');
-const scriptRulesIndexPlant = require('./scriptIndexPlant.json');
 
 var connector = new builder.ChatConnector({
     appId: process.env.MY_APP_ID,
