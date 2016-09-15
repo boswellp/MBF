@@ -100,17 +100,17 @@ intents.matches(/^y/i, [function (session) {session.beginDialog('/profile');},
 intents.matches(/^see/i, [function (session) {session.beginDialog('/search');},
 ]);
 
-intents.matches(/^clause/i, [function (session) {
+intents.matches(/^get/i, [function (session) {
                 var clauseAry = session.userData.result.split(',');
                 
                 if (clauseAry.length >1)
-                    {session.beginDialog('/clause_split');}
+                    {session.beginDialog('/get_split');}
                     else
                     {session.beginDialog('/search');}
                 }
 ]);
 
-bot.dialog('/clause_split', [
+bot.dialog('/get_split', [
     function (session) {
         var clauseAry = session.userData.result.split(',')
         var msg = clauseAry[0];
@@ -173,7 +173,7 @@ bot.dialog('/select', [ //not got store search variables
 
 bot.dialog('/no_change', [ //got store search variables
     function (session) {
-        builder.Prompts.text(session, 'Contract: ' + session.userData.name + ', Search type: ' + session.userData.type + '.\n Same search (say "s"). Or change: Construction (say "c"), Plant (say "p")?');
+        builder.Prompts.text(session, 'Contract: ' + session.userData.name + ' | Search type: ' + session.userData.type + '\n Same search (say "s"). Or change: Construction (say "c"), Plant (say "p")?');
     },
     function (session, results) {
         if (results.response == 'c' || results.response == 'p')
@@ -239,7 +239,7 @@ bot.dialog('/search', [
                                 {session.endDialog('Say "y" to search again, "n" to quit.');} 
                                 else
                                 {session.userData.result = bookAry[1];
-                                session.endDialog('Say "clause" to see clause ' + bookAry[1] + ', "y" to search again, "n" to quit.');} 
+                                session.endDialog('Say "get" to get clause ' + bookAry[1] + ', "y" to search again, "n" to quit.');} 
                             
                         }
                         else 
