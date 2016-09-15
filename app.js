@@ -77,9 +77,9 @@ intents.matches(/^hi/i, [
         session.beginDialog('/help');
     },
     function (session, results) {
-        //session.beginDialog('/help');
+        session.endDialog();
+        session.beginDialog('/profile');
         //session.send('Say "search" to start searching.');
-        session.endDialog('/profile');
         //session.cancelDialog('/select'); //get oops
     }
 ]);
