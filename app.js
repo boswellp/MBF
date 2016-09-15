@@ -173,18 +173,20 @@ bot.dialog('/select', [ //not got store search variables
 
 bot.dialog('/no_change', [ //got store search variables
     function (session) {
-        var tmpStr = 'Stored search settings - | Contract: ';
-        tmpStr = tmpStr + 'c - Construction | Search type: ';
-        if (session.userData.name == 'p'){tmpStr = tmpStr + 'p - Plant | Search type: '}
-        var tmpStr1 = tmpStr + 'n - clause numbers |';
-        if (session.userData.type == 'i'){tmpStr1 = tmpStr + 'i - index |'}
+        var tmpStr = 'Stored search settings: Contract: ';
+        tmpStr = tmpStr + 'c - Construction; Search type: ';
+        if (session.userData.name == 'p'){tmpStr = tmpStr + 'p - Plant; Search type: '}
+        var tmpStr1 = tmpStr + 'n - clause numbers';
+        if (session.userData.type == 'i'){tmpStr1 = tmpStr + 'i - index'}
         builder.Prompts.text(session, tmpStr1 + '\n\nUse settings (say "s") | Change: Construction (say "c") | Change: Plant (say "p") |');
     },
     function (session, results) {
-        if (results.response == 'c' || results.response == 'p')
-            {session.userData.name = results.response; session.replaceDialog('/type');}
+        var tmpRes = results.response.trim.toLowerCase();
+        if ((session.userData.name == "") && (tmpRes != 'c' || tmpRes != 'p')){tmpRes = 'c'} //Set default if wrong input and nothing stored
+        if (tmpRes == 'c' || tmpRes == 'p') //Store input and continue
+            {session.userData.name = tmpRes; session.replaceDialog('/type');}
             else
-            {session.beginDialog('/search');}
+            {session.beginDialog('/search');} //Use stored
     }
 ]);
 
@@ -193,7 +195,9 @@ bot.dialog('/type', [
         builder.Prompts.text(session, 'Search type - | Clause numbers (say "n") | Index (say "i") |');
     },
     function (session, results) {
-        session.userData.type = results.response;
+        var tmpRes = results.response.trim.toLowerCase();
+        if (tmpRes != 'n' || tmpRes != 'i'){tmpRes = 'n'}
+        session.userData.type = tmpRes;
         //session.endDialog();
         session.beginDialog('/search');
     }
@@ -218,10 +222,12 @@ bot.dialog('/search', [
     
     function(session, results) {
         if (session.userData.result == "")
-                {var keyIn = results.response;}
+                {
+                var tmpRes = results.response.trim.toLowerCase();   //Need to clean input
+                }
                 else
                 {
-                var keyIn = session.userData.result;  //got a clause number from see or clause
+                var tmpRes = session.userData.result;  //got a clause number from see or clause
                 session.userData.type = 'n';
                 session.userData.name = 'c';
                 }
