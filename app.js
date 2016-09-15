@@ -142,8 +142,8 @@ bot.dialog('/search', [
             //session.send('\nSay "search" to search again in the same way. Say "change" to change the contract and/or search type.');
             
         session.send("Search again ....");
-        session.beginDialog('/select');
-        //session.replaceDialog('/select'); //blocks before type
+        //session.beginDialog('/select'); //cannot get out of
+        session.replaceDialog('/select'); //blocks before type
             }
         
         
