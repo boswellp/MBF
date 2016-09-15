@@ -169,14 +169,15 @@ bot.dialog('/search', [
            }, 
     
     function(session, results) {
-        if (results.response == '')
+        if (results.response)
+            {var keyIn = results.response;}
+            else
             {
             var keyIn = session.userData.result;
             session.userData.type = 'n';
             session.userData.name = 'c';
-            }
-            else
-            {var keyIn = results.response;}
+
+
             
         console.log("xxxxxxxkeyIn = " + keyIn);
         console.log("xxxxxxxsession.userData.name = " + session.userData.name);
