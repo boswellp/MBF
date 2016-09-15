@@ -50,12 +50,9 @@ for (var i = 0; i < clausesAry.length; i++) {
     break;}
 }
 
-//console.log("key,clauseTitleFound[0] = " + key +" , " + clauseTitleFound[0]);
-
 if (iFound != 0){clauseTitleFound[0] = clausesAry[iFound][1];}
      else {clauseTitleFound[0] = 'notFound';}
      }
-
 
 //////////////////intents
 
@@ -89,33 +86,24 @@ bot.dialog('/help', [function (session) {session.endDialog("Prompts:\n\n* select
 
 intents.matches(/^help/i, [function (session) {session.endDialog("Prompts:\n\n* select - Select or change a search type. \n* search - Search contract.\n* help - Display prompts.\n\nSearches:\n\n* contracts: Construction or Plant & Design-Build. \n* search types: by clause number or by keyword in index.");}]);
 
-intents.matches(/^search/i, [
-    function (session) {session.beginDialog('/profile');},
+intents.matches(/^search/i, [function (session) {session.beginDialog('/profile');},
 ]);
 
-intents.matches(/^select/i, [
-    function (session) {session.beginDialog('/profile');},
+intents.matches(/^select/i, [function (session) {session.beginDialog('/profile');},
 ]);
 
-intents.matches(/^y/i, [
-    function (session) {session.beginDialog('/profile');},
+intents.matches(/^y/i, [function (session) {session.beginDialog('/profile');},
 ]);
 
-intents.matches(/^see/i, [
-    function (session) {
-                console.log("......see - session.userData.result = " +session.userData.result);
-                session.beginDialog('/search');},
+intents.matches(/^see/i, [function (session) {session.beginDialog('/search');},
 ]);
 
-intents.matches(/^clause/i, [
-    function (session) {
-                console.log("......clause - session.userData.result = " + session.userData.result);
+intents.matches(/^clause/i, [function (session) {
                 var clauseAry = session.userData.result.split(',');
                 if (clauseAry.length >1)
                     {session.beginDialog('/clause_split');}
                     else
                     {session.beginDialog('/search');}
-                    
                 }
 ]);
 
@@ -204,7 +192,7 @@ bot.dialog('/search', [
                 {var keyIn = results.response;}
                 else
                 {
-                var keyIn = session.userData.result;
+                var keyIn = session.userData.result;  //got a clause number from see or clause
                 session.userData.type = 'n';
                 session.userData.name = 'c';
                 }
