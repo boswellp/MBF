@@ -122,7 +122,7 @@ bot.dialog('/clause_split', [
                 {if (!_.has(scriptRulesClauses, clauseAry[i])){} //leaves out clause if not in clause json
                         else 
                         {
-                        var titleClause = fileNameClauses[clauseAry[i]];
+                        var titleClause = scriptRulesClauses[clauseAry[i]];
                         var titleStart = titleClause.indexOf("-",0); //Find clause title
                         var titleEnd = titleClause.indexOf(":",titleStart+1);
                         var title = titleClause.substr(titleStart, titleEnd-titleStart).trim();
