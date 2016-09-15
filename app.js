@@ -115,13 +115,16 @@ bot.dialog('/type', [
     },
     function (session, results) {
         session.userData.type = results.response;
-        session.endDialog();
+        //session.endDialog();
+        session.beginDialog('/search');
     }
 ]);
 
 intents.matches(/^help/i, [function (session) {session.endDialog("Prompts:\n\n* select - Select a contract. \n* search - Search a contract.\n* change - Change contract.\n* help - Display prompts.");}]);
 
-intents.matches(/^search/i, [
+
+//intents.matches(/^search/i, [
+bot.dialog('/search', [
     function(session, results) {  
         if (session.userData.type == 'n'){builder.Prompts.text(session, 'Clause number?');} 
            else {builder.Prompts.text(session, 'Keyword?');} 
