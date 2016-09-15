@@ -181,7 +181,7 @@ bot.dialog('/no_change', [ //got store search variables
         builder.Prompts.text(session, tmpStr1 + '\n\nUse settings (say "s") | Change: Construction (say "c") | Change: Plant (say "p") |');
     },
     function (session, results) {
-        var tmpRes = results.response.trim.toLowerCase();
+        var tmpRes = results.response.trim().toLowerCase();
         if ((session.userData.name == "") && (tmpRes != 'c' || tmpRes != 'p')){tmpRes = 'c'} //Set default if wrong input and nothing stored
         if (tmpRes == 'c' || tmpRes == 'p') //Store input and continue
             {session.userData.name = tmpRes; session.replaceDialog('/type');}
@@ -195,7 +195,7 @@ bot.dialog('/type', [
         builder.Prompts.text(session, 'Search type - | Clause numbers (say "n") | Index (say "i") |');
     },
     function (session, results) {
-        var tmpRes = results.response.trim.toLowerCase();
+        var tmpRes = results.response.trim().toLowerCase();
         if (tmpRes != 'n' || tmpRes != 'i'){tmpRes = 'n'}
         session.userData.type = tmpRes;
         //session.endDialog();
@@ -223,7 +223,7 @@ bot.dialog('/search', [
     function(session, results) {
         if (session.userData.result == "")
                 {
-                var tmpRes = results.response.trim.toLowerCase();   //Need to clean input
+                var tmpRes = results.response.trim().toLowerCase();   //Need to clean input
                 }
                 else
                 {
