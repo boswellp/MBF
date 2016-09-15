@@ -135,8 +135,8 @@ intents.matches(/^search/i, [
             //session.send('\nSay "search" to search again in the same way. Say "change" to change the contract and/or search type.');
             
         session.send("Search again ....");
-        //session.beginDialog('/help');
-        session.replaceDialog('/select');
+        session.beginDialog('/select');
+        //session.replaceDialog('/select'); //blocks before type
             }
         
         
