@@ -73,7 +73,7 @@ intents.matches(/^hi/i, [
             .text("Search FIDIC contracts and guides.")
             .text("Prompts:\n\n* select - Select or change a search type. \n* search - Search contract.\n* help - Display prompts.\n* hi - Start.\n\nSearches:\n\n* contracts: Construction or Plant & Design-Build. \n* search types: by clause number or by keyword in index.")
             .buttons([
-                        builder.CardAction.openUrl(session, "http://www.fidic.tips/", "Info")
+                        builder.CardAction.openUrl(session, "http://www.fidic.tips/", "Info"),
                         builder.CardAction.imBack(session, "profile", "Select")
                     ])
         var msg = new builder.Message(session).attachments([card]);
