@@ -107,6 +107,32 @@ intents.matches(/^see/i, [
                 session.beginDialog('/search');},
 ]);
 
+intents.matches(/^clause/i, [
+    function (session) {
+                console.log("......clause - session.userData.result = " + session.userData.result);
+                var clauseAry = session.userData.result.split(',');
+                if (clauseAry.length >1)
+                    {session.beginDialog('/clause_split');}
+                    else
+                    {session.beginDialog('/search');}
+                    
+                },
+]);
+
+bot.dialog('/clause_split', [
+    function (session) {
+        var clauseAry = session.userData.result.split(',')
+        var msg = clauseAry[0];
+        for (i = 1; i < clauseAry.length; i++)
+            {msg = msg + '|' + clauseAry[i];}
+        builder.Prompts.choice(session, "Choose clause: ", msg);
+    },
+    function (session, results) {
+        var session.userData.name = msg[results.response.entity];
+        session.beginDialog('/search');
+    }
+]);
+
 /////////////////profile
 
 bot.dialog('/profile', [
@@ -211,7 +237,7 @@ bot.dialog('/search', [
                                 {session.endDialog('Say "y" to search again, "n" to quit.');} 
                                 else
                                 {session.userData.result = bookAry[1];
-                                session.endDialog('Say "clauses" to see clauses ' + bookAry[1] + ', "y" to search again, "n" to quit.');} 
+                                session.endDialog('Say "clause" to see clause ' + bookAry[1] + ', "y" to search again, "n" to quit.');} 
                             
                         }
                         else 
