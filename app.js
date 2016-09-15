@@ -70,17 +70,20 @@ intents.matches(/^hi/i, [
         session.userData.result = '';
         var card = new builder.HeroCard(session)
             .title("FIDIC Contracts bot")
-            .text("Search the contracts and access guidance.")
+            .text("Search FIDIC contracts and guides.")
+            .text("Prompts:\n\n* select - Select or change a search type. \n* search - Search contract.\n* help - Display prompts.\n* hi - Start.\n\nSearches:\n\n* contracts: Construction or Plant & Design-Build. \n* search types: by clause number or by keyword in index.")
             .buttons([
-                        builder.CardAction.openUrl(session, "https://en.wikipedia.org/wiki/Space_Needle", "Wikipedia"),
-                        builder.CardAction.imBack(session, "select:100", "Select")
+                        builder.CardAction.openUrl(session, "http://www.fidic.tips/", "Info")
+                    ])
+            .buttons([
+                        builder.CardAction.imBack(session, "profile", "Select")
                     ])
         var msg = new builder.Message(session).attachments([card]);
         session.send(msg);
         
         
-        session.send("Start a search anytime.");
-        session.beginDialog('/help');
+        //session.send("Start a search anytime.");
+        //session.beginDialog('/help');
     },
     function (session, results) {
         session.endDialog();
