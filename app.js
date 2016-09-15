@@ -87,9 +87,9 @@ intents.matches(/^hi/i, [
 ]);
 
 
-bot.dialog('/help', [function (session) {session.endDialog("Prompts:\n\n* select - Select or change a search type. \n* search - Search contract.\n* help - Display prompts.\nSearches:\n\n* contracts: Construction or Plant & Design-Build. \n* search types: by clause number or by keyword in index.");}]);
+bot.dialog('/help', [function (session) {session.endDialog("Prompts:\n\n* select - Select or change a search type. \n* search - Search contract.\n* help - Display prompts.\n\nSearches:\n\n* contracts: Construction or Plant & Design-Build. \n* search types: by clause number or by keyword in index.");}]);
 
-intents.matches(/^help/i, [function (session) {session.endDialog("Prompts:\n\n* select - Select or change a search type. \n* search - Search contract.\n* help - Display prompts.\nSearches:\n\n* contracts: Construction or Plant & Design-Build. \n* search types: by clause number or by keyword in index.");}]);
+intents.matches(/^help/i, [function (session) {session.endDialog("Prompts:\n\n* select - Select or change a search type. \n* search - Search contract.\n* help - Display prompts.\n\nSearches:\n\n* contracts: Construction or Plant & Design-Build. \n* search types: by clause number or by keyword in index.");}]);
 
 intents.matches(/^search/i, [
     function (session) {session.beginDialog('/profile');},
