@@ -122,7 +122,7 @@ bot.dialog('/no_change', [ //got store search variables
         session.userData.change = 'n';
         if (results.response == 'c' || results.response == 'p'){session.userData.name = results.response; session.userData.change = 'y';};
         //session.beginDialog('/type');
-        if (session.userData.change = 'y'){session.replaceDialog('/type');}
+        if (session.userData.change = 's'){session.replaceDialog('/type');}
             else {session.replaceDialog('/search');}
     }
 ]);
