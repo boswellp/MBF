@@ -79,7 +79,7 @@ intents.matches(/^hi/i, [
     function (session, results) {
         //session.beginDialog('/help');
         //session.send('Say "search" to start searching.');
-        session.beginDialog('/profile');
+        session.endDialog('/profile');
         //session.cancelDialog('/select'); //get oops
     }
 ]);
@@ -93,7 +93,7 @@ bot.dialog('/help', [function (session) {session.endDialog("Prompts:\n\n* select
 bot.dialog('/profile', [
     function (session, args, next) {
         if (!session.userData.name) {
-            session.beginDialog('/select');
+            session.endDialog('/select');
             //session.beginDialog('Say "select" to choose contract.');
         } else {next();}
     },
@@ -110,7 +110,7 @@ bot.dialog('/select', [ //not got store search variables
     function (session, results) {
         session.userData.name = results.response;
         //session.beginDialog('/type');
-        session.beginDialog('/type');
+        session.endDialog('/type');
     }
 ]);
 
