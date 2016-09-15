@@ -87,11 +87,15 @@ intents.matches(/^hi/i, [
 ]);
 
 
-bot.dialog('/help', [function (session) {session.endDialog("Prompts:\n\n* select - Select a contract. \n* search - Search contract.\n* change - Change contract.\n* help - Display prompts.");}]);
+bot.dialog('/help', [function (session) {session.endDialog("Prompts:\n\n* select - Select or change a search type. \n* search - Search contract.\n* help - Display prompts.");}]);
 
-intents.matches(/^help/i, [function (session) {session.endDialog("Prompts:\n\n* select - Select a contract. \n* search - Search a contract.\n* change - Change contract.\n* help - Display prompts.");}]);
+intents.matches(/^help/i, [function (session) {session.endDialog("Prompts:\n\n* select - Select or change a search type. \n* search - Search a contract.\n* help - Display prompts.");}]);
 
-intents.matches(/^change/i, [
+intents.matches(/^search/i, [
+    function (session) {session.beginDialog('/profile');},
+]);
+
+intents.matches(/^select/i, [
     function (session) {session.beginDialog('/profile');},
 ]);
 
