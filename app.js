@@ -161,7 +161,7 @@ bot.dialog('/type', [
 
 bot.dialog('/search', [
     function(session, results) {
-        if (session.userData.type == "")
+        if (session.userData.result == "")
                 {
                 if (session.userData.type == 'n'){builder.Prompts.text(session, 'Clause number?');} 
                     else {builder.Prompts.text(session, 'Keyword?');} 
