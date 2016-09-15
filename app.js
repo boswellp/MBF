@@ -48,9 +48,11 @@ for (var i = 0; i < clausesAry.length; i++) {
     break;}
 }
 
-if (iFound != 0){clauseTitleFound[0] = clausesAry[iFound][1]; console.log("key,clauseTitleFound[0] = " + key +" , " + clauseTitleFound[0]);}
+console.log("key,clauseTitleFound[0] = " + key +" , " + clauseTitleFound[0]);
+
+if (iFound != 0){clauseTitleFound[0] = clausesAry[iFound][1];}
      else {clauseTitleFound[0] = 'notFound';}
-//console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound); 
+console.log("iFound = " + iFound + "; clauseTitleFound = " + clauseTitleFound); 
      }
 
 //////////////////intents
