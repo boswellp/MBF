@@ -40,6 +40,7 @@ if (session.userData.name == 'p')
             else {data = scriptRulesIndexPlant;}
 
 
+
 var clausesAry = [];
 for (var i in data)
     {clausesAry.push([i, data [i]]);}
