@@ -129,7 +129,7 @@ bot.dialog('/get_split', [
                         var titleStart = titleClause.indexOf("-",0); //Find clause title
                         var titleEnd = titleClause.indexOf(":",titleStart+1);
                         var title = titleClause.substr(titleStart, titleEnd-titleStart).trim();
-                        msgList = msgList + clauseAry[i] + title + '\n';
+                        msgList = msgList + clauseAry[i] + ' ' + title + '\n\n';
                         };                 
                 };
 
