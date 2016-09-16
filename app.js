@@ -2,7 +2,7 @@ var restify = require('restify');
 var https = require('https');
 var builder = require('botbuilder');
 
-//const _ = require('lodash');
+var _ = require('lodash');
 const scriptRulesClauses = require('./scriptClauses.json');
 const scriptRulesClausesPlant = require('./scriptClausesPlant.json');
 const scriptRulesIndex = require('./scriptIndex.json');
