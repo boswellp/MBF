@@ -232,7 +232,8 @@ bot.dialog('/search', [
                 session.userData.name = 'c';
                 }
 
-        getData(session,keyIn); 
+        getData(session,tmpRes);
+        session.userData.result = "";
         var book = clauseTitleFound[0];
         if (book == "notFound")
                 {
