@@ -182,7 +182,9 @@ bot.dialog('/no_change', [ //got store search variables
     },
     function (session, results) {
         var tmpRes = results.response.trim().toLowerCase();
+        console.log('............aaaaaaaaaatmpRes = ' + tmpRes);
         if ((session.userData.name == "") && (tmpRes != 'c' || tmpRes != 'p')){tmpRes = 'c'} //Set default if wrong input and nothing stored
+       console.log('............bbbbbbbbbbbtmpRes = ' + tmpRes);
         if (tmpRes == 'c' || tmpRes == 'p') //Store input and continue
             {session.userData.name = tmpRes; session.replaceDialog('/type');}
             else
