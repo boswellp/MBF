@@ -206,7 +206,7 @@ bot.dialog('/type', [
 bot.dialog('/search', [
     function(session, args, next) {
         console.log('............111111111111111session.userData.result = ' + session.userData.result);
-        if (session.userData.result == "")
+        if (session.userData.result.trim() == "")
                 {
                 if (session.userData.type == 'n')
                         {builder.Prompts.text(session, 'Clause number?');} 
