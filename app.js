@@ -253,7 +253,7 @@ bot.dialog('/search', [
                         var bookAry = book.split('#');
                         
                         var strSend = bookAry[0].replace(/\/\/\//g, "//\n\n");
-                        strSend = strSend.replace(\n/g, "\n\n");
+                        strSend = strSend.replace(/\n/g, "\n\n");
                         session.send(strSend); 
                         if (bookAry.length == 1)
                                 {session.endDialog('Say - | "y" to search again | "n" to quit |');} 
