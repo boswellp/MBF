@@ -198,7 +198,9 @@ bot.dialog('/type', [
     },
     function (session, results) {
         var tmpRes = results.response.trim().toLowerCase();
-        if (tmpRes != 'n' || tmpRes != 'i'){tmpRes = 'n'}
+        console.log('............ccccccccccccccctmpRes = ' + tmpRes);
+        if (tmpRes != 'n' && tmpRes != 'i'){tmpRes = 'n'} //set default
+        console.log('............bbbbbbbbbbbtmpRes = ' + tmpRes);
         session.userData.type = tmpRes;
         //session.endDialog();
         session.beginDialog('/search');
