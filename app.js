@@ -251,7 +251,7 @@ bot.dialog('/search', [
                 if (session.userData.type == 'n')
                         {
                         var bookAry = book.split('#');
-                        session.send(bookAry[0]); 
+                        session.send(bookAry[0].replace('/\/\/\','\n\n')); 
                         if (bookAry.length == 1)
                                 {session.endDialog('Say - | "y" to search again | "n" to quit |');} 
                                 else
