@@ -11,7 +11,8 @@ const scriptRulesIndexPlant = require('./scriptIndexPlant.json');
 var connector = new builder.ChatConnector({
     //appId: process.env.MY_APP_ID,
     //appPassword: process.env.MY_APP_PASSWORD
-    appId: 'c6076e92-cae8-4b0b-83da-565b83d5c8c6',
+    //appId: 'c6076e92-cae8-4b0b-83da-565b83d5c8c6',
+    appId: 'FIDICbot',
     appPassword: 'Zaw78dhPPxHtqPqFZi6eeEf'
 });
 var bot = new builder.UniversalBot(connector);
