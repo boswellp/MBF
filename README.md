@@ -1,3 +1,5 @@
+<h3>FIDICbot - MFB version for Skype</h3>
+
 This version of the FIDICbot was originally based on the SarahSays Microsoft Bot Framework "Hello World" and was deployed to Heroku with Node, as described <a href="https://github.com/boswellp/BotFramework">here</a>.
 The bot was then deployed to Azure and is currently available on Skype <img alt="Add Bot to Skype" height="30" width="130" src="https://secure.skypeassets.com/content/dam/scom/images/add-bot-button/add-to-skype-buttons02-28px.png" />
 
