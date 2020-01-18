@@ -1,6 +1,6 @@
 <h3>FIDICbot - MBF version for Skype</h3>
 
-This version of the FIDICbot chatbot to access FIDIC works contracts and services agreements was originally based on the <a href="https://blogs.msdn.microsoft.com/sarahsays/2016/">SarahSays</a> Microsoft Bot Framework "Hello World" and was deployed to Heroku with Node, as described <a href="https://github.com/boswellp/BotFramework">here</a>.
+This version of the FIDICbot chatbot (called FIDICchatbot to distinguish it from FIDICbot, the Smooch version) to access FIDIC works contracts and services agreements was originally based on the <a href="https://blogs.msdn.microsoft.com/sarahsays/2016/">SarahSays</a> Microsoft Bot Framework "Hello World" and was deployed to Heroku with Node, as described <a href="https://github.com/boswellp/BotFramework">here</a>.
 
 The bot was then deployed to Azure and is currently available as a web app on <a href="http://fidicbot.azurewebsites.net/">Azure</a> on and <a href="http://www.fidic.tips/fidicbot/mbf/">FIDIC.tips</a> and on Skype <a href="https://join.skype.com/bot/c6076e92-cae8-4b0b-83da-565b83d5c8c6"><img alt="Add Bot to Skype" height="30" width="130" src="https://secure.skypeassets.com/content/dam/scom/images/add-bot-button/add-to-skype-buttons02-28px.png" /></a>
 
