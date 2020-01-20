@@ -18,11 +18,11 @@ class SuggestedActionsBot extends ActivityHandler {
             const text = context.activity.text;
 
             // Create an array with the valid color options.
-            const validColors = ['Red', 'Blue', 'Yellow'];
+            const validColors = ['Cons1', 'Plant1', 'EPCT1'];
 
             // If the `text` is in the Array, a valid color was selected and send agreement.
             if (validColors.includes(text)) {
-                await context.sendActivity(`I agree, ${ text } is the best color.`);
+                await context.sendActivity(`${ text } chosen`);
             } else {
                 await context.sendActivity('Please select a color.');
             }
@@ -46,8 +46,8 @@ class SuggestedActionsBot extends ActivityHandler {
         for (const idx in activity.membersAdded) {
             if (activity.membersAdded[idx].id !== activity.recipient.id) {
                 const welcomeMessage = `Welcome to suggestedActionsBot ${ activity.membersAdded[idx].name }. ` +
-                    'This bot will introduce you to Suggested Actions. ' +
-                    'Please select an option:';
+                    'This bot will allow you to search FIDIC contracts. ' +
+                    'Please select a contract:';
                 await turnContext.sendActivity(welcomeMessage);
                 await this.sendSuggestedActions(turnContext);
             }
@@ -59,7 +59,7 @@ class SuggestedActionsBot extends ActivityHandler {
      * @param {TurnContext} turnContext A TurnContext instance containing all the data needed for processing this conversation turn.
      */
     async sendSuggestedActions(turnContext) {
-        var reply = MessageFactory.suggestedActions(['Red', 'Yellow', 'Blue'], 'What is the best color?');
+        var reply = MessageFactory.suggestedActions(['Cons1', 'Plant1', 'EPCT1'], 'Which contract?');
         await turnContext.sendActivity(reply);
     }
 }
