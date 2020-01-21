@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+console.log("..........................in app.js");
+
 const path = require('path');
 const restify = require('restify');
 
