@@ -30,6 +30,15 @@ const adapter = new BotFrameworkAdapter({
     appPassword: process.env.MicrosoftAppPassword
 });
 
+// WhatsApp endpoint for Twilio
+// see https://www.npmjs.com/package/@botbuildercommunity/adapter-twilio-whatsapp
+const whatsAppAdapter = new TwilioWhatsAppAdapter({
+    accountSid: '', // Account SID
+    authToken: '', // Auth Token
+    phoneNumber: '', // The From parameter consisting of whatsapp: followed by the sending WhatsApp number (using E.164 formatting)
+    endpointUrl: '' // Endpoint URL you configured in the sandbox, used for validation
+});
+
 // Define state store for your bot.
 // See https://aka.ms/about-bot-state to learn more about bot state.
 const memoryStorage = new MemoryStorage();
@@ -67,6 +76,15 @@ adapter.onTurnError = async (context, error) => {
 // Listen for incoming requests.
 server.post('/api/messages', (req, res) => {
     adapter.processActivity(req, res, async (context) => {
+        // Route to main dialog.
+        await bot.run(context);
+    });
+});
+
+// WhatsApp endpoint for Twilio
+// see https://www.npmjs.com/package/@botbuildercommunity/adapter-twilio-whatsapp
+server.post('/api/whatsapp/messages', (req, res) => {
+    whatsAppAdapter.processActivity(req, res, async (context) => {
         // Route to main dialog.
         await bot.run(context);
     });
