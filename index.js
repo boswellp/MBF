@@ -34,7 +34,7 @@ const adapter = new BotFrameworkAdapter({
     appPassword: process.env.MicrosoftAppPassword
 });
 
-/*
+
 // WhatsApp endpoint for Twilio
 //see https://www.npmjs.com/package/@botbuildercommunity/adapter-twilio-whatsapp
 const whatsAppAdapter = new TwilioWhatsAppAdapter({
@@ -44,7 +44,7 @@ const whatsAppAdapter = new TwilioWhatsAppAdapter({
     phoneNumber: 'whatsapp:+14155238886',
     endpointUrl: 'https://fidicchatbot.herokuapp.com/api/whatsapp/messages' // Endpoint URL you configured in the sandbox, used for validation
 });
-*/
+
 
 
 // Define state store for your bot.
@@ -89,7 +89,7 @@ server.post('/api/messages', (req, res) => {
     });
 });
 
-/*
+
 // WhatsApp endpoint for Twilio
 //see https://www.npmjs.com/package/@botbuildercommunity/adapter-twilio-whatsapp
 server.post('/api/whatsapp/messages', (req, res) => {
@@ -98,4 +98,4 @@ server.post('/api/whatsapp/messages', (req, res) => {
         await bot.run(context);
     });
 });
-*/
+
