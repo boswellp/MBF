@@ -35,7 +35,7 @@ class TopLevelDialog extends ComponentDialog {
 
         //const promptOptions = { prompt: 'Please enter your name.' };
 
-        const promptOptions = { prompt: 'Your login code is 123' };
+        const promptOptions = { prompt: 'Your login code is NOW 123' };
 
         // Ask the user to enter their name.
         return await stepContext.prompt(TEXT_PROMPT, promptOptions);
@@ -45,7 +45,7 @@ class TopLevelDialog extends ComponentDialog {
         // Set the user's name to what they entered in response to the name prompt.
         stepContext.values.userInfo.name = stepContext.result;
 
-        const promptOptions = { prompt: 'Please enter your login code.' };
+        const promptOptions = { prompt: 'Please enter your login code NOW.' };
 
         // Ask the user to enter their age.
         return await stepContext.prompt(NUMBER_PROMPT, promptOptions);

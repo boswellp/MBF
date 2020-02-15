@@ -19,7 +19,7 @@ class ReviewSelectionDialog extends ComponentDialog {
         this.companiesSelected = 'value-companiesSelected';
 
         // Define the company choices for the company selection prompt.
-        this.companyOptions = ['Adatum Corporation', 'Contoso Suites', 'Graphic Design Institute', 'Wide World Importers'];
+        this.companyOptions = ['Construction 1st Ed 1999', 'Plant 1st Ed 1999', 'RPC/Turnkey 1st Ed 1999'];
 
         this.addDialog(new ChoicePrompt(CHOICE_PROMPT));
         this.addDialog(new WaterfallDialog(WATERFALL_DIALOG, [
