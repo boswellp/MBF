@@ -11,7 +11,7 @@ class DialogAndWelcomeBot extends DialogBot {
             const membersAdded = context.activity.membersAdded;
             for (let cnt = 0; cnt < membersAdded.length; cnt++) {
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
-                    const reply = `Welcome to FIDICchatbot ${ membersAdded[cnt].name }. This bot allows you to search FIDIC contracts, with multiple dialogs. Type anything to get started.`;
+                    const reply = `Welcome to FIDICchatbot ${ membersAdded[cnt].name }. This chatbot allows you to search FIDIC contracts, with multiple dialogs. Type anything to get started.`;
                     await context.sendActivity(reply);
                 }
             }
