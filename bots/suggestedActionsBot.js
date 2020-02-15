@@ -24,7 +24,7 @@ class SuggestedActionsBot extends ActivityHandler {
             if (validColors.includes(text)) {
                 await context.sendActivity(`${ text } chosen`);
             } else {
-                await context.sendActivity('Please select a color.');
+                await context.sendActivity('Please select a contract.');
             }
 
             // After the bot has responded send the suggested actions.
@@ -45,8 +45,8 @@ class SuggestedActionsBot extends ActivityHandler {
         // Iterate over all new members added to the conversation.
         for (const idx in activity.membersAdded) {
             if (activity.membersAdded[idx].id !== activity.recipient.id) {
-                const welcomeMessage = `Welcome to suggestedActionsBot ${ activity.membersAdded[idx].name }. ` +
-                    'This bot will allow you to search FIDIC contracts. ' +
+                const welcomeMessage = `Welcome to FIDICchatbot ${ activity.membersAdded[idx].name }. ` +
+                    'This chatbot allows you to search FIDIC contracts. ' +
                     'Please select a contract:';
                 await turnContext.sendActivity(welcomeMessage);
                 await this.sendSuggestedActions(turnContext);
