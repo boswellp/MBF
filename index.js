@@ -43,8 +43,6 @@ const whatsAppAdapter = new TwilioWhatsAppAdapter({
     endpointUrl: 'https://fidicchatbot.herokuapp.com/api/whatsapp/messages' // Endpoint URL you configured in the sandbox, used for validation
 });
 
-process.env.SERVICE_URL
-
 // Define state store for your bot.
 // See https://aka.ms/about-bot-state to learn more about bot state.
 const memoryStorage = new MemoryStorage();
