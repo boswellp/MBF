@@ -1,10 +1,10 @@
 {
-    "name": "suggested-actions",
+    "name": "samples",
     "version": "1.0.0",
-    "description": "Bot Builder v4 suggested actions sample",
+    "description": "Bot Builder v4 samples",
     "author": "Microsoft",
     "license": "MIT",
-    "main": "index.html",
+    "main": "index.js",
     "scripts": {
         "start": "node ./index.js",
         "watch": "nodemon ./index.js",
@@ -16,6 +16,7 @@
         "url": "https://github.com/Microsoft/BotBuilder-Samples.git"
     },
     "dependencies": {
+        "@botbuildercommunity/adapter-twilio-whatsapp": "^1.1.0",
         "botbuilder": "~4.7.0",
         "botbuilder-dialogs": "~4.7.0",
         "dotenv": "^8.2.0",
