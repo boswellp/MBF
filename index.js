@@ -40,8 +40,8 @@ const adapter = new BotFrameworkAdapter({
 const whatsAppAdapter = new TwilioWhatsAppAdapter({
     accountSid: 'ACf0be7022495c01ad04e8899935ddb59e', // Account SID
     authToken: '1034e741f296daf7cf0f01d7eacea17b', // Auth Token
-    phoneNumber: 'whatsapp:+41792989666', // The From parameter consisting of whatsapp: followed by the sending WhatsApp number (using E.164 formatting)
-    //phoneNumber: 'whatsapp:+14155238886',
+    //phoneNumber: 'whatsapp:+41792989666', // The From parameter consisting of whatsapp: followed by the sending WhatsApp number (using E.164 formatting)
+    phoneNumber: 'whatsapp:+14155238886',
     endpointUrl: 'https://fidicchatbot.herokuapp.com/api/whatsapp/messages' // Endpoint URL you configured in the sandbox, used for validation
 });
 */
