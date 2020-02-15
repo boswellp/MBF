@@ -29,42 +29,36 @@ class TopLevelDialog extends ComponentDialog {
         this.initialDialogId = WATERFALL_DIALOG;
     }
 
-    async nameStep(stepContext) {
+    async nameStep(stepContext) 
+        {
         // Create an object in which to collect the user's information within the dialog.
         stepContext.values.userInfo = new UserProfile();
-
-        //const promptOptions = { prompt: 'Please enter your name.' };
-
-        const promptOptions = { prompt: 'Your login code is NOW 123' };
-
-        // Ask the user to enter their name.
+        const promptOptions = { prompt: 'Please submit your name.' };
         return await stepContext.prompt(TEXT_PROMPT, promptOptions);
-    }
+        }
 
-    async ageStep(stepContext) {
+    async ageStep(stepContext) 
+        {
         // Set the user's name to what they entered in response to the name prompt.
         stepContext.values.userInfo.name = stepContext.result;
-
-        const promptOptions = { prompt: 'Please enter your login code NOW.' };
-
+        const promptOptions = { prompt: 'Please enter your age.' };
         // Ask the user to enter their age.
         return await stepContext.prompt(NUMBER_PROMPT, promptOptions);
-    }
+        }
 
-    async startSelectionStep(stepContext) {
+    async startSelectionStep(stepContext) 
+        {
         // Set the user's age to what they entered in response to the age prompt.
         stepContext.values.userInfo.age = stepContext.result;
-
         if (stepContext.result < 25) {
             // If they are too young, skip the review selection dialog, and pass an empty list to the next step.
             await stepContext.context.sendActivity('You must be 25 or older to participate.');
-
             return await stepContext.next();
-        } else {
+            } else {
             // Otherwise, start the review selection dialog.
             return await stepContext.beginDialog(REVIEW_SELECTION_DIALOG);
-        }
-    }
+            }
+         }
 
     async acknowledgementStep(stepContext) {
         // Set the user's company selection to what they entered in the review-selection dialog.
