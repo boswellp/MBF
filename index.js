@@ -23,7 +23,7 @@ require('dotenv').config({ path: ENV_FILE });
 const server = restify.createServer();
 server.listen(process.env.port || process.env.PORT || 3978, function() {
     console.log(`\n${ server.name } listening to ${ server.url }`);
-    console.log('\nIn FIDICchatbot-;BS-samples');
+    console.log('\nIn FIDICchatbot-MBF-samples');
     console.log('\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator');
     console.log('\nTo talk to your bot, open the emulator select "Open Bot"');
 });
