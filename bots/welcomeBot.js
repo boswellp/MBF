@@ -12,8 +12,7 @@ class WelcomeBot extends ActivityHandler {
      */
     constructor(userState) {
         super();
-        // Creates a new user property accessor.
-        // See https://aka.ms/about-bot-state-accessors to learn more about the bot state and state accessors.
+
         this.welcomedUserProperty = userState.createProperty(WELCOMED_USER);
 
         this.userState = userState;
@@ -118,7 +117,10 @@ class WelcomeBot extends ActivityHandler {
         );
 
         await context.sendActivity({ attachments: [card] });
+
     }
 }
+
+
 
 module.exports.WelcomeBot = WelcomeBot;
