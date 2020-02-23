@@ -8,7 +8,8 @@ const REVIEW_SELECTION_DIALOG = 'REVIEW_SELECTION_DIALOG';
 const CHOICE_PROMPT = 'CHOICE_PROMPT';
 const WATERFALL_DIALOG = 'WATERFALL_DIALOG';
 
-class ReviewSelectionDialog extends ComponentDialog {
+class ReviewSelectionDialog extends ComponentDialog 
+    {
     constructor() {
         super(REVIEW_SELECTION_DIALOG);
 
@@ -28,9 +29,10 @@ class ReviewSelectionDialog extends ComponentDialog {
         ]));
 
         this.initialDialogId = WATERFALL_DIALOG;
-    }
+        }
 
-    async selectionStep(stepContext) {
+    async selectionStep(stepContext) 
+        {
         // Continue using the same selection list, if any, from the previous iteration of this dialog.
         const list = Array.isArray(stepContext.options) ? stepContext.options : [];
         stepContext.values[this.companiesSelected] = list;
@@ -54,10 +56,11 @@ class ReviewSelectionDialog extends ComponentDialog {
             prompt: message,
             retryPrompt: 'Please choose an option from the list.',
             choices: options
-        });
-    }
+            });
+        }
 
-    async loopStep(stepContext) {
+    async loopStep(stepContext) 
+        {
         // Retrieve their selection list, the choice they made, and whether they chose to finish.
         const list = stepContext.values[this.companiesSelected];
         const choice = stepContext.result;
@@ -66,17 +69,17 @@ class ReviewSelectionDialog extends ComponentDialog {
         if (!done) {
             // If they chose a company, add it to the list.
             list.push(choice.value);
-        }
+             }
 
         if (done || list.length > 1) {
             // If they're done, exit and return their list.
             return await stepContext.endDialog(list);
-        } else {
+            } else {
             // Otherwise, repeat this dialog, passing in the list from this iteration.
             return await stepContext.replaceDialog(REVIEW_SELECTION_DIALOG, list);
-        }
-    }
-}
+           }
+       }
+   }
 
 module.exports.ReviewSelectionDialog = ReviewSelectionDialog;
 module.exports.REVIEW_SELECTION_DIALOG = REVIEW_SELECTION_DIALOG;

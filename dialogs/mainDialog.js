@@ -6,13 +6,14 @@ const { TopLevelDialog, TOP_LEVEL_DIALOG } = require('./topLevelDialog');
 
 const MAIN_DIALOG = 'MAIN_DIALOG';
 const WATERFALL_DIALOG = 'WATERFALL_DIALOG';
+const MAIN_WATERFALL_DIALOG = 'mainWaterfallDialog';  //from core
 const USER_PROFILE_PROPERTY = 'USER_PROFILE_PROPERTY';
 
 class MainDialog extends ComponentDialog {
     constructor(userState) {
         super(MAIN_DIALOG);
         this.userState = userState;
-        this.userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY);
+        //error this.userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY);
 
         this.addDialog(new TopLevelDialog());
         this.addDialog(new WaterfallDialog(WATERFALL_DIALOG, [
