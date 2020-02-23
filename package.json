@@ -1,8 +1,8 @@
 {
-    "name": "samples",
+    "name": "fidicchatbot",
     "version": "1.0.0",
-    "description": "Bot Builder v4 samples",
-    "author": "Microsoft",
+    "description": "FIDICchatbot",
+    "author": "Peter Boswell",
     "license": "MIT",
     "main": "index.js",
     "scripts": {
@@ -13,11 +13,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/Microsoft/BotBuilder-Samples.git"
+        "url": "https://github.com/boswellp/fidicchatbot.git"
     },
     "dependencies": {
         "@botbuildercommunity/adapter-twilio-whatsapp": "^1.1.0",
         "botbuilder": "~4.7.0",
+        "botbuilder-ai": "~4.7.0",
         "botbuilder-dialogs": "~4.7.0",
         "dotenv": "^8.2.0",
         "restify": "~8.4.0"
