@@ -25,6 +25,8 @@ const { MainDialog } = require('./dialogs/mainDialog');
 
 const { QnABot } = require('./bots/QnABot');
 
+const { WelcomeBot } = require('./bots/welcomeBot');
+
 // Read environment variables from .env file
 const ENV_FILE = path.join(__dirname, '.env');
 require('dotenv').config({ path: ENV_FILE });
@@ -85,11 +87,14 @@ const qnaService = new QnAMaker({
 
 // Create the main dialog for core
 //const bookingDialog = new BookingDialog(BOOKING_DIALOG);
-const dialog = new RootDialog(qnaService);
 //const bot = new MainDialog(dialog, userState);
-const bot = new DialogAndWelcomeBot(conversationState, userState, dialog);
 
+//WORKS1 const dialog = new RootDialog(qnaService);
+//WORKS2 const bot = new DialogAndWelcomeBot(conversationState, userState, dialog);
 
+//const dialog = new DialogAndWelcomeBot(conversationState, userState);
+// welcomeBot Create the main dialog.
+const bot = new WelcomeBot(userState);
 
 
 // Catch-all for errors.
