@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>FIDICchatbot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <script src="https://cdn.botframework.com/botframework-webchat/master/webchat.js"></script>
+    <style>
+      html, body { height: 100% }
+      body { margin: 0 }
+      #webchat {
+        height: 80%;
+        width: 80%;
+        border: 1px solid grey;
+        margin-left:10px;
+      }
+    </style>
+  </head>
+  <body>
+    <p style = "margin-left:10px;">FIDICchatbot is being developed. Please check back in early-March 2020. Meanwhile FIDICbot is <a href="https://fidic.pw/">available</a>.</p>
+      
+    <div id="webchat" role="main"></div>
+    <script>
+      (function () {
+        const styleSet = window.WebChat.createStyleSet({
+          locale: 'en-US',
+          botAvatarInitials: 'Core+',
+          botAvatarImage: 'robot.png',
+          userAvatarInitials: 'You',
+          userAvatarImage: 'https://github.com/boswellp/fidicchatbot/both.png?size=64',
+          bubbleBackground: 'rgba(250, 250, 250)',
+          bubbleFromUserBackground: 'rgba(120, 200, 250)'
+        });
+
+        window.WebChat.renderWebChat({
+          directLine: window.WebChat.createDirectLine({ token: 'g9h3P-DHYl4.X3HH0h-NokuKXT9jFtLCpN0iWwhLNTvZheZ70JhrEFo' }),
+          styleSet
+        }, document.getElementById('webchat'));
+
+        document.querySelector('#webchat > *').focus();
+      })().catch(err => console.error(err));
+    </script>
+  </body>
+</html>
