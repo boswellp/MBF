@@ -89,12 +89,13 @@ const qnaService = new QnAMaker({
 //const bookingDialog = new BookingDialog(BOOKING_DIALOG);
 //const bot = new MainDialog(dialog, userState);
 
-//WORKS1 const dialog = new RootDialog(qnaService);
-//WORKS2 const bot = new DialogAndWelcomeBot(conversationState, userState, dialog);
+const dialog = new RootDialog(qnaService);
+const bot = new DialogAndWelcomeBot(conversationState, userState, dialog);
 
-//const dialog = new DialogAndWelcomeBot(conversationState, userState);
+
+//const dialog = new DialogAndWelcomeBot(conversationState, userState, dialogQnA);
 // welcomeBot Create the main dialog.
-const bot = new WelcomeBot(userState);
+//const bot = new WelcomeBot(userState, dialog);
 
 
 // Catch-all for errors.
