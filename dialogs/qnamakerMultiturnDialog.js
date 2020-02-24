@@ -12,7 +12,7 @@ const { QnACardBuilder } = require('../utils/qnaCardBuilder');
 // Default parameters
 const DefaultThreshold = 0.3;
 const DefaultTopN = 3;
-const DefaultNoAnswer = 'Answer not found. Please submit "start" to start again.';
+const DefaultNoAnswer = 'Answer not found. Please submit "start" to start again or "help" for help or a contract code ("c1" for Construction, "p1" for Plant, "e1" for EPC\/Turnkey)';
 
 // Card parameters
 const DefaultCardTitle = 'Did you mean:';
