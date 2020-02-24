@@ -35,7 +35,7 @@ class DialogAndWelcomeBot extends DialogBot {
         welcomeCard.body[2].text = 'The chatbot allows you to search FIDIC contracts.';
 
         welcomeCard.actions[0].title = 'Privacy policy';
-        welcomeCard.actions[0].url = process.env.publicResourcesUrl + '/public/privacy_policy_en.pdf';
+        welcomeCard.actions[0].url = process.env.publicResourcesUrl + 'privacy_policy_en.pdf';
 
         await context.sendActivity({
                 attachments: [CardFactory.adaptiveCard(welcomeCard)]
