@@ -26,20 +26,27 @@ class DialogAndWelcomeBot extends DialogBot {
 //////////////////////
 
 
-        welcomeCard.body[0].url = process.env.publicResourcesUrl + '/public/fidicchatbot_logo.png';
+
+        //welcomeCard.body[0].url = process.env.publicResourcesUrl + '/public/fidicchatbot_logo.png';
+
         welcomeCard.body[1].text = 'Welcome to FIDICchatbot';
 
-        // Restart command should be localized.
-        //const restartCommand = localizer.gettext(locale, 'restartCommand');
+        const restartCommand = 'start';
         
         welcomeCard.body[2].text = 'The chatbot allows you to search FIDIC contracts.';
 
+        welcomeCard.body[3].text = 'Submit "start" or "help" anytime to start again and for help.';
+
+        welcomeCard.body[4].text = 'Submit "start" to start.';
+
         welcomeCard.actions[0].title = 'Privacy policy';
+
         welcomeCard.actions[0].url = process.env.publicResourcesUrl + 'privacy_policy_en.pdf';
 
         await context.sendActivity({
                 attachments: [CardFactory.adaptiveCard(welcomeCard)]
             });
+
 
 
 //////////////////////
