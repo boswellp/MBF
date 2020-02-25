@@ -65,13 +65,11 @@ const adapter = new BotFrameworkAdapter({
 
 //see https://www.npmjs.com/package/@botbuildercommunity/adapter-twilio-whatsapp
 const whatsAppAdapter = new TwilioWhatsAppAdapter({
-    accountSid: 'ACf0be7022495c01ad04e8899935ddb59e', // Account SID
-    authToken: '1034e741f296daf7cf0f01d7eacea17b', // Auth Token
-    phoneNumber: 'whatsapp:+14155238886',// The From parameter consisting of whatsapp: followed by the sending WhatsApp number (using E.164 formatting
-    endpointUrl: 'https://fidicchatbot.herokuapp.com/api/whatsapp/messages' // Endpoint URL you configured in the sandbox, used for validation
+    accountSid: process.env.PROCESS,
+    authToken: process.env.TOKEN,
+    phoneNumber: process.env.PHONE,
+    endpointUrl: process.env.ENDPOINT
 });
-
-
 
 // Define state store for your bot.
 // See https://aka.ms/about-bot-state to learn more about bot state.
