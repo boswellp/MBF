@@ -150,6 +150,7 @@ bot.connector(viber.ViberChannelId, viberChannel)
 app.use('/viber/webhook', viberChannel.listen())
 */
 
+/*
 // WhatsApp endpoint for Twilio
 //see https://www.npmjs.com/package/@botbuildercommunity/adapter-twilio-whatsapp
 server.post('/api/whatsapp/messages', (req, res) => {
@@ -158,4 +159,5 @@ server.post('/api/whatsapp/messages', (req, res) => {
         await bot.run(context);
     });
 });
+*/
 
