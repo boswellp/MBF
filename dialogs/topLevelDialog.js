@@ -33,7 +33,7 @@ class TopLevelDialog extends ComponentDialog {
         {
         // Create an object in which to collect the user's information within the dialog.
         stepContext.values.userInfo = new UserProfile();
-        const promptOptions = { prompt: 'Please submit your name.' };
+        const promptOptions = { prompt: 'topLevelDialog Please submit your name.' };
         return await stepContext.prompt(TEXT_PROMPT, promptOptions);
         }
 
@@ -41,7 +41,7 @@ class TopLevelDialog extends ComponentDialog {
         {
         // Set the user's name to what they entered in response to the name prompt.
         stepContext.values.userInfo.name = stepContext.result;
-        const promptOptions = { prompt: 'Please enter your age.' };
+        const promptOptions = { prompt: 'topLevelDialog Please enter your age.' };
         // Ask the user to enter their age.
         return await stepContext.prompt(NUMBER_PROMPT, promptOptions);
         }
