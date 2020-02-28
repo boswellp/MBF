@@ -62,7 +62,7 @@ const adapter = new BotFrameworkAdapter({
     appPassword: process.env.MicrosoftAppPassword
 });
 
-
+/*
 //see https://www.npmjs.com/package/@botbuildercommunity/adapter-twilio-whatsapp
 const whatsAppAdapter = new TwilioWhatsAppAdapter({
     accountSid: '', // Account SID
@@ -70,6 +70,7 @@ const whatsAppAdapter = new TwilioWhatsAppAdapter({
     phoneNumber: '',// The From parameter consisting of whatsapp: followed by the sending WhatsApp number (using E.164 formatting
     endpointUrl: '' // Endpoint URL you configured in the sandbox, used for validation
 });
+*/
 
 
 
