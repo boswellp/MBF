@@ -12,7 +12,7 @@ const { QnACardBuilder } = require('../utils/qnaCardBuilder');
 // Default parameters
 const DefaultThreshold = 0.3;
 const DefaultTopN = 3;
-const DefaultNoAnswer = 'Answer not found. Please submit "start" to start again or "help" for help or a contract code ("c1" for Construction, "p1" for Plant, "e1" for EPC\/Turnkey)';
+const DefaultNoAnswer = 'Answer not found. Please submit "start" to start again or "help" for help or a contract shortcut code (e.g., "c1" for Construction 1st Ed 1999; "p1" for Plant 1st Ed 1999)';
 
 // Card parameters
 const DefaultCardTitle = 'Did you mean:';
@@ -30,16 +30,21 @@ const PreviousQnAId = 'prevQnAId';
 /// QnA Maker dialog.
 const QNAMAKER_DIALOG = 'qnamaker-dialog';
 const QNAMAKER_MULTITURN_DIALOG = 'qnamaker-multiturn-dailog';
+const USER_PROFILE_PROPERTY = 'userProfile';
 
 class QnAMakerMultiturnDialog extends ComponentDialog {
     /**
      * Core logic of QnA Maker dialog.
      * @param {QnAMaker} qnaService A QnAMaker service object.
      */
-    constructor(qnaService) {
+    //constructor(qnaService) { //ORIG
+    constructor(qnaService,userState) { //ORIG
         super(QNAMAKER_MULTITURN_DIALOG);
 
         this._qnaMakerService = qnaService;
+        this._userState = userState;
+
+        console.log("..............this._userState = " + JSON.stringify(this._userState));
 
         this.addDialog(new WaterfallDialog(QNAMAKER_DIALOG, [
             this.callGenerateAnswerAsync.bind(this),
@@ -71,7 +76,84 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
         }
 
         // Storing the context info
+
+
+  
+////////////////////////
+/*
+
+             str = JSON.stringify(stepContext.context.activity.text);
+             str = str.replace('-','\/');
+             str = str.replace(' ','\/');
+       
+             stepContext.context.activity.text = str;
+
+
+       //console.log("..............stepContext.context.activity.text = " + JSON.stringify(stepContext.context.activity.text));
+      //var userStateStringify = JSON.stringify(this._userState)
+
+      //console.log("..............userStateStringify = " + userStateStringify);
+      //console.log("..............this._userState.storage = " + JSON.stringify(this._userState.storage));
+      //console.log("..............this._userState.storage.memory.context = " + JSON.stringify(this._userState.storage.memory.context));
+
+      if (userStateStringify.indexOf('construction contract') > 0){
+
+             console.log("..............CONSTRUCTION");
+
+             //str = str.replace('c1 ','');
+             //stepContext.context.activity.text = str;
+
+             if (str.indexOf('c1') == -1){ 
+
+                   //str = str.replace('-','\/');
+                   //str = str.replace(' ','\/');
+       
+                   stepContext.context.activity.text = 'c1:' + str; //if only a number add c1 to activity
+
+                   }
+
+               }
+
+        if (userStateStringify.indexOf('plant & design-build contract') > 0){
+
+             console.log("..............PLANT");
+
+             //str = str.replace('c1 ','');
+             //stepContext.context.activity.text = str;
+
+             if (str.indexOf('p1') == -1){ 
+
+                   //str = str.replace('-','\/');
+                   //str = str.replace(' ','\/');
+                   stepContext.context.activity.text = 'p1:' + str; //if only a number add p1 to activity
+                   }
+               }
+
+
+
+        //console.log("input str = " +str);
+
+        if (str.indexOf('c1') == -1){
+
+             str = str.replace('-','\/');  //WORKS
+        
+             str = str.replace('.','/');  //Not work
+
+             str = str.replace(' ','\/');  //WORKS
+
+             console.log(str);
+
+             //stepContext.context.activity.text = 'c1:' + str;
+             }
+
+        //console.log(JSON.stringify(stepContext.context.activity.text));
+
+
+//////////////////////
+*/
+
         stepContext.values[CurrentQuery] = stepContext.context.activity.text;
+
 
         var previousContextData = dialogOptions[QnAContextData];
         var prevQnAId = dialogOptions[PreviousQnAId];
@@ -90,6 +172,127 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
         }
 
         // Calling QnAMaker to get response.
+
+
+///////////////////mine
+
+            //console.log (".............FOR STORAGE0 (GET)");
+            //this.userProfileAccessor = this._userState.createProperty(USER_PROFILE_PROPERTY);
+            //const userProfile = await this.userProfileAccessor.get(stepContext, {});
+            //const userProfile = this.userProfileAccessor.get(stepContext, {}); //WORKS
+            //const userProfile = this.userProfileAccessor.get(stepContext);
+            //console.log (".............FOR STORAGE0 (userProfile) = " + userProfile);
+            //console.log (".............FOR STORAGE0 (userProfile.name) = " + userProfile.name);
+            //console.log (".............FOR STORAGE0 (JSON.stringify(userProfile)) = " + JSON.stringify(userProfile));
+
+        //var str = JSON.stringify(stepContext.context.activity.text);
+        var str = stepContext.context.activity.text;
+
+        if (str != '"start"')
+             {
+             var strClean = str.replace('-','.');
+             strClean = str.replace(' ','.');
+             strClean = str.replace('c1:','');
+             strClean = str.replace('p1:','');
+             console.log (".............FOR STORAGE0 (isNaN = " + strClean + ")) = " + isNaN(strClean));
+             if (isNaN(strClean)) //clause number or keyword
+                 {
+                 console.log("A keyword str = " + str);
+
+                 var util = require('util')
+                 var utilInspectStepContext = util.inspect(stepContext);
+                 var prevQnAId = stepContext._info.options.prevQnAId;
+                 console.log("prevQnAId = " + prevQnAId);
+
+
+
+                 if (parseInt(prevQnAId, 10) < 1019 && str.indexOf("c1i") == -1 && str.indexOf("p1") == -1){  //construction in knowledgebase excel and allows contract change
+                    stepContext.context.activity.text = 'c1i ' + str;
+                    } 
+                 if (parseInt(prevQnAId, 10) > 1019 && str.indexOf("p1i") == -1 && str.indexOf("c1") == -1){  //plant in knowledgebase excel and allows contract change
+                    stepContext.context.activity.text = 'p1i ' + str;
+                    }
+                 }
+
+                 else
+                 { 
+
+                 console.log("A clause number str = " + str);              
+
+                 var util = require('util')
+                 var utilInspectStepContext = util.inspect(stepContext);
+                 var prevQnAId = stepContext._info.options.prevQnAId;
+                 console.log("prevQnAId = " + prevQnAId);
+
+                 //if (util.inspec.contains('PrevQnAId: 747'))  //this is Construction
+                 str = str.replace('-','\/');
+                 str = str.replace('.','\/');
+                 str = str.replace(' ','\/');
+                 if (prevQnAId == 'undefined' && str == 'c1'){ //change contract
+                    stepContext.context.activity.text = 'c1';}
+                 if (parseInt(prevQnAId, 10) < 1019 && str.indexOf("c1") == -1){  //construction in knowledgebase excel
+                    stepContext.context.activity.text = 'c1:' + str;} 
+
+                 if (prevQnAId == 'undefined' && str == 'p1'){ //change contract
+                    stepContext.context.activity.text = 'p1';}
+                 if (parseInt(prevQnAId, 10) > 1019 && str.indexOf("p1") == -1){  //plant in knowledgebase excel
+                    stepContext.context.activity.text = 'p1:' + str;}
+
+                 }
+             }
+
+            //console.log("..............\n.............FOR STORAGE0 (stepContext._info.options.prevQnAId) = " +  stepContext._info.options.prevQnAId);
+
+            //var responsePrevQnAId = await this._qnaMakerService.getAnswersRaw(prevQnAId, qnaMakerOptions);
+            //console.log (".............CALLING PREV (responsePrevQnAId = " + prevQnAId + ") = " + JSON.stringify(responsePrevQnAId));
+
+
+
+
+
+
+
+
+        //var objStringify = JSON.stringify(this.userProfileAccessor);
+        //console.log (".............FOR STORAGE0 (objStringify.userProfile) = " + objStringify.userProfile);
+
+
+/*
+
+       if (objStringify.includes("xxx")) //c1 input. Need to save this
+            {        
+            console.log (".............this.userProfileAccessor c1 input");
+
+            var str = JSON.stringify(stepContext.context.activity.text);
+            if (str.indexOf('c1') == -1){ //no c1, replace 
+
+                   //str = str.replace('-','\/');
+                   //str = str.replace(' ','\/');
+                   str = str.replace('p','c');
+       
+                   stepContext.context.activity.text = str;
+
+                   }
+
+            }
+
+//https://stackoverflow.com/questions/11616630/how-can-i-print-a-circular-structure-in-a-json-like-format
+
+
+        //var util = require('util')
+        //console.log(util.inspect(stepContext))
+        //userProfile.name = stepContext.activity.text;
+        ///userProfile.name has "Construction Contract"
+        //console.log (".............calling userProfile.name = " + JSON.stringify(userProfile.name));
+
+/////////////////end mine
+*/
+
+        var stringifyStepContextContext = JSON.stringify(stepContext.context);
+
+        //console.log (".............CALLING (QnAMaker stepContext.context) = " + stringifyStepContextContext);
+
+
         var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
 
         // Resetting previous query.
@@ -103,6 +306,8 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
         if (response.answers.length > 0) {
             result.push(response.answers[0]);
         }
+
+       //console.log ("..............RESULT (qnaMultiTurndialog) = " + JSON.stringify(result));
 
         stepContext.values[QnAData] = result;
 
@@ -203,4 +408,3 @@ module.exports.DefaultCardNoMatchText = DefaultCardNoMatchText;
 module.exports.DefaultCardNoMatchResponse = DefaultCardNoMatchResponse;
 module.exports.QnAOptions = QnAOptions;
 module.exports.QnADialogResponseOptions = QnADialogResponseOptions;
-
