@@ -26,9 +26,11 @@ const { BotFrameworkAdapter, MemoryStorage, UserState, ConversationState } = req
 const { ActivityTypes } = require('botbuilder-core');
 
 const { QnAMaker } = require('botbuilder-ai');
-
+const { CustomPromptBot } = require('./bots/customPromptBot');
+const { StateManagementBot } = require('./bots/stateManagementBot');
 const { QnAMultiturnBot } = require('./bots/QnAMultiturnBot');
 const { RootDialog } = require('./dialogs/rootDialog');
+const { TopLevelDialog } = require('./dialogs/topLevelDialog');
 
 
 //see sample at https://github.com/BotBuilderCommunity/botbuilder-community-js/tree/master/samples/adapter-twilio-whatsapp
@@ -36,10 +38,18 @@ const { TwilioWhatsAppAdapter } = require('@botbuildercommunity/adapter-twilio-w
 
 const { AdaptiveCardsBot } = require('./bots/adaptiveCardsBot');
 
+
+
 const { DialogAndWelcomeBot } = require('./bots/dialogAndWelcomeBot');
 const { MainDialog } = require('./dialogs/mainDialog');
+//const { GreetingDialog } = require('./dialogs/greetingDialog');
+
+const { BookingDialog } = require('./dialogs/bookingDialog');
+const BOOKING_DIALOG = 'bookingDialog';
 
 const { QnABot } = require('./bots/QnABot');
+
+const { FlightBookingRecognizer } = require('./dialogs/flightBookingRecognizer');
 
 const { WelcomeBot } = require('./bots/welcomeBot');
 
@@ -72,16 +82,15 @@ const whatsAppAdapter = new TwilioWhatsAppAdapter({
 });
 */
 
-
-
-// Define state store for your bot.
-// See https://aka.ms/about-bot-state to learn more about bot state.
 const memoryStorage = new MemoryStorage();
 
-// Create user and conversation state with in-memory storage provider.
 const userState = new UserState(memoryStorage);
 const conversationState = new ConversationState(memoryStorage);
 
+const { LuisAppId, LuisAPIKey, LuisAPIHostName } = process.env;
+const luisConfig = { applicationId: LuisAppId, endpointKey: LuisAPIKey, endpoint: LuisAPIHostName };
+
+const luisRecognizer = new FlightBookingRecognizer(luisConfig);
 
 const qnaService = new QnAMaker({
     knowledgeBaseId: process.env.QnAKnowledgebaseId,
@@ -89,40 +98,12 @@ const qnaService = new QnAMaker({
     host: process.env.QnAEndpointHostName
 });
 
-// Create the main dialog.
-//const dialog = new MainDialog(userState);
-
-// Create the main dialog for multiturn
-//const dialog = new RootDialog(qnaService);
-
-//const bot = new DialogAndWelcomeBot(conversationState, userState, dialog);
-//const bot = new QnABot();
-
-// bots main handler for multiturn
-//const bot = new QnAMultiturnBot(conversationState, userState, dialog);
+const dialog = new RootDialog(qnaService,userState); //MULTITURN
+const bot = new DialogAndWelcomeBot(conversationState, userState, dialog); //MULTITURN
 
 
-// Create the main dialog for core
-//const bookingDialog = new BookingDialog(BOOKING_DIALOG);
-//const bot = new MainDialog(dialog, userState);
-
-const dialog = new RootDialog(qnaService);
-const bot = new DialogAndWelcomeBot(conversationState, userState, dialog);
-
-
-//const dialog = new DialogAndWelcomeBot(conversationState, userState, dialogQnA);
-// welcomeBot Create the main dialog.
-//const bot = new WelcomeBot(userState, dialog);
-
-
-// Catch-all for errors.
 adapter.onTurnError = async (context, error) => {
-    // This check writes out errors to console log .vs. app insights.
-    // NOTE: In production environment, you should consider logging this to Azure
-    //       application insights.
     console.error(`\n [onTurnError] unhandled error: ${ error }`);
-
-    // Send a trace activity, which will be displayed in Bot Framework Emulator
     await context.sendTraceActivity(
         'OnTurnError Trace',
         `${ error }`,
@@ -130,14 +111,13 @@ adapter.onTurnError = async (context, error) => {
         'TurnError'
     );
 
-    // Send a message to the user
+
     await context.sendActivity('The bot encountered an error or bug.');
     await context.sendActivity('To continue to run this bot, please fix the bot source code.');
     // Clear out state
     await conversationState.clear(context);
 };
 
-// Listen for incoming requests.
 server.post('/api/messages', (req, res) => {
     adapter.processActivity(req, res, async (context) => {
         // Route to main dialog.
