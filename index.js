@@ -26,7 +26,7 @@ const { BotFrameworkAdapter, MemoryStorage, UserState, ConversationState } = req
 const { ActivityTypes } = require('botbuilder-core');
 
 const { QnAMaker } = require('botbuilder-ai');
-const { CustomPromptBot } = require('./bots/customPromptBot');
+
 const { StateManagementBot } = require('./bots/stateManagementBot');
 const { QnAMultiturnBot } = require('./bots/QnAMultiturnBot');
 const { RootDialog } = require('./dialogs/rootDialog');
