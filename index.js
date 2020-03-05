@@ -27,7 +27,6 @@ const { ActivityTypes } = require('botbuilder-core');
 
 const { QnAMaker } = require('botbuilder-ai');
 
-const { StateManagementBot } = require('./bots/stateManagementBot');
 const { QnAMultiturnBot } = require('./bots/QnAMultiturnBot');
 const { RootDialog } = require('./dialogs/rootDialog');
 const { TopLevelDialog } = require('./dialogs/topLevelDialog');
