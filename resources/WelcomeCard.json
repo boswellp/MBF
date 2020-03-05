@@ -13,7 +13,7 @@
       "spacing": "medium",
       "size": "default",
       "weight": "bolder",
-      "text": "Welcome to Bot Framework!",
+      "text": "",
       "wrap": true,
       "maxLines": 0
     },
@@ -21,7 +21,7 @@
       "type": "TextBlock",
       "size": "default",
       "isSubtle": true,
-      "text": "Now that you have successfully run your chatbot, follow the links in this Adaptive Card to expand your knowledge of Bot Framework.",
+      "text": "",
       "wrap": true,
       "maxLines": 0
     },
@@ -29,7 +29,7 @@
       "type": "TextBlock",
       "size": "default",
       "isSubtle": true,
-      "text": "Now that you have successfully run your chatbot, follow the links in this Adaptive Card to expand your knowledge of Bot Framework.",
+      "text": "",
       "wrap": true,
       "maxLines": 0
     },
@@ -37,7 +37,23 @@
       "type": "TextBlock",
       "size": "default",
       "isSubtle": true,
-      "text": "Now that you have successfully run your chatbot, follow the links in this Adaptive Card to expand your knowledge of Bot Framework.",
+      "text": "",
+      "wrap": true,
+      "maxLines": 0
+    },
+    {
+      "type": "TextBlock",
+      "size": "default",
+      "isSubtle": true,
+      "text": "",
+      "wrap": true,
+      "maxLines": 0
+    },
+    {
+      "type": "TextBlock",
+      "size": "default",
+      "isSubtle": true,
+      "text": "",
       "wrap": true,
       "maxLines": 0
     }
