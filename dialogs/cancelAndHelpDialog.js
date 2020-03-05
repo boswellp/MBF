@@ -24,13 +24,13 @@ class CancelAndHelpDialog extends ComponentDialog {
             switch (text) {
             case 'help':
             case '?': {
-                const helpMessageText = 'Show help here';
+                const helpMessageText = 'To change the contract, submit \"start\" or a contract code (e.g., \"c1\" for Construction 1st Ed 1999).\nTo find a clause, submit the clause number (e.g., \"4.2").';
                 await innerDc.context.sendActivity(helpMessageText, helpMessageText, InputHints.ExpectingInput);
                 return { status: DialogTurnStatus.waiting };
             }
-            case 'cancel':
-            case 'quit': {
-                const cancelMessageText = 'Cancelling...';
+            case 'xxxstart':
+            case 'xxxrestart': {
+                const cancelMessageText = 'Cancelling...CancelAndHelpDialogue';
                 await innerDc.context.sendActivity(cancelMessageText, cancelMessageText, InputHints.IgnoringInput);
                 return await innerDc.cancelAllDialogs();
             }
@@ -40,4 +40,3 @@ class CancelAndHelpDialog extends ComponentDialog {
 }
 
 module.exports.CancelAndHelpDialog = CancelAndHelpDialog;
-
