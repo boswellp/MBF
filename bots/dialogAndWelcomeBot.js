@@ -23,6 +23,7 @@ class DialogAndWelcomeBot extends DialogBot { //used this for multiturn
 ///////
         this.conversationDataAccessor = conversationState.createProperty(CONVERSATION_DATA_PROPERTY);
         this.userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY);
+        //this.userContractAccessor = userState.createProperty('contractName');
         this.conversationState = conversationState;
         this.userState = userState;
 ///////
@@ -31,6 +32,7 @@ class DialogAndWelcomeBot extends DialogBot { //used this for multiturn
        this.onMessage(async (turnContext, next) => {
             // Get the state properties from the turn context.
             const userProfile = await this.userProfileAccessor.get(turnContext, {});
+            //const contractName = await this.userContractAccessor.get(turnContext, {});
             const conversationData = await this.conversationDataAccessor.get(
                 turnContext, { promptedForUserName: false });
 
@@ -39,6 +41,7 @@ class DialogAndWelcomeBot extends DialogBot { //used this for multiturn
                 if (conversationData.promptedForUserName) {
                     // Set the name to what the user provided.
                     userProfile.name = turnContext.activity.text;
+                    //contractName.name = turnContext.activity.text;
 
                     //await turnContext.sendActivity(`Thanks2222 ${ userProfile.name }. To see conversation data, type anything.`);
                     await turnContext.sendActivity('');
@@ -138,7 +141,7 @@ class DialogAndWelcomeBot extends DialogBot { //used this for multiturn
         // Save any state changes. The load happened during the execution of the Dialog.
         await this.conversationState.saveChanges(context, false);
         await this.userState.saveChanges(context, false);
-        //console.log (".............dialog and welcome SAVE context = " + JSON.stringify(context));
+        //console.log (".............dialog and welcome SAVE... this.userState = " + JSON.stringify(this.userState));
     }
 
 //////////
