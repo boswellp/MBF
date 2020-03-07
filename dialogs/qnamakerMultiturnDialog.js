@@ -12,7 +12,7 @@ const { QnACardBuilder } = require('../utils/qnaCardBuilder');
 // Default parameters
 const DefaultThreshold = 0.3;
 const DefaultTopN = 3;
-const DefaultNoAnswer = 'Answer not found. Please submit "start" to start again or "help" for help or a contract shortcut code (e.g., "c1" for Construction 1st Ed 1999; "p1" for Plant 1st Ed 1999)';
+const DefaultNoAnswer = 'Answer not found. Please submit "start" to start again or "help" for help or a contract shortcut code (e.g., "c1" for Construction 1st Ed 1999; "p1" for Plant & Design-Build 1st Ed 1999)';
 
 // Card parameters
 const DefaultCardTitle = 'Did you mean:';
@@ -44,22 +44,22 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
         this._qnaMakerService = qnaService;
         this._userState = userState;
 
-        console.log("..............this._userState = " + JSON.stringify(this._userState));
+        this._userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY);
+        this._userContractAccessor = userState.createProperty('contractName');
 
         this.addDialog(new WaterfallDialog(QNAMAKER_DIALOG, [
             this.callGenerateAnswerAsync.bind(this),
             this.checkForMultiTurnPrompt.bind(this),
-            this.displayQnAResult.bind(this)
+            this.displayQnAResult.bind(this),
+            this.changeContract.bind(this)
         ]));
 
         this.initialDialogId = QNAMAKER_DIALOG;
     }
 
-    /**
-    * @param {WaterfallStepContext} stepContext contextual information for the current step being executed.
-    */
+ 
     async callGenerateAnswerAsync(stepContext) {
-        // Default QnAMakerOptions
+
         var qnaMakerOptions = {
             scoreThreshold: DefaultThreshold,
             top: DefaultTopN,
@@ -75,89 +75,182 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
             qnaMakerOptions.top = qnaMakerOptions.top ? qnaMakerOptions.top : DefaultThreshold;
         }
 
-        // Storing the context info
+////////////////////////////
+
+        console.log("\n\n82 ..........MULTITURN..............");
+
+        var util = require('util')
+        var utilAccessor = util.inspect(this._userProfileAccessor);
+        console.log("\n86 MULTITURN this._userProfileAccessor  = " + utilAccessor)
+
+        var JSONstringifythisuserState = JSON.stringify(this._userState);
+        console.log ("\nMULTITURN 89 - this._userState = " + JSONstringifythisuserState);
+
+        var gotContract = '';
+
+        //if (JSONstringifythisuserState.indexOf('contractName') != -1){ //got contractName 
+            //console.log("98 this._userState.contractName.name = " + this._userState.contractName.name);
+            //console.log("99 this._userContractAssessor.contractName.name = " + this._userContractAccessor.contractName.name);
+
+        if (JSONstringifythisuserState.indexOf('cons1',0) != -1){ //cons1 comes from QnAMaker
+             gotContract = "c1";
+             console.log ("\n106 MULTITURN IN c1");
+             } //note no space
+             
+             else if (JSONstringifythisuserState.indexOf('plant1',0) != -1){ //plant1 comes from QnAMaker
+             gotContract = "p1";
+
+             console.log ("\n117 MULTITURN IN p1");
+             } //note no space
 
 
-  
-////////////////////////
-/*
+//change contract if ContractAccessor has been laded at the end of multiturn
 
-             str = JSON.stringify(stepContext.context.activity.text);
-             str = str.replace('-','\/');
-             str = str.replace(' ','\/');
-       
-             stepContext.context.activity.text = str;
+        console.log("\nGOT CONTRACT 121 - gotContract-before = " + gotContract); 
+        console.log("\nMULTITURN 122 - contractName-before  = " + this._userContractAccessor.contractName)
 
+        //var utilContractAccessor = util.inspect(this._userContractAccessor);
+        //console.log("115 utiluserContractAccessor  = " + utilContractAccessor )
 
-       //console.log("..............stepContext.context.activity.text = " + JSON.stringify(stepContext.context.activity.text));
-      //var userStateStringify = JSON.stringify(this._userState)
+        if (this._userContractAccessor.contractName != 'undefined'){
+             if (this._userContractAccessor.contractName != gotContract){gotContract = this._userContractAccessor.contractName;}}
 
-      //console.log("..............userStateStringify = " + userStateStringify);
-      //console.log("..............this._userState.storage = " + JSON.stringify(this._userState.storage));
-      //console.log("..............this._userState.storage.memory.context = " + JSON.stringify(this._userState.storage.memory.context));
+        console.log("\nGOT CONTRACT 123 - gotContract-after = " + gotContract);  
+        console.log("\nMULTITURN 123 - contractName-after  = " + this._userContractAccessor.contractName)              
 
-      if (userStateStringify.indexOf('construction contract') > 0){
+        var str = stepContext.context.activity.text;
+        console.log ("\n128 str = " + str + '\n.................................................');
+     
+if (str != 'start')
+             {
 
-             console.log("..............CONSTRUCTION");
+////seems to work after changing contract
 
-             //str = str.replace('c1 ','');
-             //stepContext.context.activity.text = str;
+             if (gotContract == 'c1' && (str.indexOf('Plant & Design-Build Contract 1st Ed 1999',0) != -1 || str.indexOf('p1',0) != -1)){
+                 console.log ("\n133 got c1 str = " + str + '\n');
+                 stepContext.context.activity.text = 'Plant & Design-Build Contract 1st Ed 1999';
+                 this._userContractAccessor.contractName = 'p1'; //change contract after restart
+                 }
+                 else if (gotContract == 'p1' && ( str.indexOf('Construction Contract 1st Ed 1999',0) != -1 || str.indexOf('c1',0) != -1)){
+                 console.log ("\n138 got p1 str = " + str + '\n');
+                 stepContext.context.activity.text = 'Construction Contract 1st Ed 1999';
+                 this._userContractAccessor.contractName = 'c1'; //change contract after restart
+                 }             
+                 else
+                 {
+                 var strClean = str;   
+                 if (isNaN(str)) //keyword
+                      {
+                      console.log("\n143 keyword str = " + strClean);
+ 
+////Enter contract on clicking start
+                
+                      if (str.indexOf('Construction Contract',0) != -1)
+                          {
+                          stepContext.context.activity.text = 'cons1'; //cons1 into userProfile.name
+                          this._userContractAccessor.contractName = 'c1'
+                          console.log ("148 SENT stepContext.context.activity.text = " + stepContext.context.activity.text);
+                          }
+                          else if (str.indexOf('Plant &',0) != -1 )
+                          {
+                          stepContext.context.activity.text = 'plant1'; //cons1 into userProfile.name
+                          this._userContractAccessor.contractName = 'p1'
+                          console.log ("153 SENT stepContext.context.activity.text = " + stepContext.context.activity.text);
+                          }
+                          else
+                          {
 
-             if (str.indexOf('c1') == -1){ 
+                          var posnSpace = strClean.indexOf(' ',0);
+                          console.log ("posnSpace =" + posnSpace);
 
-                   //str = str.replace('-','\/');
-                   //str = str.replace(' ','\/');
-       
-                   stepContext.context.activity.text = 'c1:' + str; //if only a number add c1 to activity
+                          var strCon = '';
+                          if (posnSpace != -1){strCon = str.substring(0,posnSpace);}
+                          if (gotContract == "c1" || gotContract == "p1" ){strCon = gotContract + ":";}
+                          console.log ("163 strCon =" + strCon);
 
-                   }
+                          var strNo = strClean.substring(posnSpace+1,strClean.length);
+                          console.log ("166 strNo =" + strNo);
 
-               }
+                          var strNoFull = strNo;
+                          if (posnSpace != -1){
+                              if (strNo.length == 1){strNoFull = strNoFull+'.0.0.0';}
+                              if (strNo.length == 3){strNoFull = strNoFull+'.0.0';}
+                              if (strNo.length == 5){strNoFull = strNoFull+'.0.0';}
+                              }
+                          console.log ("174 strNoFull =" + strNoFull);
 
-        if (userStateStringify.indexOf('plant & design-build contract') > 0){
+                          if (strNoFull != '' && (strCon == "c1" || strCon == "p1") ){
+                              var strConNoFull = strCon + " " + strNoFull;
+                              }
+                              else
+                              {
+                              var strConNoFull = strCon + strNoFull;
+                              }
 
-             console.log("..............PLANT");
+                           console.log("184 strConNoFull = " + strConNoFull);
 
-             //str = str.replace('c1 ','');
-             //stepContext.context.activity.text = str;
+                           strConNoFull = strConNoFull.replace('.','\/');
+                           strConNoFull = strConNoFull.replace('.','\/');
+                           strConNoFull = strConNoFull.replace('.','\/');
+                           strConNoFull = strConNoFull.replace('.','\/');
+                           strConNoFull = strConNoFull.replace('c1 ','c1:');
+                           strConNoFull = strConNoFull.replace('p1 ','p1:');
 
-             if (str.indexOf('p1') == -1){ 
+                          console.log("184 A keyword strConNoFull = " + strConNoFull);
 
-                   //str = str.replace('-','\/');
-                   //str = str.replace(' ','\/');
-                   stepContext.context.activity.text = 'p1:' + str; //if only a number add p1 to activity
-                   }
-               }
+                          stepContext.context.activity.text = strConNoFull;
 
+                          console.log ("198 SENT stepContext.context.activity.text = " + stepContext.context.activity.text);
+                          }
+                       }
 
+                       else   ///number
+                       { 
+                       console.log("\n206 A clause number str = " + str);              
 
-        //console.log("input str = " +str);
+                       var strCon = '';
+                       if (gotContract == "c1" || gotContract == "p1" ){strCon = gotContract + ":";}
+                       console.log ("strCon =" + strCon);
 
-        if (str.indexOf('c1') == -1){
+                       var strNo = str.toString();
+                       console.log ("209 strNo =" + strNo);
 
-             str = str.replace('-','\/');  //WORKS
-        
-             str = str.replace('.','/');  //Not work
+                       var strNoFull = strNo;
+                       if (strNo.length == 1){strNoFull = strNoFull+'.0.0.0';}
+                       if (strNo.length == 3){strNoFull = strNoFull+'.0.0';}
+                       if (strNo.length == 5){strNoFull = strNoFull+'.0.0';}
+                       console.log ("215 strNoFull =" + strNoFull);
 
-             str = str.replace(' ','\/');  //WORKS
+                       var strConNoFull = strCon + strNoFull;
 
-             console.log(str);
+                       console.log("219 strConNoFull = " + strConNoFull);
 
-             //stepContext.context.activity.text = 'c1:' + str;
+                       strConNoFull = strConNoFull.replace('.','\/');
+                       strConNoFull = strConNoFull.replace('.','\/');
+                       strConNoFull = strConNoFull.replace('.','\/');
+                       strConNoFull = strConNoFull.replace('.','\/');
+                       strConNoFull = strConNoFull.replace('c1 ','c1:');
+                       strConNoFull = strConNoFull.replace('p1 ','p1:');
+
+                       console.log("229 A keyword strConNoFull = " + strConNoFull);
+
+                       stepContext.context.activity.text = strConNoFull;
+
+                       console.log ("234 SENT stepContext.context.activity.text = " + stepContext.context.activity.text);
+
+                     }
+                 }
              }
 
-        //console.log(JSON.stringify(stepContext.context.activity.text));
 
 
-//////////////////////
-*/
+/////////////////////
+
 
         stepContext.values[CurrentQuery] = stepContext.context.activity.text;
 
-
         var previousContextData = dialogOptions[QnAContextData];
         var prevQnAId = dialogOptions[PreviousQnAId];
-
         if (previousContextData != null && prevQnAId != null) {
             if (prevQnAId > 0) {
                 qnaMakerOptions.context = {
@@ -171,135 +264,16 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
             }
         }
 
-        // Calling QnAMaker to get response.
-
-
-///////////////////mine
-
-            //console.log (".............FOR STORAGE0 (GET)");
-            //this.userProfileAccessor = this._userState.createProperty(USER_PROFILE_PROPERTY);
-            //const userProfile = await this.userProfileAccessor.get(stepContext, {});
-            //const userProfile = this.userProfileAccessor.get(stepContext, {}); //WORKS
-            //const userProfile = this.userProfileAccessor.get(stepContext);
-            //console.log (".............FOR STORAGE0 (userProfile) = " + userProfile);
-            //console.log (".............FOR STORAGE0 (userProfile.name) = " + userProfile.name);
-            //console.log (".............FOR STORAGE0 (JSON.stringify(userProfile)) = " + JSON.stringify(userProfile));
-
-        //var str = JSON.stringify(stepContext.context.activity.text);
-        var str = stepContext.context.activity.text;
-
-        if (str != '"start"')
-             {
-             var strClean = str.replace('-','.');
-             strClean = str.replace(' ','.');
-             strClean = str.replace('c1:','');
-             strClean = str.replace('p1:','');
-             console.log (".............FOR STORAGE0 (isNaN = " + strClean + ")) = " + isNaN(strClean));
-             if (isNaN(strClean)) //clause number or keyword
-                 {
-                 console.log("A keyword str = " + str);
-
-                 var util = require('util')
-                 var utilInspectStepContext = util.inspect(stepContext);
-                 var prevQnAId = stepContext._info.options.prevQnAId;
-                 console.log("prevQnAId = " + prevQnAId);
-
-
-
-                 if (parseInt(prevQnAId, 10) < 1019 && str.indexOf("c1i") == -1 && str.indexOf("p1") == -1){  //construction in knowledgebase excel and allows contract change
-                    stepContext.context.activity.text = 'c1i ' + str;
-                    } 
-                 if (parseInt(prevQnAId, 10) > 1019 && str.indexOf("p1i") == -1 && str.indexOf("c1") == -1){  //plant in knowledgebase excel and allows contract change
-                    stepContext.context.activity.text = 'p1i ' + str;
-                    }
-                 }
-
-                 else
-                 { 
-
-                 console.log("A clause number str = " + str);              
-
-                 var util = require('util')
-                 var utilInspectStepContext = util.inspect(stepContext);
-                 var prevQnAId = stepContext._info.options.prevQnAId;
-                 console.log("prevQnAId = " + prevQnAId);
-
-                 //if (util.inspec.contains('PrevQnAId: 747'))  //this is Construction
-                 str = str.replace('-','\/');
-                 str = str.replace('.','\/');
-                 str = str.replace(' ','\/');
-                 if (prevQnAId == 'undefined' && str == 'c1'){ //change contract
-                    stepContext.context.activity.text = 'c1';}
-                 if (parseInt(prevQnAId, 10) < 1019 && str.indexOf("c1") == -1){  //construction in knowledgebase excel
-                    stepContext.context.activity.text = 'c1:' + str;} 
-
-                 if (prevQnAId == 'undefined' && str == 'p1'){ //change contract
-                    stepContext.context.activity.text = 'p1';}
-                 if (parseInt(prevQnAId, 10) > 1019 && str.indexOf("p1") == -1){  //plant in knowledgebase excel
-                    stepContext.context.activity.text = 'p1:' + str;}
-
-                 }
-             }
-
-            //console.log("..............\n.............FOR STORAGE0 (stepContext._info.options.prevQnAId) = " +  stepContext._info.options.prevQnAId);
-
-            //var responsePrevQnAId = await this._qnaMakerService.getAnswersRaw(prevQnAId, qnaMakerOptions);
-            //console.log (".............CALLING PREV (responsePrevQnAId = " + prevQnAId + ") = " + JSON.stringify(responsePrevQnAId));
-
-
-
-
-
-
-
-
-        //var objStringify = JSON.stringify(this.userProfileAccessor);
-        //console.log (".............FOR STORAGE0 (objStringify.userProfile) = " + objStringify.userProfile);
-
-
-/*
-
-       if (objStringify.includes("xxx")) //c1 input. Need to save this
-            {        
-            console.log (".............this.userProfileAccessor c1 input");
-
-            var str = JSON.stringify(stepContext.context.activity.text);
-            if (str.indexOf('c1') == -1){ //no c1, replace 
-
-                   //str = str.replace('-','\/');
-                   //str = str.replace(' ','\/');
-                   str = str.replace('p','c');
-       
-                   stepContext.context.activity.text = str;
-
-                   }
-
-            }
-
-//https://stackoverflow.com/questions/11616630/how-can-i-print-a-circular-structure-in-a-json-like-format
-
-
-        //var util = require('util')
-        //console.log(util.inspect(stepContext))
-        //userProfile.name = stepContext.activity.text;
-        ///userProfile.name has "Construction Contract"
-        //console.log (".............calling userProfile.name = " + JSON.stringify(userProfile.name));
-
-/////////////////end mine
-*/
 
         var stringifyStepContextContext = JSON.stringify(stepContext.context);
 
-        //console.log (".............CALLING (QnAMaker stepContext.context) = " + stringifyStepContextContext);
+        //console.log ("\nCALLING (stepContext.context) = " + JSON.stringify(stepContext.context));
 
 
         var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
 
-        // Resetting previous query.
         dialogOptions[PreviousQnAId] = -1;
         stepContext.activeDialog.state.options = dialogOptions;
-
-        // Take this value from GetAnswerResponse.
         stepContext.values[QnAData] = response.answers;
 
         var result = [];
@@ -307,25 +281,16 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
             result.push(response.answers[0]);
         }
 
-       //console.log ("..............RESULT (qnaMultiTurndialog) = " + JSON.stringify(result));
+       console.log ("\n279 RESULT = " + JSON.stringify(result)); //id comes back
 
         stepContext.values[QnAData] = result;
 
         return await stepContext.next(result);
     }
 
-    /**
-    * @param {WaterfallStepContext} stepContext contextual information for the current step being executed.
-    */
     async checkForMultiTurnPrompt(stepContext) {
         if (stepContext.result != null && stepContext.result.length > 0) {
-            // -Check if context is present and prompt exists.
-            // -If yes: Add reverse index of prompt display name and its corresponding qna id.
-            // -Set PreviousQnAId as answer.Id.
-            // -Display card for the prompt.
-            // -Wait for the reply.
-            // -If no: Skip to next step.
-
+  
             var answer = stepContext.result[0];
 
             if (answer.context != null && answer.context.prompts != null && answer.context.prompts.length > 0) {
@@ -345,7 +310,6 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
                 dialogOptions[PreviousQnAId] = answer.id;
                 stepContext.activeDialog.state.options = dialogOptions;
 
-                // Get multi-turn prompts card activity.
                 var message = QnACardBuilder.GetQnAPromptsCard(answer);
                 await stepContext.context.sendActivity(message);
 
@@ -356,9 +320,7 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
         return await stepContext.next(stepContext.result);
     }
 
-    /**
-    * @param {WaterfallStepContext} stepContext contextual information for the current step being executed.
-    */
+ 
     async displayQnAResult(stepContext) {
         var dialogOptions = getDialogOptionsValue(stepContext);
         var qnaDialogResponseOptions = dialogOptions[QnADialogResponseOptions];
@@ -382,10 +344,62 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
             } else {
                 await stepContext.context.sendActivity(qnaDialogResponseOptions.noAnswer);
             }
+
+        return await stepContext.next();//mine
+
         }
 
-        return await stepContext.endDialog();
+//////mine
+
     }
+
+    async changeContract(stepContext, userState) { 
+
+       console.log("\n\n371 ..........SAVE..............");
+
+       var currentQuery = stepContext._info.values.currentQuery;
+       var currentPosn = currentQuery.indexOf(':',0);
+       
+       var currentContract = currentQuery.substring(0, currentPosn); 
+
+       console.log("\n378 currentQuery  = " + currentQuery);
+       console.log("\n379 currentContract  = " + currentContract + "\n");
+
+       this._userContractAccessor = this._userState.createProperty('contractName'); 
+
+       //var util = require('util')
+       //var utilInspectstepContext = util.inspect(stepContext);
+       //console.log("\nutilInspectstepContext  = " + utilInspectstepContext )
+       //console.log("this._userState.storage.memory.dialogStack  = " + JSON.stringify(this._userState.storage.memory.dialogStack) )
+       //this._userProfileAccessor = this._userState.createProperty('contractName'); //OK
+       //var util = require('util')
+       //var utilProfileAccessor = util.inspect(this._userProfileAccessor);
+       //console.log("373 utiluserProfileAccessor  = " + utilProfileAccessor )
+       //var utilContractAccessor = util.inspect(this._userContractAccessor);
+       //console.log("390 utiluserContractAccessor  = " + utilContractAccessor )
+       //console.log("\n379 SAVE- ProfileAccessor.contractName  = " + this._userProfileAccessor.contractName )
+       //this.userState = userState;
+       //await stepContext.sendActivity('Thanks.To see conversation data, type anything.');
+       //userProfile = await this._userProfileAccessor.get(stepContext, {});
+       ////userProfile.name = stepContext.activity.text;
+       ////await this._userState.saveChanges(stepContext, false);//MINE
+       //var utilAccessor = util.inspect(this._userContractAccessor);
+       //console.log("utilAccessorBBBB  = " + utilAccessor )
+      
+       console.log("\n400 ContractAccessor.contractName  = " + this._userContractAccessor.contractName )
+
+       this._userContractAccessor.contractName = currentContract;
+
+
+
+/////end mine
+
+        return await stepContext.endDialog(); //orig
+
+        } //mine
+
+    //} orig
+
 }
 
 function getDialogOptionsValue(dialogContext) {
@@ -394,6 +408,8 @@ function getDialogOptionsValue(dialogContext) {
     if (dialogContext.activeDialog.state.options !== null) {
         dialogOptions = dialogContext.activeDialog.state.options;
     }
+
+
 
     return dialogOptions;
 }
@@ -408,3 +424,4 @@ module.exports.DefaultCardNoMatchText = DefaultCardNoMatchText;
 module.exports.DefaultCardNoMatchResponse = DefaultCardNoMatchResponse;
 module.exports.QnAOptions = QnAOptions;
 module.exports.QnADialogResponseOptions = QnADialogResponseOptions;
+
