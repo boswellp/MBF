@@ -1,75 +1,64 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+// Copyright (c) Bricad Associates
 
 const { DialogBot } = require('./dialogBot');
 
 const { ActivityHandler, MessageFactory } = require('botbuilder');
-//const { ActivityHandler } = require('botbuilder'); //ORIG
 
 const { CardFactory } = require('botbuilder');
-
 
 const welcomeCard = require('../resources/WelcomeCard.json');
 
 const CONVERSATION_DATA_PROPERTY = 'conversationData';
 const USER_PROFILE_PROPERTY = 'userProfile';
 
-class DialogAndWelcomeBot extends DialogBot { //used this for multiturn
-
-//class DialogAndWelcomeBot extends ActivityHandler { //shows name, etc
+class DialogAndWelcomeBot extends DialogBot { 
 
     constructor(conversationState, userState, dialog) {
 
         super(conversationState, userState, dialog);
 
-///////
+
         this.conversationDataAccessor = conversationState.createProperty(CONVERSATION_DATA_PROPERTY);
         this.userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY);
-        //this.userContractAccessor = userState.createProperty('contractName');
         this.conversationState = conversationState;
         this.userState = userState;
-///////
 
+        this.onMessage(async (turnContext, next) => {
 
-       this.onMessage(async (turnContext, next) => {
-            // Get the state properties from the turn context.
             const userProfile = await this.userProfileAccessor.get(turnContext, {});
-            //const contractName = await this.userContractAccessor.get(turnContext, {});
+
             const conversationData = await this.conversationDataAccessor.get(
                 turnContext, { promptedForUserName: false });
 
             if (!userProfile.name) {
-                // First time around this is undefined, so we will prompt user for name.
+
                 if (conversationData.promptedForUserName) {
-                    // Set the name to what the user provided.
+
                     userProfile.name = turnContext.activity.text;
-                    //contractName.name = turnContext.activity.text;
 
                     //await turnContext.sendActivity(`Thanks2222 ${ userProfile.name }. To see conversation data, type anything.`);
                     await turnContext.sendActivity('');
 
-
-                    // Reset the flag to allow the bot to go though the cycle again.
                     conversationData.promptedForUserName = false;
 
-                    await next();//MINE ADDED
+                    await next();
                 } 
                 else 
                 {
                     //await turnContext.sendActivity('1. What is your name?');
                     await turnContext.sendActivity('');
-                    // Set the flag to true, so we don't prompt in the next turn.
+
                     conversationData.promptedForUserName = true;
                 }
             } 
             else
             {
-                // Add message details to the conversation data.
+
                 conversationData.timestamp = turnContext.activity.timestamp.toLocaleString();
                 conversationData.channelId = turnContext.activity.channelId;
 
-                // Display state data.
-                //await turnContext.sendActivity(`${ userProfile.name } sent3333: ${ turnContext.activity.text }`);
+
+                //await turnContext.sendActivity(`${ userProfile.name } : ${ turnContext.activity.text }`);
                 //await turnContext.sendActivity(`Message received at: ${ conversationData.timestamp }`);
                 //await turnContext.sendActivity(`Message received from: ${ conversationData.channelId }`);
             }
@@ -80,7 +69,7 @@ class DialogAndWelcomeBot extends DialogBot { //used this for multiturn
 
 
 
-///////
+/////////////////////
 
 
         this.onMembersAdded(async (context, next) => {
@@ -124,8 +113,6 @@ class DialogAndWelcomeBot extends DialogBot { //used this for multiturn
 
 await this.sendSuggestedActions(context);
 
-//////////////////////
-
 
                 }
             }
@@ -135,24 +122,16 @@ await this.sendSuggestedActions(context);
     }
 
 
-/////////////////////////
 async sendSuggestedActions(context) {
         var reply = MessageFactory.suggestedActions(['start'], 'Please submit start to start.');
         await context.sendActivity(reply);
     }
-////////////////////
 
-
-
-/////////
-    /**
-     * Override the ActivityHandler.run() method to save state changes after the bot logic completes.
-     */
 
      async run(context) {
         await super.run(context);
 
-        // Save any state changes. The load happened during the execution of the Dialog.
+
         await this.conversationState.saveChanges(context, false);
         await this.userState.saveChanges(context, false);
         //console.log (".............dialog and welcome SAVE... this.userState = " + JSON.stringify(this.userState));
