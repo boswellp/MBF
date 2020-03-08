@@ -3,9 +3,11 @@
 
 const { DialogBot } = require('./dialogBot');
 
+const { ActivityHandler, MessageFactory } = require('botbuilder');
+//const { ActivityHandler } = require('botbuilder'); //ORIG
 
 const { CardFactory } = require('botbuilder');
-const { ActivityHandler } = require('botbuilder');
+
 
 const welcomeCard = require('../resources/WelcomeCard.json');
 
@@ -91,8 +93,8 @@ class DialogAndWelcomeBot extends DialogBot { //used this for multiturn
 
                     const reply = `Welcome. The FIDICchatbot allows you to search FIDIC contracts. Submit "start" to start, or to restart at any time. Submit "help" for help.`;
 
-//////////////////////
 
+//////////////////////
 
 
         //welcomeCard.body[0].url = process.env.publicResourcesUrl + '/public/fidicchatbot_logo.png';
@@ -120,6 +122,7 @@ class DialogAndWelcomeBot extends DialogBot { //used this for multiturn
             });
 
 
+await this.sendSuggestedActions(context);
 
 //////////////////////
 
@@ -128,7 +131,18 @@ class DialogAndWelcomeBot extends DialogBot { //used this for multiturn
             }
             await next();
         });
+
     }
+
+
+/////////////////////////
+async sendSuggestedActions(context) {
+        var reply = MessageFactory.suggestedActions(['start'], 'Please submit start to start.');
+        await context.sendActivity(reply);
+    }
+////////////////////
+
+
 
 /////////
     /**
