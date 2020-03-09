@@ -1,5 +1,5 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+// Copyright (c) Bricad Associates, 9 March 2020
+// WORKS_MON_BEFORE_SKYPE_ERROR
 
 const {
     ComponentDialog,
