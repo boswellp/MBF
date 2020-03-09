@@ -33,7 +33,7 @@ const { TopLevelDialog } = require('./dialogs/topLevelDialog');
 
 
 //see sample at https://github.com/BotBuilderCommunity/botbuilder-community-js/tree/master/samples/adapter-twilio-whatsapp
-const { TwilioWhatsAppAdapter } = require('@botbuildercommunity/adapter-twilio-whatsapp');
+//const { TwilioWhatsAppAdapter } = require('@botbuildercommunity/adapter-twilio-whatsapp');
 
 const { AdaptiveCardsBot } = require('./bots/adaptiveCardsBot');
 
@@ -97,8 +97,10 @@ const qnaService = new QnAMaker({
     host: process.env.QnAEndpointHostName
 });
 
-const dialog = new RootDialog(qnaService,userState); //MULTITURN
-const bot = new DialogAndWelcomeBot(conversationState, userState, dialog); //MULTITURN
+const bot = new WelcomeBot(userState);
+
+//const dialog = new RootDialog(qnaService,userState); //MULTITURN
+//const bot = new DialogAndWelcomeBot(conversationState, userState, dialog); //MULTITURN
 
 
 adapter.onTurnError = async (context, error) => {
