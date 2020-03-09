@@ -29,7 +29,8 @@ class RootDialog extends ComponentDialog {
      * Root dialog for this bot.
      * @param {QnAMaker} qnaService A QnAMaker service object.
      */
-    constructor(qnaService) {
+    //constructor(qnaService) { //ORIG
+    constructor(qnaService, userState) {  //MINE
         super(ROOT_DIALOG);
 
         // Initial waterfall dialog.
