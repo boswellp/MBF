@@ -77,7 +77,8 @@ const qnaService = new QnAMaker({
 });
 
 // Create the main dialog.
-const dialog = new RootDialog(qnaService);
+//const dialog = new RootDialog(qnaService); //ORIG
+const dialog = new RootDialog(qnaService, userState); //MINE
 
 // Create the bot's main handler.
 const bot = new QnAMultiturnBot(conversationState, userState, dialog);
