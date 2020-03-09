@@ -2,12 +2,11 @@
 // Licensed under the MIT License.
 
 //const { ActivityHandler } = require('botbuilder'); //ORIG
-const { ActivityHandler, MessageFactory } = require('botbuilder'); //MINE
+const { ActivityHandler, MessageFactory, CardFactory} = require('botbuilder'); //MINE
 
-/**
- * A simple bot that responds to utterances with answers from QnA Maker.
- * If an answer is not found for an utterance, the bot responds with help.
- */
+const welcomeCard = require('../resources/WelcomeCard.json');
+
+
 class QnAMultiturnBot extends ActivityHandler {
     /**
      *
@@ -42,7 +41,35 @@ class QnAMultiturnBot extends ActivityHandler {
             for (let cnt = 0; cnt < membersAdded.length; cnt++) {
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
 
-                    await context.sendActivity('Welcome to the QnA Maker sample! Ask me a question and I will try to answer it.'); //ORIG
+
+////////////////////////
+
+        welcomeCard.body[1].text = 'Welcome to FIDICchatbot';
+
+        const restartCommand = 'start';
+        
+        welcomeCard.body[2].text = 'The chatbot allows you to search FIDIC contracts.';
+
+        welcomeCard.body[3].text = 'Submit "start" or "help" anytime to start again and for help.';
+
+        welcomeCard.body[4].text = 'After selecting a contract, you can display clauses by submitting a clause number or a keyword (keywords search in the index of clauses).';
+
+        welcomeCard.body[5].text = 'Shortcut codes for contracts that can be submitted at any time are:\n- "c1" - Construction Contract 1st Ed 1999\n- "p1" - Plant Contract 1st Ed 1999.';
+
+        welcomeCard.body[5].text = 'The FIDICchatbot is developed by Bricad Associates, Switzerland, as part of the https://FIDIC.tips initiative. It complements the FIDICbot that offers similar functionality and allows full-text searching.';
+
+        welcomeCard.actions[0].title = 'Privacy policy';
+
+        welcomeCard.actions[0].url = process.env.publicResourcesUrl + 'privacy_policy_en.pdf';
+
+        await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard)]});
+
+////////////////
+
+
+
+                    await context.sendActivity('Welcome to the FIDICchatbot which allows you to search FIDIC contracts'); //ORIG
+
 
                     var reply = MessageFactory.suggestedActions(['start'], 'Please submit "start" to start.'); //MINE
 
