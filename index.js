@@ -24,10 +24,9 @@ const { ActivityTypes } = require('botbuilder-core');
 const { QnAMaker } = require('botbuilder-ai');
 
 const { QnAMultiturnBot } = require('./bots/QnAMultiturnBot');
-const { ActivityTypes } = require('botbuilder-core');
+const { DialogAndWelcomeBot } = require('./bots/dialogAndWelcomeBot');
 
 const { RootDialog } = require('./dialogs/rootDialog');
-
 
 
 const ENV_FILE = path.join(__dirname, '.env');
