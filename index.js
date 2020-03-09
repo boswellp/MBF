@@ -97,10 +97,10 @@ const qnaService = new QnAMaker({
     host: process.env.QnAEndpointHostName
 });
 
-const bot = new WelcomeBot(userState);
+//const bot = new WelcomeBot(userState);
 
-//const dialog = new RootDialog(qnaService,userState); //MULTITURN
-//const bot = new DialogAndWelcomeBot(conversationState, userState, dialog); //MULTITURN
+const dialog = new RootDialog(qnaService,userState); //MULTITURN
+const bot = new DialogAndWelcomeBot(conversationState, userState, dialog); //MULTITURN
 
 
 adapter.onTurnError = async (context, error) => {
