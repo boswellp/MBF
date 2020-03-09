@@ -6,6 +6,8 @@ const { ActivityHandler, MessageFactory, CardFactory} = require('botbuilder'); /
 
 const welcomeCard = require('../resources/WelcomeCard.json');
 
+const CONVERSATION_DATA_PROPERTY = 'conversationData';
+const USER_PROFILE_PROPERTY = 'userProfile';
 
 class QnAMultiturnBot extends ActivityHandler {
     /**
@@ -24,9 +26,17 @@ class QnAMultiturnBot extends ActivityHandler {
         this.userState = userState;
         this.dialog = dialog;
         this.dialogState = this.conversationState.createProperty('DialogState');
+        
+        this.conversationDataAccessor = conversationState.createProperty(CONVERSATION_DATA_PROPERTY);
+        this.userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY); 
 
         this.onMessage(async (context, next) => {
+            
             console.log('Running dialog with Message Activity.');
+            
+            var util = require('util')
+            console.log("\n33 this._userProfileAccessor  = " + util.inspect(this._userProfileAccessor))
+        
 
             // Run the Dialog with the new message Activity.
             await this.dialog.run(context, this.dialogState);
