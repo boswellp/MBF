@@ -1,5 +1,18 @@
 // Copyright (c) Bricad Associates, 9 March 2020
-// Licensed under the MIT License.
+
+/*//express for viber
+const express = require('express')
+const app = express()
+const port = 3000
+var viber = require('botbuilder-viber')
+var viberOptions = {
+  Token: process.env.VIBER_TOKEN,
+  Name: 'ViberBotName',  
+  AvatarUrl: 'http://url.to/pngfile'
+}
+var viberChannel = new viber.ViberEnabledConnector(viberOptions)
+const winston = require('winston');
+/////////*/
 
 const path = require('path');
 const restify = require('restify');
@@ -9,6 +22,8 @@ const { QnAMaker } = require('botbuilder-ai');
 
 const { QnAMultiturnBot } = require('./bots/QnAMultiturnBot');
 const { RootDialog } = require('./dialogs/rootDialog');
+
+const { ActivityTypes } = require('botbuilder-core');
 
 const ENV_FILE = path.join(__dirname, '.env');
 require('dotenv').config({ path: ENV_FILE });
