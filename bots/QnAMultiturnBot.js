@@ -35,7 +35,7 @@ class QnAMultiturnBot extends ActivityHandler {
             console.log('Running dialog with Message Activity.');
             
             var util = require('util')
-            console.log("\n33 this._userProfileAccessor  = " + util.inspect(this._userProfileAccessor))
+            console.log("\n33 this.userProfileAccessor  = " + util.inspect(this.userProfileAccessor))
         
 
             // Run the Dialog with the new message Activity.
