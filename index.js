@@ -29,7 +29,7 @@ const { QnAMaker } = require('botbuilder-ai');
 
 const { QnAMultiturnBot } = require('./bots/QnAMultiturnBot');
 const { RootDialog } = require('./dialogs/rootDialog');
-const { TopLevelDialog } = require('./dialogs/topLevelDialog');
+////const { TopLevelDialog } = require('./dialogs/topLevelDialog');
 
 
 //see sample at https://github.com/BotBuilderCommunity/botbuilder-community-js/tree/master/samples/adapter-twilio-whatsapp
@@ -40,17 +40,17 @@ const { AdaptiveCardsBot } = require('./bots/adaptiveCardsBot');
 
 
 const { DialogAndWelcomeBot } = require('./bots/dialogAndWelcomeBot');
-const { MainDialog } = require('./dialogs/mainDialog');
+//////const { MainDialog } = require('./dialogs/mainDialog');
 //const { GreetingDialog } = require('./dialogs/greetingDialog');
 
-const { BookingDialog } = require('./dialogs/bookingDialog');
-const BOOKING_DIALOG = 'bookingDialog';
+///const { BookingDialog } = require('./dialogs/bookingDialog');
+////const BOOKING_DIALOG = 'bookingDialog';
 
 const { QnABot } = require('./bots/QnABot');
 
 const { FlightBookingRecognizer } = require('./dialogs/flightBookingRecognizer');
 
-const { WelcomeBot } = require('./bots/welcomeBot');
+////const { WelcomeBot } = require('./bots/welcomeBot');
 
 // Read environment variables from .env file
 const ENV_FILE = path.join(__dirname, '.env');
@@ -86,10 +86,10 @@ const memoryStorage = new MemoryStorage();
 const userState = new UserState(memoryStorage);
 const conversationState = new ConversationState(memoryStorage);
 
-const { LuisAppId, LuisAPIKey, LuisAPIHostName } = process.env;
-const luisConfig = { applicationId: LuisAppId, endpointKey: LuisAPIKey, endpoint: LuisAPIHostName };
+////const { LuisAppId, LuisAPIKey, LuisAPIHostName } = process.env;
+////const luisConfig = { applicationId: LuisAppId, endpointKey: LuisAPIKey, endpoint: LuisAPIHostName };
 
-const luisRecognizer = new FlightBookingRecognizer(luisConfig);
+////const luisRecognizer = new FlightBookingRecognizer(luisConfig);
 
 const qnaService = new QnAMaker({
     knowledgeBaseId: process.env.QnAKnowledgebaseId,
