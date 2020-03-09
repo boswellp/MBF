@@ -37,7 +37,8 @@ class RootDialog extends ComponentDialog {
             this.startInitialDialog.bind(this)
         ]));
 
-        this.addDialog(new QnAMakerMultiturnDialog(qnaService));
+        //this.addDialog(new QnAMakerMultiturnDialog(qnaService)); //ORIG
+        this.addDialog(new QnAMakerMultiturnDialog(qnaService,userState)); //mine
 
         this.initialDialogId = INITIAL_DIALOG;
     }
