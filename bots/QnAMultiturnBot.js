@@ -1,17 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved. STARTING FROM ORIG
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 
-const { DialogBot } = require('./dialogBot');  //MINE
-
-//const { ActivityHandler } = require('botbuilder'); //ORIG
-const { ActivityHandler, MessageFactory } = require('botbuilder');   //MINE
-
-const { CardFactory } = require('botbuilder');   //MINE
-
-const welcomeCard = require('../resources/WelcomeCard.json');   //MINE
-
-const CONVERSATION_DATA_PROPERTY = 'conversationData';   //MINE
-const USER_PROFILE_PROPERTY = 'userProfile';   //MINE
-
+const { ActivityHandler } = require('botbuilder');
 
 /**
  * A simple bot that responds to utterances with answers from QnA Maker.
@@ -50,7 +40,7 @@ class QnAMultiturnBot extends ActivityHandler {
             const membersAdded = context.activity.membersAdded;
             for (let cnt = 0; cnt < membersAdded.length; cnt++) {
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
-                    await context.sendActivity('Welcome to the FIDICchatbot knowledgebase! Ask a question and I will try to answer it.');
+                    await context.sendActivity('Welcome to the QnA Maker sample! Ask me a question and I will try to answer it.');
                 }
             }
 
@@ -70,4 +60,3 @@ class QnAMultiturnBot extends ActivityHandler {
 }
 
 module.exports.QnAMultiturnBot = QnAMultiturnBot;
-
