@@ -1,7 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-const { ActivityHandler } = require('botbuilder');
+//const { ActivityHandler } = require('botbuilder'); //ORIG
+const { ActivityHandler, MessageFactory } = require('botbuilder'); //MINE
 
 /**
  * A simple bot that responds to utterances with answers from QnA Maker.
@@ -40,13 +41,25 @@ class QnAMultiturnBot extends ActivityHandler {
             const membersAdded = context.activity.membersAdded;
             for (let cnt = 0; cnt < membersAdded.length; cnt++) {
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
-                    await context.sendActivity('Welcome to the QnA Maker sample! Ask me a question and I will try to answer it.');
+
+                    await context.sendActivity('Welcome to the QnA Maker sample! Ask me a question and I will try to answer it.'); //ORIG
+
+                    var reply = MessageFactory.suggestedActions(['start'], 'Please submit "start" to start.'); //MINE
+
+
+                    await context.sendActivity(reply);  //MINE
+
                 }
             }
 
             // By calling next() you ensure that the next BotHandler is run.
             await next();
         });
+
+
+
+
+
 
         this.onDialog(async (context, next) => {
             // Save any state changes. The load happened during the execution of the Dialog.
@@ -56,7 +69,14 @@ class QnAMultiturnBot extends ActivityHandler {
             // By calling next() you ensure that the next BotHandler is run.
             await next();
         });
+
+
+
+
+
+
     }
 }
 
 module.exports.QnAMultiturnBot = QnAMultiturnBot;
+
