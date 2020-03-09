@@ -10,9 +10,9 @@ const {
 const { QnACardBuilder } = require('../utils/qnaCardBuilder');
 
 // Default parameters
-const DefaultThreshold = 0.3;
-const DefaultTopN = 3;
-const DefaultNoAnswer = 'Answer not found. Please submit "start" to start again or "help" for help or a contract shortcut code (e.g., "c1" for Construction 1st Ed 1999; "p1" for Plant & Design-Build 1st Ed 1999)';
+const DefaultThreshold = 0.90;
+const DefaultTopN = 1;
+const DefaultNoAnswer = 'Answer not found. Please submit "start" to start again, "help" for help or a contract code (e.g., "c1" for Construction 1st Ed 1999). Or submit another clause number (e.g., "4.2") or a keyword (e.g., "agreement") to search the index.';
 
 // Card parameters
 const DefaultCardTitle = 'Did you mean:';
@@ -193,13 +193,13 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
 
                        else
                              {
-                             console.log("\n208 keyword strClean = " + strClean + '; contractCode = ' + contractCode);
+                             console.log("\n196 keyword strClean = " + strClean + '; contractCode = ' + contractCode);
                              var posnSpace = strClean.indexOf(' ',0);
-                             console.log ("209 posnSpace =" + posnSpace);
+                             console.log ("198 posnSpace =" + posnSpace);
 
                              var strCon = str;
                              if (posnSpace != -1){strCon = str.substring(0,posnSpace);}
-                             console.log ("213 strCon =" + strCon);
+                             console.log ("202 strCon =" + strCon);
 
                              if (strCon == "c1" || strCon == "p1" )
                                  {
@@ -209,8 +209,12 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
                                  console.log ("221 strCon =" + strCon);
                                  }
 
-                             var strNo = strClean.substring(posnSpace+1,strClean.length);
-                             console.log ("226 strNo =" + strNo);
+                             var strNo ='';
+                             if (posnSpace != -1)  //one word
+                                 {
+                                 var strNo = strClean.substring(posnSpace+1,strClean.length);
+                                 }
+                                console.log ("226 strNo =" + strNo);
 
                              var strNoFull = strNo;
                              if (posnSpace != -1)
@@ -219,7 +223,7 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
                                  if (strNo.length == 3){strNoFull = strNoFull+'.0.0';}
                                  if (strNo.length == 5){strNoFull = strNoFull+'.0.0';}
                                  }
-                             console.log ("234 strNoFull =" + strNoFull);
+                             console.log ("226 strNoFull =" + strNoFull);
 
                              if (str =='c1' || str == 'p1')
                                  {
@@ -234,7 +238,7 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
                                     var strConNoFull = strCon + strNoFull;
                                     }
 
-                                    console.log("249 strConNoFull = " + strConNoFull);
+                                    console.log("241 strConNoFull = " + strConNoFull);
 
                                     strConNoFull = strConNoFull.replace('.','\/');
                                     strConNoFull = strConNoFull.replace('.','\/');
@@ -243,11 +247,16 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
                                     strConNoFull = strConNoFull.replace('c1 ','c1:');
                                     strConNoFull = strConNoFull.replace('p1 ','p1:');
 
-                                    console.log("258 A keyword strConNoFull = " + strConNoFull);
+                                    if (strNo == '' && strConNoFull != 'c1' && strConNoFull != 'p1' && strConNoFull != 'c1i' && strConNoFull != 'p1i' && strConNoFull != 'help' && strConNoFull != 'start') 
+                                        {
+                                        strConNoFull = contractCode.replace('1','1i:' + strConNoFull)
+                                        }
+
+                                    console.log("255 A keyword strConNoFull = " + strConNoFull);
 
                                     stepContext.context.activity.text = strConNoFull;
 
-                                    console.log ("262 SENT stepContext.context.activity.text = " + stepContext.context.activity.text);
+                                    console.log ("259 SENT stepContext.context.activity.text = " + stepContext.context.activity.text);
                                      }
                                }
                           }
@@ -423,7 +432,7 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
 
        console.log("\n396 ProfileAccessor.profileName - before  = " + this._userProfileAccessor.profileName);
 
-       this._userProfileAccessor.profileName = currentContract;
+       this._userProfileAccessor.profileName = currentContract.replace('1i','1'); //NOTE c1i deactivated for index search
 
        console.log("\n400 ProfileAccessor.profileName - after = " + this._userProfileAccessor.profileName);
 
