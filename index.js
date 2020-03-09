@@ -18,12 +18,17 @@ const path = require('path');
 const restify = require('restify');
 
 const { BotFrameworkAdapter, ConversationState, MemoryStorage, UserState } = require('botbuilder');
+
+const { ActivityTypes } = require('botbuilder-core');
+
 const { QnAMaker } = require('botbuilder-ai');
 
 const { QnAMultiturnBot } = require('./bots/QnAMultiturnBot');
+const { ActivityTypes } = require('botbuilder-core');
+
 const { RootDialog } = require('./dialogs/rootDialog');
 
-const { ActivityTypes } = require('botbuilder-core');
+
 
 const ENV_FILE = path.join(__dirname, '.env');
 require('dotenv').config({ path: ENV_FILE });
