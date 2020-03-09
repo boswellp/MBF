@@ -37,7 +37,7 @@ class QnAMultiturnBot extends ActivityHandler {
             var util = require('util')
             console.log("\n38 this.userProfileAccessor  = " + util.inspect(this.userProfileAccessor))
             
-            console.log ("\n40 JSON.stringify(this._userState) = " + JSON.stringify(this._userState));
+            console.log ("\n40 JSON.stringify(this.userState) = " + JSON.stringify(this.userState));
         
 
             // Run the Dialog with the new message Activity.
