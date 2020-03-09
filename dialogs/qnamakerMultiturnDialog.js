@@ -49,7 +49,8 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
         this.addDialog(new WaterfallDialog(QNAMAKER_DIALOG, [
             this.callGenerateAnswerAsync.bind(this),
             this.checkForMultiTurnPrompt.bind(this),
-            this.displayQnAResult.bind(this)
+            this.displayQnAResult.bind(this),
+            this.changeContract.bind(this) //MINE ADDED
         ]));
 
         this.initialDialogId = QNAMAKER_DIALOG;
@@ -182,11 +183,46 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
             } else {
                 await stepContext.context.sendActivity(qnaDialogResponseOptions.noAnswer);
             }
+            
+            return await stepContext.next();//MINE
         }
 
         return await stepContext.endDialog();
     }
+    
+//////MINE
+    
 }
+
+async changeContract(stepContext, userState) { 
+
+       console.log("\n\n363 ..........SAVE..............");
+
+       var currentQuery = stepContext._info.values.currentQuery;
+       var currentPosn = currentQuery.indexOf(':',0);
+       
+       var currentContract = currentQuery.substring(0, currentPosn); 
+
+       console.log("\n393 currentQuery  = " + currentQuery);
+       console.log("\n394 currentContract  = " + currentContract + "\n");
+
+       console.log("\n396 ProfileAccessor.profileName - before  = " + this._userProfileAccessor.profileName);
+
+       this._userProfileAccessor.profileName = currentContract.replace('1i','1'); //NOTE c1i deactivated for index search
+
+       console.log("\n400 ProfileAccessor.profileName - after = " + this._userProfileAccessor.profileName);
+
+
+
+/////END MINE
+
+        return await stepContext.endDialog(); 
+
+        } 
+
+}
+
+
 
 function getDialogOptionsValue(dialogContext) {
     var dialogOptions = {};
