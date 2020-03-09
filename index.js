@@ -80,7 +80,7 @@ const qnaService = new QnAMaker({
 });
 
 
-const dialog = new RootDialog(qnaService);  //ORIG
+//const dialog = new RootDialog(qnaService);  //ORIG
 const dialog = new RootDialog(qnaService, userState);  //MINE
 const bot = new QnAMultiturnBot(conversationState, userState, dialog);
 
