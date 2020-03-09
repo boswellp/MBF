@@ -80,7 +80,8 @@ const qnaService = new QnAMaker({
 });
 
 
-const dialog = new RootDialog(qnaService);
+const dialog = new RootDialog(qnaService);  //ORIG
+const dialog = new RootDialog(qnaService, userState);  //MINE
 const bot = new QnAMultiturnBot(conversationState, userState, dialog);
 
 server.post('/api/messages', (req, res) => {
