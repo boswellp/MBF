@@ -10,9 +10,9 @@ const {
 const { QnACardBuilder } = require('../utils/qnaCardBuilder');
 
 // Default parameters
-const DefaultThreshold = 0.3;
+const DefaultThreshold = 0.90;
 const DefaultTopN = 3;
-const DefaultNoAnswer = 'No QnAMaker answers found.';
+const DefaultNoAnswer = 'Answer not found. Please submit "start" to start again, "help" for help or a contract code (e.g., "c1" for Construction 1st Ed 1999). Or submit a clause number (e.g., "4.2") or a keyword (e.g., "agreement") to search the index.';
 
 // Card parameters
 const DefaultCardTitle = 'Did you mean:';
@@ -169,7 +169,7 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
                           this._userProfileAccessor.profileName = 'p1'
                           console.log ("167 SENT stepContext.context.activity.text = " + stepContext.context.activity.text);
                           }
-                      //}
+
 
                      
                       else if (str == 'c1i' || str == 'p1i')//INDEX
@@ -181,16 +181,21 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
                                   console.log ("181 SENT INDEX stepContext.context.activity.text = " + stepContext.context.activity.text);
                                   }
                               }
-                      else if ((contractCode.indexOf('1i',0) != -1 && str == 'c1') || (contractCode.indexOf('1i',0) != -1 && str == 'p1')) //leave index
-                              {  
-                              stepContext.context.activity.text = str;
-                              this._userProfileAccessor.profileName = str; //change index to c1, p1
-                              console.log ("188 SENT INDEX stepContext.context.activity.text = " + stepContext.context.activity.text);
-                              }
-                       else if (contractCode.indexOf('1i',0) != -1) //got contact code + str
+
+
+                      else if (contractCode != undefined)
                               {
-                              stepContext.context.activity.text = contractCode + ':' + str;
-                              console.log ("193 SENT INDEX stepContext.context.activity.text = " + stepContext.context.activity.text);
+                              if ((contractCode.indexOf('1i',0) != -1 && str == 'c1') || (contractCode.indexOf('1i',0) != -1 && str == 'p1')) //leave index
+                                   {  
+                                  stepContext.context.activity.text = str;
+                                  this._userProfileAccessor.profileName = str; //change index to c1, p1
+                                  console.log ("192 SENT INDEX stepContext.context.activity.text = " + stepContext.context.activity.text);
+                                  }
+                                  else if (contractCode.indexOf('1i',0) != -1) //got contact code + str
+                                  {
+                                  stepContext.context.activity.text = contractCode + ':' + str;
+                                  console.log ("197 SENT INDEX stepContext.context.activity.text = " + stepContext.context.activity.text);
+                                  }
                               }
 
 
@@ -252,7 +257,8 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
 
                                     if (strNo == '' && strConNoFull != 'c1' && strConNoFull != 'p1' && strConNoFull != 'c1i' && strConNoFull != 'p1i' && strConNoFull != 'help' && strConNoFull != 'start') 
                                         {
-                                        strConNoFull = contractCode.replace('1','1i:' + strConNoFull)
+                                        if (strConNoFull == 'c1'){strConNoFull = 'c1i:' + strConNoFull;}
+                                        if (strConNoFull == 'p1'){strConNoFull = 'p1i:' + strConNoFull;}
                                         }
 
                                     console.log("255 A keyword strConNoFull = " + strConNoFull);
@@ -481,3 +487,4 @@ module.exports.DefaultCardNoMatchText = DefaultCardNoMatchText;
 module.exports.DefaultCardNoMatchResponse = DefaultCardNoMatchResponse;
 module.exports.QnAOptions = QnAOptions;
 module.exports.QnADialogResponseOptions = QnADialogResponseOptions;
+
