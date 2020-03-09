@@ -28,7 +28,10 @@ const { ActivityTypes } = require('botbuilder-core');
 const { QnAMaker } = require('botbuilder-ai');
 
 const { QnAMultiturnBot } = require('./bots/QnAMultiturnBot');
+
 const { RootDialog } = require('./dialogs/rootDialog');
+
+
 ////const { TopLevelDialog } = require('./dialogs/topLevelDialog');
 
 
@@ -37,8 +40,6 @@ const { RootDialog } = require('./dialogs/rootDialog');
 
 const { AdaptiveCardsBot } = require('./bots/adaptiveCardsBot');
 
-
-
 const { DialogAndWelcomeBot } = require('./bots/dialogAndWelcomeBot');
 //////const { MainDialog } = require('./dialogs/mainDialog');
 //const { GreetingDialog } = require('./dialogs/greetingDialog');
@@ -46,17 +47,15 @@ const { DialogAndWelcomeBot } = require('./bots/dialogAndWelcomeBot');
 ///const { BookingDialog } = require('./dialogs/bookingDialog');
 ////const BOOKING_DIALOG = 'bookingDialog';
 
-const { QnABot } = require('./bots/QnABot');
+////const { QnABot } = require('./bots/QnABot');
 
-const { FlightBookingRecognizer } = require('./dialogs/flightBookingRecognizer');
+/////const { FlightBookingRecognizer } = require('./dialogs/flightBookingRecognizer');
 
 ////const { WelcomeBot } = require('./bots/welcomeBot');
 
-// Read environment variables from .env file
 const ENV_FILE = path.join(__dirname, '.env');
 require('dotenv').config({ path: ENV_FILE });
 
-// Create HTTP server
 const server = restify.createServer();
 server.listen(process.env.port || process.env.PORT || 3978, function() {
     console.log(`\n${ server.name } listening to ${ server.url }`);
@@ -64,8 +63,6 @@ server.listen(process.env.port || process.env.PORT || 3978, function() {
     console.log('\nTo talk to your bot, open the emulator select "Open Bot"');
 });
 
-// Create adapter.
-// See https://aka.ms/about-bot-adapter to learn more about adapters.
 const adapter = new BotFrameworkAdapter({
     appId: process.env.MicrosoftAppId,
     appPassword: process.env.MicrosoftAppPassword
