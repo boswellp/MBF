@@ -184,11 +184,11 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
                 await stepContext.context.sendActivity(qnaDialogResponseOptions.noAnswer);
             }
             
-            return await stepContext.next();//MINE
+            return await stepContext.next();//MINE ADDED
         }
 
-        return await stepContext.endDialog();
-    }
+        //return await stepContext.endDialog(); //ORIG
+    //} //ORIG
     
 //////MINE
     
