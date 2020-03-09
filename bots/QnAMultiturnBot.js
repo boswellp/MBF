@@ -1,7 +1,17 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+// Copyright (c) Microsoft Corporation. All rights reserved. STARTING FROM ORIG
 
-const { ActivityHandler } = require('botbuilder');
+const { DialogBot } = require('./dialogBot');  //MINE
+
+//const { ActivityHandler } = require('botbuilder'); //ORIG
+const { ActivityHandler, MessageFactory } = require('botbuilder');   //MINE
+
+const { CardFactory } = require('botbuilder');   //MINE
+
+const welcomeCard = require('../resources/WelcomeCard.json');   //MINE
+
+const CONVERSATION_DATA_PROPERTY = 'conversationData';   //MINE
+const USER_PROFILE_PROPERTY = 'userProfile';   //MINE
+
 
 /**
  * A simple bot that responds to utterances with answers from QnA Maker.
