@@ -96,7 +96,7 @@ class DialogAndWelcomeBot extends DialogBot {
 
         welcomeCard.body[3].text = 'Submit "start" or "help" anytime to start again and for help.';
 
-        welcomeCard.body[4].text = 'After selecting a contract, you can display clauses by submiting a clause number or a keyword (keywords search in the index of clauses).';
+        welcomeCard.body[4].text = 'After selecting a contract, you can display clauses by submitting a clause number or a keyword (keywords search in the index of clauses).';
 
         welcomeCard.body[5].text = 'Shortcut codes for contracts that can be submitted at any time are:\n- "c1" - Construction Contract 1st Ed 1999\n- "p1" - Plant Contract 1st Ed 1999.';
 
@@ -123,7 +123,7 @@ await this.sendSuggestedActions(context);
 
 
 async sendSuggestedActions(context) {
-        var reply = MessageFactory.suggestedActions(['start'], 'Please submit start to start.');
+        var reply = MessageFactory.suggestedActions(['start'], 'Please submit "start" to start.');
         await context.sendActivity(reply);
     }
 
