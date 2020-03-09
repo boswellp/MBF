@@ -81,11 +81,11 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
                 console.log("\n\n78 ..........MULTITURN..............");
 
         var util = require('util')
-        //console.log("\n85 MULTITURN this._userProfileAccessor  = " + util.inspect(this._userProfileAccessor))
+        console.log("\n85 MULTITURN this._userProfileAccessor  = " + util.inspect(this._userProfileAccessor))
         //console.log("\n86 MULTITURN this._userContractAccessor  = " + util.inspect(this._userContractAccessor))
 
         var JSONstringifythisuserState = JSON.stringify(this._userState);
-        //console.log ("\n89 MULTITURN this._userState = " + JSONstringifythisuserState);
+        console.log ("\n89 MULTITURN this._userState = " + JSONstringifythisuserState);
 
  
         if (this._userProfileAccessor.profileName == 'undefined' && JSONstringifythisuserState.indexOf('cons1',0) != -1) //cons1 comes from QnAMaker and not got profileName
