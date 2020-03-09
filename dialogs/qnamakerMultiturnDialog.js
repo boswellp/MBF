@@ -30,16 +30,21 @@ const PreviousQnAId = 'prevQnAId';
 /// QnA Maker dialog.
 const QNAMAKER_DIALOG = 'qnamaker-dialog';
 const QNAMAKER_MULTITURN_DIALOG = 'qnamaker-multiturn-dailog';
+const USER_PROFILE_PROPERTY = 'userProfile'; //MINE ADDED
 
 class QnAMakerMultiturnDialog extends ComponentDialog {
     /**
      * Core logic of QnA Maker dialog.
      * @param {QnAMaker} qnaService A QnAMaker service object.
      */
-    constructor(qnaService) {
+    //constructor(qnaService) {  //ORIG
+    constructor(qnaService,userState) { //MINE
         super(QNAMAKER_MULTITURN_DIALOG);
 
         this._qnaMakerService = qnaService;
+        
+        this._userState = userState; //MINE ADDED
+        this._userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY); //MINE ADDED
 
         this.addDialog(new WaterfallDialog(QNAMAKER_DIALOG, [
             this.callGenerateAnswerAsync.bind(this),
