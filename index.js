@@ -137,11 +137,11 @@ server.post('/api/messages', (req, res) => {
     });
 });
 
-
+/*
 //see https://github.com/DreamTeamMobile/botbuilder-viber
 bot.connector(viber.ViberChannelId, viberChannel)
 app.use('/viber/webhook', viberChannel.listen())
-
+*/
 
 /*
 // WhatsApp endpoint for Twilio
