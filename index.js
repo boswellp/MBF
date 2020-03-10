@@ -40,7 +40,7 @@ adapter.onTurnError = async (context, error) => {
     //       application insights.
     console.error(`\n [onTurnError] unhandled error: ${ error }`);
     
-    console.log("xxxxxxxxxxx error = " + error);
+
 
     // Send a trace activity, which will be displayed in Bot Framework Emulator
     await context.sendTraceActivity(
@@ -50,9 +50,15 @@ adapter.onTurnError = async (context, error) => {
         'TurnError'
     );
 
-   
-    await context.sendActivity('The bot encountered an error or bug.');
-    await context.sendActivity('To continue to run this bot, please fix the bot source code.');
+    if (error.indexOf('LINE api',0) != -1)
+        {
+        await context.sendActivity('LINE users have limited functionality.');
+        }
+        else
+        {
+        await context.sendActivity('The bot encountered an error or bug.');
+        await context.sendActivity('To continue to run this bot, please fix the bot source code.');
+        }
     
     /*
     // Send a message to the user
