@@ -39,6 +39,7 @@ adapter.onTurnError = async (context, error) => {
     // NOTE: In production environment, you should consider logging this to Azure
     //       application insights.
     console.error(`\n [onTurnError] unhandled error: ${ error }`);
+    var errorTxt = ${ error }
     
 
 
@@ -50,7 +51,7 @@ adapter.onTurnError = async (context, error) => {
         'TurnError'
     );
 
-    if (error.indexOf('LINE api',0) != -1)
+    if (errorTxt.indexOf('LINE api',0) != -1)
         {
         await context.sendActivity('LINE users have limited functionality.');
         }
