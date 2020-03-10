@@ -47,6 +47,7 @@ adapter.onTurnError = async (context, error) => {
 
 
     // Send a trace activity, which will be displayed in Bot Framework Emulator
+    //see https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-handle-user-interrupt?view=azure-bot-service-4.0&tabs=javascript
     await context.sendTraceActivity(
         'OnTurnError Trace',
         `${ error }`,
