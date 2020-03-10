@@ -41,6 +41,8 @@ adapter.onTurnError = async (context, error) => {
     console.error(`\n [onTurnError] unhandled error: ${ error }`);
     var errorTxt = '${ error }'
     
+    console.log("errorTxt = " + errorTxt);
+    
 
 
     // Send a trace activity, which will be displayed in Bot Framework Emulator
