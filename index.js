@@ -1,24 +1,34 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Bricad Associates, March 2020
 // Licensed under the MIT License.
 
-// index.js is used to setup and configure your bot
+/*//express for viber
+const express = require('express')
+const app = express()
+const port = 3000
+var viber = require('botbuilder-viber')
+var viberOptions = {
+  Token: process.env.VIBER_TOKEN,
+  Name: 'ViberBotName',  
+  AvatarUrl: 'http://url.to/pngfile'
+}
+var viberChannel = new viber.ViberEnabledConnector(viberOptions)
+const winston = require('winston');
+/////////*/
 
-// Import required packages
+
 const path = require('path');
 const restify = require('restify');
 
-// Import required bot services. See https://aka.ms/bot-services to learn more about the different parts of a bot.
 const { BotFrameworkAdapter, ConversationState, MemoryStorage, UserState } = require('botbuilder');
 const { QnAMaker } = require('botbuilder-ai');
 
 const { QnAMultiturnBot } = require('./bots/QnAMultiturnBot');
 const { RootDialog } = require('./dialogs/rootDialog');
 
-// Note: Ensure you have a .env file and include QnAMakerKnowledgeBaseId, QnAMakerEndpointKey and QnAMakerHost.
+
 const ENV_FILE = path.join(__dirname, '.env');
 require('dotenv').config({ path: ENV_FILE });
 
-// Create HTTP server.
 const server = restify.createServer();
 server.listen(process.env.port || process.env.PORT || 3979, function() {
     console.log(`\n${ server.name } listening to ${ server.url }.`);
@@ -26,26 +36,33 @@ server.listen(process.env.port || process.env.PORT || 3979, function() {
     console.log('\nTo talk to your bot, open the emulator select "Open Bot"');
 });
 
-// Create adapter.
-// See https://aka.ms/about-bot-adapter to learn more about adapters.
+
 const adapter = new BotFrameworkAdapter({
     appId: process.env.MicrosoftAppId,
     appPassword: process.env.MicrosoftAppPassword
 });
 
-// Catch-all for errors.
+
+/*
+//see https://www.npmjs.com/package/@botbuildercommunity/adapter-twilio-whatsapp
+const whatsAppAdapter = new TwilioWhatsAppAdapter({
+    accountSid: '', // Account SID
+    authToken: '', // Auth Token
+    phoneNumber: 'whatsapp:+14155238886',// The From parameter consisting of whatsapp: followed by the sending WhatsApp number (using E.164 formatting
+    endpointUrl: 'https://fidicchatbot.herokuapp.com/api/whatsapp/messages' // Endpoint URL you configured in the sandbox, used for validation
+});
+*/
+
+
 adapter.onTurnError = async (context, error) => {
     // This check writes out errors to console log .vs. app insights.
     // NOTE: In production environment, you should consider logging this to Azure
     //       application insights.
     console.error(`\n [onTurnError] unhandled error: ${ error }`);
-    var errorTxt = `${ error }`
-
+    var errorTxt = `${ error }`  
     
     console.log("errorTxt = " + errorTxt);
     
-
-
     // Send a trace activity, which will be displayed in Bot Framework Emulator
     //see https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-handle-user-interrupt?view=azure-bot-service-4.0&tabs=javascript
     await context.sendTraceActivity(
@@ -85,6 +102,11 @@ const memoryStorage = new MemoryStorage();
 const conversationState = new ConversationState(memoryStorage);
 const userState = new UserState(memoryStorage);
 
+////const { LuisAppId, LuisAPIKey, LuisAPIHostName } = process.env;
+////const luisConfig = { applicationId: LuisAppId, endpointKey: LuisAPIKey, endpoint: LuisAPIHostName };
+
+////const luisRecognizer = new FlightBookingRecognizer(luisConfig);
+
 var endpointHostName = process.env.QnAEndpointHostName;
 if (!endpointHostName.startsWith('https://')) {
     endpointHostName = 'https://' + endpointHostName;
@@ -114,3 +136,20 @@ server.post('/api/messages', (req, res) => {
         await bot.run(turnContext);
     });
 });
+
+
+//see https://github.com/DreamTeamMobile/botbuilder-viber
+bot.connector(viber.ViberChannelId, viberChannel)
+app.use('/viber/webhook', viberChannel.listen())
+
+
+/*
+// WhatsApp endpoint for Twilio
+//see https://www.npmjs.com/package/@botbuildercommunity/adapter-twilio-whatsapp
+server.post('/api/whatsapp/messages', (req, res) => {
+    whatsAppAdapter.processActivity(req, res, async (context) => {
+        // Route to main dialog.
+        await bot.run(context);
+    });
+});
+*/
