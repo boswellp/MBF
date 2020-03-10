@@ -48,14 +48,18 @@ adapter.onTurnError = async (context, error) => {
         'TurnError'
     );
 
+   
+    //await context.sendActivity('The bot encountered an error or bug.');
+    //await context.sendActivity('To continue to run this bot, please fix the bot source code.');
+    
     // Send a message to the user
-    if ( ${ error }.indexOf('LINE',0) != -1)
-         {await context.sendActivity('LINE limited');}
-         else
-         {
-         await context.sendActivity('The bot encountered an error or bug.');
-         await context.sendActivity('To continue to run this bot, please fix the bot source code.');
-         }
+    let onTurnErrorMessage = 'The bot encountered an error or bug.';
+    await context.sendActivity(onTurnErrorMessage, onTurnErrorMessage, InputHints.ExpectingInput);
+    onTurnErrorMessage = 'To continue to run this bot, please fix the bot source code.';
+    await context.sendActivity(onTurnErrorMessage, onTurnErrorMessage, InputHints.ExpectingInput);
+    // Clear out state
+    await conversationState.delete(context);
+  
 };
 
 // Define the state store for your bot. See https://aka.ms/about-bot-state to learn more about using MemoryStorage.
