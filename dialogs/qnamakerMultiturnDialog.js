@@ -81,11 +81,11 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
                 console.log("\n\n78 ..........MULTITURN..............");
 
         var util = require('util')
-        console.log("\n85 MULTITURN this._userProfileAccessor  = " + util.inspect(this._userProfileAccessor))
+        //console.log("\n85 MULTITURN this._userProfileAccessor  = " + util.inspect(this._userProfileAccessor))
         //console.log("\n86 MULTITURN this._userContractAccessor  = " + util.inspect(this._userContractAccessor))
 
         var JSONstringifythisuserState = JSON.stringify(this._userState);
-        console.log ("\n89 MULTITURN this._userState = " + JSONstringifythisuserState);
+        //console.log ("\n89 MULTITURN this._userState = " + JSONstringifythisuserState);
 
  
         if (this._userProfileAccessor.profileName == 'undefined' && JSONstringifythisuserState.indexOf('cons1',0) != -1) //cons1 comes from QnAMaker and not got profileName
@@ -153,7 +153,7 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
                  if (isNaN(str)) //keyword
                       {
                       var contractCode = this._userProfileAccessor.profileName;
-                      console.log("\n153 keyword str = " + strClean + '; contractCode = ' + contractCode);
+                      console.log("\n153 keyword str = " + str + '; contractCode = ' + contractCode);
  
                       ////Enter contract on clicking start
 
@@ -183,38 +183,51 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
                               }
 
 
-                      else if (contractCode != undefined)
+                      else if (contractCode != undefined && contractCode.indexOf('1i',0) != -1)
                               {
-                              if ((contractCode.indexOf('1i',0) != -1 && str == 'c1') || (contractCode.indexOf('1i',0) != -1 && str == 'p1')) //leave index
-                                   {  
-                                  stepContext.context.activity.text = str;
-                                  this._userProfileAccessor.profileName = str; //change index to c1, p1
-                                  console.log ("192 SENT INDEX stepContext.context.activity.text = " + stepContext.context.activity.text);
-                                  }
-                                  else if (contractCode.indexOf('1i',0) != -1) //got contact code + str
+                              console.log ("188 contractCode = " + contractCode + "; str = " + str + "; strClean = " + strClean);
+                              if (contractCode.indexOf('1i',0) != -1) //if do c1 -> type c1 1.1 jump down
                                   {
-                                  stepContext.context.activity.text = contractCode + ':' + str;
-                                  console.log ("197 SENT INDEX stepContext.context.activity.text = " + stepContext.context.activity.text);
+
+                                  if ((contractCode.indexOf('1i',0) != -1 && str == 'c1') || (contractCode.indexOf('1i',0) != -1 && str == 'p1')) //leave index
+                                      {  
+                                      stepContext.context.activity.text = str;
+                                      this._userProfileAccessor.profileName = str; //change index to c1, p1
+                                      console.log ("192 SENT INDEX stepContext.context.activity.text = " + stepContext.context.activity.text);
+                                      }
+                                      else if (contractCode.indexOf('1i',0) != -1) //got contact code + str
+                                      {
+                                      stepContext.context.activity.text = contractCode + ':' + str;
+                                      console.log ("197 SENT INDEX stepContext.context.activity.text = " + stepContext.context.activity.text);
+                                      }
+
+
                                   }
-                              }
+                                  else //for if do c1 -> type c1 1.1 KEEP?
+                                  {
+                                  console.log ("208 contractCode = " + contractCode + "; str = " + str + "; strClean = " + strClean);
+                                 // }
 
 
+
+                                  }
+                             }
                        else
                              {
-                             console.log("\n196 keyword strClean = " + strClean + '; contractCode = ' + contractCode);
+                             console.log("\n204 keyword strClean = " + strClean + '; contractCode = ' + contractCode);
                              var posnSpace = strClean.indexOf(' ',0);
-                             console.log ("198 posnSpace =" + posnSpace);
+                             console.log ("206 posnSpace =" + posnSpace);
 
                              var strCon = str;
                              if (posnSpace != -1){strCon = str.substring(0,posnSpace);}
-                             console.log ("202 strCon =" + strCon);
+                             console.log ("210 strCon =" + strCon);
 
                              if (strCon == "c1" || strCon == "p1" )
                                  {
                                  this._userProfileAccessor.profileName = strCon;
-                                 console.log("\n219 profileName = " + this._userProfileAccessor.profileName)
+                                 console.log("\n215 profileName = " + this._userProfileAccessor.profileName)
                                  strCon = strCon + ":";
-                                 console.log ("221 strCon =" + strCon);
+                                 console.log ("217 strCon =" + strCon);
                                  }
 
                              var strNo ='';
@@ -222,7 +235,7 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
                                  {
                                  var strNo = strClean.substring(posnSpace+1,strClean.length);
                                  }
-                                console.log ("226 strNo =" + strNo);
+                                console.log ("225 strNo =" + strNo);
 
                              var strNoFull = strNo;
                              if (posnSpace != -1)
@@ -231,7 +244,7 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
                                  if (strNo.length == 3){strNoFull = strNoFull+'.0.0';}
                                  if (strNo.length == 5){strNoFull = strNoFull+'.0.0';}
                                  }
-                             console.log ("226 strNoFull =" + strNoFull);
+                             console.log ("234 strNoFull =" + strNoFull);
 
                              if (str =='c1' || str == 'p1')
                                  {
@@ -261,17 +274,17 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
                                         if (strConNoFull == 'p1'){strConNoFull = 'p1i:' + strConNoFull;}
                                         }
 
-                                    console.log("255 A keyword strConNoFull = " + strConNoFull);
+                                    console.log("264 A keyword strConNoFull = " + strConNoFull);
 
                                     stepContext.context.activity.text = strConNoFull;
 
-                                    console.log ("259 SENT stepContext.context.activity.text = " + stepContext.context.activity.text);
+                                    console.log ("268 SENT stepContext.context.activity.text = " + stepContext.context.activity.text);
                                      }
                                }
                           }
                      }
   
-                console.log ("268 str = " + str);
+                console.log ("274 str = " + str);
                     
 
                  if (str != 'start' && !isNaN(str)) ///number
