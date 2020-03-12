@@ -10,8 +10,8 @@ const {
 const { QnACardBuilder } = require('../utils/qnaCardBuilder');
 
 // Default parameters
-const DefaultThreshold = 0;
-const DefaultTopN = 50;
+const DefaultThreshold = 0.99;
+const DefaultTopN = 1;
 const DefaultNoAnswer = 'Answer not found. Please submit "start" to start again, "help" for help or a contract code (e.g., "c1" for Construction 1st Ed 1999). Or submit a clause number (e.g., "4.2") or a keyword (e.g., "agreement") to search the index.';
 
 // Card parameters
