@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
-//"agreement","certificate","clause","condition","contractor","DAB","defect","definition","document","duty","employer","engineer","equipment","failure","force-majeure","insurance","measure","obligation","part","payment","personnel","programme","security","site","subcontract","suspension","taking-over","termination","test","time","value","variation"
+
 const {
     ComponentDialog,
     DialogTurnStatus,
