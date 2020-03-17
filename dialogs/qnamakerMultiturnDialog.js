@@ -230,16 +230,18 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
                                     console.log ("248........");
                                     this._userStringAccessor.stringValue = str;  //store str for advanced search
                                     var tempText = stepContext.context.activity.text;
+                                    console.log ("233 STOP SEARCH stepContext.context.activity.text = " + tempText);
                                     //reset on "Stop advanced search"
                                     if (tempText.indexOf('Stop search',0) != -1)
                                          {
-                                         this._userSearchAccessor.searchType = 'index';
-                                         if (tempText.indexOf('c1',0) != -1){gotContract = 'c1'}
+                                         this._userSearchAccessor.searchType = '';
+                                         this._userProfileAccessor.profileName = 'c1';
+                                         if (tempText.indexOf('[c1]',0) != -1){contractCode = 'c1'}
                                          qnaMakerOptions.scoreThreshold = 0.5;  
                                          qnaMakerOptions.top = 3; 
                                          qnaMakerOptions.strictFilters = null;
                                          //qnaMakerOptions.strictFilters = [{name:'category',value:'prompt'}]
-                                         console.log ("257 RESET AFTER ADVANCED SEARCH"); 
+                                         console.log ("243 RESET AFTER ADVANCED SEARCH - contractCode = " + contractCode); 
                                          }
 
                                     }
