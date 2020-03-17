@@ -6,8 +6,6 @@ const { ActivityHandler, MessageFactory, CardFactory} = require('botbuilder'); /
 
 const welcomeCard = require('../resources/WelcomeCard.json');
 
-const CONVERSATION_DATA_PROPERTY = 'conversationData';
-const USER_PROFILE_PROPERTY = 'userProfile';
 
 class QnAMultiturnBot extends ActivityHandler {
     /**
@@ -26,19 +24,9 @@ class QnAMultiturnBot extends ActivityHandler {
         this.userState = userState;
         this.dialog = dialog;
         this.dialogState = this.conversationState.createProperty('DialogState');
-        
-        this.conversationDataAccessor = conversationState.createProperty(CONVERSATION_DATA_PROPERTY);
-        this.userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY); 
 
         this.onMessage(async (context, next) => {
-            
             console.log('Running dialog with Message Activity.');
-            
-            var util = require('util')
-            console.log("\n38 this.userProfileAccessor  = " + util.inspect(this.userProfileAccessor))
-            
-            console.log ("\n40 JSON.stringify(this.userState) = " + JSON.stringify(this.userState));
-        
 
             // Run the Dialog with the new message Activity.
             await this.dialog.run(context, this.dialogState);
@@ -64,11 +52,15 @@ class QnAMultiturnBot extends ActivityHandler {
 
         welcomeCard.body[3].text = 'Submit "start" or "help" anytime to start again and for help.';
 
-        welcomeCard.body[4].text = 'After selecting a contract, you can display clauses by submitting a clause number or a keyword (keywords search in the index of clauses).';
+        welcomeCard.body[4].text = 'After selecting a contract, General Conditions clauses are displayed by submitting a clause number or a keyword (keywords search in the index of clauses).';
+
+        welcomeCard.body[4].text = 'After selecting a contract, clauses are displayed by submitting a clause number or a keyword.';
+
+        welcomeCard.body[5].text = 'Keywords search the index of clauses, or in the General Conditions when searching is activated.';
 
         welcomeCard.body[5].text = 'Shortcut codes for contracts that can be submitted at any time are:\n- "c1" - Construction Contract 1st Ed 1999\n- "p1" - Plant Contract 1st Ed 1999.';
 
-        welcomeCard.body[5].text = 'The FIDICchatbot is developed by Bricad Associates, Switzerland, as part of the https://FIDIC.tips initiative. It complements the FIDICbot that offers similar functionality and allows full-text searching.';
+        welcomeCard.body[6].text = 'FIDICchatbot is complemented by FIDICbot that suppplies messenging channels (e.g., LINE and Viber) that are not served by FIDICchatbot. Both bots are developed by Bricad Associates, Switzerland, as part of the https://FIDIC.tips initiative.';
 
         welcomeCard.actions[0].title = 'Privacy policy';
 
