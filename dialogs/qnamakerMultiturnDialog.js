@@ -766,11 +766,9 @@ console.log("\n527 Error handling - word not in doc - executes to end");
 
              response.answers[0].answer = combinedAnswers;
 
-             if (profileName.indexOf('c1',0) != -1 || this._userProfileAccessor.profileName.indexOf('c1',0) != -1)
-                 {
-                 response.answers[0].context.prompts[iTotal] = {"displayOrder":0,"qna":null,"displayText":"Stop search [c1]"}
-
-                 }
+             //if (profileName.indexOf('c1',0) != -1 || this._userProfileAccessor.profileName.indexOf('c1',0) != -1)
+                 //{response.answers[0].context.prompts[iTotal] = {"displayOrder":0,"qna":null,"displayText":"Stop search [c1]"}
+                // }
 
              }
         };
