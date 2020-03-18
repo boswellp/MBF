@@ -1,19 +1,11 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+// Copyright (c) Bricasd Associates 2020
 
-//const { ActivityHandler } = require('botbuilder'); //ORIG
-const { ActivityHandler, MessageFactory, CardFactory} = require('botbuilder'); //MINE
+const { ActivityHandler, MessageFactory, CardFactory} = require('botbuilder');
 
 const welcomeCard = require('../resources/WelcomeCard.json');
 
-
 class QnAMultiturnBot extends ActivityHandler {
-    /**
-     *
-     * @param {ConversationState} conversationState
-     * @param {UserState} userState
-     * @param {Dialog} dialog
-     */
+ 
     constructor(conversationState, userState, dialog) {
         super();
         if (!conversationState) throw new Error('[QnAMultiturnBot]: Missing parameter. conversationState is required');
@@ -26,31 +18,24 @@ class QnAMultiturnBot extends ActivityHandler {
         this.dialogState = this.conversationState.createProperty('DialogState');
 
         this.onMessage(async (context, next) => {
-            console.log('Running dialog with Message Activity.');
+            console.log('\nRunning dialog with Message Activity.');
 
-            // Run the Dialog with the new message Activity.
             await this.dialog.run(context, this.dialogState);
-
-            // By calling next() you ensure that the next BotHandler is run.
             await next();
         });
 
-        // If a new user is added to the conversation, send them a greeting message
         this.onMembersAdded(async (context, next) => {
             const membersAdded = context.activity.membersAdded;
             for (let cnt = 0; cnt < membersAdded.length; cnt++) {
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
 
+                   welcomeCard.body[1].text = 'Welcome to FIDICchatbot';
 
-////////////////////////
-
-        welcomeCard.body[1].text = 'Welcome to FIDICchatbot';
-
-        const restartCommand = 'start';
+                   const restartCommand = 'start';
         
-        welcomeCard.body[2].text = 'The chatbot allows you to search FIDIC contracts.';
+                   welcomeCard.body[2].text = 'The chatbot allows you to search FIDIC contracts.';
 
-        welcomeCard.body[3].text = 'Submit "start" or "help" anytime to start again and for help.';
+                   welcomeCard.body[3].text = 'Submit "start" or "help" anytime to start again and for help.';
 
         welcomeCard.body[4].text = 'After selecting a contract, General Conditions clauses are displayed by submitting a clause number or a keyword (keywords search in the index of clauses).';
 
@@ -68,43 +53,30 @@ class QnAMultiturnBot extends ActivityHandler {
 
         await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard)]});
 
-////////////////
+
+                 await context.sendActivity('Welcome to the FIDICchatbot which allows you to search FIDIC contracts'); 
 
 
-
-                    await context.sendActivity('Welcome to the FIDICchatbot which allows you to search FIDIC contracts'); //ORIG
-
-
-                    var reply = MessageFactory.suggestedActions(['start'], 'Please submit "start" to start.'); //MINE
+                 var reply = MessageFactory.suggestedActions(['start'], 'Please submit "start" to start.');
 
 
-                    await context.sendActivity(reply);  //MINE
+                 await context.sendActivity(reply);
 
-                }
+                 }
             }
 
-            // By calling next() you ensure that the next BotHandler is run.
+
             await next();
         });
-
-
-
-
 
 
         this.onDialog(async (context, next) => {
-            // Save any state changes. The load happened during the execution of the Dialog.
+
             await this.conversationState.saveChanges(context, false);
             await this.userState.saveChanges(context, false);
 
-            // By calling next() you ensure that the next BotHandler is run.
             await next();
         });
-
-
-
-
-
 
     }
 }
