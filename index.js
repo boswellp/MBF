@@ -106,6 +106,7 @@ const userState = new UserState(memoryStorage);
 
 ////const luisRecognizer = new FlightBookingRecognizer(luisConfig);
 
+/*
 var endpointHostName = process.env.QnAEndpointHostName;
 if (!endpointHostName.startsWith('https://')) {
     endpointHostName = 'https://' + endpointHostName;
@@ -120,10 +121,12 @@ const qnaService = new QnAMaker({
     endpointKey: process.env.QnAEndpointKey,
     host: endpointHostName
 });
+*/
 
 // Create the main dialog.
 //const dialog = new RootDialog(qnaService); //ORIG
-const dialog = new RootDialog(qnaService, userState); //MINE
+//const dialog = new RootDialog(qnaService, userState); //MINE
+const dialog = new RootDialog(userState); //MINE
 
 // Create the bot's main handler.
 const bot = new QnAMultiturnBot(conversationState, userState, dialog);
