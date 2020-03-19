@@ -1,5 +1,4 @@
 // Copyright (c) Bricad Associates, March 2020
-// Licensed under the MIT License.
 
 /*//express for viber
 const express = require('express')
@@ -78,8 +77,8 @@ adapter.onTurnError = async (context, error) => {
         }
         else
         {
-        await context.sendActivity('The bot encountered an error or bug.');
-        await context.sendActivity('To continue to run this bot, please fix the bot source code.');
+        await context.sendActivity('Sorry. A bug.');
+        await context.sendActivity('Please submit \"start\" to start again.');
         }
     
     /*
