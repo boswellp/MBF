@@ -1,0 +1,11 @@
+{
+    "wordAlterations": [
+        {
+            "alterations": ["contractor","Contractor"]
+        },
+        {
+            "alterations": ["engineer","Engineer"]
+        }
+
+    ]
+}
