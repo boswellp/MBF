@@ -5,6 +5,12 @@
         },
         {
             "alterations": ["engineer","Engineer"]
+        },
+        {
+            "alterations": ["test","Test"]
+        },
+        {
+            "alterations": ["time","Time"]
         }
 
     ]
