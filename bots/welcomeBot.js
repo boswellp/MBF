@@ -80,7 +80,8 @@ this.onMembersAdded(async (context, next) => {
   }
   await next();
 });
-        
+  
+        /*
         ////////
 
         // Sends welcome messages to conversation members when they join the conversation.
@@ -107,6 +108,8 @@ this.onMembersAdded(async (context, next) => {
             // By calling next() you ensure that the next BotHandler is run.
             await next();
         });
+        
+        */
     }
 
     /**
