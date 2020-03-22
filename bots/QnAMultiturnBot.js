@@ -1,4 +1,4 @@
-// Copyright (c) Bricasd Associates 2020
+// Copyright (c) Bricad Associates 2020
 
 const { ActivityHandler, MessageFactory, CardFactory} = require('botbuilder');
 
