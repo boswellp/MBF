@@ -18,7 +18,7 @@ WeChat integration has proved dificult to maintain. SMS (via Twilio) is expensiv
 
 <h4>3.FIDICchatbot</h4>
 
-With Smooch becoming more commercially minded following its takeover by Sunrise, there has been a worry that FIDICbot with its 500 free messages per month will become too exprensive.
+With Smooch becoming more commercially minded following its takeover by Sunrise, there has been a worry that FIDICbot with its 500 free messages per month will become too expensive.
 
 It was therefore decided in early-2020 to relaunch FIDICchatbot using MBF, especially since this would enable Skype to be served as well as WhatsApp via Twilio (although this has not been activated owing to cost considerations during development).
 
