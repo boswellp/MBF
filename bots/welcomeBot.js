@@ -17,6 +17,30 @@ class WelcomeBot extends ActivityHandler {
 
         this.userState = userState;
 
+this.onEvent(async (context, next) => {
+  if (context.activity.name === 'webchat/join') {
+    await context.sendActivity('Back Channel Welcome Message!');
+  }
+  await next();
+});
+
+
+
+
+this.onMembersAdded(async (context, next) => {
+  const { channelId, membersAdded } = context.activity;
+
+  if (channelId !== 'directline' && channelId !== 'webchat') {
+    for (let member of membersAdded) {
+      if (member.id !== context.activity.recipient.id) {
+        await context.sendActivity("WORS LOCAL Welcome Message from `onMembersAdded` handler!");
+      }
+    }
+  }
+  await next();
+});
+
+
 
         this.onMessage(async (context, next) => {
 
@@ -56,28 +80,6 @@ class WelcomeBot extends ActivityHandler {
 
 
 
-this.onEvent(async (context, next) => {
-  if (context.activity.name === 'webchat/join') {
-    await context.sendActivity('Back Channel Welcome Message!');
-  }
-  await next();
-});
-
-
-
-
-this.onMembersAdded(async (context, next) => {
-  const { channelId, membersAdded } = context.activity;
-
-  if (channelId !== 'directline' && channelId !== 'webchat') {
-    for (let member of membersAdded) {
-      if (member.id !== context.activity.recipient.id) {
-        await context.sendActivity("WORS LOCAL Welcome Message from `onMembersAdded` handler!");
-      }
-    }
-  }
-  await next();
-});
 
 
 
@@ -86,6 +88,7 @@ this.onMembersAdded(async (context, next) => {
 
 ////added end
 
+/*
         this.onMembersAdded(async (context, next) => {
             for (const idx in context.activity.membersAdded) {
                 if (context.activity.membersAdded[idx].id !== context.activity.recipient.id) {
@@ -103,6 +106,8 @@ this.onMembersAdded(async (context, next) => {
             // By calling next() you ensure that the next BotHandler is run.
             await next();
         });
+
+*/
 
 
 
