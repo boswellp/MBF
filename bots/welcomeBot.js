@@ -53,7 +53,8 @@ class WelcomeBot extends ActivityHandler {
 
 /////added from https://github.com/microsoft/BotFramework-WebChat/issues/2120#issuecomment-516056614
 
-//WORKS LOCAL
+
+
 
 this.onEvent(async (context, next) => {
   if (context.activity.name === 'webchat/join') {
@@ -62,20 +63,22 @@ this.onEvent(async (context, next) => {
   await next();
 });
 
-/**
+
+
+
 this.onMembersAdded(async (context, next) => {
   const { channelId, membersAdded } = context.activity;
 
   if (channelId !== 'directline' && channelId !== 'webchat') {
     for (let member of membersAdded) {
       if (member.id !== context.activity.recipient.id) {
-        await context.sendActivity("Welcome Message from `onMembersAdded` handler!");
+        await context.sendActivity("WORS LOCAL Welcome Message from `onMembersAdded` handler!");
       }
     }
   }
   await next();
 });
-*/
+
 
 
 ///////added from end
