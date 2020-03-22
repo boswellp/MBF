@@ -24,6 +24,8 @@ const { QnAMaker } = require('botbuilder-ai');
 const { QnAMultiturnBot } = require('./bots/QnAMultiturnBot');
 const { RootDialog } = require('./dialogs/rootDialog');
 
+const { WelcomeBot } = require('./bots/welcomeBot');
+
 
 const ENV_FILE = path.join(__dirname, '.env');
 require('dotenv').config({ path: ENV_FILE });
@@ -119,7 +121,9 @@ const qnaService = new QnAMaker({
 */
 
 const dialog = new RootDialog(userState);
-const bot = new QnAMultiturnBot(conversationState, userState, dialog);
+//const bot = new QnAMultiturnBot(conversationState, userState, dialog);
+
+const bot = new WelcomeBot(conversationState, userState, dialog);
 
 
 server.post('/api/messages', (req, res) => {
