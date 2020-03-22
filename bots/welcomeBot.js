@@ -55,6 +55,33 @@ class WelcomeBot extends ActivityHandler {
             // By calling next() you ensure that the next BotHandler is run.
             await next();
         });
+        
+        /////////////////////ADDED
+        
+        /////added from https://github.com/microsoft/BotFramework-WebChat/issues/2120#issuecomment-516056614
+
+
+this.onEvent(async (context, next) => {
+  if (context.activity.name === 'webchat/join') {
+    await context.sendActivity('Back Channel Welcome Message!');
+  }
+  await next();
+});
+
+this.onMembersAdded(async (context, next) => {
+  const { channelId, membersAdded } = context.activity;
+
+  if (channelId !== 'directline' && channelId !== 'webchat') {
+    for (let member of membersAdded) {
+      if (member.id !== context.activity.recipient.id) {
+        await context.sendActivity("Welcome Message from `onMembersAdded` handler!");
+      }
+    }
+  }
+  await next();
+});
+        
+        ////////
 
         // Sends welcome messages to conversation members when they join the conversation.
         // Messages are only sent to conversation members who aren't the bot.
