@@ -68,6 +68,7 @@ this.onEvent(async (context, next) => {
   await next();
 });
 
+        /*
 this.onMembersAdded(async (context, next) => {
   const { channelId, membersAdded } = context.activity;
 
@@ -80,8 +81,11 @@ this.onMembersAdded(async (context, next) => {
   }
   await next();
 });
+
+*/
+        
   
-        /*
+       
         ////////
 
         // Sends welcome messages to conversation members when they join the conversation.
@@ -109,7 +113,7 @@ this.onMembersAdded(async (context, next) => {
             await next();
         });
         
-        */
+        
     }
 
     /**
