@@ -62,8 +62,6 @@ adapter.onTurnError = async (context, error) => {
     
     console.log("errorTxt = " + errorTxt);
     
-    // Send a trace activity, which will be displayed in Bot Framework Emulator
-    //see https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-handle-user-interrupt?view=azure-bot-service-4.0&tabs=javascript
     await context.sendTraceActivity(
         'OnTurnError Trace',
         `${ error }`,
@@ -77,7 +75,7 @@ adapter.onTurnError = async (context, error) => {
         }
         else
         {
-        await context.sendActivity('Sorry. A bug.');
+        await context.sendActivity('Sorry. Input not understood.');
         await context.sendActivity('Please submit \"start\" to start again.');
         }
     
@@ -93,11 +91,8 @@ adapter.onTurnError = async (context, error) => {
   
 };
 
-// Define the state store for your bot. See https://aka.ms/about-bot-state to learn more about using MemoryStorage.
-// A bot requires a state storage system to persist the dialog and user state between messages.
 const memoryStorage = new MemoryStorage();
 
-// Create conversation and user state with in-memory storage provider.
 const conversationState = new ConversationState(memoryStorage);
 const userState = new UserState(memoryStorage);
 
@@ -123,15 +118,10 @@ const qnaService = new QnAMaker({
 });
 */
 
-// Create the main dialog.
-//const dialog = new RootDialog(qnaService); //ORIG
-//const dialog = new RootDialog(qnaService, userState); //MINE
-const dialog = new RootDialog(userState); //MINE
-
-// Create the bot's main handler.
+const dialog = new RootDialog(userState);
 const bot = new QnAMultiturnBot(conversationState, userState, dialog);
 
-// Listen for incoming requests.
+
 server.post('/api/messages', (req, res) => {
     adapter.processActivity(req, res, async (turnContext) => {
         // Route the message to the bot's main handler.
