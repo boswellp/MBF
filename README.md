@@ -1,6 +1,6 @@
 <h3>FIDICchatbot - MBF version of FIDICbot for Skype</h3>
 
-This MBF version of the FIDICbot chatbot (called FIDICchatbot to distinguish it from FIDICbot, the Smooch version) to access FIDIC works contracts and services agreements. 
+This MBF version of the FIDICbot chatbot (called FIDICchatbot to distinguish it from FIDICbot, the Smooch version) is for accessing FIDIC works contracts and services agreements. 
 
 <h4>1. Historic</h4>
 
