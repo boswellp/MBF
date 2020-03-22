@@ -7,10 +7,25 @@
             "alterations": ["engineer","Engineer"]
         },
         {
+            "alterations": ["client","Client"]
+        },
+        {
+            "alterations": ["owner","Owner"]
+        },
+        {
             "alterations": ["test","Test"]
         },
         {
             "alterations": ["time","Time"]
+        },
+        {
+            "alterations": ["dab","DAB"]
+        },
+        {
+            "alterations": ["daa","DAA"]
+        },
+        {
+            "alterations": ["rules","RULES"]
         }
 
     ]
