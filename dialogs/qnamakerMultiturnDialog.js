@@ -2,7 +2,9 @@
 
 // ver 21mar20
 
-var categoriesAry = ["agreement","certificate","clause","condition","contractor","DAB","defect","definition","document","duty","employer","engineer","equipment","failure","force-majeure","insurance","measure","obligation","part","particular","payment","personnel","programme","security","site","subcontract","suspension","taking-over","termination","test","time","value","variation"];
+//alterations use: qnamaker replace alterations --in wordAlterations.json
+
+var categoriesAry = ["agreement","certificate","clause","condition","contractor","dab","defect","definition","document","duty","employer","engineer","equipment","failure","force-majeure","instruction","insurance","measure","obligation","part","particular","payment","personnel","programme","security","site","subcontract","suspension","taking-over","termination","test","time","value","variation"];
 
 const {
     ComponentDialog,
@@ -590,7 +592,7 @@ const qnaService = new QnAMaker({
 
 //Pass 1 - get categories into an array
 
-               console.log("\n687 .....");
+               console.log("\n593 .....");
 
                var categoryAry = []; 
 
@@ -616,11 +618,11 @@ const qnaService = new QnAMaker({
 
                             if (inAry == false)
                                  {
-                                 console.log("634 i j metadataAry[i][j]= " + i + "; " + j + "; " + JSON.stringify(metadataAry[i][j]));
+                                 console.log("619 i j metadataAry[i][j]= " + i + "; " + j + "; " + JSON.stringify(metadataAry[i][j]));
 
                                  if (metadataAry[i][j].name == 'category'){
                                       categoryAry.push(metadataAry[i][j].value);
-                                      console.log("717 value ........ = " + metadataAry[i][j].value)
+                                      console.log("623 value ........ = " + metadataAry[i][j].value)
                                       }
                                  } //if
                             } //if
@@ -642,7 +644,7 @@ const qnaService = new QnAMaker({
 
                if (categoryAry.length == 0)
                     {
-                    console.log("\n749 In categoryAry.length = " + categoryAry.length);
+                    console.log("\n645 In categoryAry.length = " + categoryAry.length);
                     for (var i = 0; i < 20; i++) 
                         {
                         delete response.answers[0].context.prompts[i];
@@ -664,7 +666,7 @@ const qnaService = new QnAMaker({
 
                          response.answers[0].context.prompts[i] = answerPrompt;
 
-                         console.log("\n771 answerPrompt(categoryAry.length>0) = " + JSON.stringify(answerPrompt));
+                         console.log("\n667 answerPrompt(categoryAry.length>0) = " + JSON.stringify(answerPrompt));
 
                          } //end for
 
@@ -672,10 +674,10 @@ const qnaService = new QnAMaker({
 
                } //if
 
-         console.log("\n779 META + PROMPTS response.answers[0].context = " + JSON.stringify(response.answers[0].context));
+         console.log("\n675 META + PROMPTS response.answers[0].context = " + JSON.stringify(response.answers[0].context));
          //console.log("\n702 META + PROMPTS response = " + JSON.stringify(response));
 
-         console.log("\n782 END PASS 1");
+         console.log("\n678 END PASS 1");
 
 
 
@@ -689,9 +691,9 @@ const qnaService = new QnAMaker({
 
            if (this._userSearchAccessor.searchType == "advanced1")  
                {
-               console.log("\n794 PASS 2 advanced1 this._userSearchAccessor.searchType = " + this._userSearchAccessor.searchType)
+               console.log("\n692 PASS 2 advanced1 this._userSearchAccessor.searchType = " + this._userSearchAccessor.searchType)
 
-            console.log("\n796 START EXPANSION response.answers[0].context = \n" + JSON.stringify(response.answers[0].context))
+               console.log("\n694 START EXPANSION response.answers[0].context = \n" + JSON.stringify(response.answers[0].context))
 
                for (var iTotal = 0; iTotal < 50; iTotal++) {  //find number of answers to run in reverse
                   if (response.answers[iTotal] == undefined)
@@ -699,7 +701,7 @@ const qnaService = new QnAMaker({
                       break
                       }}
 
-               console.log("\n726 iTotal = " + iTotal)
+               console.log("\n702 iTotal = " + iTotal)
 
 
                var answerTitle, posnTitle, combinedAnswers = ''; 
@@ -718,7 +720,7 @@ const qnaService = new QnAMaker({
 
                      combinedAnswers = answerTitle + combinedAnswers;
                      
-                     console.log("820 i, combinedAnswers = " + i + " ; "  + JSON.stringify(combinedAnswers))
+                     console.log("721 i, combinedAnswers = " + i + " ; "  + JSON.stringify(combinedAnswers))
 
                      var answerId = response.answers[i].id;
 
@@ -738,7 +740,7 @@ const qnaService = new QnAMaker({
 
                      var iCount = iTotal-1-i;
 
-                     console.log("\n840 iCount, answerPrompt = " + iCount + " ; "  + JSON.stringify(answerPrompt))
+                     console.log("\n741 iCount, answerPrompt = " + iCount + " ; "  + JSON.stringify(answerPrompt))
 
                      response.answers[0].context.prompts[iCount] = answerPrompt;
 
@@ -763,9 +765,9 @@ const qnaService = new QnAMaker({
                    response.answers[0].context.prompts[iTotal + 1] = {displayOrder:1,qna:null,displayText:'Stop search [' + conTemp +']'};
                    }
 
-             console.log("\n855 END EXPANSION response.answers[0].answer = \n" + JSON.stringify(response.answers[0].answer))
+             console.log("\n766 END EXPANSION response.answers[0].answer = \n" + JSON.stringify(response.answers[0].answer))
 
-             console.log("\n857 END EXPANSION response.answers[0].context = \n" + JSON.stringify(response.answers[0].context))
+             console.log("\n768 END EXPANSION response.answers[0].context = \n" + JSON.stringify(response.answers[0].context))
 
              }
 
@@ -774,7 +776,7 @@ const qnaService = new QnAMaker({
 
 //End combine clauses for advanced search
 
-        console.log("\n862 After processing ..");
+        console.log("\n777 After processing ..");
 
         dialogOptions[PreviousQnAId] = -1;
         stepContext.activeDialog.state.options = dialogOptions;
@@ -784,7 +786,7 @@ const qnaService = new QnAMaker({
              response.answers[0].answer = 'Search active\n\n' + response.answers[0].answer;
              }
 
-        console.log("\n872dialogOptions = " + JSON.stringify(dialogOptions));
+        console.log("\n787 dialogOptions = " + JSON.stringify(dialogOptions));
 
         stepContext.values[QnAData] = response.answers;
 
