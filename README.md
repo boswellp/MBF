@@ -26,5 +26,5 @@ In developing FIDICchatbot using MBF version 4, the aim is to maintain all the f
 
 The FIDIC contracts are being uploaded progessively (to QnAMaker) while debugging and development continues. Further details of the implementation will be made available.
 
-<emphasis>Updated March 2020</emphasis>
+Updated March 2020
 
