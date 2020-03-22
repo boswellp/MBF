@@ -16,7 +16,7 @@ class WelcomeBot extends ActivityHandler {
         this.welcomedUserProperty = userState.createProperty(WELCOMED_USER);
 
         this.userState = userState;
-
+/*
         this.onMessage(async (context, next) => {
             // Read UserState. If the 'DidBotWelcomedUser' does not exist (first time ever for a user)
             // set the default to false.
@@ -55,7 +55,7 @@ class WelcomeBot extends ActivityHandler {
             // By calling next() you ensure that the next BotHandler is run.
             await next();
         });
-        
+*/        
         /////////////////////ADDED
         
         /////added from https://github.com/microsoft/BotFramework-WebChat/issues/2120#issuecomment-516056614
