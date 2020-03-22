@@ -24,7 +24,7 @@ It was therefore decided in early-2020 to relaunch FIDICchatbot using MBF, espec
 
 In developing FIDICchatbot using MBF version 4, the aim is to maintain all the features offered by FIDICbot, especially advanced searching of the FIDIC contracts and guides.
 
-The FIDIC contracts are being upladed progessively while debugging and development continues.
+The FIDIC contracts are being uploaded progessively (to QnAMaker) while debugging and development continues. Further details of the implementation will be made available.
 
 <emphasis>Updated March 2020</emphasis>
 
