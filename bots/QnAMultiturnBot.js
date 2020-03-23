@@ -39,16 +39,15 @@ class QnAMultiturnBot extends ActivityHandler {
             // Your bot should proactively send a welcome message to a personal chat the first time
             // (and only the first time) a user initiates a personal chat with your bot.
             if (didBotWelcomedUser === false) {
-                // The channel should send the user name in the 'From' object
-                const userName = context.activity.from.name;
-                await context.sendActivity('You are seeing this message because this was your first message ever sent to this bot.');
-                await context.sendActivity(`It is a good practice to welcome the user and provide personal greeting. For example, welcome ${ userName }.`);
 
-                // Set the flag indicating the bot handled the user's first message.
+
+                await context.sendActivity('You are seeing this message because this was your first message ever sent to this bot. It is a good practice to welcome the user and provide personal greeting.');
+
+
                 await this.welcomedUserProperty.set(context, true);
             } else {
-                // This example uses an exact match on user's input utterance.
-                // Consider using LUIS or QnA for Natural Language Processing.
+
+/*
                 const text = context.activity.text.toLowerCase();
                 switch (text) {
                 case 'hello':
@@ -64,9 +63,10 @@ class QnAMultiturnBot extends ActivityHandler {
                                                     see the introduction card. If you are running this bot in the Bot
                                                     Framework Emulator, press the 'Start Over' button to simulate user joining a bot or a channel`);
                 }
+*/
+
             }
 
-            // By calling next() you ensure that the next BotHandler is run.
             await next();
         });
 
