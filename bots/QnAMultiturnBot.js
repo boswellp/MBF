@@ -17,7 +17,8 @@ class QnAMultiturnBot extends ActivityHandler {
         this.dialog = dialog;
         this.dialogState = this.conversationState.createProperty('DialogState');
 
-/*//////added 
+/*
+//////added 
      
    this.onMembersAdded(async (context, next) => {
     if (context.activity.name === 'webchat/join') {
