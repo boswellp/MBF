@@ -64,7 +64,7 @@ class QnAMultiturnBot extends ActivityHandler {
                  await context.sendActivity(reply);
 //end ORIG 
  */    
-                 await context.sendActivity('End of FF111111111111111 WelcomeBot 22222222You are seeing this message because this was your first message ever sent.');
+                 await context.sendActivity('didBotWelcomedUser === false. Opens in Messenger after clean out. End of FF111111111111111 WelcomeBot 22222222You are seeing this message because this was your first message ever sent.');
                  await context.sendActivity(`It is a good practice to welcome the user.`);
                  await this.welcomedUserProperty.set(context, true); //added
                
@@ -81,7 +81,7 @@ class QnAMultiturnBot extends ActivityHandler {
                     await this.sendIntroCard(context);
                     break;
                 default:
-                    await context.sendActivity(`WelcomeBot11111 PUT CARD HER ......Messenger starts here after delete. didBotWelcomeUser = true. This is a simple Welcome Bot sample. You can say 'intro' to see the introduction card.`);
+                    await context.sendActivity(`didBotWelcomedUser === true. WelcomeBot11111 PUT CARD HERE== ...... This is a simple Welcome Bot sample. You can say 'intro' to see the introduction card.`);
                 }
             }
 
