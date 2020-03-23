@@ -21,7 +21,8 @@ const restify = require('restify');
 const { BotFrameworkAdapter, ConversationState, MemoryStorage, UserState } = require('botbuilder');
 const { QnAMaker } = require('botbuilder-ai');
 
-const { QnAMultiturnBot } = require('./bots/QnAMultiturnBot');
+const { WelcomeBot } = require('./bots/welcomeBot');
+//const { QnAMultiturnBot } = require('./bots/QnAMultiturnBot');
 const { RootDialog } = require('./dialogs/rootDialog');
 
 //const { WelcomeBot } = require('./bots/welcomeBot');
