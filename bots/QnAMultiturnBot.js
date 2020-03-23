@@ -81,7 +81,7 @@ class QnAMultiturnBot extends ActivityHandler {
                     await this.sendIntroCard(context);
                     break;
                 default:
-                    await context.sendActivity(`WelcomeBot11111 PUT CARD HER ......This is a simple Welcome Bot sample. You can say 'intro' to see the introduction card. If you are running this bot in the Bot Framework Emulator, press the 'Start Over' button to simulate user joining a bot or a channel`);
+                    await context.sendActivity(`WelcomeBot11111 PUT CARD HER ......Messenger starts here after delete. didBotWelcomeUser = true. This is a simple Welcome Bot sample. You can say 'intro' to see the introduction card.`);
                 }
             }
 
@@ -108,7 +108,7 @@ class QnAMultiturnBot extends ActivityHandler {
         this.onMessage(async (context, next) => {
             console.log('\nRunning dialog with Message Activity.');
             await this.dialog.run(context, this.dialogState); 
-            await next();
+            //await next();
         });
 
  //end ORIG
