@@ -4,7 +4,7 @@ const { ActivityHandler, MessageFactory, CardFactory} = require('botbuilder');
 
 const welcomeCard = require('../resources/WelcomeCard.json');
 
-const WELCOMED_USER = 'welcomedUserProperty';
+const WELCOMED_USER = 'welcomedUserProperty'; //ADDED
 
 class QnAMultiturnBot extends ActivityHandler {
  
@@ -18,22 +18,29 @@ class QnAMultiturnBot extends ActivityHandler {
         this.userState = userState;
         this.dialog = dialog;
         this.dialogState = this.conversationState.createProperty('DialogState');
-        this.welcomedUserProperty = userState.createProperty(WELCOMED_USER);  //added
 
-     
-        //this.onMembersAdded(async (context, next) => { //orig
+        this.welcomedUserProperty = userState.createProperty(WELCOMED_USER); //ADDED
+
+
+
         this.onMessage(async (context, next) => {
-         
-           //const membersAdded = context.activity.membersAdded; //orig
-            const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
-         
-          //for (let cnt = 0; cnt < membersAdded.length; cnt++) { //orig
-              //if (membersAdded[cnt].id !== context.activity.recipient.id) { //orig
-              if (didBotWelcomedUser === false) {
+            console.log('\nRunning dialog with Message Activity.');
+            await this.dialog.run(context, this.dialogState);
+            await next();
 
-/* 
-//ORIG
-                 welcomeCard.body[1].text = 'FF22222222222 Welcome to FIDICchatbot';
+
+
+
+        });
+
+
+        this.onMembersAdded(async (context, next) => { //orig
+    
+           const membersAdded = context.activity.membersAdded; //orig     
+           for (let cnt = 0; cnt < membersAdded.length; cnt++) { //orig
+              if (membersAdded[cnt].id !== context.activity.recipient.id) { //orig
+
+                 welcomeCard.body[1].text = 'Welcome to FIDICchatbot';
 
                  const restartCommand = 'start';
         
@@ -62,55 +69,17 @@ class QnAMultiturnBot extends ActivityHandler {
                  var reply = MessageFactory.suggestedActions(['start'], 'Please submit "start" to start.');
 
                  await context.sendActivity(reply);
-//end ORIG 
- */    
-                 await context.sendActivity('WELCOME 1111111: didBotWelcomedUser === false. First message ever sent.');
-                 await context.sendActivity(`It is a good practice to welcome the user.`);
-                 await this.welcomedUserProperty.set(context, true); //added
-               
-            } else {
-             
-                const text = context.activity.text.toLowerCase();
-                switch (text) {
-                case 'hello':
-                case 'hi':
-                    await context.sendActivity(`You said "${ context.activity.text }"`);
-                    break;
-                case 'intro':
-                case 'help':
-                    await this.sendIntroCard(context);
-                    break;
-                default:
-                    await context.sendActivity(`WELCOME 222222: didBotWelcomedUser === true. Simple Welcome Bot sample. You can say 'intro' to see the introduction card.`);
-                }
+
+                 }
             }
 
             await next();
-        });
-     
-///added from welcomeBot
-     
-     this.onMembersAdded(async (context, next) => {
-            for (const idx in context.activity.membersAdded) {
-                if (context.activity.membersAdded[idx].id !== context.activity.recipient.id) {
-                    await context.sendActivity('WELCOME 3333333: Seeing this message because the bot received at least one event. This bot will introduce.');
-                    await context.sendActivity('Good pattern to use this event to send general greeting, explaining what your bot can do. ' + 'In this example, the bot handles \'hello\', \'hi\', \'help\' and \'intro\'. ' + 'Try it now, type \'hi\'');
-                }
-            }
-      
-            await next();
-        });
-     
- ///end added from welcomeBot  
-     
-//ORIG    
-        this.onMessage(async (context, next) => {
-            console.log('\nRunning dialog with Message Activity.');
-            await this.dialog.run(context, this.dialogState); 
-            await next();
-        });
 
- //end ORIG
+
+
+
+
+        });
 
         this.onDialog(async (context, next) => {
 
@@ -124,4 +93,3 @@ class QnAMultiturnBot extends ActivityHandler {
 }
 
 module.exports.QnAMultiturnBot = QnAMultiturnBot;
-
