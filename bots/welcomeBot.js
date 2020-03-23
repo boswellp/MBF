@@ -17,6 +17,7 @@ class WelcomeBot extends ActivityHandler {
 
         this.userState = userState;
 
+/*
 this.onEvent(async (context, next) => {
   if (context.activity.name === 'webchat/join') {
     await context.sendActivity('Back Channel Welcome Message!');
@@ -24,7 +25,7 @@ this.onEvent(async (context, next) => {
   await next();
 });
 
-
+*/
 
 
 this.onMembersAdded(async (context, next) => {
@@ -40,7 +41,7 @@ this.onMembersAdded(async (context, next) => {
   await next();
 });
 
-
+/*
 
         this.onMessage(async (context, next) => {
 
@@ -72,7 +73,8 @@ this.onMembersAdded(async (context, next) => {
 
             await next();
         });
-
+*/
+        
 
 
 /////added from https://github.com/microsoft/BotFramework-WebChat/issues/2120#issuecomment-516056614
