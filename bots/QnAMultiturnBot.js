@@ -17,18 +17,33 @@ class QnAMultiturnBot extends ActivityHandler {
         this.dialog = dialog;
         this.dialogState = this.conversationState.createProperty('DialogState');
 
+/*//////added 
+     
+   this.onMembersAdded(async (context, next) => {
+    if (context.activity.name === 'webchat/join') {
+    await context.sendActivity('Back Channel Welcome Message!');
+    //await context.sendActivity(`Got event, your language is `);
+  }
+  await next();
+});
+//////added end
+*/
+     
         this.onMessage(async (context, next) => {
             console.log('\nRunning dialog with Message Activity.');
-
-            await this.dialog.run(context, this.dialogState);
+            await this.dialog.run(context, this.dialogState); 
             await next();
         });
 
         this.onMembersAdded(async (context, next) => {
-         console.log('28 context.activity = ' + context.activity)
-            const membersAdded = context.activity.membersAdded;
-            for (let cnt = 0; cnt < membersAdded.length; cnt++) {
-               if (membersAdded[cnt].id !== context.activity.recipient.id) {
+         
+         console.log('28 context.activity = ' + JSON.stringify(context.activity))
+         
+         if (context.activity.name === 'webchat/join') {//added
+          
+            //const membersAdded = context.activity.membersAdded;
+            //for (let cnt = 0; cnt < membersAdded.length; cnt++) {
+            //   if (membersAdded[cnt].id !== context.activity.recipient.id) {
 
                  welcomeCard.body[1].text = 'Welcome to FIDICchatbot';
 
@@ -61,7 +76,7 @@ class QnAMultiturnBot extends ActivityHandler {
                  await context.sendActivity(reply);
 
                  }
-            }
+           // }
 
             await next();
         });
