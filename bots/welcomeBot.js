@@ -18,16 +18,7 @@ class WelcomeBot extends ActivityHandler {
         this.userState = userState;
 
         
-  this.onMembersAdded(async (context, next) => {
-  const { membersAdded } = context.activity;
-
-  for (let member of membersAdded) {
-    if (member.id !== context.activity.recipient.id) {
-      await context.sendActivity("Welcome Message from `onMembersAdded` handler!");
-    }
-  }
-  await next();
-});
+  
         
 /*
 //method 2
@@ -53,9 +44,9 @@ this.onMembersAdded(async (context, next) => {
   await next();
 });
         
-/*
+*/
 
-/*
+
 
         this.onMessage(async (context, next) => {
 
@@ -87,7 +78,20 @@ this.onMembersAdded(async (context, next) => {
 
             await next();
         });
-*/
+
+        
+  this.onMembersAdded(async (context, next) => {
+  const { membersAdded } = context.activity;
+
+  for (let member of membersAdded) {
+    if (member.id !== context.activity.recipient.id) {
+      await context.sendActivity("Welcome Message from `onMembersAdded` handler!");
+    }
+  }
+  await next();
+});
+        
+/*
         
 
 
