@@ -78,8 +78,6 @@ adapter.onTurnError = async (context, error) => {
         }
         else
         {
-        await context.sendActivity('Sorry. Input not understood.');
-        await context.sendActivity('Please submit \"start\" to start again.');
         var reply = MessageFactory.suggestedActions(['start'], 'Please submit "start" to start.');
         await context.sendActivity(reply);
         }
