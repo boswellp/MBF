@@ -21,12 +21,13 @@ class QnAMultiturnBot extends ActivityHandler {
         this.welcomedUserProperty = userState.createProperty(WELCOMED_USER);  //added
 
 
-    
+/* //ORIG    
         this.onMessage(async (context, next) => {
             console.log('\nRunning dialog with Message Activity.');
             await this.dialog.run(context, this.dialogState); 
             await next();
         });
+*/
 
      
         //this.onMembersAdded(async (context, next) => { //orig
@@ -91,7 +92,7 @@ class QnAMultiturnBot extends ActivityHandler {
             await next();
         });
      
-///end added from welcomeBot
+///added from welcomeBot
      
      this.onMembersAdded(async (context, next) => {
             for (const idx in context.activity.membersAdded) {
