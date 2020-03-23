@@ -18,7 +18,7 @@ const winston = require('winston');
 const path = require('path');
 const restify = require('restify');
 
-const { BotFrameworkAdapter, ConversationState, MemoryStorage, UserState } = require('botbuilder');
+const { MessageFactory, BotFrameworkAdapter, ConversationState, MemoryStorage, UserState } = require('botbuilder');
 const { QnAMaker } = require('botbuilder-ai');
 
 const { WelcomeBot } = require('./bots/welcomeBot');
@@ -80,6 +80,8 @@ adapter.onTurnError = async (context, error) => {
         {
         await context.sendActivity('Sorry. Input not understood.');
         await context.sendActivity('Please submit \"start\" to start again.');
+        var reply = MessageFactory.suggestedActions(['start'], 'Please submit "start" to start.');
+        await context.sendActivity(reply);
         }
     
     /*
