@@ -20,15 +20,6 @@ class QnAMultiturnBot extends ActivityHandler {
         this.dialogState = this.conversationState.createProperty('DialogState');
         this.welcomedUserProperty = userState.createProperty(WELCOMED_USER);  //added
 
-
-/* //ORIG    
-        this.onMessage(async (context, next) => {
-            console.log('\nRunning dialog with Message Activity.');
-            await this.dialog.run(context, this.dialogState); 
-            await next();
-        });
-*/
-
      
         //this.onMembersAdded(async (context, next) => { //orig
         this.onMessage(async (context, next) => {
@@ -73,7 +64,7 @@ class QnAMultiturnBot extends ActivityHandler {
                  await context.sendActivity(reply);
 //end ORIG 
  */    
-                 await context.sendActivity('You are seeing this message because this was your first message ever sent.');
+                 await context.sendActivity('End of FF111111111111111 WelcomeBot 22222222You are seeing this message because this was your first message ever sent.');
                  await context.sendActivity(`It is a good practice to welcome the user.`);
                  await this.welcomedUserProperty.set(context, true); //added
                
@@ -111,7 +102,16 @@ class QnAMultiturnBot extends ActivityHandler {
             await next();
         });
      
- ///end added from welcomeBot    
+ ///end added from welcomeBot  
+     
+//ORIG    
+        this.onMessage(async (context, next) => {
+            console.log('\nRunning dialog with Message Activity.');
+            await this.dialog.run(context, this.dialogState); 
+            await next();
+        });
+
+ //end ORIG
 
         this.onDialog(async (context, next) => {
 
