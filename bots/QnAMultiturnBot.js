@@ -17,7 +17,7 @@ class QnAMultiturnBot extends ActivityHandler {
         this.dialog = dialog;
         this.dialogState = this.conversationState.createProperty('DialogState');
 
-/*
+
 //////added 
      
    this.onMembersAdded(async (context, next) => {
@@ -28,7 +28,7 @@ class QnAMultiturnBot extends ActivityHandler {
   await next();
 });
 //////added end
-*/
+
      
         this.onMessage(async (context, next) => {
             console.log('\nRunning dialog with Message Activity.');
