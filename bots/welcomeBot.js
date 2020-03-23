@@ -20,7 +20,7 @@ class WelcomeBot extends ActivityHandler {
         
   
         
-/*
+
 //method 2
 
 this.onEvent(async (context, next) => {
@@ -30,7 +30,7 @@ this.onEvent(async (context, next) => {
   await next();
 });
 
-
+/*
 this.onMembersAdded(async (context, next) => {
   const { channelId, membersAdded } = context.activity;
 
