@@ -64,7 +64,7 @@ class QnAMultiturnBot extends ActivityHandler {
                  await context.sendActivity(reply);
 //end ORIG 
  */    
-                 await context.sendActivity('didBotWelcomedUser === false. Opens in Messenger after clean out. End of FF111111111111111 WelcomeBot 22222222You are seeing this message because this was your first message ever sent.');
+                 await context.sendActivity('WELCOME 1111111: didBotWelcomedUser === false. First message ever sent.');
                  await context.sendActivity(`It is a good practice to welcome the user.`);
                  await this.welcomedUserProperty.set(context, true); //added
                
@@ -81,7 +81,7 @@ class QnAMultiturnBot extends ActivityHandler {
                     await this.sendIntroCard(context);
                     break;
                 default:
-                    await context.sendActivity(`didBotWelcomedUser === true. WelcomeBot11111 PUT CARD HERE== ...... This is a simple Welcome Bot sample. You can say 'intro' to see the introduction card.`);
+                    await context.sendActivity(`WELCOME 222222: didBotWelcomedUser === true. Simple Welcome Bot sample. You can say 'intro' to see the introduction card.`);
                 }
             }
 
@@ -93,8 +93,7 @@ class QnAMultiturnBot extends ActivityHandler {
      this.onMembersAdded(async (context, next) => {
             for (const idx in context.activity.membersAdded) {
                 if (context.activity.membersAdded[idx].id !== context.activity.recipient.id) {
-                    await context.sendActivity('FF111111111111111 WelcomeBot 22222222 Welcome to the WELCOME Bot. This bot will introduce');
-                    await context.sendActivity('Seeing this message because the bot received at least one event.');
+                    await context.sendActivity('WELCOME 3333333: Seeing this message because the bot received at least one event. This bot will introduce.');
                     await context.sendActivity('Good pattern to use this event to send general greeting, explaining what your bot can do. ' + 'In this example, the bot handles \'hello\', \'hi\', \'help\' and \'intro\'. ' + 'Try it now, type \'hi\'');
                 }
             }
@@ -108,7 +107,7 @@ class QnAMultiturnBot extends ActivityHandler {
         this.onMessage(async (context, next) => {
             console.log('\nRunning dialog with Message Activity.');
             await this.dialog.run(context, this.dialogState); 
-            //await next();
+            await next();
         });
 
  //end ORIG
