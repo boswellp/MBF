@@ -24,7 +24,7 @@ class WelcomeBot extends ActivityHandler {
 this.onEvent(async (context, next) => {
   if (context.activity.name === 'webchat/join') {
     await context.sendActivity('Back Channel Welcome Message!');
-    await context.sendActivity(`Got event, your language is `);
+    //await context.sendActivity(`Got event, your language is `);
   }
   await next();
 });
@@ -78,28 +78,30 @@ this.onMembersAdded(async (context, next) => {
             await next();
         });
 
-        
+  /*      
   this.onMembersAdded(async (context, next) => {
   const { membersAdded } = context.activity;
 
   for (let member of membersAdded) {
     if (member.id !== context.activity.recipient.id) {
-      await context.sendActivity("Welcome Message from `onMembersAdded` handler!");
+      await context.sendActivity("WORKS TO SOME EXTENTWelcome Message from `onMembersAdded` handler!");
     }
   }
   await next();
 });
         
-/*
+*/
         
+  this.onMembersAdded(async (context, next) => {
+  if (context.activity.name === 'webchat/join') {
+    await context.sendActivity('Back Channel Welcome Message!');
+    //await context.sendActivity(`Got event, your language is `);
+  }
+  await next();
+});      
 
-
+/*
 /////added from https://github.com/microsoft/BotFramework-WebChat/issues/2120#issuecomment-516056614
-
-
-
-
-
 
 
 ///////added from end
@@ -107,7 +109,7 @@ this.onMembersAdded(async (context, next) => {
 
 ////added end
 
-/*
+
         this.onMembersAdded(async (context, next) => {
             for (const idx in context.activity.membersAdded) {
                 if (context.activity.membersAdded[idx].id !== context.activity.recipient.id) {
