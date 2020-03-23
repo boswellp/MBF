@@ -20,7 +20,7 @@ class WelcomeBot extends ActivityHandler {
                  
 //webchat start
 //method 2
-
+/*
 this.onEvent(async (context, next) => {
   if (context.activity.name === 'webchat/join') {
     await context.sendActivity('Back Channel Welcome Message!');
@@ -28,8 +28,8 @@ this.onEvent(async (context, next) => {
   }
   await next();
 });
+*/
 
-/*
 this.onMembersAdded(async (context, next) => {
   const { channelId, membersAdded } = context.activity;
 
@@ -43,9 +43,8 @@ this.onMembersAdded(async (context, next) => {
   await next();
 });
         
-*/
 
-
+ /* 
 
         this.onMessage(async (context, next) => {
 
@@ -78,7 +77,7 @@ this.onMembersAdded(async (context, next) => {
             await next();
         });
 
-  /*      
+      
   this.onMembersAdded(async (context, next) => {
   const { membersAdded } = context.activity;
 
@@ -89,9 +88,7 @@ this.onMembersAdded(async (context, next) => {
   }
   await next();
 });
-        
-*/
-        
+              
   this.onMembersAdded(async (context, next) => {
   if (context.activity.name === 'webchat/join') {
     await context.sendActivity('Back Channel Welcome Message!');
@@ -99,16 +96,6 @@ this.onMembersAdded(async (context, next) => {
   }
   await next();
 });      
-
-/*
-/////added from https://github.com/microsoft/BotFramework-WebChat/issues/2120#issuecomment-516056614
-
-
-///////added from end
-
-
-////added end
-
 
         this.onMembersAdded(async (context, next) => {
             for (const idx in context.activity.membersAdded) {
