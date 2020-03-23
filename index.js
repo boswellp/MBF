@@ -121,9 +121,9 @@ const qnaService = new QnAMaker({
 */
 
 const dialog = new RootDialog(userState);
-const bot = new QnAMultiturnBot(conversationState, userState, dialog);
 
-//const bot = new WelcomeBot(conversationState, userState, dialog);
+//const bot = new QnAMultiturnBot(conversationState, userState, dialog);
+const bot = new WelcomeBot(conversationState, userState, dialog);
 
 
 server.post('/api/messages', (req, res) => {
