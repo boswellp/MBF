@@ -25,6 +25,7 @@ class QnAMultiturnBot extends ActivityHandler {
         });
 
         this.onMembersAdded(async (context, next) => {
+         console.log('28 context.activity = ' + context.activity)
             const membersAdded = context.activity.membersAdded;
             for (let cnt = 0; cnt < membersAdded.length; cnt++) {
                if (membersAdded[cnt].id !== context.activity.recipient.id) {
