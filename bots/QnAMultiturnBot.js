@@ -41,7 +41,8 @@ class QnAMultiturnBot extends ActivityHandler {
             if (didBotWelcomedUser === false) {
 
 
-                await context.sendActivity('You are seeing this message because this was your first message ever sent to this bot. It is a good practice to welcome the user and provide personal greeting.');
+                await context.sendActivity('Before selecting a contract for the first time, please see how the FIDICchatbot works.');
+                await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard)]});
 
 
                 await this.welcomedUserProperty.set(context, true);
