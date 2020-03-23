@@ -97,6 +97,7 @@ this.onMembersAdded(async (context, next) => {
 
 */
         this.onMembersAdded(async (context, next) => {
+            console.log("100 context.activity = " + context.activity)
             if (context.activity.name === 'webchat/join') {
             //for (const idx in context.activity.membersAdded) {
                 //if (context.activity.membersAdded[idx].id !== context.activity.recipient.id) {
