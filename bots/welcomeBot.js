@@ -97,8 +97,9 @@ this.onMembersAdded(async (context, next) => {
 
 */
         this.onMembersAdded(async (context, next) => {
-            for (const idx in context.activity.membersAdded) {
-                if (context.activity.membersAdded[idx].id !== context.activity.recipient.id) {
+            if (context.activity.name === 'webchat/join') {
+            //for (const idx in context.activity.membersAdded) {
+                //if (context.activity.membersAdded[idx].id !== context.activity.recipient.id) {
                     await context.sendActivity('onMembersAdded LONG Welcome to the \'Welcome User\' FIDICchatbot. This bot will introduce you to welcoming and greeting users.');
                     await context.sendActivity("You are seeing this message because the bot received at least one 'ConversationUpdate' " +
                         'event, indicating you (and possibly others) joined the conversation. If you are using the emulator, ' +
@@ -107,7 +108,7 @@ this.onMembersAdded(async (context, next) => {
                     await context.sendActivity('It is a good pattern to use this event to send general greeting to user, explaining what your bot can do. ' +
                         'In this example, the bot handles \'hello\', \'hi\', \'help\' and \'intro\'. ' +
                         'Try it now, type \'hi\'');
-                }
+               // }
             }
 
             // By calling next() you ensure that the next BotHandler is run.
