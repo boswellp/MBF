@@ -17,8 +17,10 @@ class WelcomeBot extends ActivityHandler {
 
         this.userState = userState;
 
-        
-  
+//webchat start        
+  if (context.activity.name === 'webchat/join') {
+  await context.sendActivity(`Got \`webchat/join\` event, your language is \`${ (context.activity.value || {}).language }\``);
+}
         
 
 //method 2
