@@ -28,7 +28,7 @@ this.onEvent(async (context, next) => {
   }
   await next();
 });
-*/
+
 
 this.onMembersAdded(async (context, next) => {
   const { channelId, membersAdded } = context.activity;
@@ -43,8 +43,6 @@ this.onMembersAdded(async (context, next) => {
   await next();
 });
         
-
- /* 
 
         this.onMessage(async (context, next) => {
 
@@ -97,6 +95,7 @@ this.onMembersAdded(async (context, next) => {
   await next();
 });      
 
+*/
         this.onMembersAdded(async (context, next) => {
             for (const idx in context.activity.membersAdded) {
                 if (context.activity.membersAdded[idx].id !== context.activity.recipient.id) {
@@ -115,7 +114,7 @@ this.onMembersAdded(async (context, next) => {
             await next();
         });
 
-*/
+
 
 
 
