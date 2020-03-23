@@ -21,8 +21,8 @@ const restify = require('restify');
 const { MessageFactory, BotFrameworkAdapter, ConversationState, MemoryStorage, UserState } = require('botbuilder');
 const { QnAMaker } = require('botbuilder-ai');
 
-const { WelcomeBot } = require('./bots/welcomeBot');
-//const { QnAMultiturnBot } = require('./bots/QnAMultiturnBot');
+
+const { QnAMultiturnBot } = require('./bots/QnAMultiturnBot');
 const { RootDialog } = require('./dialogs/rootDialog');
 
 //const { WelcomeBot } = require('./bots/welcomeBot');
@@ -123,8 +123,8 @@ const qnaService = new QnAMaker({
 
 const dialog = new RootDialog(userState);
 
-//const bot = new QnAMultiturnBot(conversationState, userState, dialog);
-const bot = new WelcomeBot(conversationState, userState, dialog);
+const bot = new QnAMultiturnBot(conversationState, userState, dialog);
+//const bot = new WelcomeBot(conversationState, userState, dialog);
 
 
 server.post('/api/messages', (req, res) => {
