@@ -4,6 +4,8 @@ const { ActivityHandler, MessageFactory, CardFactory} = require('botbuilder');
 
 const welcomeCard = require('../resources/WelcomeCard.json');
 
+const WELCOMED_USER = 'welcomedUserProperty';
+
 class QnAMultiturnBot extends ActivityHandler {
  
     constructor(conversationState, userState, dialog) {
@@ -16,36 +18,25 @@ class QnAMultiturnBot extends ActivityHandler {
         this.userState = userState;
         this.dialog = dialog;
         this.dialogState = this.conversationState.createProperty('DialogState');
+        this.welcomedUserProperty = userState.createProperty(WELCOMED_USER);  //added
 
 
-/*//////added 
-     
-   this.onMembersAdded(async (context, next) => {
-    if (context.activity.name === 'webchat/join') {
-    await context.sendActivity('Back Channel Welcome Message!');
-    //await context.sendActivity(`Got event, your language is `);
-  }
-  await next();
-});
-*/
-//////added end
-
-     
+    
         this.onMessage(async (context, next) => {
             console.log('\nRunning dialog with Message Activity.');
             await this.dialog.run(context, this.dialogState); 
             await next();
         });
 
-        this.onMembersAdded(async (context, next) => {
+     
+        //this.onMembersAdded(async (context, next) => { //orig
          
-         console.log('28 context.activity = ' + JSON.stringify(context.activity))
+           //const membersAdded = context.activity.membersAdded; //orig
+            const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
          
-         //if (context.activity.name === 'webchat/join') {//added
-          
-         const membersAdded = context.activity.membersAdded;
-         //for (let cnt = 0; cnt < membersAdded.length; cnt++) {
-            //if (membersAdded[cnt].id !== context.activity.recipient.id) {
+          //for (let cnt = 0; cnt < membersAdded.length; cnt++) { //orig
+              //if (membersAdded[cnt].id !== context.activity.recipient.id) { //orig
+              if (didBotWelcomedUser === false) {
 
                  welcomeCard.body[1].text = 'Welcome to FIDICchatbot';
 
@@ -76,6 +67,23 @@ class QnAMultiturnBot extends ActivityHandler {
                  var reply = MessageFactory.suggestedActions(['start'], 'Please submit "start" to start.');
 
                  await context.sendActivity(reply);
+               
+                               await this.welcomedUserProperty.set(context, true);
+            } else {
+                const text = context.activity.text.toLowerCase();
+                switch (text) {
+                case 'hello':
+                case 'hi':
+                    await context.sendActivity(`You said "${ context.activity.text }"`);
+                    break;
+                case 'intro':
+                case 'help':
+                    await this.sendIntroCard(context);
+                    break;
+                default:
+                    await context.sendActivity(`This is a simple Welcome Bot sample. You can say 'intro' to see the introduction card. If you are running this bot in the Bot Framework Emulator, press the 'Start Over' button to simulate user joining a bot or a channel`);
+                }
+            }
 
                 // }
            // }
