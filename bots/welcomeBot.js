@@ -38,7 +38,10 @@ class WelcomeBot extends ActivityHandler {
 
             if (didBotWelcomedUser === false) {
 
+                await this.sendIntroCard(context);
+
                 await context.sendActivity('FALSE Thank you for making use of FIDICbot. Please let us know if you have any comments. You are seeing this message because this was your first message ever sent to this bot. It is a good practice to welcome the user and provide personal greeting.');
+
 
 
                 await this.welcomedUserProperty.set(context, true);
@@ -68,7 +71,7 @@ class WelcomeBot extends ActivityHandler {
                     await context.sendActivity('Welcome to FIDICchatbot. CARD? This bot will introduce you to welcoming and greeting users.');
                     await context.sendActivity('It is a good pattern to use this event to send general greeting to user, explaining what your bot can do. In this example, the bot handles \'start\', \'hello\', \'hi\', \'help\' and \'intro\'. ' + 'Try it now, type \'hi\'');
 
-                    await this.sendIntroCard(context);
+                    //await this.sendIntroCard(context);
                 
 
 
