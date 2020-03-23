@@ -38,10 +38,10 @@ class WelcomeBot extends ActivityHandler {
 
             if (didBotWelcomedUser === false) {
 
-                await this.sendIntroCard(context);
 
                 await context.sendActivity('FALSE Thank you for making use of FIDICbot. Please let us know if you have any comments. You are seeing this message because this was your first message ever sent to this bot. It is a good practice to welcome the user and provide personal greeting.');
 
+                await this.sendIntroCard(context);
 
 
                 await this.welcomedUserProperty.set(context, true);
