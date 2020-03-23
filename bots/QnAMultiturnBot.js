@@ -40,7 +40,9 @@ class QnAMultiturnBot extends ActivityHandler {
               //if (membersAdded[cnt].id !== context.activity.recipient.id) { //orig
               if (didBotWelcomedUser === false) {
 
-                 welcomeCard.body[1].text = 'Welcome to FIDICchatbot';
+/* 
+//ORIG
+                 welcomeCard.body[1].text = 'FF22222222222 Welcome to FIDICchatbot';
 
                  const restartCommand = 'start';
         
@@ -69,7 +71,8 @@ class QnAMultiturnBot extends ActivityHandler {
                  var reply = MessageFactory.suggestedActions(['start'], 'Please submit "start" to start.');
 
                  await context.sendActivity(reply);
-               
+//end ORIG 
+ */              
                  await this.welcomedUserProperty.set(context, true); //added
                
             } else {
@@ -85,7 +88,7 @@ class QnAMultiturnBot extends ActivityHandler {
                     await this.sendIntroCard(context);
                     break;
                 default:
-                    await context.sendActivity(`This is a simple Welcome Bot sample. You can say 'intro' to see the introduction card. If you are running this bot in the Bot Framework Emulator, press the 'Start Over' button to simulate user joining a bot or a channel`);
+                    await context.sendActivity(`WelcomeBot11111 PUT CARD HER ......This is a simple Welcome Bot sample. You can say 'intro' to see the introduction card. If you are running this bot in the Bot Framework Emulator, press the 'Start Over' button to simulate user joining a bot or a channel`);
                 }
             }
 
@@ -97,7 +100,7 @@ class QnAMultiturnBot extends ActivityHandler {
      this.onMembersAdded(async (context, next) => {
             for (const idx in context.activity.membersAdded) {
                 if (context.activity.membersAdded[idx].id !== context.activity.recipient.id) {
-                    await context.sendActivity('Welcome to the WELCOME Bot. This bot will introduce');
+                    await context.sendActivity('FF111111111111111 WelcomeBot 22222222 Welcome to the WELCOME Bot. This bot will introduce');
                     await context.sendActivity('Seeing this message because the bot received at least one event.');
                     await context.sendActivity('Good pattern to use this event to send general greeting, explaining what your bot can do. ' + 'In this example, the bot handles \'hello\', \'hi\', \'help\' and \'intro\'. ' + 'Try it now, type \'hi\'');
                 }
