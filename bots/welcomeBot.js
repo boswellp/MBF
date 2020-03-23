@@ -17,15 +17,13 @@ class WelcomeBot extends ActivityHandler {
 
         this.userState = userState;
 
-/*
+
 this.onEvent(async (context, next) => {
   if (context.activity.name === 'webchat/join') {
     await context.sendActivity('Back Channel Welcome Message!');
   }
   await next();
 });
-
-*/
 
 
 this.onMembersAdded(async (context, next) => {
