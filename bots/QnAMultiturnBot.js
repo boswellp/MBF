@@ -72,7 +72,9 @@ class QnAMultiturnBot extends ActivityHandler {
 
                  await context.sendActivity(reply);
 //end ORIG 
- */              
+ */    
+                 await context.sendActivity('You are seeing this message because this was your first message ever sent.');
+                 await context.sendActivity(`It is a good practice to welcome the user.`);
                  await this.welcomedUserProperty.set(context, true); //added
                
             } else {
