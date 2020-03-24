@@ -57,9 +57,6 @@ const whatsAppAdapter = new TwilioWhatsAppAdapter({
 
 
 adapter.onTurnError = async (context, error) => {
-    // This check writes out errors to console log .vs. app insights.
-    // NOTE: In production environment, you should consider logging this to Azure
-    //       application insights.
     console.error(`\n [onTurnError] unhandled error: ${ error }`);
     var errorTxt = `${ error }`  
     
