@@ -511,13 +511,13 @@ const qnaService = new QnAMaker({
 
 
 
-        console.log("\n526 textOrig = " + textOrig + "; textTemp = " + textTemp + "; activity.text = " + stepContext.context.activity.text+ '; profileNameStored = ' + this._userProfileAccessor.profileName + '; searchTypeStored = ' + this._userSearchAccessor.searchType);
+        console.log("\n514 textOrig = " + textOrig + "; textTemp = " + textTemp + "; activity.text = " + stepContext.context.activity.text+ '; profileNameStored = ' + this._userProfileAccessor.profileName + '; searchTypeStored = ' + this._userSearchAccessor.searchType);
 
 
-        console.log("\n617 ANSWER BEFORE PROCESSING response.answers[0].answer = " + JSON.stringify(response.answers[0].answer));
-        //console.log("\n617 response = HERE");
+        //console.log("\n617 ANSWER BEFORE PROCESSING response.answers[0].answer = " + JSON.stringify(response.answers[0].answer));
+        console.log("\n617 response = HERE");
 
-        console.log("\n620 PROMPT BEFORE PROCESSING response.answers[0].context = \n" + JSON.stringify(response.answers[0].context))
+        //console.log("\n620 PROMPT BEFORE PROCESSING response.answers[0].context = \n" + JSON.stringify(response.answers[0].context))
 
 
 
@@ -630,7 +630,7 @@ const qnaService = new QnAMaker({
                     }//for
 
 
-               response.answers[0].answer = "Search - select a category";  //first pass
+               if (response.answers[0].answer != undefined) {response.answers[0].answer = "Search - select a category";}  //first pass
 
 
 //Stage 1 create prompts
