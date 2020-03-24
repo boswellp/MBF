@@ -132,12 +132,7 @@ async sendIntroCard(context) {
                     value: 'https://stackoverflow.com/questions/tagged/botframework'
                 },
                 {
-                    type: ActionTypes.OpenUrl,
-                    title: 'Learn how to deploy',
-                    value: 'https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0'
-                },
-                {
-                    type: ActionTypes.PostBack,
+                    type: ActionTypes.MessageBack,
                     title: 'Select a FIDIC contract',
                     value: 'start'
                 }
