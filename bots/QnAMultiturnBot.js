@@ -117,8 +117,8 @@ async run(context) {
 
 async sendIntroCard(context) {
         const card = CardFactory.heroCard(
-            'FIDICchatbot',
-            'Before selecting a contract for the first time, please take a moment to see how the chatbot searches FIDIC contracts.',
+            '',
+            'Before selecting a contract for the first time, please take a moment to see how the FIDICchatbot works.',
             ['https://aka.ms/bf-welcome-card-image'],
             [
                 {
