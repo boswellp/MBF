@@ -111,8 +111,8 @@ class QnAMultiturnBot extends ActivityHandler {
 
                  await context.sendActivity({ attachments: [card] });
 
-                 //var reply = MessageFactory.suggestedActions(['start'], '');
-                 //await context.sendActivity(reply);
+                 var reply = MessageFactory.suggestedActions(['start'], '');
+                 await context.sendActivity(reply);
 
                  }
             }
