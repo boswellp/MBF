@@ -1,6 +1,6 @@
 // Copyright (c) Bricad Associates 2020
 
-const { ActivityHandler, MessageFactory, CardFactory} = require('botbuilder');
+const { ActivityHandler, MessageFactory, ActionTypes, CardFactory } = require('botbuilder');
 
 const welcomeCard = require('../resources/WelcomeCard.json');
 
@@ -32,39 +32,16 @@ class QnAMultiturnBot extends ActivityHandler {
 /////////////////////////////
 
        this.onMessage(async (context, next) => {
-            // Read UserState. If the 'DidBotWelcomedUser' does not exist (first time ever for a user)
-            // set the default to false.
+
             const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
 
-            // Your bot should proactively send a welcome message to a personal chat the first time
-            // (and only the first time) a user initiates a personal chat with your bot.
+
             if (didBotWelcomedUser === false) {
 
-
-                await context.sendActivity('Before selecting a contract for the first time, please see how the FIDICchatbot works.');
-                await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard)]});
-
+                await this.sendIntroCard(context);
 
                 await this.welcomedUserProperty.set(context, true);
             } else {
-
-/*
-                const text = context.activity.text.toLowerCase();
-                switch (text) {
-                case 'hello':
-                case 'hi':
-                    await context.sendActivity(`You said "${ context.activity.text }"`);
-                    break;
-                case 'intro':
-                case 'help':
-                    await this.sendIntroCard(context);
-                    break;
-                default:
-                    await context.sendActivity(`This is a simple Welcome Bot sample. You can say 'intro' to
-                                                    see the introduction card. If you are running this bot in the Bot
-                                                    Framework Emulator, press the 'Start Over' button to simulate user joining a bot or a channel`);
-                }
-*/
 
             }
 
@@ -83,8 +60,6 @@ class QnAMultiturnBot extends ActivityHandler {
               if (membersAdded[cnt].id !== context.activity.recipient.id) { //orig
 
                  welcomeCard.body[1].text = 'Welcome to FIDICchatbot';
-
-                 const restartCommand = 'start';
         
                  welcomeCard.body[2].text = 'The chatbot allows you to search FIDIC contracts.';
 
@@ -132,6 +107,44 @@ class QnAMultiturnBot extends ActivityHandler {
         });
 
     }
+
+
+/////////////////
+
+async run(context) {
+        await super.run(context);
+        }
+
+async sendIntroCard(context) {
+        const card = CardFactory.heroCard(
+            'FIDICchatbot',
+            'Before selecting a contract for the first time, please take a moment to see how the chatbot searches FIDIC contracts.',
+            ['https://aka.ms/bf-welcome-card-image'],
+            [
+                {
+                    type: ActionTypes.OpenUrl,
+                    title: 'Get an overview',
+                    value: 'https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0'
+                },
+                {
+                    type: ActionTypes.OpenUrl,
+                    title: 'Ask a question',
+                    value: 'https://stackoverflow.com/questions/tagged/botframework'
+                },
+                {
+                    type: ActionTypes.OpenUrl,
+                    title: 'Learn how to deploy',
+                    value: 'https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0'
+                }
+            ]
+        );
+
+        await context.sendActivity({ attachments: [card] });
+    }
+
+//////////////////
+
+
 }
 
 module.exports.QnAMultiturnBot = QnAMultiturnBot;
