@@ -85,9 +85,10 @@ class QnAMultiturnBot extends ActivityHandler {
                  await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard)]});
 */
 
+
             const card = CardFactory.heroCard(
-            'Welcome to the FDIC chatbot',
-            'The FIDICchatbot allows you to search FIDIC contracts.',
+            'Welcome to the FIDIC chatbot',
+            'FIDICchatbot allows you to search FIDIC contracts.',
             ['https://aka.ms/bf-welcome-card-image'],
             [
                 {
@@ -101,21 +102,17 @@ class QnAMultiturnBot extends ActivityHandler {
                     value: 'https://fidic.tips/fidicbotalone'
                 },
                 {
-                    type: ActionTypes.OpenUrl,
-                    title: 'Learn how to deploy',
-                    value: 'https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0'
+                    type: ActionTypes.PostBack,
+                    title: 'start',
+                    value: 'start'
                 }
             ]
         );
 
                  await context.sendActivity({ attachments: [card] });
 
-
-                 await context.sendActivity('Welcome to the FIDICchatbot which allows you to search FIDIC contracts'); 
-
-                 var reply = MessageFactory.suggestedActions(['start'], '');
-
-                 await context.sendActivity(reply);
+                 //var reply = MessageFactory.suggestedActions(['start'], '');
+                 //await context.sendActivity(reply);
 
                  }
             }
@@ -148,7 +145,7 @@ async run(context) {
 async sendIntroCard(context) {
 
         const card = CardFactory.heroCard(
-            'About the FDIC chatbot',
+            'About',
             'Please take a moment to see how the chatbot is used to search FIDIC contracts.',
             ['https://aka.ms/bf-welcome-card-image'],
             [
@@ -163,9 +160,9 @@ async sendIntroCard(context) {
                     value: 'https://fidic.tips/fidicbotalone'
                 },
                 {
-                    type: ActionTypes.OpenUrl,
-                    title: 'Learn how to deploy',
-                    value: 'https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0'
+                    type: ActionTypes.PostBack,
+                    title: 'start',
+                    value: 'start'
                 }
             ]
         );
