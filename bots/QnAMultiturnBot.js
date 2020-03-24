@@ -83,7 +83,7 @@ class QnAMultiturnBot extends ActivityHandler {
 
                  await context.sendActivity('Welcome to the FIDICchatbot which allows you to search FIDIC contracts'); 
 
-                 var reply = MessageFactory.suggestedActions(['start'], 'Please submit "start" to start.');
+                 var reply = MessageFactory.suggestedActions(['start'], '');
 
                  await context.sendActivity(reply);
 
