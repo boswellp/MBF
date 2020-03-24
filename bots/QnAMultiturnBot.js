@@ -60,6 +60,8 @@ class QnAMultiturnBot extends ActivityHandler {
            for (let cnt = 0; cnt < membersAdded.length; cnt++) { //orig
               if (membersAdded[cnt].id !== context.activity.recipient.id) { //orig
 
+
+/*
                  welcomeCard.body[1].text = 'Welcome to FIDICchatbot';
         
                  welcomeCard.body[2].text = 'The chatbot allows you to search FIDIC contracts.';
@@ -81,6 +83,33 @@ class QnAMultiturnBot extends ActivityHandler {
                  welcomeCard.actions[0].url = process.env.publicResourcesUrl + 'privacy_policy_en.pdf';
 
                  await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard)]});
+*/
+
+            const card = CardFactory.heroCard(
+            'Welcome to the FDIC chatbot',
+            'The FIDICchatbot allows you to search FIDIC contracts.',
+            ['https://aka.ms/bf-welcome-card-image'],
+            [
+                {
+                    type: ActionTypes.OpenUrl,
+                    title: 'Overview',
+                    value: 'https://fidic.tips/fidicbot'
+                },
+                {
+                    type: ActionTypes.OpenUrl,
+                    title: 'Web version',
+                    value: 'https://fidic.tips/fidicbotalone'
+                },
+                {
+                    type: ActionTypes.OpenUrl,
+                    title: 'Learn how to deploy',
+                    value: 'https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0'
+                }
+            ]
+        );
+
+                 await context.sendActivity({ attachments: [card] });
+
 
                  await context.sendActivity('Welcome to the FIDICchatbot which allows you to search FIDIC contracts'); 
 
@@ -119,7 +148,7 @@ async run(context) {
 async sendIntroCard(context) {
 
         const card = CardFactory.heroCard(
-            'Welcome to the FDIC chatbot',
+            'About the FDIC chatbot',
             'Please take a moment to see how the chatbot is used to search FIDIC contracts.',
             ['https://aka.ms/bf-welcome-card-image'],
             [
