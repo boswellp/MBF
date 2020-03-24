@@ -3,6 +3,7 @@
 const { ActivityHandler, MessageFactory, ActionTypes, CardFactory } = require('botbuilder');
 
 const welcomeCard = require('../resources/WelcomeCard.json');
+const welcomeCard1 = require('../resources/WelcomeCard1.json');
 
 const WELCOMED_USER = 'welcomedUserProperty'; //ADDED
 
@@ -116,6 +117,8 @@ async run(context) {
         }
 
 async sendIntroCard(context) {
+
+/*
         const card = CardFactory.heroCard(
             'Information',
             'Please take a moment to see how the FIDICchatbot works.',
@@ -139,8 +142,17 @@ async sendIntroCard(context) {
 
             ]
         );
+*/
+ 
+     //const card = CardFactory.adaptiveCard(
 
-        await context.sendActivity({ attachments: [card] });
+       welcomeCard1.body[1].text = 'Please take a moment to see how the FIDICchatbot works.';
+      // )
+
+
+
+        //await context.sendActivity({ attachments: [card] });
+        await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard1)]});
     }
 
 //////////////////
