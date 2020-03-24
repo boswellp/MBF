@@ -119,19 +119,19 @@ async run(context) {
 async sendIntroCard(context) {
 
         const card = CardFactory.heroCard(
-            'Welcome to Bot Framework!',
-            'Welcome to Welcome Users bot sample! This Introduction card is a great way to introduce your Bot to the user and suggest some things to get them started. We use this opportunity to recommend a few next steps for learning more creating and deploying bots.',
+            'Welcome to the FDIC chatbot',
+            'Please take a moment to see how the chatbot is used to search FIDIC contracts.',
             ['https://aka.ms/bf-welcome-card-image'],
             [
                 {
                     type: ActionTypes.OpenUrl,
-                    title: 'Get an overview',
-                    value: 'https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0'
+                    title: 'Overview',
+                    value: 'https://fidic.tips/fidicbot'
                 },
                 {
                     type: ActionTypes.OpenUrl,
-                    title: 'Ask a question',
-                    value: 'https://stackoverflow.com/questions/tagged/botframework'
+                    title: 'Web version',
+                    value: 'https://fidic.tips/fidicbotalone'
                 },
                 {
                     type: ActionTypes.OpenUrl,
