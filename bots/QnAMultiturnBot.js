@@ -118,21 +118,15 @@ async run(context) {
 
 async sendIntroCard(context) {
 
-/*
         const card = CardFactory.heroCard(
             'Information',
             'Please take a moment to see how the FIDICchatbot works.',
-            ['https://aka.ms/bf-welcome-card-image'],
+            ['https://fidic.tips/fidicchatbot/fidicchatbot_logo.png'],
             [
                 {
                     type: ActionTypes.OpenUrl,
-                    title: 'Get an overview',
-                    value: 'https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0'
-                },
-                {
-                    type: ActionTypes.OpenUrl,
-                    title: 'Ask a question',
-                    value: 'https://stackoverflow.com/questions/tagged/botframework'
+                    title: 'Overview',
+                    value: 'https://fidic.tips/chatbot'
                 },
                 {
                     type: ActionTypes.MessageBack,
@@ -142,17 +136,9 @@ async sendIntroCard(context) {
 
             ]
         );
-*/
- 
-     //const card = CardFactory.adaptiveCard(
 
-       welcomeCard1.body[1].text = 'Please take a moment to see how the FIDICchatbot works.';
-      // )
+        await context.sendActivity({ attachments: [card] });
 
-
-
-        //await context.sendActivity({ attachments: [card] });
-        await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard1)]});
     }
 
 //////////////////
