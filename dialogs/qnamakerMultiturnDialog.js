@@ -80,7 +80,7 @@ const qnaService = new QnAMaker({
         this._userStringAccessor = userState.createProperty(USER_STRING_VALUE);
         this._welcomedUserProperty = userState.createProperty(WELCOMED_USER); 
         this._userWelcomeAccessor = userState.createProperty(WELCOMED_USER_STATUS); 
-        this._conversationDataAccessor = conversationState.createProperty(CONVERSATION_DATA_PROPERTY); 
+        //this._conversationDataAccessor = conversationState.createProperty(CONVERSATION_DATA_PROPERTY); 
 
         this.addDialog(new WaterfallDialog(QNAMAKER_DIALOG, [
             this.callGenerateAnswerAsync.bind(this),
