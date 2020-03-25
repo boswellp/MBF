@@ -79,8 +79,7 @@ const qnaService = new QnAMaker({
         this._userSearchAccessor = userState.createProperty(USER_SEARCH_TYPE); 
         this._userStringAccessor = userState.createProperty(USER_STRING_VALUE);
         this._welcomedUserProperty = userState.createProperty(WELCOMED_USER); 
-        this._userWelcomeAccessor = userState.createProperty(WELCOMED_USER_STATUS); 
-        //this._conversationDataAccessor = conversationState.createProperty(CONVERSATION_DATA_PROPERTY); 
+        this._userWelcomeAccessor = userState.createProperty(WELCOMED_USER_STATUS);  
 
         this.addDialog(new WaterfallDialog(QNAMAKER_DIALOG, [
             this.callGenerateAnswerAsync.bind(this),
@@ -117,9 +116,6 @@ const qnaService = new QnAMaker({
      
         console.log("\n\n117 .......MULTITURN......");
 
-        console.log ("\n114 this._conversationState.DialogState = " + JSON.stringify(this._conversationState.DialogState));
-
-        console.log ("\n121 this._conversationState = " + JSON.stringify(this._conversationState));
 
         //console.log ("\n125 this._userState = " + JSON.stringify(this._userState));
 
@@ -130,26 +126,18 @@ const qnaService = new QnAMaker({
 
         console.log("\n\n125 this._userState.storage.memory = " + JSON.stringify(this._userState.storage.memory));
 
-        console.log("\n\n133 this._userWelcomeAccessor.welcomedStatus = " + JSON.stringify(this._userWelcomeAccessor.welcomedStatus));
+        console.log("\n\n129 this._userWelcomeAccessor.welcomedStatus = " + JSON.stringify(this._userWelcomeAccessor.welcomedStatus));
 
+        console.log ("\n131 this._welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty));
 
-        console.log("\n\n135 this._conversationDataAccessor.conversationData = " + JSON.stringify(this._conversationDataAccessor.conversationData));
-
-
-
-
-        console.log ("\n147 this._welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty));
-
-        console.log ("\n147 this._welcomedUserProperty.welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty.welcomedUserProperty));
-
-
+        console.log ("\n133 this._welcomedUserProperty.welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty.welcomedUserProperty));
 
 
         if (this._welcomedUserProperty != undefined){
             const didBotWelcomedUserXX = await this._welcomedUserProperty.get(stepContext.context);
-            console.log ("\n152 XXXXXXXXXXXXdidBotWelcomedUserXX (false is default) = " + didBotWelcomedUserXX);
+            console.log ("\n138 XXXXXXXXXXXXdidBotWelcomedUserXX (false is default) = " + didBotWelcomedUserXX);
 
-           console.log("\n\n153 this._welcomedUserProperty.welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty.welcomedUserProperty));
+           console.log("\n\n140 this._welcomedUserProperty.welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty.welcomedUserProperty));
 
             }
 
