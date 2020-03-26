@@ -62,18 +62,8 @@ class QnAMultiturnBot extends ActivityHandler {
 
 
                 const text = context.activity.text.toLowerCase();
-                switch (text) {
-                case 'hello':
-                case 'hi':
-                    await context.sendActivity(`You said "${ context.activity.text }"`);
-                    break;
-                case 'intro':
-                case 'help':
-                    await this.sendIntroCard(context);
-                    break;
-                default:
-                    await context.sendActivity('This is Intro card');
-                    //await this.sendIntroCard(context);
+                await context.sendActivity('We shall shortly display here how the chatbot works.');
+                //await this.sendIntroCard(context);
 
                 }
              }
@@ -90,7 +80,7 @@ class QnAMultiturnBot extends ActivityHandler {
 
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
 
-                    await context.sendActivity('Welcome to the QnA Maker sample! Ask me a question and I will try to answer it.');
+                    await context.sendActivity('Welcome to the FIDICchatbot. Please submit \"start\" to start.');
 
                     //await this.sendIntroCard(context);
 
