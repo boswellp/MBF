@@ -5,7 +5,7 @@ const { ActivityHandler, MessageFactory, ActionTypes, CardFactory } = require('b
 const welcomeCard = require('../resources/WelcomeCard.json');
 
 const WELCOMED_USER = 'welcomedUserProperty';
-const WELCOMED_USER_STATUS = 'welcomedStatus';
+//const WELCOMED_USER_STATUS = 'welcomedStatus';
 
 class QnAMultiturnBot extends ActivityHandler {
 
@@ -21,7 +21,7 @@ class QnAMultiturnBot extends ActivityHandler {
         this.dialogState = this.conversationState.createProperty('DialogState');
         this.welcomedState = this.conversationState.createProperty('WelcomedState');
         this.welcomedUserProperty = userState.createProperty(WELCOMED_USER);
-        this.userWelcomeAccessor = userState.createProperty(WELCOMED_USER_STATUS);
+        //this.userWelcomeAccessor = userState.createProperty(WELCOMED_USER_STATUS);
 
         this.onMessage(async (context, next) => {
 
@@ -42,13 +42,6 @@ class QnAMultiturnBot extends ActivityHandler {
 
 
 /////////
-
-                this.welcomedUserProperty.welcomedUserProperty = '51yyyyyyyyyyyyyyyyset';
-
-                console.log ("\n_51 this.welcomedUserProperty.welcomedUserProperty = " + JSON.stringify(this.welcomedUserProperty.welcomedUserProperty));
-
-                console.log ("\n_51 this.welcomedUserProperty = " + JSON.stringify(this.welcomedUserProperty));
-
 
                 await this.welcomedUserProperty.set(context, '51xxxxxxxxxxxxxxxxxset');
 
