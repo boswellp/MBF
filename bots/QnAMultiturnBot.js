@@ -58,8 +58,12 @@ class QnAMultiturnBot extends ActivityHandler {
 
 
                 const text = context.activity.text.toLowerCase();
-                await context.sendActivity('We shall shortly remove this remark.');
+                    
+                const userStatus = await this.welcomedUserProperty.get(context, false);
+                 
+                if (userStatus.indexOf('removeYes',0) == -1){await context.sendActivity('We shall shortly remove this remark.');}
                 //await this.sendIntroCard(context);
+                if (userStatus.indexOf('removeNo',0) != -1){await this.welcomedUserProperty.set(context, 'removeYes')}
 
                
              }
