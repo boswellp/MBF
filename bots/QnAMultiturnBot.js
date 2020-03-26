@@ -65,7 +65,7 @@ class QnAMultiturnBot extends ActivityHandler {
                 await context.sendActivity('We shall shortly display here how the chatbot works.');
                 //await this.sendIntroCard(context);
 
-                }
+               
              }
 
         await next();
