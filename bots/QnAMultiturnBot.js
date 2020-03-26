@@ -58,7 +58,7 @@ class QnAMultiturnBot extends ActivityHandler {
 
 
                 const text = context.activity.text.toLowerCase();
-                await context.sendActivity('We shall shortly display here how the chatbot works.');
+                await context.sendActivity('We shall shortly remove this remark.');
                 //await this.sendIntroCard(context);
 
                
