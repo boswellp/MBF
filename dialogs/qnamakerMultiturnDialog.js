@@ -127,25 +127,40 @@ if (this._userProfileAccessor.profileName != undefined)
     {
     if (this._userProfileAccessor.profileName.indexOf('p1',0) != -1){
 
-    console.log(".............................................................\n In dialog change knowledge base..p1")         
+        console.log(".............................................................\n In dialog change knowledge base..p1")         
 
-    const qnaService = new QnAMaker({
-    knowledgeBaseId: process.env.QnAKnowledgebaseIdp1,
-    endpointKey: process.env.QnAEndpointKey,
-    host: process.env.QnAEndpointHostName
-    });
+        const qnaService = new QnAMaker({
+        knowledgeBaseId: process.env.QnAKnowledgebaseIdp1,
+        endpointKey: process.env.QnAEndpointKey,
+        host: process.env.QnAEndpointHostName
+        });
 
-    } else {
+        } else {
 
-    console.log(".............................................................\n In dialog change knowledge base..other")         
+        console.log(".............................................................\n In dialog change knowledge base..other")         
 
-    const qnaService = new QnAMaker({
-    knowledgeBaseId: process.env.QnAKnowledgebaseId,
-    endpointKey: process.env.QnAEndpointKey,
-    host: process.env.QnAEndpointHostName
-    });
+        const qnaService = new QnAMaker({
+        knowledgeBaseId: process.env.QnAKnowledgebaseId,
+        endpointKey: process.env.QnAEndpointKey,
+        host: process.env.QnAEndpointHostName
+        });
 
-    }
+        }
+        
+     } else {
+         
+     console.log(".............................................................\n In dialog change knowledge base..other for undefined")         
+
+     const qnaService = new QnAMaker({
+     knowledgeBaseId: process.env.QnAKnowledgebaseId,
+     endpointKey: process.env.QnAEndpointKey,
+     host: process.env.QnAEndpointHostName
+     });
+         
+         
+         
+         
+         
 }
 
 
