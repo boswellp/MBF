@@ -51,11 +51,7 @@ class QnAMultiturnBot extends ActivityHandler {
 
 ///////
 
-
-
-
-
-                 await context.sendActivity('This is Intro KILL');
+                 await context.sendActivity('For first time visitors, we shall display here how the chatbot works.');
                 //await this.sendIntroCard(context);
 
                 } else {
