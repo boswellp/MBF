@@ -199,6 +199,9 @@ if (this._userProfileAccessor.profileName != undefined)
 
             const didBotWelcomedUserXXXX = await this._welcomedUserProperty.welcomedUserProperty.get(stepContext.context);
             console.log ("\n138 XXXXXXXXXXXXdidBotWelcomedUserXX (false is default) = " + didBotWelcomedUserXXXX);
+            
+            await this.welcomedUserProperty.set(context, 'remove'); //to remove comment
+            
             }
 
 
