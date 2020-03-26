@@ -1,5 +1,7 @@
 // Copyright (c) Bricad Associates 2020
 
+//ver 26 March 2020
+
 const { ActivityHandler, MessageFactory, ActionTypes, CardFactory } = require('botbuilder');
 
 const welcomeCard = require('../resources/WelcomeCard.json');
