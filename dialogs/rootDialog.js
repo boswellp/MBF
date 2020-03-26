@@ -1,5 +1,7 @@
 // Copyright (c) Bricad Associates 2020
 
+// ver 2 March 2020 _TESTING2
+
 const ROOTDIALOG = 'ROOTDIALOG';
 
 const {
