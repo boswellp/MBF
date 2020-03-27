@@ -26,7 +26,7 @@ const { QnAMultiturnBot } = require('./bots/QnAMultiturnBot');
 const { RootDialog } = require('./dialogs/rootDialog');
 
 
-const welcomeCard = require('./resources/WelcomeCard.json'); //ADDED TUE
+//const welcomeCard = require('./resources/WelcomeCard.json'); //ADDED TUE
 
 const ENV_FILE = path.join(__dirname, '.env');
 require('dotenv').config({ path: ENV_FILE });
@@ -128,7 +128,6 @@ const bot = new QnAMultiturnBot(conversationState, userState, dialog);
 
 server.post('/api/messages', (req, res) => {
     adapter.processActivity(req, res, async (turnContext) => {
-        // Route the message to the bot's main handler.
         await bot.run(turnContext);
     });
 });
