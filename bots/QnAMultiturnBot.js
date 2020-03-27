@@ -70,12 +70,12 @@ class QnAMultiturnBot extends ActivityHandler {
                 //await this.sendGuidanceCard(context);
                 //await context.sendActivity("Guidance");
                     
-                 welcomeCard.body[1].text = 'FIDICchatbot guide';
-                 welcomeCard.body[4].text = 'After selecting a contract, General Conditions clauses are displayed by submitting a clause number or a keyword (keywords search in the index of clauses).';
-                 welcomeCard.body[5].text = 'Keywords search the index of clauses, or in the General Conditions when searching is activated.';
-                 welcomeCard.body[6].text = 'Shortcut codes for contracts that can be submitted at any time are:\n- "c1" - Construction Contract 1st Ed 1999\n- "p1" - Plant Contract 1st Ed 1999.';
+                 guidanceCard.body[1].text = 'FIDICchatbot guide';
+                 guidanceCard.body[2].text = 'After selecting a contract, General Conditions clauses are displayed by submitting a clause number or a keyword (keywords search in the index of clauses).';
+                 guidanceCard.body[3].text = 'Keywords search the index of clauses, or in the General Conditions when searching is activated.';
+                 guidanceCard.body[4].text = 'Shortcut codes for contracts that can be submitted at any time are:\n- "c1" - Construction Contract 1st Ed 1999\n- "p1" - Plant Contract 1st Ed 1999.';
                  
-                 await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard)]});
+                 await context.sendActivity({attachments: [CardFactory.adaptiveCard(guidanceCard)]});
                
                }
 
