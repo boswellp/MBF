@@ -43,12 +43,9 @@ class QnAMultiturnBot extends ActivityHandler {
 
 /////////
 
-                await this.welcomedUserProperty.set(context, '51xxxxxxxxxxxxxxxxxset');
-
+                await this.welcomedUserProperty.set(context, null);
                 const didBotWelcomedUserXX = await this.welcomedUserProperty.get(context, false);
-
-                console.log ("\n_51 didBotWelcomedUserXX = " + didBotWelcomedUserXX);
-
+                console.log ("\n_48 didBotWelcomedUserXX = " + didBotWelcomedUserXX);
 ///////
 
                  await context.sendActivity('For first time visitors, we shall display here how the chatbot works.');
