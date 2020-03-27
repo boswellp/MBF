@@ -95,18 +95,19 @@ class QnAMultiturnBot extends ActivityHandler {
                     type: ActionTypes.OpenUrl,
                     title: 'Web version',
                     value: 'https://fidic.tips/fidicbotalone'
-                },
-                {
-                    type: ActionTypes.PostBack,
-                    title: 'start',
-                    value: 'start'
                 }
+                //{
+                    //type: ActionTypes.PostBack,
+                    //title: 'Start',
+                    //value: 'start'
+                //}
             ]
         );
 
                  await context.sendActivity({ attachments: [card] });
 
                  var reply = MessageFactory.suggestedActions(['start'], '')
+                 await context.sendActivity(reply);
                  
 
                 }
