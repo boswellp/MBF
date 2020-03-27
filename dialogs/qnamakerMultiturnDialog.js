@@ -618,7 +618,7 @@ if (this._userProfileAccessor.profileName != undefined)
                      console.log("\n618 undefined")
                      //response = {"activeLearning Enabled":false,"answers":[]} 
                      console.log("\n620 undefined") 
-                     response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
+                     //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      } else { //have a non-error response 
                      console.log("\n623 undefined")
                      response = {"activeLearning Enabled":false,"answers":[]} 
