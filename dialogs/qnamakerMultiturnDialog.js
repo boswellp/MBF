@@ -628,22 +628,19 @@ if (this._userProfileAccessor.profileName != undefined)
                 {
                 console.log("\n629")
                 const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-                console.log("\n618 didBotWelcomedUser = " + didBotWelcomedUser)
+                console.log("\n631 didBotWelcomedUser = " + didBotWelcomedUser)
                 if (didBotWelcomedUser == undefined)
                    {
                    console.log("\n634")
                    response = {"activeLearning Enabled":false,"answers":[]} 
                    console.log("\n636") 
                    response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
-                   } 
-                
-                
-                
+                   }   
                 }
             }
 
          
-        console.log("\n628 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
+        console.log("\n643 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
                  
         
 
