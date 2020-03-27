@@ -627,20 +627,20 @@ if (this._userProfileAccessor.profileName != undefined)
                      }   
                  } else {              
                  console.log("\n629")
-                 if (didBotWelcomedUser === true){                    
+                 if (didBotWelcomedUser == 1){                    
                       if (response.answers[0] == undefined){
-                          console.log("\n632 true")
+                          console.log("\n632 true1")
                           response = {"activeLearning Enabled":false,"answers":[]} 
-                          console.log("\n634 true") 
+                          console.log("\n634 true1") 
                           response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
                           } else { //have a non-error response 
-                          console.log("\n638 true")
+                          console.log("\n638 true1")
                           response = {"activeLearning Enabled":false,"answers":[]} 
-                          console.log("\n640 true") 
+                          console.log("\n640 true1") 
                           response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
                           }   
                       } else {
-                      console.log("\n643 null") 
+                      console.log("\n643 2") 
                       }
                   }
               }
