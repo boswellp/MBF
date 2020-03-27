@@ -607,20 +607,19 @@ if (this._userProfileAccessor.profileName != undefined)
         
          console.log("\n608 textOrig = " + textOrig)
 
-        //if (response.answers[0].answer == undefined)
-             //{
+
+        if (this._welcomedUserProperty == undefined) ///xxxxxxxxxx first input
+            {  
+             //response.answers[0].answer = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
+            response.answers[0] = {"activeLearning Enabled":false,"answers":[]} 
+            } 
+
+  
         
-            response.answers[0] = {"activeLearning Enabled":false,"answers":[]}    
-      
-   
-             //response.answers[0].answer = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}    
-        
-             console.log("\n612 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
+         console.log("\n619 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
                  
-       
-             //}
         
-        console.log("\n615 textOrig = " + textOrig)
+
 
         //console.log("\n610 textOrig = " + textOrig + "; textTemp = " + textTemp + "; activity.text = " + stepContext.context.activity.text+ '; profileNameStored = ' + this._userProfileAccessor.profileName + '; searchTypeStored = ' + this._userSearchAccessor.searchType);
 
