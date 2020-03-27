@@ -126,7 +126,7 @@ class QnAMultiturnBot extends ActivityHandler {
     async sendIntroCard(context) {
 
         const card = CardFactory.heroCard(
-            'About',
+            'FIDICchatbot',
             'Please take a moment to see how the chatbot is used to search FIDIC contracts.',
             ['https://aka.ms/bf-welcome-card-image'],
             [
@@ -142,7 +142,7 @@ class QnAMultiturnBot extends ActivityHandler {
                 },
                 {
                     type: ActionTypes.PostBack,
-                    title: 'start',
+                    title: 'Start',
                     value: 'start'
                 }
             ]
