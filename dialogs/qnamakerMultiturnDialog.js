@@ -609,7 +609,9 @@ if (this._userProfileAccessor.profileName != undefined)
 
         if (response.answers[0].answer == undefined)
              {
-              response.answers[0].answer = 'Startup'           
+             console.log("\n612 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
+                 
+             //response.answers[0].answer = 'Startup'           
              }
         
         console.log("\n615 textOrig = " + textOrig)
