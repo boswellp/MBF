@@ -40,38 +40,40 @@ class QnAMultiturnBot extends ActivityHandler {
 
             if (didBotWelcomedUser === false) {
 
-                //await this.sendIntroCard(context);  //not work in Telegram
+               //await this.sendIntroCard(context);  //not work in Telegram
              
                await context.sendActivity("Intro");
              
+               await this.welcomedUserProperty.set(context, true);
              
-             const cardIntro = CardFactory.heroCard(
-            'Introduction to the FIDIC chatbot',
-            'FIDICchatbot allows you to search FIDIC contracts.',
-            ['https://aka.ms/bf-welcome-card-image'],
-            [
-                {
-                    type: ActionTypes.OpenUrl,
-                    title: 'Overview',
-                    value: 'https://fidic.tips/fidicbot'
-                },
-                {
-                    type: ActionTypes.OpenUrl,
-                    title: 'Web version',
-                    value: 'https://fidic.tips/fidicbotalone'
-                },
-                {
-                    type: ActionTypes.PostBack,
-                    title: 'start',
-                    value: 'start'
-                }
-            ]
-        );
-             
-             await context.sendActivity({ attachments: [cardIntro] });
-             
+           
+                 welcomeCard.body[1].text = 'Welcome to FIDICchatbot';
+        
+                 welcomeCard.body[2].text = 'The chatbot allows you to search FIDIC contracts.';
 
-                await this.welcomedUserProperty.set(context, true);
+                 welcomeCard.body[3].text = 'Submit "start" or "help" anytime to start again and for help.';
+
+                 welcomeCard.body[4].text = 'After selecting a contract, General Conditions clauses are displayed by submitting a clause number or a keyword (keywords search in the index of clauses).';
+
+                 welcomeCard.body[4].text = 'After selecting a contract, clauses are displayed by submitting a clause number or a keyword.';
+
+                 welcomeCard.body[5].text = 'Keywords search the index of clauses, or in the General Conditions when searching is activated.';
+
+                 welcomeCard.body[5].text = 'Shortcut codes for contracts that can be submitted at any time are:\n- "c1" - Construction Contract 1st Ed 1999\n- "p1" - Plant Contract 1st Ed 1999.';
+
+                 welcomeCard.body[6].text = 'FIDICchatbot is complemented by FIDICbot that suppplies messenging channels (e.g., LINE and Viber) that are not served by FIDICchatbot. Both bots are developed by Bricad Associates, Switzerland, as part of the https://FIDIC.tips initiative.';
+
+                 welcomeCard.actions[0].title = 'Privacy policy';
+
+                 welcomeCard.actions[0].url = process.env.publicResourcesUrl + 'privacy_policy_en.pdf';
+
+                 await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard)]});
+
+             
+             
+             
+             
+             
             } else {
 
             }
@@ -114,7 +116,7 @@ class QnAMultiturnBot extends ActivityHandler {
 
                  await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard)]});
 */
-            //await context.sendActivity("Welcome");
+            await context.sendActivity("Welcome");
 
             const cardWelcome = CardFactory.heroCard(
             'Welcome to the FIDIC chatbot',
@@ -139,7 +141,7 @@ class QnAMultiturnBot extends ActivityHandler {
             ]
         );
 
-                 await context.sendActivity({ attachments: [cardWelcome] });
+                 //await context.sendActivity({ attachments: [cardWelcome] });
 
                  //var reply = MessageFactory.suggestedActions(['start'], '');
                  //await context.sendActivity(reply);
