@@ -975,6 +975,9 @@ if (this._userProfileAccessor.profileName != undefined)
             if (responses.length > 0) {
                 await stepContext.context.sendActivity(responses[0].answer);
                 } else {
+                    
+                console.log("\n978 response no answer?");
+                    
                 await stepContext.context.sendActivity(qnaDialogResponseOptions.noAnswer);
                 }
             
