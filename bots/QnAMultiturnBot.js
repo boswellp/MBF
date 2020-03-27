@@ -52,13 +52,13 @@ class QnAMultiturnBot extends ActivityHandler {
                     
                 const userStatus = await this.welcomedUserProperty.get(context, false);
                  
-                if (userStatus.indexOf('removeRemark',0) == -1){await context.sendActivity('We shall shortly remove this remark.');}
+                if (userStatus != null){await context.sendActivity('We shall shortly remove this remark.');}
                
                 //await this.sendIntroCard(context);
                 
                 //if (userStatus.indexOf('removeNo',0) != -1){await this.welcomedUserProperty.set(context, 'removeYes')}
                     
-                await this.welcomedUserProperty.set(context, 'removeRemark');
+                await this.welcomedUserProperty.set(context, null);
              }
 
         await next();
@@ -77,7 +77,7 @@ class QnAMultiturnBot extends ActivityHandler {
 
                     //await this.sendIntroCard(context);
                     
-                     await this.welcomedUserProperty.set(context, 'welcomeShown');
+                     await this.welcomedUserProperty.set(context, true);
 
                 }
             }
