@@ -629,10 +629,15 @@ if (this._userProfileAccessor.profileName != undefined)
                  console.log("\n629 didBotWelcomedUser not undefined")
                  if (didBotWelcomedUser == 1){                    
                       if (response.answers[0] == undefined){
-                          console.log("\n632 true1")
+                          
+                          //webchat on opening and Messenger on second step.
+                          
+                          console.log("\n632 true1 : webchat on opening and Messenger on second step")
                           response = {"activeLearning Enabled":false,"answers":[]} 
                           console.log("\n634 true1") 
                           response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
+                         
+                      
                           } else { //have a non-error response 
                           console.log("\n638 true1")
                           response = {"activeLearning Enabled":false,"answers":[]} 
