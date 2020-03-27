@@ -40,9 +40,9 @@ class QnAMultiturnBot extends ActivityHandler {
 
             if (didBotWelcomedUser === false) {
 
-                //await this.sendIntroCard(context);
+                await this.sendIntroCard(context);
              
-                await context.sendActivity("Intro");
+               // await context.sendActivity("Intro");
 
                 await this.welcomedUserProperty.set(context, true);
             } else {
