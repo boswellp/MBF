@@ -42,7 +42,7 @@ class QnAMultiturnBot extends ActivityHandler {
                  await context.sendActivity('For the first message to this chatbot, we shall display here how the chatbot works.');
                 //await this.sendIntroCard(context);
                     
-                await this.welcomedUserProperty.set(context, 'true');
+                await this.welcomedUserProperty.set(context, true);
                 const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
                 console.log ("\n_48 didBotWelcomedUser = " + didBotWelcomedUser);
 
