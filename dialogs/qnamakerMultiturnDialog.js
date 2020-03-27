@@ -978,7 +978,18 @@ if (this._userProfileAccessor.profileName != undefined)
                     
                 console.log("\n978 response no answer?");
                     
-                await stepContext.context.sendActivity(qnaDialogResponseOptions.noAnswer);
+                if (this._welcomedUserProperty != undefined && stepContext != undefined) ///xxxx first input
+                     {
+                      
+                     responses[0].answer = 'No answer on start. Please submit start.';
+                         
+                     await stepContext.context.sendActivity(responses[0].answer);
+                         
+                     }
+                    else
+                    {                    
+                    await stepContext.context.sendActivity(qnaDialogResponseOptions.noAnswer);
+                    }
                 }
             
             return await stepContext.next();
