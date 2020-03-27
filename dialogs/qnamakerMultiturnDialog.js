@@ -605,18 +605,20 @@ if (this._userProfileAccessor.profileName != undefined)
 
 //////////////////////////////////////////
         
-         console.log("\n608 textOrig = " + textOrig)
+        console.log("\n608 textOrig = " + textOrig)
 
+        if (response.answers[0].answer = undefined && this._welcomedUserProperty != undefined) //first input with xxxx
+               {
+               const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
+               if (didBotWelcomedUser == undefined)
+                   {
+                   //response.answers[0].answer = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
+                   response.answers[0] = {"activeLearning Enabled":false,"answers":[]} 
+                   } 
+               }
 
-        if (this._welcomedUserProperty == undefined) ///xxxxxxxxxx first input
-            {  
-             //response.answers[0].answer = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
-            response.answers[0] = {"activeLearning Enabled":false,"answers":[]} 
-            } 
-
-  
-        
-         console.log("\n619 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
+         
+        console.log("\n619 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
                  
         
 
