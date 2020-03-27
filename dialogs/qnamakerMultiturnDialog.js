@@ -618,7 +618,7 @@ if (this._userProfileAccessor.profileName != undefined)
                      console.log("\n618 undefined")
                      response = {"activeLearning Enabled":false,"answers":[]} 
                      console.log("\n620 undefined") 
-                     response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
+                     response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      } else { //have a non-error response 
                      console.log("\n623 undefined")
                      response = {"activeLearning Enabled":false,"answers":[]} 
@@ -637,14 +637,14 @@ if (this._userProfileAccessor.profileName != undefined)
                           console.log("\n632 true1 : webchat on opening and Messenger on second step")
                           response = {"activeLearning Enabled":false,"answers":[]} 
                           console.log("\n634 true1") 
-                          response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
+                          response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                          
                       
                           } else { //have a non-error response 
                           console.log("\n638 true1")
                           response = {"activeLearning Enabled":false,"answers":[]} 
                           console.log("\n640 true1") 
-                          response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
+                          response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                           }   
                       } else {
                       console.log("\n643 2") 
