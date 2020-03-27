@@ -41,8 +41,8 @@ const USER_PROFILE_PROPERTY = 'userProfile';
 const USER_SEARCH_TYPE = 'searchType'; 
 const USER_STRING_VALUE = 'stringValue';
 const WELCOMED_USER = 'welcomedUserProperty';
-const WELCOMED_USER_STATUS = 'welcomedStatus';
-const CONVERSATION_DATA_PROPERTY = 'conversationData'; 
+//const WELCOMED_USER_STATUS = 'welcomedStatus';
+//const CONVERSATION_DATA_PROPERTY = 'conversationData'; 
 
 
 class QnAMakerMultiturnDialog extends ComponentDialog {
@@ -86,7 +86,7 @@ const qnaService = new QnAMaker({
         this._userSearchAccessor = userState.createProperty(USER_SEARCH_TYPE); 
         this._userStringAccessor = userState.createProperty(USER_STRING_VALUE);
         this._welcomedUserProperty = userState.createProperty(WELCOMED_USER); 
-        this._userWelcomeAccessor = userState.createProperty(WELCOMED_USER_STATUS);  
+        //this._userWelcomeAccessor = userState.createProperty(WELCOMED_USER_STATUS);  
 
         this.addDialog(new WaterfallDialog(QNAMAKER_DIALOG, [
             this.callGenerateAnswerAsync.bind(this),
@@ -191,8 +191,8 @@ if (this._userProfileAccessor.profileName != undefined)
             const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
             console.log ("\n192 didBotWelcomedUser  = " + didBotWelcomedUser);
             
-            await this._welcomedUserProperty.set(stepContext, 'removeNo');
-
+            if (this._welcomedUserProperty.welcomedUserProperty != undefined){     
+               await this._welcomedUserProperty.set(stepContext, 'removeNo');}
             }
 
 
