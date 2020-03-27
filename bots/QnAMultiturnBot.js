@@ -51,7 +51,9 @@ class QnAMultiturnBot extends ActivityHandler {
                  welcomeCard.body[7].text = 'FIDICchatbot is complemented by FIDICbot that suppplies messenging channels (e.g., LINE and Viber) that are not served by FIDICchatbot. Both bots are developed by Bricad Associates, Switzerland, as part of the https://FIDIC.tips initiative.';
 
                  await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard)]});
-                    
+                 
+                 var reply = MessageFactory.suggestedActions(['start'], 'Please submit "start" to start.');
+                 await context.sendActivity(reply);   
                     
                     
                    
@@ -76,6 +78,9 @@ class QnAMultiturnBot extends ActivityHandler {
                  guidanceCard.body[4].text = 'Shortcut codes for contracts that can be submitted at any time are:\n- "c1" - Construction Contract 1st Ed 1999\n- "p1" - Plant Contract 1st Ed 1999.';
                  
                  await context.sendActivity({attachments: [CardFactory.adaptiveCard(guidanceCard)]});
+                    
+                 var reply = MessageFactory.suggestedActions(['start'], 'Please submit "start" to start.');
+                 await context.sendActivity(reply);  
                
                }
 
@@ -104,6 +109,9 @@ class QnAMultiturnBot extends ActivityHandler {
                  welcomeCard1.body[7].text = 'FIDICchatbot is complemented by FIDICbot that suppplies messenging channels (e.g., LINE and Viber) that are not served by FIDICchatbot. Both bots are developed by Bricad Associates, Switzerland, as part of the https://FIDIC.tips initiative.';
 
                  await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard1)]});
+                    
+                 var reply = MessageFactory.suggestedActions(['start'], 'Please submit "start" to start.');
+                 await context.sendActivity(reply);  
                
                 }
             }
