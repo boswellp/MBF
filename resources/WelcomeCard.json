@@ -56,6 +56,14 @@
       "text": "",
       "wrap": true,
       "maxLines": 0
+    },
+    {
+      "type": "TextBlock",
+      "size": "default",
+      "isSubtle": true,
+      "text": "",
+      "wrap": true,
+      "maxLines": 0
     }
   ],
   "actions": [
