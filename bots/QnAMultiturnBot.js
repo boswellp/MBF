@@ -51,13 +51,13 @@ class QnAMultiturnBot extends ActivityHandler {
                     
                 const userStatus = await this.welcomedUserProperty.get(context, false);
                  
-                if (userStatus != 2){await context.sendActivity('We shall shortly remove this remark.');}
+                //if (userStatus != 2){await context.sendActivity('We shall shortly remove this remark.');}
                
                 //await this.sendIntroCard(context);
                 
                 //if (userStatus.indexOf('removeNo',0) != -1){await this.welcomedUserProperty.set(context, 'removeYes')}
                     
-                await this.welcomedUserProperty.set(context, null);
+                //await this.welcomedUserProperty.set(context, 2);
                }
 
         await next();
