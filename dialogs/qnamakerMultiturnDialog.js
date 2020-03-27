@@ -50,7 +50,8 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
         super(QNAMAKER_MULTITURN_DIALOG);
 
 
-var endpointHostName = process.env.QnAEndpointHostName;
+/*
+        var endpointHostName = process.env.QnAEndpointHostName;
 if (!endpointHostName.startsWith('https://')) {
     endpointHostName = 'https://' + endpointHostName;
 }
@@ -58,6 +59,7 @@ if (!endpointHostName.startsWith('https://')) {
 if (!endpointHostName.endsWith('/qnamaker')) {
     endpointHostName = endpointHostName + '/qnamaker';
 }
+*/
 
 this._userKBAccessor = userState.createProperty('kB'); 
 this._userKBAccessor = 'c1'; 
@@ -65,7 +67,7 @@ console.log("change knowledge base = " + this._userKBAccessor.kB)
 const qnaService = new QnAMaker({
     knowledgeBaseId: process.env.QnAKnowledgebaseId,
     endpointKey: process.env.QnAEndpointKey,
-    host: endpointHostName
+    host: process.env.QnAEndpointHostName
 });
 
 
