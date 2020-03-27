@@ -12,6 +12,8 @@ const {
     WaterfallDialog
 } = require('botbuilder-dialogs');
 
+const { InputHnts } = require('botbuilder'); //added
+
 const { QnACardBuilder } = require('../utils/qnaCardBuilder');
 
 const { QnAMaker } = require('botbuilder-ai'); 
