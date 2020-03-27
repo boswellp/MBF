@@ -613,33 +613,35 @@ if (this._userProfileAccessor.profileName != undefined)
             const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
             console.log("\n615didBotWelcomedUser = " + didBotWelcomedUser)   
             if (didBotWelcomedUser == undefined){
-                console.log("\n620")           
+                console.log("\n616 undefined")           
                 if (response.answers[0] == undefined){
                      console.log("\n624")
                      response = {"activeLearning Enabled":false,"answers":[]} 
-                     console.log("\n626") 
+                     console.log("\n620 undefined") 
                      response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
                      } else { //have a non-error response 
-                     console.log("\n632")
+                     console.log("\n623 undefined")
                      response = {"activeLearning Enabled":false,"answers":[]} 
-                     console.log("\n634") 
+                     console.log("\n625") 
                      response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
                      }   
                  } else {              
-                 console.log("\n641")
+                 console.log("\n629")
                  if (didBotWelcomedUser === true){                    
                       if (response.answers[0] == undefined){
-                          console.log("\n647")
+                          console.log("\n632 true")
                           response = {"activeLearning Enabled":false,"answers":[]} 
-                          console.log("\n649") 
+                          console.log("\n634 true") 
                           response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
                           } else { //have a non-error response 
-                          console.log("\n654")
+                          console.log("\n638 true")
                           response = {"activeLearning Enabled":false,"answers":[]} 
-                          console.log("\n656") 
+                          console.log("\n640 true") 
                           response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
                           }   
-                      }  
+                      } else {
+                      console.log("\n643 null") 
+                      }
                   }
               }
 
