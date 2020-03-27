@@ -40,7 +40,9 @@ class QnAMultiturnBot extends ActivityHandler {
 
             if (didBotWelcomedUser === false) {
 
-                await this.sendIntroCard(context);
+                //await this.sendIntroCard(context);
+             
+                await context.sendActivity("Intro");
 
                 await this.welcomedUserProperty.set(context, true);
             } else {
@@ -85,7 +87,7 @@ class QnAMultiturnBot extends ActivityHandler {
 
                  await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard)]});
 */
-
+            await context.sendActivity("Welcome");
 
             const card = CardFactory.heroCard(
             'Welcome to the FIDIC chatbot',
@@ -110,10 +112,10 @@ class QnAMultiturnBot extends ActivityHandler {
             ]
         );
 
-                 await context.sendActivity({ attachments: [card] });
+                 //await context.sendActivity({ attachments: [card] });
 
-                 var reply = MessageFactory.suggestedActions(['start'], '');
-                 await context.sendActivity(reply);
+                 //var reply = MessageFactory.suggestedActions(['start'], '');
+                 //await context.sendActivity(reply);
 
                  }
             }
