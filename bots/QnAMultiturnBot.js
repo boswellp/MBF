@@ -43,6 +43,33 @@ class QnAMultiturnBot extends ActivityHandler {
                 //await this.sendIntroCard(context);  //not work in Telegram
              
                await context.sendActivity("Intro");
+             
+             
+             const cardIntro = CardFactory.heroCard(
+            'Introduction to the FIDIC chatbot',
+            'FIDICchatbot allows you to search FIDIC contracts.',
+            ['https://aka.ms/bf-welcome-card-image'],
+            [
+                {
+                    type: ActionTypes.OpenUrl,
+                    title: 'Overview',
+                    value: 'https://fidic.tips/fidicbot'
+                },
+                {
+                    type: ActionTypes.OpenUrl,
+                    title: 'Web version',
+                    value: 'https://fidic.tips/fidicbotalone'
+                },
+                {
+                    type: ActionTypes.PostBack,
+                    title: 'start',
+                    value: 'start'
+                }
+            ]
+        );
+             
+             await context.sendActivity({ attachments: [cardIntro] });
+             
 
                 await this.welcomedUserProperty.set(context, true);
             } else {
@@ -89,7 +116,7 @@ class QnAMultiturnBot extends ActivityHandler {
 */
             //await context.sendActivity("Welcome");
 
-            const card = CardFactory.heroCard(
+            const cardWelcome = CardFactory.heroCard(
             'Welcome to the FIDIC chatbot',
             'FIDICchatbot allows you to search FIDIC contracts.',
             ['https://aka.ms/bf-welcome-card-image'],
@@ -112,7 +139,7 @@ class QnAMultiturnBot extends ActivityHandler {
             ]
         );
 
-                 await context.sendActivity({ attachments: [card] });
+                 await context.sendActivity({ attachments: [cardWelcome] });
 
                  //var reply = MessageFactory.suggestedActions(['start'], '');
                  //await context.sendActivity(reply);
