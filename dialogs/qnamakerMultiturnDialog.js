@@ -605,6 +605,11 @@ if (this._userProfileAccessor.profileName != undefined)
 
 //////////////////////////////////////////
 
+        if (response.answers[0].answer == undefined)
+             {
+              response.answers[0].answer = 'Startup'           
+             }
+        
 
 
         //console.log("\n610 textOrig = " + textOrig + "; textTemp = " + textTemp + "; activity.text = " + stepContext.context.activity.text+ '; profileNameStored = ' + this._userProfileAccessor.profileName + '; searchTypeStored = ' + this._userSearchAccessor.searchType);
