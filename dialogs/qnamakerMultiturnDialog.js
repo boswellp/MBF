@@ -629,19 +629,19 @@ if (this._userProfileAccessor.profileName != undefined)
                  console.log("\n641")
                  if (didBotWelcomedUser == true){                    
                       if (response.answers[0] == undefined){
-                      console.log("\n647")
-                      response = {"activeLearning Enabled":false,"answers":[]} 
-                      console.log("\n649") 
-                      response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
-                      } else { //have a non-error response 
-                      console.log("\n654")
-                      response = {"activeLearning Enabled":false,"answers":[]} 
-                      console.log("\n656") 
-                      response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
-                      }   
-                  }  
+                          console.log("\n647")
+                          response = {"activeLearning Enabled":false,"answers":[]} 
+                          console.log("\n649") 
+                          response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
+                          } else { //have a non-error response 
+                          console.log("\n654")
+                          response = {"activeLearning Enabled":false,"answers":[]} 
+                          console.log("\n656") 
+                          response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
+                          }   
+                      }  
+                  }
               }
-          }
 
          
         console.log("\n682 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
