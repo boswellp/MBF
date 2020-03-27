@@ -188,24 +188,12 @@ if (this._userProfileAccessor.profileName != undefined)
 
 
         if (this._welcomedUserProperty != undefined){
-            const didBotWelcomedUserXX = await this._welcomedUserProperty.get(stepContext.context);
-            console.log ("\n192 XXXXXXXdidBotWelcomedUserXX (false is default) = " + didBotWelcomedUserXX);
 
-           console.log("\n\n194 XXXXXXXXXXXXX this._welcomedUserProperty.welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty.welcomedUserProperty));
+           console.log("\n\n194 this._welcomedUserProperty.welcomedUserProperty = " + this._welcomedUserProperty.welcomedUserProperty);
 
-            }
-
-        if (this._welcomedUserProperty.welcomedUserProperty != undefined){
-
-            const didBotWelcomedUserXXXX = await this._welcomedUserProperty.welcomedUserProperty.get(stepContext.context);
-            console.log ("\n201 XXXXXXXXXXXXdidBotWelcomedUserXX (false is default) = " + didBotWelcomedUserXXXX);
-            
-            await this.welcomedUserProperty.set(context, 'remove'); //to remove comment
-            
             }
 
         console.log("\n\n145 .......MULTITURN END......");
-
 
 
         var util = require('util')
@@ -214,9 +202,7 @@ if (this._userProfileAccessor.profileName != undefined)
 
         var JSONstringifythisuserState = JSON.stringify(this._userState);
 
-
-
-        var utilInspectstepContext = util.inspect(stepContext);
+       // var utilInspectstepContext = util.inspect(stepContext);
 
         if (this._userProfileAccessor.profileName == undefined && JSONstringifythisuserState.indexOf('cons1',0) != -1) //cons1 comes from QnAMaker and not got profileName
              {
@@ -270,14 +256,14 @@ if (this._userProfileAccessor.profileName != undefined)
                    //change contract if stored c1/p1
                    else if (profileName == 'c1' && str.indexOf('Plant & Design-Build Contract 1st Ed 1999',0) != -1)
                    {
-                   console.log ("\n185 got c1 str = " + str + '\n');
+                   //console.log ("\n185 got c1 str = " + str + '\n');
                    stepContext.context.activity.text = 'Plant & Design-Build Contract 1st Ed 1999';
                    this._userProfileAccessor.profileName = 'p1'; //change contract after restart
                    }
 
                    else if (profileName == 'p1' && str.indexOf('Construction Contract 1st Ed 1999',0) != -1)
                    {
-                   console.log ("\n192 got p1 str = " + str + '\n');
+                   //console.log ("\n192 got p1 str = " + str + '\n');
                    stepContext.context.activity.text = 'Construction Contract 1st Ed 1999';
                    this._userProfileAccessor.profileName = 'c1'; //change contract after restart
                    } 
@@ -308,7 +294,7 @@ if (this._userProfileAccessor.profileName != undefined)
 
                          if (str.indexOf('Construction Contract',0) != -1)
                                {
-                               console.log ("\n226 ...");
+                               //console.log ("\n226 ...");
                                stepContext.context.activity.text = 'cons1'; //cons1 into userProfile.name
                                this._userProfileAccessor.profileName = 'c1'
                                console.log ("240 SENT stepContext.context.activity.text = " + stepContext.context.activity.text);
@@ -341,7 +327,7 @@ if (this._userProfileAccessor.profileName != undefined)
                                var strTemp = str.replace(/\[/,'');
                                strTemp = strTemp.replace(/\]/,'');
                                strTemp = strTemp.trim();
-                               console.log ("359 strTemp = " + strTemp)
+                               //console.log ("359 strTemp = " + strTemp)
 
 
                                if (categoriesAry.includes(strTemp) && str.indexOf('\[',0) != -1) // categories [ agreement ] in
@@ -398,10 +384,10 @@ if (this._userProfileAccessor.profileName != undefined)
                          {
                          var strCon, strNo, strConNoFull;
                          profileName = this._userProfileAccessor.profileName;
-                         console.log("\n314 KEYWORD STANDARD STRING str = " + str + '; profileName = ' + profileName);
+                         //console.log("\n314 KEYWORD STANDARD STRING str = " + str + '; profileName = ' + profileName);
 
                          var posnSpace = str.indexOf(' ',0);
-                         console.log ("\n317 posnSpace = " + posnSpace);
+                         //console.log ("\n317 posnSpace = " + posnSpace);
 
                          if (posnSpace != -1)  //have space
                                       {
