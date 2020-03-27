@@ -192,6 +192,12 @@ if (this._userProfileAccessor.profileName != undefined)
            console.log("\n\n194 this._welcomedUserProperty.welcomedUserProperty = " + this._welcomedUserProperty.welcomedUserProperty);
 
             }
+        
+        if (this._welcomedUserProperty.welcomedUserProperty != undefined){
+
+            const didBotWelcomedUserXXXX = await this._welcomedUserProperty.welcomedUserProperty.get(stepContext.context);
+            console.log ("\n199 didBotWelcomedUserXXXX = " + didBotWelcomedUserXXXX);
+            }
 
         console.log("\n\n145 .......MULTITURN END......");
 
