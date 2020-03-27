@@ -46,18 +46,11 @@ class QnAMultiturnBot extends ActivityHandler {
                 } 
                 else if (didBotWelcomedUser == 1)
                 {  //TRUE SECOND VISIT REMOVE
-
-
-                    
+ 
                 const userStatus = await this.welcomedUserProperty.get(context, false);
                  
                 await context.sendActivity('FIDICchatbot guidance');
                
-                //await this.sendIntroCard(context);
-                
-                //if (userStatus.indexOf('removeNo',0) != -1){await this.welcomedUserProperty.set(context, 'removeYes')}
-                    
-                //await this.welcomedUserProperty.set(context, 2);
                }
 
         await next();
@@ -73,9 +66,7 @@ class QnAMultiturnBot extends ActivityHandler {
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
 
                      await this.welcomedUserProperty.set(context, 2);
-                    
-                     //await context.sendActivity('Welcome to the FIDICchatbot. Please submit \"start\" to start.');
-                    
+           
                     
                      const card = CardFactory.heroCard(
             'Welcome to the FIDIC chatbot',
