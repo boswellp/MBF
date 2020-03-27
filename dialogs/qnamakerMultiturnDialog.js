@@ -612,9 +612,9 @@ if (this._userProfileAccessor.profileName != undefined)
         if (this._welcomedUserProperty != undefined) //first input with xxxx
             {
             const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-            console.log("\n645didBotWelcomedUser = " + didBotWelcomedUser)
+            console.log("\n615didBotWelcomedUser = " + didBotWelcomedUser)
                 
-            if (didBotWelcomedUser == undefined)
+            if (didBotWelcomedUser == undefined || didBotWelcomedUser == true)
                 
                 {
                 console.log("\n620")
