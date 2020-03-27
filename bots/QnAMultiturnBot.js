@@ -37,7 +37,7 @@ class QnAMultiturnBot extends ActivityHandler {
                 {
                 //await context.sendActivity('For the first message to this chatbot, we shall display here how the chatbot works.');
                 
-                await this.sendGuidanceCard(context);
+                await this.sendWelcomeCard(context);
                    
                 await this.welcomedUserProperty.set(context, 1);
                 const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
@@ -49,7 +49,8 @@ class QnAMultiturnBot extends ActivityHandler {
  
                 const userStatus = await this.welcomedUserProperty.get(context, false);
                  
-                await context.sendActivity('FIDICchatbot guidance');
+                //await context.sendActivity('FIDICchatbot guidance');
+                await this.sendGuidanceCard(context);
                
                }
 
