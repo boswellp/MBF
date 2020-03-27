@@ -627,7 +627,7 @@ if (this._userProfileAccessor.profileName != undefined)
                      }   
                  } else {              
                  console.log("\n641")
-                 if (didBotWelcomedUser == true){                    
+                 if (didBotWelcomedUser == 'true'){                    
                       if (response.answers[0] == undefined){
                           console.log("\n647")
                           response = {"activeLearning Enabled":false,"answers":[]} 
