@@ -609,55 +609,38 @@ if (this._userProfileAccessor.profileName != undefined)
         console.log("\n608 response.answers[0] = " + response.answers[0])
         console.log("\n610 this._welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty))
 
-        if (this._welcomedUserProperty != undefined) //first input with xxxx
-            {
+        if (this._welcomedUserProperty != undefined){ //first input with xxxx
             const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-            console.log("\n615didBotWelcomedUser = " + didBotWelcomedUser)
-                
-            if (didBotWelcomedUser == undefined || didBotWelcomedUser === true)
-                
-                {
-                console.log("\n620")
-                              
-                if (response.answers[0] == undefined)
-                     {
+            console.log("\n615didBotWelcomedUser = " + didBotWelcomedUser)   
+            if (didBotWelcomedUser == undefined){
+                console.log("\n620")           
+                if (response.answers[0] == undefined){
                      console.log("\n624")
                      response = {"activeLearning Enabled":false,"answers":[]} 
                      console.log("\n626") 
                      response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
-                     }
-                     else //have a non-error response 
-                     {
+                     } else { //have a non-error response 
                      console.log("\n632")
                      response = {"activeLearning Enabled":false,"answers":[]} 
                      console.log("\n634") 
                      response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
                      }   
-                 }
-            }
-            else
-            {              
-            console.log("\n641")
-
-            if (didBotWelcomedUser == true)
-                {                    
-                if (response.answers[0] == undefined)
-                    {
-                    console.log("\n647")
-                    response = {"activeLearning Enabled":false,"answers":[]} 
-                    console.log("\n649") 
-                    response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
-                    } 
-                    else //have a non-error response 
-                    {
-                    console.log("\n654")
-                    response = {"activeLearning Enabled":false,"answers":[]} 
-                    console.log("\n656") 
-                    response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
-                    }   
-
-                }  
-            }
+                 } else {              
+                 console.log("\n641")
+                 if (didBotWelcomedUser == true){                    
+                      if (response.answers[0] == undefined){
+                      console.log("\n647")
+                      response = {"activeLearning Enabled":false,"answers":[]} 
+                      console.log("\n649") 
+                      response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
+                      } else { //have a non-error response 
+                      console.log("\n654")
+                      response = {"activeLearning Enabled":false,"answers":[]} 
+                      console.log("\n656") 
+                      response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
+                      }   
+                  }  
+              }
        
 
          
