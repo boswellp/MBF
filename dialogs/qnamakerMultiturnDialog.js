@@ -176,15 +176,15 @@ if (this._userProfileAccessor.profileName != undefined)
         //console.log("\n\n125 this._welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty))
         //this._userWelcomeAccessor.welcomedStatus = null;
 
-        console.log("\n\n129 this._welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty));
+        //console.log("\n\n129 this._welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty));
 
         //console.log("\n\n125 this._userState.storage.memory = " + JSON.stringify(this._userState.storage.memory));
 
-        console.log("\n\n129 this._userWelcomeAccessor.welcomedStatus = " + JSON.stringify(this._userWelcomeAccessor.welcomedStatus));
+        //console.log("\n\n129 this._userWelcomeAccessor.welcomedStatus = " + JSON.stringify(this._userWelcomeAccessor.welcomedStatus));
 
-        console.log ("\n131 this._welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty));
+        //console.log ("\n131 this._welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty));
 
-        console.log ("\n133 this._welcomedUserProperty.welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty.welcomedUserProperty));
+        //console.log ("\n133 this._welcomedUserProperty.welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty.welcomedUserProperty));
 
 
         if (this._welcomedUserProperty != undefined){
@@ -224,14 +224,14 @@ if (this._userProfileAccessor.profileName != undefined)
              {
              this._userProfileAccessor.profileName = "c1";
              this._userSearchAccessor.searchType = "index";
-             console.log ("\n100 MULTITURN cons1 from QnAMaker IN c1");
+             console.log ("\n227 MULTITURN cons1 from QnAMaker IN c1");
              //var utilProfileAccessor = util.inspect(this._userProfileAccessor);
              //console.log("119 utiluserProfileAccessor  = " + utilProfileAccessor )
              } 
              else if (JSONstringifythisuserState.indexOf('plant1',0) != -1){ //plant1 comes from QnAMaker
              this._userProfileAccessor.profileName = "p1";
              this._userSearchAccessor.searchType = "index";
-             console.log ("\n107 MULTITURN plant1 from QnAMake IN p1");
+             console.log ("\n234 MULTITURN plant1 from QnAMake IN p1");
              } 
 
 ///need to check str
