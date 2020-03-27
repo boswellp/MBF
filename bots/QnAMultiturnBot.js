@@ -51,7 +51,7 @@ class QnAMultiturnBot extends ActivityHandler {
                     
                 const userStatus = await this.welcomedUserProperty.get(context, false);
                  
-                //if (userStatus != 2){await context.sendActivity('We shall shortly remove this remark.');}
+                await context.sendActivity('FIDICchatbot guidance');
                
                 //await this.sendIntroCard(context);
                 
