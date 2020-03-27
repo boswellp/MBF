@@ -37,7 +37,7 @@ class QnAMultiturnBot extends ActivityHandler {
                 {
                 //await context.sendActivity('For the first message to this chatbot, we shall display here how the chatbot works.');
                 
-                await this.sendIntroCard(context);
+                await this.sendGuidanceCard(context);
                    
                 await this.welcomedUserProperty.set(context, 1);
                 const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
@@ -91,10 +91,12 @@ class QnAMultiturnBot extends ActivityHandler {
             ]
         );
 
-                 await context.sendActivity({ attachments: [card] });
+                 //await context.sendActivity({ attachments: [card] });
+                    
+                 await this.sendWelcomeCard(context);
 
-                 var reply = MessageFactory.suggestedActions(['start'], '')
-                 await context.sendActivity(reply);
+                 //var reply = MessageFactory.suggestedActions(['start'], '')
+                 //await context.sendActivity(reply);
                  
 
                 }
@@ -114,9 +116,9 @@ class QnAMultiturnBot extends ActivityHandler {
     }
     
 /////////////////////
-    async sendIntroCard(context) {
+    async sendGuidanceCard(context) {
 
-        const card = CardFactory.heroCard(
+        const cardGuidance = CardFactory.heroCard(
             'FIDICchatbot',
             'Please take a moment to see how the chatbot is used to search FIDIC contracts.',
             ['https://aka.ms/bf-welcome-card-image'],
@@ -139,7 +141,38 @@ class QnAMultiturnBot extends ActivityHandler {
             ]
         );
 
-        await context.sendActivity({ attachments: [card] });
+        await context.sendActivity({ attachments: [cardGuidance] });
+
+    }
+/////////////////////
+    
+    /////////////////////
+    async sendWelcomeCard(context) {
+
+        const cardWelcome = CardFactory.heroCard(
+            'FIDICchatbot',
+            'WELCOME...........Please take a moment to see how the chatbot is used to search FIDIC contracts.',
+            ['https://aka.ms/bf-welcome-card-image'],
+            [
+                {
+                    type: ActionTypes.OpenUrl,
+                    title: 'Overview',
+                    value: 'https://fidic.tips/fidicbot'
+                },
+                {
+                    type: ActionTypes.OpenUrl,
+                    title: 'Web version',
+                    value: 'https://fidic.tips/fidicbotalone'
+                },
+                {
+                    type: ActionTypes.PostBack,
+                    title: 'Start',
+                    value: 'start'
+                }
+            ]
+        );
+
+        await context.sendActivity({ attachments: [cardWelcome] });
 
     }
 /////////////////////
