@@ -36,7 +36,7 @@ class QnAMultiturnBot extends ActivityHandler {
 
            const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
 
-           if (didBotWelcomedUser === false)  //FALSE - FIRST WELCOME
+           if (didBotWelcomedUser == false)  //FALSE - FIRST WELCOME
 
                 {
                  await context.sendActivity('For the first message to this chatbot, we shall display here how the chatbot works.');
