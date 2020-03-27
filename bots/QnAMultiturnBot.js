@@ -36,7 +36,7 @@ class QnAMultiturnBot extends ActivityHandler {
 
            const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
 
-           if (didBotWelcomedUser === false)
+           if (didBotWelcomedUser === false)  //FALSE - FIRST WELCOME
 
                 {
                  await context.sendActivity('For the first message to this chatbot, we shall display here how the chatbot works.');
@@ -46,7 +46,7 @@ class QnAMultiturnBot extends ActivityHandler {
                 const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
                 console.log ("\n_48 didBotWelcomedUser = " + didBotWelcomedUser);
 
-                } else {
+                } else {  //TRUE SECOND VISIT REMOVE
 
 
                     
@@ -65,7 +65,7 @@ class QnAMultiturnBot extends ActivityHandler {
 
         });
 
-        this.onMembersAdded(async (context, next) => {
+        this.onMembersAdded(async (context, next) => { //WHEN SHOWN?
 
             const membersAdded = context.activity.membersAdded;
 
@@ -77,7 +77,7 @@ class QnAMultiturnBot extends ActivityHandler {
 
                     //await this.sendIntroCard(context);
                     
-                     await this.welcomedUserProperty.set(context, true);
+                     await this.welcomedUserProperty.set(context, null);
 
                 }
             }
