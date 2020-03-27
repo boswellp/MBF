@@ -604,13 +604,15 @@ if (this._userProfileAccessor.profileName != undefined)
         var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
 
 //////////////////////////////////////////
+        
+         console.log("\n608 textOrig = " + textOrig)
 
         if (response.answers[0].answer == undefined)
              {
               response.answers[0].answer = 'Startup'           
              }
         
-
+        console.log("\n615 textOrig = " + textOrig)
 
         //console.log("\n610 textOrig = " + textOrig + "; textTemp = " + textTemp + "; activity.text = " + stepContext.context.activity.text+ '; profileNameStored = ' + this._userProfileAccessor.profileName + '; searchTypeStored = ' + this._userSearchAccessor.searchType);
 
@@ -981,20 +983,20 @@ if (this._userProfileAccessor.profileName != undefined)
                 await stepContext.context.sendActivity(responses[0].answer);
                 } else {
                     
-                console.log("\n978 response no answer?");
+                //console.log("\n978 response no answer?");
                     
-                if (this._welcomedUserProperty != undefined && stepContext != undefined) ///xxxx first input
-                     {
+                //if (this._welcomedUserProperty != undefined && stepContext != undefined) ///xxxx first input
+                     //{
                       
-                     responses[0].answer = 'No answer on start. Please submit start.';
+                     //responses[0].answer = 'No answer on start. Please submit start.';
                          
-                     await stepContext.context.sendActivity(responses[0].answer);
+                     //await stepContext.context.sendActivity(responses[0].answer);
                          
-                     }
-                    else
-                    {                    
+                     //}
+                    //else
+                    //{                    
                     await stepContext.context.sendActivity(qnaDialogResponseOptions.noAnswer);
-                    }
+                    //}
                 }
             
             return await stepContext.next();
