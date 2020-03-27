@@ -611,7 +611,7 @@ if (this._userProfileAccessor.profileName != undefined)
              //{
              console.log("\n612 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
                  
-             //response.answers[0].answer = 'Startup'           
+             response.answers[0].answer = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}           
              //}
         
         console.log("\n615 textOrig = " + textOrig)
