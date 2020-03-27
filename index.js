@@ -28,15 +28,17 @@ const { RootDialog } = require('./dialogs/rootDialog');
 
 //const welcomeCard = require('./resources/WelcomeCard.json'); //ADDED TUE
 
-const ENV_FILE = path.join(__dirname, '.env');
-require('dotenv').config({ path: ENV_FILE });
+//const ENV_FILE = path.join(__dirname, '.env');
+//require('dotenv').config({ path: ENV_FILE });
 
 const server = restify.createServer();
+/*
 server.listen(process.env.port || process.env.PORT || 3979, function() {
     console.log(`\n${ server.name } listening to ${ server.url }.`);
     console.log('\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator');
     console.log('\nTo talk to your bot, open the emulator select "Open Bot"');
 });
+*/
 
 
 const adapter = new BotFrameworkAdapter({
