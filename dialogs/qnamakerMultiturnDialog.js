@@ -616,15 +616,15 @@ if (this._userProfileAccessor.profileName != undefined)
                 console.log("\n616 undefined")           
                 if (response.answers[0] == undefined){
                      console.log("\n618 undefined")
-                     response = {"activeLearning Enabled":false,"answers":[]} 
+                     //response = {"activeLearning Enabled":false,"answers":[]} 
                      console.log("\n620 undefined") 
-                     response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
+                     //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      } else { //have a non-error response 
                      console.log("\n623 undefined")
-                     response = {"activeLearning Enabled":false,"answers":[]} 
+                     //response = {"activeLearning Enabled":false,"answers":[]} 
                      console.log("\n625 undefined") 
-                     response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
-                     response = {"activeLearningEnabled":false,"answers":[{"questions":["c1","Stop search [c1]","cons1"],"answer":"Construction Contract 1st Ed 1999","score":1,"id":13205,"source":"Editorial","metadata":[{"name":"category","value":"contents"}],"context":{"isContextOnly":false,"prompts":[{"displayOrder":0,"qnaId":13499,"qna":null,"displayText":"c1 s"},{"displayOrder":0,"qnaId":13195,"qna":null,"displayText":"c1 0"}]}}]}
+                     //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
+                     //response = {"activeLearningEnabled":false,"answers":[{"questions":["c1","Stop search [c1]","cons1"],"answer":"Construction Contract 1st Ed 1999","score":1,"id":13205,"source":"Editorial","metadata":[{"name":"category","value":"contents"}],"context":{"isContextOnly":false,"prompts":[{"displayOrder":0,"qnaId":13499,"qna":null,"displayText":"c1 s"},{"displayOrder":0,"qnaId":13195,"qna":null,"displayText":"c1 0"}]}}]}
                      
                      }   
                  } else {              
@@ -635,16 +635,16 @@ if (this._userProfileAccessor.profileName != undefined)
                           //webchat on opening and Messenger on second step.
                           
                           console.log("\n632 true1 : webchat on opening and Messenger on second step")
-                          response = {"activeLearning Enabled":false,"answers":[]} 
+                          //response = {"activeLearning Enabled":false,"answers":[]} 
                           console.log("\n634 true1") 
-                          response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
+                          //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                          
                       
                           } else { //have a non-error response 
                           console.log("\n638 true1")
-                          response = {"activeLearning Enabled":false,"answers":[]} 
+                          //response = {"activeLearning Enabled":false,"answers":[]} 
                           console.log("\n640 true1") 
-                          response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
+                          //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                           }   
                       } else {
                       console.log("\n643 2") 
