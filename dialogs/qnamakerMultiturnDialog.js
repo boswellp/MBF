@@ -190,6 +190,8 @@ if (this._userProfileAccessor.profileName != undefined)
         if (this._welcomedUserProperty != undefined){
             const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
             console.log ("\n192 didBotWelcomedUser  = " + didBotWelcomedUser);
+            
+            await this.welcomedUserProperty.set(context, 'removeNo');
 
             }
 
