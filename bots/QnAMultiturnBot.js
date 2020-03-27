@@ -21,14 +21,11 @@ class QnAMultiturnBot extends ActivityHandler {
         this.dialogState = this.conversationState.createProperty('DialogState');
         this.welcomedState = this.conversationState.createProperty('WelcomedState');
         this.welcomedUserProperty = userState.createProperty(WELCOMED_USER);
-        //this.userWelcomeAccessor = userState.createProperty(WELCOMED_USER_STATUS);
+
 
         this.onMessage(async (context, next) => {
-
             console.log('\n_Running dialog with Message Activity.');
-
             await this.dialog.run(context, this.dialogState);
-
             await next();
             });
 
@@ -37,7 +34,6 @@ class QnAMultiturnBot extends ActivityHandler {
            const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
 
            if (didBotWelcomedUser == 0)  //FALSE - FIRST WELCOME
-
                 {
                  await context.sendActivity('For the first message to this chatbot, we shall display here how the chatbot works.');
                 //await this.sendIntroCard(context);
@@ -47,21 +43,20 @@ class QnAMultiturnBot extends ActivityHandler {
                 console.log ("\n_48 didBotWelcomedUser = " + didBotWelcomedUser);
 
                 } 
-               else if (didBotWelcomedUser == 1)
-                   {  //TRUE SECOND VISIT REMOVE
+                else if (didBotWelcomedUser == 1)
+                {  //TRUE SECOND VISIT REMOVE
 
 
                     
-                   const userStatus = await this.welcomedUserProperty.get(context, false);
+                const userStatus = await this.welcomedUserProperty.get(context, false);
                  
-                   if (userStatus != null){await context.sendActivity('We shall shortly remove this remark.');}
+                if (userStatus != 2){await context.sendActivity('We shall shortly remove this remark.');}
                
-                   //await this.sendIntroCard(context);
+                //await this.sendIntroCard(context);
                 
-                   //if (userStatus.indexOf('removeNo',0) != -1){await this.welcomedUserProperty.set(context, 'removeYes')}
+                //if (userStatus.indexOf('removeNo',0) != -1){await this.welcomedUserProperty.set(context, 'removeYes')}
                     
-                   await this.welcomedUserProperty.set(context, null);
-                   }
+                await this.welcomedUserProperty.set(context, null);
                }
 
         await next();
