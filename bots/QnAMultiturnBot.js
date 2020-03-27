@@ -43,9 +43,9 @@ class QnAMultiturnBot extends ActivityHandler {
 
 /////////
 
-                await this.welcomedUserProperty.set(context, 'none');
-                const didBotWelcomedUserXX = await this.welcomedUserProperty.get(context, false);
-                console.log ("\n_48 didBotWelcomedUserXX = " + didBotWelcomedUserXX);
+                await this.welcomedUserProperty.set(context, 'if');
+                const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
+                console.log ("\n_48 didBotWelcomedUser = " + didBotWelcomedUser);
 ///////
 
                  await context.sendActivity('For first time visitors, we shall display here how the chatbot works.');
@@ -54,7 +54,7 @@ class QnAMultiturnBot extends ActivityHandler {
                 } else {
 
 
-                const text = context.activity.text.toLowerCase();
+                await this.welcomedUserProperty.set(context, 'else');
                     
                 const userStatus = await this.welcomedUserProperty.get(context, false);
                  
@@ -76,6 +76,8 @@ class QnAMultiturnBot extends ActivityHandler {
             for (let cnt = 0; cnt < membersAdded.length; cnt++) {
 
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
+                    
+                    await this.welcomedUserProperty.set(context, 'membersadded');
 
                     await context.sendActivity('Welcome to the FIDICchatbot. Please submit \"start\" to start.');
 
