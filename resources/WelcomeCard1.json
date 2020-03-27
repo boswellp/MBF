@@ -4,9 +4,12 @@
   "version": "1.0",
   "body": [
     {
-      "type": "Image",
-      "url": "https://fidic.tips/fidicchatbot/fidicchatbot_logo.png",
-      "size": "stretch"
+      "type": "TextBlock",
+      "size": "default",
+      "isSubtle": true,
+      "text": "",
+      "wrap": true,
+      "maxLines": 0
     },
     {
       "type": "TextBlock",
@@ -51,9 +54,8 @@
   ],
   "actions": [
     {
-      "type": "Action.OpenUrl",
-      "title": "Overview",
-      "url": "https://fidic.tips/chatbot"
+      "type": "Action.PostBack",
+      "title": "START"
     }
 
   ]
