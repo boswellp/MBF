@@ -35,9 +35,10 @@ class QnAMultiturnBot extends ActivityHandler {
 
            if (didBotWelcomedUser == 0)  //FALSE - FIRST WELCOME
                 {
-                 await context.sendActivity('For the first message to this chatbot, we shall display here how the chatbot works.');
-                //await this.sendIntroCard(context);
-                    
+                //await context.sendActivity('For the first message to this chatbot, we shall display here how the chatbot works.');
+                
+                await this.sendIntroCard(context);
+                   
                 await this.welcomedUserProperty.set(context, 1);
                 const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
                 console.log ("\n_48 didBotWelcomedUser = " + didBotWelcomedUser);
@@ -120,6 +121,40 @@ class QnAMultiturnBot extends ActivityHandler {
             await next();
         });
     }
+    
+/////////////////////
+    async sendIntroCard(context) {
+
+        const card = CardFactory.heroCard(
+            'About',
+            'Please take a moment to see how the chatbot is used to search FIDIC contracts.',
+            ['https://aka.ms/bf-welcome-card-image'],
+            [
+                {
+                    type: ActionTypes.OpenUrl,
+                    title: 'Overview',
+                    value: 'https://fidic.tips/fidicbot'
+                },
+                {
+                    type: ActionTypes.OpenUrl,
+                    title: 'Web version',
+                    value: 'https://fidic.tips/fidicbotalone'
+                },
+                {
+                    type: ActionTypes.PostBack,
+                    title: 'start',
+                    value: 'start'
+                }
+            ]
+        );
+
+        await context.sendActivity({ attachments: [card] });
+
+    }
+/////////////////////
+    
+    
+    
 }
 
 module.exports.QnAMultiturnBot = QnAMultiturnBot;
