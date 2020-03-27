@@ -191,11 +191,11 @@ if (this._userProfileAccessor.profileName != undefined)
             const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
             console.log ("\n192 didBotWelcomedUser  = " + didBotWelcomedUser);
             
-            if (this._welcomedUserProperty.welcomedUserProperty != undefined){     
+            //if (this._welcomedUserProperty.welcomedUserProperty != undefined){     
                await this._welcomedUserProperty.set(stepContext, 'removeNo');
                const didBotWelcomedUser1 = await this._welcomedUserProperty.get(stepContext.context);
                console.log ("\n197 didBotWelcomedUser1  = " + didBotWelcomedUser1);    
-               }
+               //}
             }
 
 
