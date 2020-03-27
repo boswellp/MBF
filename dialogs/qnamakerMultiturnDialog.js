@@ -617,8 +617,10 @@ if (this._userProfileAccessor.profileName != undefined)
                if (didBotWelcomedUser == undefined)
                    {
                    console.log("\n619")
-                   //response.answers[0].answer = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
                    response = {"activeLearning Enabled":false,"answers":[]} 
+                   console.log("\n621")
+                   response.answers[0].answer = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
+
                    } 
                }
 
