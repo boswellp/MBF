@@ -614,7 +614,7 @@ if (this._userProfileAccessor.profileName != undefined)
             const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
             console.log("\n615didBotWelcomedUser = " + didBotWelcomedUser)
                 
-            if (didBotWelcomedUser == undefined || didBotWelcomedUser == true)
+            if (didBotWelcomedUser == undefined || didBotWelcomedUser === true)
                 
                 {
                 console.log("\n620")
