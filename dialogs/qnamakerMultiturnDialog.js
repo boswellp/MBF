@@ -624,6 +624,22 @@ if (this._userProfileAccessor.profileName != undefined)
                    response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
                    } 
                 }
+                else //have a non-error response 
+                {
+                console.log("\n629")
+                const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
+                console.log("\n618 didBotWelcomedUser = " + didBotWelcomedUser)
+                if (didBotWelcomedUser == undefined)
+                   {
+                   console.log("\n634")
+                   response = {"activeLearning Enabled":false,"answers":[]} 
+                   console.log("\n636") 
+                   response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
+                   } 
+                
+                
+                
+                }
             }
 
          
