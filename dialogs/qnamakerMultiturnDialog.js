@@ -607,7 +607,7 @@ if (this._userProfileAccessor.profileName != undefined)
 
 
 
-        console.log("\n610 textOrig = " + textOrig + "; textTemp = " + textTemp + "; activity.text = " + stepContext.context.activity.text+ '; profileNameStored = ' + this._userProfileAccessor.profileName + '; searchTypeStored = ' + this._userSearchAccessor.searchType);
+        //console.log("\n610 textOrig = " + textOrig + "; textTemp = " + textTemp + "; activity.text = " + stepContext.context.activity.text+ '; profileNameStored = ' + this._userProfileAccessor.profileName + '; searchTypeStored = ' + this._userSearchAccessor.searchType);
 
         console.log("\n612 ANSWER BEFORE PROCESSING response.answers[0].answer = " + JSON.stringify(response.answers[0].answer));
         //console.log("\n617 response = HERE");
