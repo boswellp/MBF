@@ -189,22 +189,20 @@ if (this._userProfileAccessor.profileName != undefined)
 
         if (this._welcomedUserProperty != undefined){
             const didBotWelcomedUserXX = await this._welcomedUserProperty.get(stepContext.context);
-            console.log ("\n138 XXXXXXXdidBotWelcomedUserXX (false is default) = " + didBotWelcomedUserXX);
+            console.log ("\n192 XXXXXXXdidBotWelcomedUserXX (false is default) = " + didBotWelcomedUserXX);
 
-           console.log("\n\n140 XXXXXXXXXXXXX this._welcomedUserProperty.welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty.welcomedUserProperty));
+           console.log("\n\n194 XXXXXXXXXXXXX this._welcomedUserProperty.welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty.welcomedUserProperty));
 
             }
 
         if (this._welcomedUserProperty.welcomedUserProperty != undefined){
 
             const didBotWelcomedUserXXXX = await this._welcomedUserProperty.welcomedUserProperty.get(stepContext.context);
-            console.log ("\n138 XXXXXXXXXXXXdidBotWelcomedUserXX (false is default) = " + didBotWelcomedUserXXXX);
+            console.log ("\n201 XXXXXXXXXXXXdidBotWelcomedUserXX (false is default) = " + didBotWelcomedUserXXXX);
             
             await this.welcomedUserProperty.set(context, 'remove'); //to remove comment
             
             }
-
-
 
         console.log("\n\n145 .......MULTITURN END......");
 
