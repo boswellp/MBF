@@ -69,7 +69,8 @@
   "actions": [
     {
       "type": "Action.PostBack",
-      "title": "START"
+      "title": "START",
+      "value": "START"
     }
   ]
 }
