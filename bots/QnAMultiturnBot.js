@@ -43,7 +43,7 @@ class QnAMultiturnBot extends ActivityHandler {
 
 /////////
 
-                await this.welcomedUserProperty.set(context, null);
+                await this.welcomedUserProperty.set(context, 'none');
                 const didBotWelcomedUserXX = await this.welcomedUserProperty.get(context, false);
                 console.log ("\n_48 didBotWelcomedUserXX = " + didBotWelcomedUserXX);
 ///////
