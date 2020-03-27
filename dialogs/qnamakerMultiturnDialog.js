@@ -626,7 +626,7 @@ if (this._userProfileAccessor.profileName != undefined)
                      response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
                      }   
                  } else {              
-                 console.log("\n629")
+                 console.log("\n629 didBotWelcomedUser not undefined")
                  if (didBotWelcomedUser == 1){                    
                       if (response.answers[0] == undefined){
                           console.log("\n632 true1")
