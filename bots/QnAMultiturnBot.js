@@ -46,20 +46,23 @@ class QnAMultiturnBot extends ActivityHandler {
                 const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
                 console.log ("\n_48 didBotWelcomedUser = " + didBotWelcomedUser);
 
-                } else {  //TRUE SECOND VISIT REMOVE
+                } 
+               else if (didBotWelcomedUser == 1)
+                   {  //TRUE SECOND VISIT REMOVE
 
 
                     
-                const userStatus = await this.welcomedUserProperty.get(context, false);
+                   const userStatus = await this.welcomedUserProperty.get(context, false);
                  
-                if (userStatus != null){await context.sendActivity('We shall shortly remove this remark.');}
+                   if (userStatus != null){await context.sendActivity('We shall shortly remove this remark.');}
                
-                //await this.sendIntroCard(context);
+                   //await this.sendIntroCard(context);
                 
-                //if (userStatus.indexOf('removeNo',0) != -1){await this.welcomedUserProperty.set(context, 'removeYes')}
+                   //if (userStatus.indexOf('removeNo',0) != -1){await this.welcomedUserProperty.set(context, 'removeYes')}
                     
-                await this.welcomedUserProperty.set(context, null);
-             }
+                   await this.welcomedUserProperty.set(context, null);
+                   }
+               }
 
         await next();
 
