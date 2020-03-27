@@ -72,12 +72,39 @@ class QnAMultiturnBot extends ActivityHandler {
             for (let cnt = 0; cnt < membersAdded.length; cnt++) {
 
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
-                    
-                    await context.sendActivity('Welcome to the FIDICchatbot. Please submit \"start\" to start.');
 
-                    //await this.sendIntroCard(context);
-                    
                      await this.welcomedUserProperty.set(context, 2);
+                    
+                     //await context.sendActivity('Welcome to the FIDICchatbot. Please submit \"start\" to start.');
+                    
+                    
+                     const card = CardFactory.heroCard(
+            'Welcome to the FIDIC chatbot',
+            'FIDICchatbot allows you to search FIDIC contracts.',
+            ['https://aka.ms/bf-welcome-card-image'],
+            [
+                {
+                    type: ActionTypes.OpenUrl,
+                    title: 'Overview',
+                    value: 'https://fidic.tips/fidicbot'
+                },
+                {
+                    type: ActionTypes.OpenUrl,
+                    title: 'Web version',
+                    value: 'https://fidic.tips/fidicbotalone'
+                },
+                {
+                    type: ActionTypes.PostBack,
+                    title: 'start',
+                    value: 'start'
+                }
+            ]
+        );
+
+                 await context.sendActivity({ attachments: [card] });
+
+                 var reply = MessageFactory.suggestedActions(['start'], '')
+                 
 
                 }
             }
