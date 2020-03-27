@@ -47,9 +47,10 @@ class QnAMultiturnBot extends ActivityHandler {
                 else if (didBotWelcomedUser == 1)
                 {  //TRUE SECOND VISIT REMOVE
  
-                const userStatus = await this.welcomedUserProperty.get(context, false);
-                 
-                //await context.sendActivity('FIDICchatbot guidance');
+                //const userStatus = await this.welcomedUserProperty.get(context, false);
+                    
+                await this.welcomedUserProperty.set(context, 2);
+
                 await this.sendGuidanceCard(context);
                
                }
