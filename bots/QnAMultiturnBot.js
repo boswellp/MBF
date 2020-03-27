@@ -3,8 +3,8 @@
 const { ActivityHandler, MessageFactory, ActionTypes, CardFactory } = require('botbuilder');
 
 const welcomeCard = require('../resources/WelcomeCard.json');
-const welcomeCard = require('../resources/WelcomeCard1.json');
-const welcomeCard = require('../resources/GuidanceCard.json');
+const welcomeCard1 = require('../resources/WelcomeCard1.json');
+const guidanceCard = require('../resources/GuidanceCard.json');
 
 const WELCOMED_USER = 'welcomedUserProperty';
 //const WELCOMED_USER_STATUS = 'welcomedStatus';
