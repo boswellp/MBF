@@ -610,7 +610,10 @@ if (this._userProfileAccessor.profileName != undefined)
         //if (response.answers[0].answer == undefined)
              //{
         
-             response.answers[0].answer = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}    
+            response.answers[0] = {"activeLearning Enabled":false,"answers":[]}    
+      
+   
+             //response.answers[0].answer = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}    
         
              console.log("\n612 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
                  
