@@ -866,7 +866,7 @@ if (this._userProfileAccessor.profileName != undefined)
 
              //console.log("\n766 END EXPANSION response.answers[0].answer = \n" + JSON.stringify(response.answers[0].answer))
 
-             console.log("\n768 END EXPANSION response.answers[0].context = \n" + JSON.stringify(response.answers[0].context))
+             //console.log("\n768 END EXPANSION response.answers[0].context = \n" + JSON.stringify(response.answers[0].context))
 
              }
 
@@ -877,7 +877,7 @@ if (this._userProfileAccessor.profileName != undefined)
 
 
 
-        console.log("\n777 After processing ..");
+        //console.log("\n777 After processing ..");
 
         dialogOptions[PreviousQnAId] = -1;
         stepContext.activeDialog.state.options = dialogOptions;
@@ -924,7 +924,7 @@ if (this._userProfileAccessor.profileName != undefined)
                 });
 
 
-                console.log("\n945 After processing .. answer.context.prompts = " + JSON.stringify(answer.context.prompts));
+                //console.log("\n945 After processing .. answer.context.prompts = " + JSON.stringify(answer.context.prompts));
 
 
                 //for search - prompt stop. answer is original unprocessed answer
