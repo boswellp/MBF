@@ -38,7 +38,7 @@ class QnAMultiturnBot extends ActivityHandler {
                 //await context.sendActivity('For the first message to this chatbot, we shall display here how the chatbot works.');
                 
                 //await this.sendWelcomeCard(context);
-                await context.sendActivity("Welcome");
+                //await context.sendActivity("Welcome");
                     
                  welcomeCard.body[1].text = 'Welcome to FIDICchatbot';
                  welcomeCard.body[2].text = 'The chatbot allows you to search FIDIC contracts.';
