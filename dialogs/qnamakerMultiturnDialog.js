@@ -625,7 +625,6 @@ if (this._userProfileAccessor.profileName != undefined)
                      response = {"activeLearning Enabled":false,"answers":[]} 
                      console.log("\n626") 
                      response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
-                     } 
                      }
                      else //have a non-error response 
                      {
