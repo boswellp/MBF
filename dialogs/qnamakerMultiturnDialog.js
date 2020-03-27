@@ -605,15 +605,17 @@ if (this._userProfileAccessor.profileName != undefined)
 
 //////////////////////////////////////////
         
-        console.log("\n608 textOrig = " + textOrig)
+        console.log("\n608")
 
         if (response.answers[0] = undefined && this._welcomedUserProperty != undefined) //first input with xxxx
                {
+               console.log("\n612")
                const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
                if (didBotWelcomedUser == undefined)
                    {
-                   //response.answers[0].answer = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
-                   response = {"activeLearning Enabled":false,"answers":[]} 
+                   console.log("\n615")
+                   response.answers[0].answer = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
+                   //response = {"activeLearning Enabled":false,"answers":[]} 
                    } 
                }
 
