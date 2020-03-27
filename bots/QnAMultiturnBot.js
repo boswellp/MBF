@@ -37,7 +37,9 @@ class QnAMultiturnBot extends ActivityHandler {
                 {
                 //await context.sendActivity('For the first message to this chatbot, we shall display here how the chatbot works.');
                 
-                await this.sendWelcomeCard(context);
+                //await this.sendWelcomeCard(context);
+                
+                await context.sendActivity("Welcome");
                    
                 await this.welcomedUserProperty.set(context, 1);
                 const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
@@ -45,13 +47,15 @@ class QnAMultiturnBot extends ActivityHandler {
 
                 } 
                 else if (didBotWelcomedUser == 1)
-                {  //TRUE SECOND VISIT REMOVE
+                {  
  
                 //const userStatus = await this.welcomedUserProperty.get(context, false);
                     
                 await this.welcomedUserProperty.set(context, 2);
 
-                await this.sendGuidanceCard(context);
+                //await this.sendGuidanceCard(context);
+                    
+                await context.sendActivity("Guidance");
                
                }
 
