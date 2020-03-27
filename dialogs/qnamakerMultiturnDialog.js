@@ -605,9 +605,10 @@ if (this._userProfileAccessor.profileName != undefined)
 
 //////////////////////////////////////////
         
-        console.log("\n608")
+        console.log("\n608 response.answers[0] = " + response.answers[0])
+        console.log("\n608 this._welcomedUserProperty = " + this._welcomedUserProperty)
 
-        if (response.answers[0] = undefined && this._welcomedUserProperty != undefined) //first input with xxxx
+        if (response.answers[0] == undefined && this._welcomedUserProperty != undefined) //first input with xxxx
                {
                console.log("\n612")
                const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
