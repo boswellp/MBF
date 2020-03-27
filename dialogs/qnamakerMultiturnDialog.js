@@ -71,7 +71,7 @@ console.log(".............................................................\nChan
 
 
 const qnaService = new QnAMaker({
-    knowledgeBaseId: process.env.QnAKnowledgebaseIdp1,
+    knowledgeBaseId: process.env.QnAKnowledgebaseId,
     endpointKey: process.env.QnAEndpointKey,
     host: process.env.QnAEndpointHostName
     });
