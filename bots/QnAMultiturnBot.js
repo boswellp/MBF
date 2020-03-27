@@ -91,12 +91,12 @@ class QnAMultiturnBot extends ActivityHandler {
                     type: ActionTypes.OpenUrl,
                     title: 'Web version',
                     value: 'https://fidic.tips/fidicbotalone'
+                },
+                {
+                    type: ActionTypes.PostBack,
+                    title: 'Start',
+                    value: 'start'
                 }
-                //{
-                    //type: ActionTypes.PostBack,
-                    //title: 'Start',
-                    //value: 'start'
-                //}
             ]
         );
 
