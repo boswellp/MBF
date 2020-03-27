@@ -619,7 +619,8 @@ if (this._userProfileAccessor.profileName != undefined)
                    console.log("\n619")
                    response = {"activeLearning Enabled":false,"answers":[]} 
                    console.log("\n621")
-                   response.answers[0].answer = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
+                   //response.answers[0].answer = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
+                   response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
 
                    } 
                }
