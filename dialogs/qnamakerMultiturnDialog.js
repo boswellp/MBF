@@ -615,7 +615,7 @@ if (this._userProfileAccessor.profileName != undefined)
             if (didBotWelcomedUser == undefined){
                 console.log("\n616 undefined")           
                 if (response.answers[0] == undefined){
-                     console.log("\n624")
+                     console.log("\n618")
                      response = {"activeLearning Enabled":false,"answers":[]} 
                      console.log("\n620 undefined") 
                      response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
