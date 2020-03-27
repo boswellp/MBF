@@ -638,9 +638,48 @@ if (this._userProfileAccessor.profileName != undefined)
                    }   
                 }
             }
+            else
+            {              
+            console.log("\n643")
+            const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
+            console.log("\n645didBotWelcomedUser = " + didBotWelcomedUser)
+            if (didBotWelcomedUser == true)
+                {
+                    
+                if (response.answers[0] == undefined)
+                    {
+                    console.log("\n651")
+                    const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
+                    console.log("\n653 didBotWelcomedUser = " + didBotWelcomedUser)
+                    if (didBotWelcomedUser == true)
+                         {
+                         console.log("\n656")
+                         response = {"activeLearning Enabled":false,"answers":[]} 
+                         console.log("\n623") 
+                         response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
+                         } 
+                     }
+                    else //have a non-error response 
+                    {
+                    console.log("\n664")
+                    const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
+                    console.log("\n666 didBotWelcomedUser = " + didBotWelcomedUser)
+                    if (didBotWelcomedUser == undefined)
+                        {
+                        console.log("\n669")
+                        response = {"activeLearning Enabled":false,"answers":[]} 
+                        console.log("\n671") 
+                        response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Select a FIDIC contract","context":{"isContextOnly":false}}]}  
+                       }   
+                    }
+                
+            
+                }  
+            }
+       
 
          
-        console.log("\n643 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
+        console.log("\n682 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
                  
         
 
