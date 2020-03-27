@@ -289,7 +289,7 @@ if (this._userProfileAccessor.profileName != undefined)
 
                    {              
                    
-                   console.log ("\n204 IN str = " + str);  
+                   //console.log ("\n204 IN str = " + str);  
 
                    //keyword1
                    if (isNaN(str)) 
@@ -300,7 +300,7 @@ if (this._userProfileAccessor.profileName != undefined)
                                {
                                if (profileName != undefined){profileName = profileName.replace('s','')} //to enable normal clause display
                                }
-                         console.log("\n227 keyword1 str = " + str + '; profileNameStored = ' + this._userProfileAccessor.profileName + '; searchTypeStored = ' + this._userSearchAccessor.searchType);
+                         //console.log("\n227 keyword1 str = " + str + '; profileNameStored = ' + this._userProfileAccessor.profileName + '; searchTypeStored = ' + this._userSearchAccessor.searchType);
  
                          if (str == 'start' || str == 'help') ///reset
                                {
@@ -317,21 +317,21 @@ if (this._userProfileAccessor.profileName != undefined)
                                }
                                else if (str.indexOf('Plant &',0) != -1 )
                                {
-                               console.log ("\n2244 ...");
+                               //console.log ("\n2244 ...");
                                stepContext.context.activity.text = 'plant1'; //cons1 into userProfile.name
                                this._userProfileAccessor.profileName = 'p1'
-                               console.log ("235 SENT stepContext.context.activity.text = " + stepContext.context.activity.text);
+                               //console.log ("235 SENT stepContext.context.activity.text = " + stepContext.context.activity.text);
                                }
 
                                else if (str == 'c1s' || str == 'p1s') //SEARCH
                                {
-                               console.log ("\n252 ...");
+                               //console.log ("\n252 ...");
                                if (str != this._userProfileAccessor.profileName) //changing index for c1s to p1s
                                      {
                                      this._userProfileAccessor.profileName = str + ':0/0/0/0';
                                      this._userSearchAccessor.searchType = 'advanced';
                                      stepContext.context.activity.text = str;
-                                     console.log ("258 SENT INDEX stepContext.context.activity.text = " + stepContext.context.activity.text);
+                                     //console.log ("258 SENT INDEX stepContext.context.activity.text = " + stepContext.context.activity.text);
                                       }
 
                                 } 
@@ -339,7 +339,7 @@ if (this._userProfileAccessor.profileName != undefined)
 
                                else if (this._userSearchAccessor.searchType == 'advanced' && profileName != undefined && profileName.indexOf('1s',0) != -1)
                                {
-                               console.log ("\n355 str = " + str); //str = [agreement]
+                               //console.log ("\n355 str = " + str); //str = [agreement]
                                var strTemp = str.replace(/\[/,'');
                                strTemp = strTemp.replace(/\]/,'');
                                strTemp = strTemp.trim();
@@ -355,15 +355,15 @@ if (this._userProfileAccessor.profileName != undefined)
                                     //str = stepContext.context.activity.text;
                                     //str = 'agreement'
 
-                                    console.log ("370 this._userStringAccessor.stringValue = " + this._userStringAccessor.stringValue)
-                                    console.log ("370 stepContext.context.activity.text = " + stepContext.context.activity.text)
-                                    console.log ("370 str = " + str) //str = xx
+                                    //console.log ("370 this._userStringAccessor.stringValue = " + this._userStringAccessor.stringValue)
+                                    //console.log ("370 stepContext.context.activity.text = " + stepContext.context.activity.text)
+                                    //console.log ("370 str = " + str) //str = xx
 
                                     stepContext.context.activity.text = str;
 
                                     this._userSearchAccessor.searchType = 'advanced1';  //go to collapsed clauses
 
-                                    console.log ("346 SENT COLLAPSED stepContext.context.activity.text = " + stepContext.context.activity.text + " with qnaMakerOptions.strictFilters = " + JSON.stringify(qnaMakerOptions.strictFilters) + "to do advanced1 search\n");
+                                    //console.log ("346 SENT COLLAPSED stepContext.context.activity.text = " + stepContext.context.activity.text + " with qnaMakerOptions.strictFilters = " + JSON.stringify(qnaMakerOptions.strictFilters) + "to do advanced1 search\n");
 
 
                                     }
@@ -371,10 +371,10 @@ if (this._userProfileAccessor.profileName != undefined)
                                     //for stop search
 
                                     {
-                                    console.log ("273........");
+                                    //console.log ("273........");
                                     //this._userStringAccessor.stringValue = str;  //store str for advanced search
                                     var tempText = stepContext.context.activity.text;
-                                    console.log ("276 STOP SEARCH stepContext.context.activity.text = " + tempText);
+                                    //console.log ("276 STOP SEARCH stepContext.context.activity.text = " + tempText);
                                     //reset on "Stop advanced search"
 
                                     if (tempText.indexOf('Stop search',0) != -1)
@@ -386,7 +386,7 @@ if (this._userProfileAccessor.profileName != undefined)
                                          qnaMakerOptions.top = 3; 
                                          qnaMakerOptions.strictFilters = null;
                                          //qnaMakerOptions.strictFilters = [{name:'category',value:'prompt'}]
-                                         console.log ("287 RESET AFTER ADVANCED SEARCH - profileName = " + profileName); 
+                                         //console.log ("287 RESET AFTER ADVANCED SEARCH - profileName = " + profileName); 
                                          }
                                     }                              
                                 }
@@ -490,13 +490,13 @@ if (this._userProfileAccessor.profileName != undefined)
                                   strConNoFull = strConNoFull.replace('c1i ','c1i:');
                                   strConNoFull = strConNoFull.replace('p1i ','p1i:');
 
-                                  console.log("\n404 strConNoFull = " + strConNoFull);
+                                  //console.log("\n404 strConNoFull = " + strConNoFull);
 
                                   if (strConNoFull != 'c1s:0/0/0/0'){
 
                                        stepContext.context.activity.text = strConNoFull;
 
-                                       console.log ("\n412 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
+                                       //console.log ("\n412 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
                                        }
                                   }
 
@@ -509,9 +509,9 @@ if (this._userProfileAccessor.profileName != undefined)
 
                          if (this._userProfileAccessor.profileName == "c1" || this._userProfileAccessor.profileName == "p1" )
                                {
-                               console.log("\n429 profileName = " + this._userProfileAccessor.profileName)
+                               //console.log("\n429 profileName = " + this._userProfileAccessor.profileName)
                                strCon = this._userProfileAccessor.profileName + ":";
-                               console.log ("\n430 strCon =" + strCon);
+                               //console.log ("\n430 strCon =" + strCon);
                                }
 
                          var strNo = str.toString();
@@ -525,7 +525,7 @@ if (this._userProfileAccessor.profileName != undefined)
 
                          var strConNoFull = strCon + strNoFull;
 
-                         console.log("\n444 strConNoFull = " + strConNoFull);
+                         //console.log("\n444 strConNoFull = " + strConNoFull);
 
                          strConNoFull = strConNoFull.replace('.','\/');
                          strConNoFull = strConNoFull.replace('.','\/');
@@ -627,7 +627,7 @@ if (this._userProfileAccessor.profileName != undefined)
 
 
         //console.log("\n617 ANSWER BEFORE PROCESSING response.answers[0].answer = " + JSON.stringify(response.answers[0].answer));
-        console.log("\n617 response = HERE");
+        //console.log("\n617 response = HERE");
 
         //console.log("\n620 PROMPT BEFORE PROCESSING response.answers[0].context = \n" + JSON.stringify(response.answers[0].context))
 
@@ -636,16 +636,16 @@ if (this._userProfileAccessor.profileName != undefined)
         if (stepContext.context.activity.text == textTemp && textOrig.indexOf('c1si ',0) != -1)
              {
 
-             console.log("\n552 ..for activity.text == " + textTemp + " and textOrig includes c1s1: " + textOrig );
+             //console.log("\n552 ..for activity.text == " + textTemp + " and textOrig includes c1s1: " + textOrig );
           
              //store pass 1 str
              this._userStringAccessor.stringValue = textTemp;
 
 //FIRST PASS search (get categories for xxxxxx into metatDataAry)
 
-        console.log("\n553 activity.text = " + stepContext.context.activity.text + '; profileNameStored = ' + this._userProfileAccessor.profileName + '; searchTypeStored = ' + this._userSearchAccessor.searchType);
+        //console.log("\n553 activity.text = " + stepContext.context.activity.text + '; profileNameStored = ' + this._userProfileAccessor.profileName + '; searchTypeStored = ' + this._userSearchAccessor.searchType);
 
-        console.log("\n553 START META response = " + response)
+        //console.log("\n553 START META response = " + response)
 
 
         var metadataAry = new Array(50).fill(null).map(()=>new Array(5).fill(null));
@@ -656,13 +656,13 @@ if (this._userProfileAccessor.profileName != undefined)
            if (this._userProfileAccessor.profileName.indexOf('1s',0) != -1)  
                {
 
-               console.log("\n574 .....");
+               //console.log("\n574 .....");
 
 
 
              //clear answers and prompts          
 
-               console.log("\n693 START META ADD START PROMPT response.answers[0].answer = " + response.answers[0].answer)
+               //console.log("\n693 START META ADD START PROMPT response.answers[0].answer = " + response.answers[0].answer)
 
                for (var i = 0; i < 50; i++) 
                   {if (response.answers[i] != undefined){delete(response.answers[i].answer);}}
@@ -704,7 +704,7 @@ if (this._userProfileAccessor.profileName != undefined)
 
 //Pass 1 - get categories into an array
 
-               console.log("\n593 .....");
+               //console.log("\n593 .....");
 
                var categoryAry = []; 
 
@@ -730,11 +730,11 @@ if (this._userProfileAccessor.profileName != undefined)
 
                             if (inAry == false)
                                  {
-                                 console.log("619 i j metadataAry[i][j]= " + i + "; " + j + "; " + JSON.stringify(metadataAry[i][j]));
+                                 //console.log("619 i j metadataAry[i][j]= " + i + "; " + j + "; " + JSON.stringify(metadataAry[i][j]));
 
                                  if (metadataAry[i][j].name == 'category'){
                                       categoryAry.push(metadataAry[i][j].value);
-                                      console.log("623 value ........ = " + metadataAry[i][j].value)
+                                      //console.log("623 value ........ = " + metadataAry[i][j].value)
                                       }
                                  } //if
                             } //if
@@ -756,7 +756,7 @@ if (this._userProfileAccessor.profileName != undefined)
 
                if (categoryAry.length == 0)
                     {
-                    console.log("\n645 In categoryAry.length = " + categoryAry.length);
+                    //console.log("\n645 In categoryAry.length = " + categoryAry.length);
                     for (var i = 0; i < 20; i++) 
                         {
                         delete response.answers[0].context.prompts[i];
@@ -778,7 +778,7 @@ if (this._userProfileAccessor.profileName != undefined)
 
                          response.answers[0].context.prompts[i] = answerPrompt;
 
-                         console.log("\n667 answerPrompt(categoryAry.length>0) = " + JSON.stringify(answerPrompt));
+                         //console.log("\n667 answerPrompt(categoryAry.length>0) = " + JSON.stringify(answerPrompt));
 
                          } //end for
 
@@ -877,7 +877,7 @@ if (this._userProfileAccessor.profileName != undefined)
                    response.answers[0].context.prompts[iTotal + 1] = {displayOrder:1,qna:null,displayText:'Stop search [' + conTemp +']'};
                    }
 
-             console.log("\n766 END EXPANSION response.answers[0].answer = \n" + JSON.stringify(response.answers[0].answer))
+             //console.log("\n766 END EXPANSION response.answers[0].answer = \n" + JSON.stringify(response.answers[0].answer))
 
              console.log("\n768 END EXPANSION response.answers[0].context = \n" + JSON.stringify(response.answers[0].context))
 
