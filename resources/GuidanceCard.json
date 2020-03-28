@@ -5,7 +5,8 @@
   "body": [
     {
       "type": "TextBlock",
-      "size": "default",
+      "size": "large",
+      "weight": "bolder",
       "isSubtle": true,
       "text": "",
       "wrap": true,
