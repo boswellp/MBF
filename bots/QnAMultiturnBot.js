@@ -97,7 +97,7 @@ class QnAMultiturnBot extends ActivityHandler {
                     const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
                     
                     if (didBotWelcomedUser == 0) {await this.welcomedUserProperty.set(context, 2);}
-                    if (didBotWelcomedUser == 3) {await this.welcomedUserProperty.set(context, 3);}
+                    if (didBotWelcomedUser == 2) {await this.welcomedUserProperty.set(context, 3);}
      
                     welcomeCard1.body[1].text = 'Welcome to FIDICchatbot';
                     welcomeCard1.body[2].text = 'The chatbot allows you to search FIDIC contracts.';
