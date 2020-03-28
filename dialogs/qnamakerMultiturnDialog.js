@@ -618,7 +618,7 @@ if (this._userProfileAccessor.profileName != undefined)
                 console.log("\n618 undefined")           
                 if (response.answers[0] == undefined){  //skype needs no dummy; messenger needs a dummy
                      console.log("\n620 undefined")
-                     response = {"activeLearning Enabled":false,"answers":[]} 
+                     //response = {"activeLearning Enabled":false,"answers":[]} 
                      console.log("\n622 undefined") 
                     //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      } else { //have a non-error response 
