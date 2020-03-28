@@ -651,13 +651,13 @@ if (this._userProfileAccessor.profileName != undefined)
                       } else {
                       console.log("\n643 2")
                       //response = {"activeLearning Enabled":false,"answers":[]}
-                      response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
+                      //response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                       }
                   }
               }
 
          
-        console.log("\n682 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
+        console.log("\n660 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
                  
         
 
