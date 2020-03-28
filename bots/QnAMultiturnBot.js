@@ -46,8 +46,8 @@ class QnAMultiturnBot extends ActivityHandler {
                  welcomeCard.body[2].text = 'The chatbot allows you to search FIDIC contracts.';
                  welcomeCard.body[3].text = 'Submit "start" or "help" anytime to start again and for help.';
                  welcomeCard.body[4].text = 'After selecting a contract, General Conditions clauses are displayed by submitting a clause number or a keyword (keywords search in the index of clauses).';
-                 welcomeCard.body[5].text = 'Keywords search the index of clauses, or in the General Conditions when searching is activated.';
-                 welcomeCard.body[6].text = 'Shortcut codes for contracts that can be submitted at any time are:\n- "c1" - Construction Contract 1st Ed 1999\n- "p1" - Plant Contract 1st Ed 1999.';
+                 welcomeCard.body[5].text = 'Keywords search the index of clauses, or in the General Conditions when searching is activated (by submitting \"c1s\" or  \"start\" -> \"c1 s\" for Construction Contract contents)';
+                 welcomeCard.body[6].text = 'Shortcut codes for contracts that can be submitted at any time are "c1" for Construction Contract 1st Ed 1999 and "p1" for Plant & Design-Build Contract 1st Ed 1999 (in the process of being uploaded).';
                  welcomeCard.body[7].text = 'FIDICchatbot is complemented by FIDICbot that suppplies messenging channels (e.g., LINE and Viber) that are not served by FIDICchatbot. Both bots are developed by Bricad Associates, Switzerland, as part of the https://FIDIC.tips initiative.';
 
                  await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard)]});
@@ -74,8 +74,8 @@ class QnAMultiturnBot extends ActivityHandler {
                     
                  guidanceCard.body[1].text = 'FIDICchatbot guide';
                  guidanceCard.body[2].text = 'After selecting a contract, General Conditions clauses are displayed by submitting a clause number or a keyword (keywords search in the index of clauses).';
-                 guidanceCard.body[3].text = 'Keywords search the index of clauses, or in the General Conditions when searching is activated.';
-                 guidanceCard.body[4].text = 'Shortcut codes for contracts that can be submitted at any time are:\n- "c1" - Construction Contract 1st Ed 1999\n- "p1" - Plant Contract 1st Ed 1999.';
+                 guidanceCard.body[3].text = 'Keywords search the index of clauses, or in the General Conditions when searching is activated (by submitting \"c1s\" or  \"start\" -> \"c1 s\" for Construction Contract contents)';
+                 guidanceCard.body[4].text = 'Shortcut codes for contracts that can be submitted at any time are "c1" for the Construction Contract 1st Ed 1999 and "p1"for the Plant & Design-Build Contract 1st Ed 1999 (in the processof being uploaded).';
                  
                  await context.sendActivity({attachments: [CardFactory.adaptiveCard(guidanceCard)]});
                     
