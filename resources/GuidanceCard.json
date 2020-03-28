@@ -57,7 +57,7 @@
       "type": "Action.ShowCard",
       "title": "START",
       "value": "CARD"
-    }
+    },
     {
       "type": "Action.Submit",
       "title": "START",
