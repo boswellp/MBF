@@ -649,14 +649,18 @@ if (this._userProfileAccessor.profileName != undefined)
                           //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                           }   
                       } else if (didBotWelcomedUser == 2){
-                      await this._welcomedUserProperty.set(stepContext, 3);
-                      console.log("\n652 else if 2 webchat start")
-                      response = {"activeLearning Enabled":false,"answers":[]}
-                      response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
+                      
+                          if (response.answers[0] == undefined) 
+                            { 
+                            console.log("\n655 else if 2 webchat start")
+                            //response = {"activeLearning Enabled":false,"answers":[]}
+                            response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
+                            } else {
+                            console.log("\n652 else if 2 webchat start")
+                            }
+                                
+                                
                           
-                      } else {
-                      console.log("\n657 else webchat")
-                      } //d nothing for webchat for >2
                   }
               }
 
