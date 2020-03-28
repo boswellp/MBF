@@ -630,7 +630,7 @@ if (this._userProfileAccessor.profileName != undefined)
                      
                      }   
                  } else {              
-                 console.log("\n629 didBotWelcomedUser not undefined")
+                 console.log("\n629 didBotWelcomedUser defined")
                  if (didBotWelcomedUser == 1){                    
                       if (response.answers[0] == undefined){
                           
