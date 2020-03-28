@@ -659,7 +659,7 @@ if (this._userProfileAccessor.profileName != undefined)
                             console.log("\n652 else if 2 webchat start")
                             }
                                 
-                                
+                      }         
                           
                   }
               }
