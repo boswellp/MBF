@@ -650,7 +650,7 @@ if (this._userProfileAccessor.profileName != undefined)
                           }   
                       } else if (didBotWelcomedUser == 2){
                       
-                          if (response.answers[0] == undefined) 
+                          if (response.answers[0] == undefined && this._userProfileAccessor.profileName == undefined) //start xxxxxx: send dummy answer
                             { 
                             console.log("\n655 else if 2 webchat start")
                             //response = {"activeLearning Enabled":false,"answers":[]}
