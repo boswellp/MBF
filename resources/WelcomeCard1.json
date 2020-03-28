@@ -70,9 +70,8 @@
   ],
   "actions": [
     {
-      "type": "Action.OpenUrl",
-      "title": "Overview",
-      "url": "https://fidic.tips/chatbot"
+      "type": "Action.Submit",
+      "data": "start"
     }
   ]
 }
