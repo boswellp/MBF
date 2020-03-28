@@ -88,21 +88,14 @@ class QnAMultiturnBot extends ActivityHandler {
 
         this.onMembersAdded(async (context, next) => { 
             
-            const didBotWelcomedUser0 = await this.welcomedUserProperty.get(context, false);
-            console.log ("\n_92 didBotWelcomedUser0 = " + didBotWelcomedUser0)
-
             const membersAdded = context.activity.membersAdded;
 
             for (let cnt = 0; cnt < membersAdded.length; cnt++) {
 
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
 
-                    const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
-                    
-                    if (didBotWelcomedUser == 2) {await this.welcomedUserProperty.set(context, 3);}
-                    if (didBotWelcomedUser == 0) {await this.welcomedUserProperty.set(context, 2);}
+                    await this.welcomedUserProperty.set(context, );
 
-     
                     welcomeCard1.body[1].text = 'Welcome to FIDICchatbot';
                     welcomeCard1.body[2].text = 'The chatbot allows you to search FIDIC contracts.';
                     welcomeCard1.body[3].text = 'Submit "start" or "help" anytime to start again and for help.';
