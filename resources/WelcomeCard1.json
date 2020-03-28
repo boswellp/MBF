@@ -71,7 +71,7 @@
   "actions": [
     {
       "type": "Action.Submit",
-      "title":"START",
+      "title":"start",
       "data": "start"
     }
   ]
