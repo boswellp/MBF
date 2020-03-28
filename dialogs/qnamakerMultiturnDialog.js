@@ -623,9 +623,9 @@ if (this._userProfileAccessor.profileName != undefined)
                      response.answers[0]  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      } else { //have a non-error response 
                      console.log("\n623 undefined")
-                     //response = {"activeLearning Enabled":false,"answers":[]} 
+                     response = {"activeLearning Enabled":false,"answers":[]} 
                      console.log("\n625 undefined") 
-                     //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
+                     response.answers[0]  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      //response = {"activeLearningEnabled":false,"answers":[{"questions":["c1","Stop search [c1]","cons1"],"answer":"Construction Contract 1st Ed 1999","score":1,"id":13205,"source":"Editorial","metadata":[{"name":"category","value":"contents"}],"context":{"isContextOnly":false,"prompts":[{"displayOrder":0,"qnaId":13499,"qna":null,"displayText":"c1 s"},{"displayOrder":0,"qnaId":13195,"qna":null,"displayText":"c1 0"}]}}]}
                      
                      }   
