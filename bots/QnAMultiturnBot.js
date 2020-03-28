@@ -66,14 +66,7 @@ class QnAMultiturnBot extends ActivityHandler {
                 {  
  
                 //const userStatus = await this.welcomedUserProperty.get(context, false);
-                  
-                const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
-                console.log('\n_71 didBotWelcomedUser = ' + didBotWelcomedUser);
-                //if (didBotWelcomedUser == 2){
-                      //await this.welcomedUserProperty.set(context, 3);
-                      //} else { 
-                     await this.welcomedUserProperty.set(context, 2);
-
+                 
                 //await this.sendGuidanceCard(context);
                 //await context.sendActivity("Guidance");
                     
@@ -100,6 +93,9 @@ class QnAMultiturnBot extends ActivityHandler {
             for (let cnt = 0; cnt < membersAdded.length; cnt++) {
 
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
+
+                    const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
+                    console.log('\n_71 didBotWelcomedUser = ' + didBotWelcomedUser);
 
                     await this.welcomedUserProperty.set(context, 2);
                     
