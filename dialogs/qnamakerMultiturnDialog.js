@@ -654,7 +654,7 @@ if (this._userProfileAccessor.profileName != undefined)
                             { 
                             console.log("\n655 else if 2 webchat start")
                             //response = {"activeLearning Enabled":false,"answers":[]}
-                            response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
+                            response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Submit start","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                             } else {
                             console.log("\n652 else if 2 webchat start")
                             }
