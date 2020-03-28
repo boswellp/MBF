@@ -607,8 +607,8 @@ if (this._userProfileAccessor.profileName != undefined)
 
 //////////////////////////////////////////
         
-        console.log("\n610 response = " + response)
-        console.log("\n611 response.answers[0] = " + response.answers[0])
+        console.log("\n610 response = " + JSON.stringify(response))
+        console.log("\n611 response.answers[0] = " + JSON.stringify(response.answers[0]))
         //console.log("\n610 this._welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty))
 
         if (this._welcomedUserProperty != undefined){ //first input with xxxx
