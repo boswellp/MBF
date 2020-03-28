@@ -97,7 +97,7 @@ class QnAMultiturnBot extends ActivityHandler {
                     welcomeCard1.body[4].text = 'After selecting a contract, General Conditions clauses are displayed by submitting a clause number or a keyword.';
                     welcomeCard1.body[5].text = 'Keywords search the index of clauses, or in the General Conditions when searching is activated (by submitting \"c1s\" or \"start\" -> \"c1 s\" for the Construction Contract).';
                     welcomeCard1.body[6].text = 'Shortcut codes for contracts that can be submitted at any time are "c1" for Construction Contract 1st Ed 1999 and "p1" for Plant & Design-Build Contract 1st Ed 1999 (in the process of being uploaded).';
-                    welcomeCard1.body[7].text = 'FIDICchatbot is complemented by [FIDICbot](https://fidic.tips/bot) that suppplies messenging channels (e.g., LINE and Viber) that are not served by FIDICchatbot. Both bots are developed by Bricad Associates, Switzerland, as part of the https://FIDIC.tips initiative.';
+                    welcomeCard1.body[7].text = 'FIDICchatbot is complemented by [FIDICbot](https://fidic.tips/bot) that suppplies messenging channels (e.g., LINE and Viber) that are not served by FIDICchatbot. Both bots are developed by Bricad Associates, Switzerland, as part of the [FIDIC.tips](https://FIDIC.tips) initiative.';
 
                     await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard1)]});
                                
