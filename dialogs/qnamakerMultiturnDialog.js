@@ -649,7 +649,9 @@ if (this._userProfileAccessor.profileName != undefined)
                           //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                           }   
                       } else {
-                      console.log("\n643 2") 
+                      console.log("\n643 2")
+                      response = {"activeLearning Enabled":false,"answers":[]}
+                      response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                       }
                   }
               }
