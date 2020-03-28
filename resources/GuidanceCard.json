@@ -9,7 +9,8 @@
       "isSubtle": true,
       "text": "",
       "wrap": true,
-      "maxLines": 0
+      "maxLines": 0,
+      "color":"accent"
     },
     {
       "type": "TextBlock",
@@ -17,7 +18,8 @@
       "isSubtle": true,
       "text": "",
       "wrap": true,
-      "maxLines": 0
+      "maxLines": 0,
+       "color":"accent"
     },
     {
       "type": "TextBlock",
@@ -25,7 +27,8 @@
       "isSubtle": true,
       "text": "",
       "wrap": true,
-      "maxLines": 0
+      "maxLines": 0,
+      "color":"accent"
     },
     {
       "type": "TextBlock",
@@ -33,7 +36,8 @@
       "isSubtle": true,
       "text": "",
       "wrap": true,
-      "maxLines": 0
+      "maxLines": 0,
+      "color":"accent"
     },
     {
       "type": "TextBlock",
@@ -41,7 +45,8 @@
       "isSubtle": true,
       "text": "",
       "wrap": true,
-      "maxLines": 0
+      "maxLines": 0,
+      "color":"accent"
     },
     {
       "type": "TextBlock",
@@ -49,7 +54,8 @@
       "isSubtle": true,
       "text": "",
       "wrap": true,
-      "maxLines": 0
+      "maxLines": 0,
+      "color":"accent"
     }
   ]
 }
