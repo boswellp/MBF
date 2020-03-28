@@ -96,29 +96,20 @@ class QnAMultiturnBot extends ActivityHandler {
 
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
 
-                     const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
-                     if (didBotWelcomedUser == 2){
-                         await this.welcomedUserProperty.set(context, 3);  //after first pass change to 3
-                         } 
-                         else if (didBotWelcomedUser != 3)
-                         {
-                         await this.welcomedUserProperty.set(context, 2);
-                         }
-
-                     //await this.sendWelcomeCard(context);
+                    await this.welcomedUserProperty.set(context, 2);
                     
-                 welcomeCard1.body[1].text = 'Welcome to FIDICchatbot';
-                 welcomeCard1.body[2].text = 'The chatbot allows you to search FIDIC contracts.';
-                 welcomeCard1.body[3].text = 'Submit "start" or "help" anytime to start again and for help.';
-                 welcomeCard1.body[4].text = 'After selecting a contract, General Conditions clauses are displayed by submitting a clause number or a keyword.';
-                 welcomeCard1.body[5].text = 'Keywords search the index of clauses, or in the General Conditions when searching is activated (by submitting \"c1s\" or \"start\" -> \"c1 s\" for the Construction Contract).';
-                 welcomeCard1.body[6].text = 'Shortcut codes for contracts that can be submitted at any time are "c1" for Construction Contract 1st Ed 1999 and "p1" for Plant & Design-Build Contract 1st Ed 1999 (in the process of being uploaded).';
-                 welcomeCard1.body[7].text = 'FIDICchatbot is complemented by FIDICbot that suppplies messenging channels (e.g., LINE and Viber) that are not served by FIDICchatbot. Both bots are developed by Bricad Associates, Switzerland, as part of the https://FIDIC.tips initiative.';
+                    welcomeCard1.body[1].text = 'Welcome to FIDICchatbot';
+                    welcomeCard1.body[2].text = 'The chatbot allows you to search FIDIC contracts.';
+                    welcomeCard1.body[3].text = 'Submit "start" or "help" anytime to start again and for help.';
+                    welcomeCard1.body[4].text = 'After selecting a contract, General Conditions clauses are displayed by submitting a clause number or a keyword.';
+                    welcomeCard1.body[5].text = 'Keywords search the index of clauses, or in the General Conditions when searching is activated (by submitting \"c1s\" or \"start\" -> \"c1 s\" for the Construction Contract).';
+                    welcomeCard1.body[6].text = 'Shortcut codes for contracts that can be submitted at any time are "c1" for Construction Contract 1st Ed 1999 and "p1" for Plant & Design-Build Contract 1st Ed 1999 (in the process of being uploaded).';
+                    welcomeCard1.body[7].text = 'FIDICchatbot is complemented by FIDICbot that suppplies messenging channels (e.g., LINE and Viber) that are not served by FIDICchatbot. Both bots are developed by Bricad Associates, Switzerland, as part of the https://FIDIC.tips initiative.';
 
-                 await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard1)]});
+                    await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard1)]});
                     
-                 var reply = MessageFactory.suggestedActions(['start'], 'Please submit "start" to start.');
-                 await context.sendActivity(reply);  
+                   //var reply = MessageFactory.suggestedActions(['start'], 'Please submit "start" to start.');
+                   //await context.sendActivity(reply);  
                
                 }
             }
@@ -135,67 +126,6 @@ class QnAMultiturnBot extends ActivityHandler {
             await next();
         });
     }
-    
-/////////////////////
-    async sendGuidanceCard(context) {
-
-        const cardGuidance = CardFactory.heroCard(
-            'FIDICchatbot',
-            'Please take a moment to see how the chatbot is used to search FIDIC contracts.',
-            ['https://aka.ms/bf-welcome-card-image'],
-            [
-                {
-                    type: ActionTypes.OpenUrl,
-                    title: 'Overview',
-                    value: 'https://fidic.tips/fidicbot'
-                },
-                {
-                    type: ActionTypes.OpenUrl,
-                    title: 'Web version',
-                    value: 'https://fidic.tips/fidicbotalone'
-                },
-                {
-                    type: ActionTypes.PostBack,
-                    title: 'START',
-                    value: 'start'
-                }
-            ]
-        );
-
-        await context.sendActivity({ attachments: [cardGuidance] });
-
-    }
-
-    async sendWelcomeCard(context) {
-
-        const cardWelcome = CardFactory.heroCard(
-            'Welcome to the FIDICchatbot',
-            'The chatbot allows you to search FIDIC contracts.',
-            ['https://aka.ms/bf-welcome-card-image'],
-            [
-                {
-                    type: ActionTypes.OpenUrl,
-                    title: 'Overview',
-                    value: 'https://fidic.tips/fidicbot'
-                },
-                {
-                    type: ActionTypes.OpenUrl,
-                    title: 'Web version',
-                    value: 'https://fidic.tips/fidicbotalone'
-                },
-                {
-                    type: ActionTypes.PostBack,
-                    title: 'START',
-                    value: 'start'
-                }
-            ]
-        );
-
-        await context.sendActivity({ attachments: [cardWelcome] });
-
-    }
-/////////////////////
-    
     
     
 }
