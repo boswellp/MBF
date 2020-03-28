@@ -67,13 +67,5 @@
       "wrap": true,
       "maxLines": 0
     }
-  ],
-  "actions": [
-    {
-      "type": "Action.PostBack",
-      "title": "START",
-      "value": "START"
-    }
-
   ]
 }
