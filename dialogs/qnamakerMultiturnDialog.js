@@ -654,7 +654,13 @@ if (this._userProfileAccessor.profileName != undefined)
                             { 
                             console.log("\n655 else if 2 webchat start")
                             //response = {"activeLearning Enabled":false,"answers":[]}
-                            response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Submit start","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
+                            response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Submit start","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
+                                
+                                
+ //response = {"activeLearningEnabled":false,"answers":[{"questions":["start"],"answer":"Select a FIDIC contract","score":1,"id":13446,"source":"Editorial","metadata":[],"context":{"isContextOnly":false,"prompts":[{"displayOrder":0,"qnaId":13205,"qna":null,"displayText":"Construction Contract 1st Ed 1999"},{"displayOrder":0,"qnaId":13447,"qna":null,"displayText":"Plant & Design-Build Contract 1st Ed 1999"}]}}]}                               
+                                
+                                
+                                
                             } else {
                             console.log("\n652 else if 2 webchat start")
                             }
