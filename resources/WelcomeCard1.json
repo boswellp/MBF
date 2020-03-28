@@ -67,5 +67,12 @@
       "wrap": true,
       "maxLines": 0
     }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "Overview",
+      "url": "https://fidic.tips/chatbot"
+    }
   ]
 }
