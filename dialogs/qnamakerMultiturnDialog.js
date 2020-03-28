@@ -653,7 +653,7 @@ if (this._userProfileAccessor.profileName != undefined)
                       response = {"activeLearning Enabled":false,"answers":[]}
                       response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                           
-                      } else if {
+                      } else {
                       console.log("\n657 else webchat")
                       } //d nothing for webchat for >2
                   }
