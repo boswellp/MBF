@@ -3,6 +3,11 @@
   "type": "AdaptiveCard",
   "version": "1.0",
   "body": [
+     {
+      "type": "Image",
+      "url": "https://fidic.tips/fidicchatbot/fidicchatbot_logo.png",
+      "size": "stretch"
+    },
     {
       "type": "TextBlock",
       "size": "large",
