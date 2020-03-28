@@ -54,22 +54,17 @@ class QnAMultiturnBot extends ActivityHandler {
                  
                  var reply = MessageFactory.suggestedActions(['start'], 'Please submit "start" to start.');
                  await context.sendActivity(reply);   
-                    
-                    
-                   
-                await this.welcomedUserProperty.set(context, 1);
-                const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
-                console.log ("\n_48 didBotWelcomedUser = " + didBotWelcomedUser);
 
-                } 
-                else if (didBotWelcomedUser == 1)
-                {  
+                 await this.welcomedUserProperty.set(context, 1);
+                 const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
+                 console.log ("\n_48 didBotWelcomedUser = " + didBotWelcomedUser);
+
+                 } 
+                 else if (didBotWelcomedUser == 1)
+                 {  
  
-                //const userStatus = await this.welcomedUserProperty.get(context, false);
-                 
-                //await this.sendGuidanceCard(context);
-                //await context.sendActivity("Guidance");
-                    
+                 await this.welcomedUserProperty.set(context, 2);
+             
                  guidanceCard.body[1].text = 'FIDICchatbot guide';
                  guidanceCard.body[2].text = 'After selecting a contract, General Conditions clauses are displayed by submitting a clause number or a keyword.';
                  guidanceCard.body[3].text = 'Keywords search the index of clauses, or in the General Conditions when searching is activated (by submitting \"c1s\" or \"start\" -> \"c1 s\" for the Construction Contract).';
@@ -105,10 +100,7 @@ class QnAMultiturnBot extends ActivityHandler {
                     welcomeCard1.body[7].text = 'FIDICchatbot is complemented by FIDICbot that suppplies messenging channels (e.g., LINE and Viber) that are not served by FIDICchatbot. Both bots are developed by Bricad Associates, Switzerland, as part of the https://FIDIC.tips initiative.';
 
                     await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard1)]});
-                    
-                   //var reply = MessageFactory.suggestedActions(['start'], 'Please submit "start" to start.');
-                   //await context.sendActivity(reply);  
-               
+                               
                 }
             }
 
@@ -124,8 +116,7 @@ class QnAMultiturnBot extends ActivityHandler {
             await next();
         });
     }
-    
-    
+        
 }
 
 module.exports.QnAMultiturnBot = QnAMultiturnBot;
