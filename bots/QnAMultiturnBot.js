@@ -96,7 +96,14 @@ class QnAMultiturnBot extends ActivityHandler {
 
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
 
-                     await this.welcomedUserProperty.set(context, 2);
+                     const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
+                     if (didBotWelcomedUser == 2){
+                         await this.welcomedUserProperty.set(context, 3);  //after first pass change to 3
+                         } 
+                         else if (didBotWelcomedUser != 3)
+                         {
+                         await this.welcomedUserProperty.set(context, 2);
+                         }
 
                      //await this.sendWelcomeCard(context);
                     
