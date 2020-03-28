@@ -616,11 +616,11 @@ if (this._userProfileAccessor.profileName != undefined)
             console.log("\n616 didBotWelcomedUser = " + didBotWelcomedUser)   
             if (didBotWelcomedUser == undefined){
                 console.log("\n618 undefined")           
-                if (response.answers[0] == undefined){
+                if (response.answers[0] == undefined){  //skype
                      console.log("\n620 undefined")
-                     response = {"activeLearning Enabled":false,"answers":[]} 
+                     //response = {"activeLearning Enabled":false,"answers":[]} 
                      console.log("\n622 undefined") 
-                     response.answers[0]  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
+                     //response.answers[0]  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      } else { //have a non-error response 
                      console.log("\n625 undefined")
                      response = {"activeLearning Enabled":false,"answers":[]} 
