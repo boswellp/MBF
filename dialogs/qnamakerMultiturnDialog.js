@@ -649,6 +649,7 @@ if (this._userProfileAccessor.profileName != undefined)
                           //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                           }   
                       } else if (didBotWelcomedUser == 2){
+                      await this.welcomedUserProperty.set(context, 3);
                       console.log("\n652 else if 2 webchat start")
                       response = {"activeLearning Enabled":false,"answers":[]}
                       response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
