@@ -87,6 +87,9 @@ class QnAMultiturnBot extends ActivityHandler {
         });
 
         this.onMembersAdded(async (context, next) => { 
+            
+            const didBotWelcomedUser0 = await this.welcomedUserProperty.get(context, false);
+            consle.log ("\n_92 didBotWelcomedUser0 = " + didBotWelcomedUser0)
 
             const membersAdded = context.activity.membersAdded;
 
