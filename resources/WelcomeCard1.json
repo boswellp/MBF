@@ -6,6 +6,7 @@
     {
       "type": "TextBlock",
       "size": "large",
+      "weight": "bolder",
       "isSubtle": true,
       "text": "",
       "wrap": true,
