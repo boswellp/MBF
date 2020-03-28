@@ -53,8 +53,13 @@
     }
   ],
   "actions": [
+        {
+      "type": "Action.ShowCard",
+      "title": "START",
+      "value": "CARD"
+    }
     {
-      "type": "messageBack",
+      "type": "Action.Submit",
       "title": "START",
       "value": "START"
     }
