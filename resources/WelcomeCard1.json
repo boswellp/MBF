@@ -5,11 +5,12 @@
   "body": [
     {
       "type": "TextBlock",
-      "size": "default",
+      "size": "large",
       "isSubtle": true,
       "text": "",
       "wrap": true,
-      "maxLines": 0
+      "maxLines": 0,
+      "color":"accent"
     },
     {
       "type": "TextBlock",
@@ -17,7 +18,8 @@
       "isSubtle": true,
       "text": "",
       "wrap": true,
-      "maxLines": 0
+      "maxLines": 0,
+      "color":"accent"
     },
     {
       "type": "TextBlock",
@@ -25,7 +27,8 @@
       "isSubtle": true,
       "text": "",
       "wrap": true,
-      "maxLines": 0
+      "maxLines": 0,
+      "color":"accent"
     },
     {
       "type": "TextBlock",
@@ -33,7 +36,8 @@
       "isSubtle": true,
       "text": "",
       "wrap": true,
-      "maxLines": 0
+      "maxLines": 0,
+      "color":"accent"
     },
     {
       "type": "TextBlock",
@@ -41,7 +45,8 @@
       "isSubtle": true,
       "text": "",
       "wrap": true,
-      "maxLines": 0
+      "maxLines": 0,
+      "color":"accent"
     },
     {
       "type": "TextBlock",
@@ -49,7 +54,8 @@
       "isSubtle": true,
       "text": "",
       "wrap": true,
-      "maxLines": 0
+      "maxLines": 0,
+      "color":"accent"
     },
     {
       "type": "TextBlock",
@@ -57,7 +63,8 @@
       "isSubtle": true,
       "text": "",
       "wrap": true,
-      "maxLines": 0
+      "maxLines": 0,
+      "color":"accent"
     },
     {
       "type": "TextBlock",
@@ -65,7 +72,8 @@
       "isSubtle": true,
       "text": "",
       "wrap": true,
-      "maxLines": 0
+      "maxLines": 0,
+      "color":"accent"
     }
   ],
   "actions": [
