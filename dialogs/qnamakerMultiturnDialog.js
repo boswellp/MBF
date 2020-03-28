@@ -650,8 +650,8 @@ if (this._userProfileAccessor.profileName != undefined)
                           }   
                       } else {
                       console.log("\n652 else assume 2")
-                      //response = {"activeLearning Enabled":false,"answers":[]}
-                      //response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
+                      response = {"activeLearning Enabled":false,"answers":[]}
+                      response.answers[0] = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                       }
                   }
               }
