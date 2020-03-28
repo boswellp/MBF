@@ -54,7 +54,7 @@
   ],
   "actions": [
     {
-      "type": "Action.PostBack",
+      "type": "messageBack",
       "title": "START",
       "value": "START"
     }
