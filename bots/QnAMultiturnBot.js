@@ -80,7 +80,9 @@ class QnAMultiturnBot extends ActivityHandler {
 
                  if (context.activity.channelId == 'skype'){
                      
-                     await this.sendGuidanceCard(context);  
+                     await this.sendGuidanceCard(context); 
+                     await this.sendGuidanceCard1(context);
+                     await this.sendGuidanceCard2(context);
                      
                      } else {
              
@@ -150,19 +152,37 @@ class QnAMultiturnBot extends ActivityHandler {
 
         const cardGuidance = CardFactory.heroCard(
             '',
-            'Please take a moment to see how the chatbot is used to search FIDIC contracts.\nAfter selecting a contract, General Conditions clauses are displayed by submitting a clause number or a keyword.\nKeywords search the index of clauses, or in the General Conditions when searching is activated (by submitting \"c1s\" or \"start\" -> \"c1 s\" for the Construction Contract).Shortcut codes for contracts that can be submitted at any time are "c1" for the Construction Contract 1st Ed 1999 and "p1"for the Plant & Design-Build Contract 1st Ed 1999 (in the process of being uploaded).',
+            'Please take a moment to see how to search FIDIC contracts.\nAfter selecting a contract, General Conditions clauses are displayed by submitting a clause number or a keyword.
+            [{}]
+        );
+        await context.sendActivity({ attachments: [cardGuidance] });
+    }
+    
+         async sendGuidanceCard1(context) {
+
+        const cardGuidance = CardFactory.heroCard(
+            '',
+            'Keywords search the index of clauses, or in the General Conditions when searching is activated (by submitting \"c1s\" or \"start\" -> \"c1 s\" for the Construction Contract).',
+            [{}]
+        );
+        await context.sendActivity({ attachments: [cardGuidance1] });
+    }
+    
+             async sendGuidanceCard2(context) {
+
+        const cardGuidance = CardFactory.heroCard(
+            '',
+            'Shortcut codes that can be submitted at any time are "c1" for Construction 1st Ed 1999 and "p1" for the Plant 1st Ed 1999.',
             [{}],
             [
                 {
                     type: ActionTypes.PostBack,
-                    title: 'START',
+                    title: 'start',
                     value: 'start'
                 }
             ]
         );
-
-        await context.sendActivity({ attachments: [cardGuidance] });
-
+        await context.sendActivity({ attachments: [cardGuidance2] });
     }
 
     async sendWelcomeCard(context) {
@@ -184,7 +204,7 @@ class QnAMultiturnBot extends ActivityHandler {
                 },
                 {
                     type: ActionTypes.PostBack,
-                    title: 'START',
+                    title: 'start',
                     value: 'start'
                 }
             ]
