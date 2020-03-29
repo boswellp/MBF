@@ -87,8 +87,6 @@ class QnAMultiturnBot extends ActivityHandler {
              
             const membersAdded = context.activity.membersAdded;
             
-            console.log ("\n_90 in onMembersAdded = " + JSON.stringify(membersAdded));
-
             for (let cnt = 0; cnt < membersAdded.length; cnt++) {
 
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
@@ -105,11 +103,6 @@ class QnAMultiturnBot extends ActivityHandler {
 
                     await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard1)]});
                     
-                } else {
-                    
-                console.log ("\n_110 in onMembersAdded = " + JSON.stringify(membersAdded));
-                    
-                await this.welcomedUserProperty.set(context, 3);
                                
                 }
             }
