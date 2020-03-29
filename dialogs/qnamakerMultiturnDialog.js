@@ -618,13 +618,14 @@ if (this._userProfileAccessor.profileName != undefined)
             console.log("618 didBotWelcomedUser = " + didBotWelcomedUser) 
             
             if (didBotWelcomedUser == undefined){
-                console.log("621 in undefined")    
+                console.log("621 didBotWelcomedUser = undefined")    
                 
                 if (response.answers[0] == undefined){  
+                     console.log("624 response.answers[0] = undefined") 
                     
                      if (this._userProfileAccessor.profileName == undefined){  //send dummy
-
-                         console.log("627 undefined") 
+                         console.log("627 profileName = undefined") 
+                         
                          response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                          } else {  
