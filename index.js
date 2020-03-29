@@ -71,7 +71,7 @@ adapter.onTurnError = async (context, error) => {
         'TurnError'
     );
 
-  /*
+  
     if (errorTxt.indexOf('LINE api',0) != -1)
         {
         await context.sendActivity('LINE users have limited functionality with FIDICchatbot. Please use FIDICbot at @ovs8540y. See http://FIDIC.tips/bot');
@@ -81,7 +81,7 @@ adapter.onTurnError = async (context, error) => {
         var reply = MessageFactory.suggestedActions(['start'], 'Please submit "start" to start.');
         await context.sendActivity(reply);
         }
-   */
+  
   
    
     // Send a message to the user
