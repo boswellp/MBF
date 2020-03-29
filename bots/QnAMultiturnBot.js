@@ -152,7 +152,7 @@ class QnAMultiturnBot extends ActivityHandler {
 
         const cardGuidance = CardFactory.heroCard(
             '',
-            'Please take a moment to see how to search FIDIC contracts.\nAfter selecting a contract, General Conditions clauses are displayed by submitting a clause number or a keyword.
+            'Please take a moment to see how to search FIDIC contracts.\nAfter selecting a contract, General Conditions clauses are displayed by submitting a clause number or a keyword.',
             [{}]
         );
         await context.sendActivity({ attachments: [cardGuidance] });
