@@ -7,8 +7,6 @@ const welcomeCard1 = require('../resources/WelcomeCard1.json');
 const guidanceCard = require('../resources/GuidanceCard.json');
 
 const WELCOMED_USER = 'welcomedUserProperty';
-//const WELCOMED_USER_STATUS = 'welcomedStatus';
-const USER_PROFILE_PROPERTY = 'userProfile';
 
 class QnAMultiturnBot extends ActivityHandler {
 
@@ -24,7 +22,6 @@ class QnAMultiturnBot extends ActivityHandler {
         this.dialogState = this.conversationState.createProperty('DialogState');
         this.welcomedState = this.conversationState.createProperty('WelcomedState');
         this.welcomedUserProperty = userState.createProperty(WELCOMED_USER);
-        this.userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY);
 
 
         this.onMessage(async (context, next) => {
@@ -37,13 +34,9 @@ class QnAMultiturnBot extends ActivityHandler {
 
            const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
 
-           if (didBotWelcomedUser == 0)  //FALSE - FIRST WELCOME
-                {
-                //await context.sendActivity('For the first message to this chatbot, we shall display here how the chatbot works.');
-                
-                //await this.sendWelcomeCard(context);
-                //await context.sendActivity("Welcome");
-                    
+           if (didBotWelcomedUser == 0)
+                 {
+
                  welcomeCard.body[1].text = 'Welcome to FIDICchatbot';
                  welcomeCard.body[2].text = 'The chatbot allows you to search FIDIC contracts.';
                  welcomeCard.body[3].text = 'Submit "start" or "help" anytime to start again and for help.';
@@ -59,7 +52,7 @@ class QnAMultiturnBot extends ActivityHandler {
 
                  await this.welcomedUserProperty.set(context, 1);
                  const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
-                 console.log ("\n_48 didBotWelcomedUser = " + didBotWelcomedUser);
+                 console.log ("\n_55 didBotWelcomedUser = " + didBotWelcomedUser);
 
                  } 
                  else if (didBotWelcomedUser == 1)
