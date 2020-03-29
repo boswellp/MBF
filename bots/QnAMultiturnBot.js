@@ -170,7 +170,7 @@ class QnAMultiturnBot extends ActivityHandler {
         const cardWelcome = CardFactory.heroCard(
             'Welcome',
             'The chatbot allows you to search FIDIC contracts.',
-            ['https://fidic.tips/fidicchatbot/fidicchatbot_logo_16_9_trans.jpg'],
+            ['https://fidic.tips/fidicchatbot/fidicchatbot_logo_16_9_trans_bar.jpg'],
             [
                 {
                     type: ActionTypes.OpenUrl,
