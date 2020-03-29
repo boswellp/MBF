@@ -611,10 +611,9 @@ if (this._userProfileAccessor.profileName != undefined)
         
         console.log("\n612 this._userProfileAccessor.profileName = " + this._userProfileAccessor.profileName)
         
-        if (this._userProfileAccessor.profileName == undefined){ //send dummy
-               response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Submit \"start\"","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
-               this._userProfileAccessor.profileName = 'start';
-               }
+        //if (this._userProfileAccessor.profileName == undefined){ //send dummy
+               //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Submit \"start\"","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
+               //this._userProfileAccessor.profileName = 'start';}
      
         console.log("\n617 response = " + JSON.stringify(response))
 
@@ -661,19 +660,20 @@ if (this._userProfileAccessor.profileName != undefined)
                           } else { //have a non-error response 
                           console.log("\n660 true1")
                           //response = {"activeLearning Enabled":false,"answers":[]} 
-                          console.log("\n662 true1") 
+                          console.log("\n663 true1") 
                           //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                           }   
-                      } else if (didBotWelcomedUser == 2){  //let pass
+                      } else if (didBotWelcomedUser == 2){  // 2 for all profiles (undefined, c1)
                       
-                          //if (response.answers[0] == undefined && this._userProfileAccessor.profileName == undefined) //start xxxxxx: send dummy answer
-                            //{ 
-                            //console.log("\n666 else if 2 webchat start") //on webchat start send a dummy answer
-                            //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Submit \"start\"","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
+                          if (response.answers[0] == undefined) 
+                            { 
+                            console.log("\n670 else if 2 webchat start") //on webchat start send a dummy answer
+                            response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Submit \"start\"","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
+                            }
      
-                            //} else {
-                            console.log("\n673 else if 2 webchat start")
-                            //}         
+                        else if (didBotWelcomedUser == 3 ){ //3 
+                            console.log("\n675 else if 3 webchat start second")
+                            }         
                       }         
                           
                   }
