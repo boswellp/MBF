@@ -108,6 +108,8 @@ class QnAMultiturnBot extends ActivityHandler {
                 } else {
                     
                 console.log ("\n_110 in onMembersAdded = " + JSON.stringify(membersAdded));
+                    
+                await this.welcomedUserProperty.set(context, 3);
                                
                 }
             }
