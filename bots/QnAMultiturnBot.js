@@ -36,6 +36,9 @@ class QnAMultiturnBot extends ActivityHandler {
 
            if (didBotWelcomedUser == 0)
                  {
+                     
+                 const didBotWelcomedUser0 = await this.welcomedUserProperty.get(context, false);
+                 console.log ("\n_41 didBotWelcomedUser0 = " + didBotWelcomedUser0);
 
                  welcomeCard.body[1].text = 'Welcome to FIDICchatbot';
                  welcomeCard.body[2].text = 'The chatbot allows you to search FIDIC contracts.';
@@ -52,13 +55,18 @@ class QnAMultiturnBot extends ActivityHandler {
 
                  await this.welcomedUserProperty.set(context, 1);
                  const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
-                 console.log ("\n_55 didBotWelcomedUser = " + didBotWelcomedUser);
+                 console.log ("\n_58 didBotWelcomedUser set to " + didBotWelcomedUser);
 
                  } 
                  else if (didBotWelcomedUser == 1)
-                 {  
+                 { 
+                     
+                 const didBotWelcomedUser00 = await this.welcomedUserProperty.get(context, false);
+                 console.log ("\n_65 didBotWelcomedUser00 =" + didBotWelcomedUser00);
  
                  await this.welcomedUserProperty.set(context, 2);
+                 const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
+                 console.log ("\n_69 didBotWelcomedUser set to " + didBotWelcomedUser);
              
                  guidanceCard.body[1].text = 'FIDICchatbot guide';
                  guidanceCard.body[2].text = 'After selecting a contract, General Conditions clauses are displayed by submitting a clause number or a keyword.';
