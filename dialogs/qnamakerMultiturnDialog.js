@@ -665,15 +665,12 @@ if (this._userProfileAccessor.profileName != undefined)
                           }   
                       } else if (didBotWelcomedUser == 2){  // 2 for all profiles (undefined, c1)
                       
-                          if (response.answers[0] == undefined) 
+                          if (response.answers[0] == undefined && this._userProfileAccessor.profileName == undefined) 
                             { 
                             console.log("\n670 else if 2 webchat start") //on webchat start send a dummy answer
                             response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Submit \"start\"","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                             }
-     
-                        else if (didBotWelcomedUser == 3 ){ //3 
-                            console.log("\n675 else if 3 webchat start second")
-                            }         
+        
                       }         
                           
                   }
