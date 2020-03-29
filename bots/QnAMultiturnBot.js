@@ -87,7 +87,7 @@ class QnAMultiturnBot extends ActivityHandler {
              
             const membersAdded = context.activity.membersAdded;
             
-            console.log ("\n_90 in onMembersAdded = " + membersAdded);
+            console.log ("\n_90 in onMembersAdded = " + JSON.stringify(membersAdded));
 
             for (let cnt = 0; cnt < membersAdded.length; cnt++) {
 
