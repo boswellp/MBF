@@ -104,6 +104,10 @@ class QnAMultiturnBot extends ActivityHandler {
                     welcomeCard1.body[7].text = '[FIDICchatbot](https://fidic.tips/chatbot) is complemented by [FIDICbot](https://fidic.tips/bot) that suppplies messenging channels (e.g., LINE and Viber) that are not served by FIDICchatbot. Both bots are developed by Bricad Associates, Switzerland, as part of the [FIDIC.tips](https://FIDIC.tips) initiative.';
 
                     await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard1)]});
+                    
+                } else {
+                    
+                console.log ("\n_110 in onMembersAdded = " + JSON.stringify(membersAdded));
                                
                 }
             }
