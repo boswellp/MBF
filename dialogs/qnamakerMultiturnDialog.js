@@ -662,11 +662,29 @@ if (this._userProfileAccessor.profileName != undefined)
                           
                           console.log("663 didBotWelcomedUser = " + didBotWelcomedUser) 
                       
-                          if (response.answers[0] == undefined && this._userProfileAccessor.profileName == undefined) 
-                            { 
-                            console.log("661")
-                            response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Submit \"start\"","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
-                            }
+                          if (response.answers[0] == undefined){  
+                               console.log("666 response.answers[0] = " + response.answers[0]) 
+                    
+                               if (this._userProfileAccessor.profileName == undefined){  
+                                   console.log("669 profileName = " + this._userProfileAccessor.profileName) 
+                         
+                                   console.log("671 reponse = default welcome") 
+                                   response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
+                         
+                                   } else { 
+                                   console.log("675 profileName = " + this._userProfileAccessor.profileName)
+                                       
+                                   console.log("677 reponse = let pass")
+                         
+                                   }
+                                                   
+                                } else { 
+                                console.log("683 response.answers[0] = " + response.answers[0])
+                                
+                                console.log("629 reponse = default welcome")     
+                                response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
+                     
+                                }
         
                       }         
                           
