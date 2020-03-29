@@ -191,7 +191,6 @@ class QnAMultiturnBot extends ActivityHandler {
         );
 
         await context.sendActivity({ attachments: [cardWelcome] });
-
     }
         
 }
