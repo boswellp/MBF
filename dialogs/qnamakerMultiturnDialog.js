@@ -668,7 +668,7 @@ if (this._userProfileAccessor.profileName != undefined)
               }
 
          
-        console.log("\n678 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
+        //console.log("\n678 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
                  
         
 
