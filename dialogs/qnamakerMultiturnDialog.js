@@ -626,7 +626,8 @@ if (this._userProfileAccessor.profileName != undefined)
                      if (this._userProfileAccessor.profileName == undefined){  //send dummy
                          console.log("627 profileName = undefined") 
                          
-                         response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
+                         console.log("629 reponse = none") 
+                         //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                          } else {  
                          
