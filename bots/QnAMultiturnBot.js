@@ -73,14 +73,21 @@ class QnAMultiturnBot extends ActivityHandler {
  
                  await this.welcomedUserProperty.set(context, 2);
                  const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
-                 console.log ("\n_69 didBotWelcomedUser set to " + didBotWelcomedUser);
+
+                 console.log ("\n_77 context.activity.channelId = " + context.activity.channelId);
+
+                 if (context.activity.channelId == 'skype'){
+                     
+                     await this.sendGuidanceCard(context);  
+                     
+                     } else {
              
-                 guidanceCard.body[1].text = 'FIDICchatbot guide';
-                 guidanceCard.body[2].text = 'After selecting a contract, General Conditions clauses are displayed by submitting a clause number or a keyword.';
-                 guidanceCard.body[3].text = 'Keywords search the index of clauses, or in the General Conditions when searching is activated (by submitting \"c1s\" or \"start\" -> \"c1 s\" for the Construction Contract).';
-                 guidanceCard.body[4].text = 'Shortcut codes for contracts that can be submitted at any time are "c1" for the Construction Contract 1st Ed 1999 and "p1"for the Plant & Design-Build Contract 1st Ed 1999 (in the process of being uploaded).';
-                 
-                 await context.sendActivity({attachments: [CardFactory.adaptiveCard(guidanceCard)]});
+                    guidanceCard.body[1].text = 'FIDICchatbot guide';
+                    guidanceCard.body[2].text = 'After selecting a contract, General Conditions clauses are displayed by submitting a clause number or a keyword.';
+                    guidanceCard.body[3].text = 'Keywords search the index of clauses, or in the General Conditions when searching is activated (by submitting \"c1s\" or \"start\" -> \"c1 s\" for the Construction Contract).';
+                    guidanceCard.body[4].text = 'Shortcut codes for contracts that can be submitted at any time are "c1" for the Construction Contract 1st Ed 1999 and "p1"for the Plant & Design-Build Contract 1st Ed 1999 (in the process of being uploaded).';
+                    await context.sendActivity({attachments: [CardFactory.adaptiveCard(guidanceCard)]});
+                    }
                     
                  var reply = MessageFactory.suggestedActions(['start'], 'Please submit "start" to start.');
                  await context.sendActivity(reply);  
@@ -101,18 +108,23 @@ class QnAMultiturnBot extends ActivityHandler {
 
                     await this.welcomedUserProperty.set(context, 2);
 
-                    const channelId  = context.activity.channelId;
-                    console.log ("\n_98 channelId = " + channelId);
-                    
-                    welcomeCard1.body[1].text = 'Welcome to FIDICchatbot';
-                    welcomeCard1.body[2].text = 'The chatbot allows you to search FIDIC contracts.';
-                    welcomeCard1.body[3].text = 'Submit "start" or "help" anytime to start again and for help.';
-                    welcomeCard1.body[4].text = 'After selecting a contract, General Conditions clauses are displayed by submitting a clause number or a keyword.';
-                    welcomeCard1.body[5].text = 'Keywords search the index of clauses, or in the General Conditions when searching is activated (by submitting \"c1s\" or \"start\" -> \"c1 s\" for the Construction Contract).';
-                    welcomeCard1.body[6].text = 'Shortcut codes for contracts that can be submitted at any time are "c1" for Construction Contract 1st Ed 1999 and "p1" for Plant & Design-Build Contract 1st Ed 1999 (in the process of being uploaded).';
-                    welcomeCard1.body[7].text = '[FIDICchatbot](https://fidic.tips/chatbot) is complemented by [FIDICbot](https://fidic.tips/bot) that suppplies messenging channels (e.g., LINE and Viber) that are not served by FIDICchatbot. Both bots are developed by Bricad Associates, Switzerland, as part of the [FIDIC.tips](https://FIDIC.tips) initiative.';
+                    console.log ("\n_42 context.activity.channelId = " + context.activity.channelId);
 
-                    await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard1)]});
+                    if (context.activity.channelId == 'skype'){
+                     
+                         await this.sendWelcomeCard(context);  
+                     
+                         } else {
+                    
+                         welcomeCard1.body[1].text = 'Welcome to FIDICchatbot';
+                         welcomeCard1.body[2].text = 'The chatbot allows you to search FIDIC contracts.';
+                         welcomeCard1.body[3].text = 'Submit "start" or "help" anytime to start again and for help.';
+                         welcomeCard1.body[4].text = 'After selecting a contract, General Conditions clauses are displayed by submitting a clause number or a keyword.';
+                         welcomeCard1.body[5].text = 'Keywords search the index of clauses, or in the General Conditions when searching is activated (by submitting \"c1s\" or \"start\" -> \"c1 s\" for the Construction Contract).';
+                         welcomeCard1.body[6].text = 'Shortcut codes for contracts that can be submitted at any time are "c1" for Construction Contract 1st Ed 1999 and "p1" for Plant & Design-Build Contract 1st Ed 1999 (in the process of being uploaded).';
+                         welcomeCard1.body[7].text = '[FIDICchatbot](https://fidic.tips/chatbot) is complemented by [FIDICbot](https://fidic.tips/bot) that suppplies messenging channels (e.g., LINE and Viber) that are not served by FIDICchatbot. Both bots are developed by Bricad Associates, Switzerland, as part of the [FIDIC.tips](https://FIDIC.tips) initiative.';
+                         await context.sendActivity({attachments: [CardFactory.adaptiveCard(welcomeCard1)]});
+                         }
                     
                                
                 }
