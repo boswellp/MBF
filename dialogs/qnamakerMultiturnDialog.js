@@ -607,6 +607,10 @@ if (this._userProfileAccessor.profileName != undefined)
 
 //////////////////////////////////////////
         
+         if (this._userProfileAccessor.profileName == undefined){ //send dummy
+               response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Submit \"start\"","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} }
+     
+        
         console.log("\n610 response = " + JSON.stringify(response))
         console.log("\n611 response.answers[0] = " + JSON.stringify(response.answers[0]))
         //console.log("\n610 this._welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty))
