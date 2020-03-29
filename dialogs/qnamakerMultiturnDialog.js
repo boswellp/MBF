@@ -613,18 +613,18 @@ if (this._userProfileAccessor.profileName != undefined)
         
     
 
-        if (this._welcomedUserProperty != undefined){ //first input with xxxx
+        if (this._welcomedUserProperty != undefined){ 
             const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-            console.log("\n621 didBotWelcomedUser = " + didBotWelcomedUser) 
+            console.log("618 didBotWelcomedUser = " + didBotWelcomedUser) 
             
             if (didBotWelcomedUser == undefined){
-                console.log("\n621 undefined")    
+                console.log("621 in undefined")    
                 
                 if (response.answers[0] == undefined){  
                     
                      if (this._userProfileAccessor.profileName == undefined){  //send dummy
 
-                         console.log("\n627 undefined") 
+                         console.log("627 undefined") 
                          response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                          } else {  
@@ -633,24 +633,24 @@ if (this._userProfileAccessor.profileName != undefined)
                                                    
                      } else { 
                          
-                     console.log("\n636 undefined") 
+                     console.log("636 undefined") 
                      response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      
                      } 
                 
                  } else {    
                      
-                 console.log("\n643 didBotWelcomedUser defined")
+                 console.log("643 didBotWelcomedUser defined")
                      
                  if (didBotWelcomedUser == 1){                    
                       if (response.answers[0] == undefined){
                                                  
-                          console.log("\n648 true1") 
+                          console.log("648 true1") 
                           //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                          
                           } else { 
 
-                          console.log("\n653 true1") 
+                          console.log("653 true1") 
                           //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                           } 
                      
@@ -658,7 +658,7 @@ if (this._userProfileAccessor.profileName != undefined)
                       
                           if (response.answers[0] == undefined && this._userProfileAccessor.profileName == undefined) 
                             { 
-                            console.log("\n661")
+                            console.log("661")
                             response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Submit \"start\"","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                             }
         
