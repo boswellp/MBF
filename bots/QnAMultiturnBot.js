@@ -160,7 +160,7 @@ class QnAMultiturnBot extends ActivityHandler {
     
          async sendGuidanceCard1(context) {
 
-        const cardGuidance = CardFactory.heroCard(
+        const cardGuidance1 = CardFactory.heroCard(
             '',
             'Keywords search the index of clauses, or in the General Conditions when searching is activated (by submitting \"c1s\" or \"start\" -> \"c1 s\" for the Construction Contract).',
             [{}]
@@ -170,7 +170,7 @@ class QnAMultiturnBot extends ActivityHandler {
     
              async sendGuidanceCard2(context) {
 
-        const cardGuidance = CardFactory.heroCard(
+        const cardGuidance2 = CardFactory.heroCard(
             '',
             'Shortcut codes that can be submitted at any time are "c1" for Construction 1st Ed 1999 and "p1" for the Plant 1st Ed 1999.',
             [{}],
