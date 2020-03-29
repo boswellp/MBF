@@ -24,7 +24,7 @@ class QnAMultiturnBot extends ActivityHandler {
         this.dialogState = this.conversationState.createProperty('DialogState');
         this.welcomedState = this.conversationState.createProperty('WelcomedState');
         this.welcomedUserProperty = userState.createProperty(WELCOMED_USER);
-        this._userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY);
+        this.userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY);
 
 
         this.onMessage(async (context, next) => {
@@ -93,7 +93,7 @@ class QnAMultiturnBot extends ActivityHandler {
 
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
                     
-                    console.log ("\n_94 this._userProfileAccessor.profileName = " + this._userProfileAccessor.profileName)
+                    console.log ("\n_94 this.userProfileAccessor.profileName = " + this.userProfileAccessor.profileName)
 
                     await this.welcomedUserProperty.set(context, 2);
 
