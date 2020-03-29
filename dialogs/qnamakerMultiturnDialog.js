@@ -681,8 +681,8 @@ if (this._userProfileAccessor.profileName != undefined)
                                 } else { 
                                 console.log("683 response.answers[0] = " + response.answers[0])
                                 
-                                console.log("629 reponse = default welcome")     
-                                response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
+                                console.log("629 reponse = let pass")     
+                                //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      
                                 }
         
