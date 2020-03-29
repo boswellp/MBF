@@ -661,16 +661,16 @@ if (this._userProfileAccessor.profileName != undefined)
                           console.log("\n659 true1") 
                           //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                           }   
-                      } else if (didBotWelcomedUser == 2){
+                      } else if (didBotWelcomedUser == 2){  //let pass
                       
-                          if (response.answers[0] == undefined && this._userProfileAccessor.profileName == undefined) //start xxxxxx: send dummy answer
-                            { 
-                            console.log("\n666 else if 2 webchat start") //on webchat start send a dummy answer
+                          //if (response.answers[0] == undefined && this._userProfileAccessor.profileName == undefined) //start xxxxxx: send dummy answer
+                            //{ 
+                            //console.log("\n666 else if 2 webchat start") //on webchat start send a dummy answer
                             response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Submit \"start\"","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
      
-                            } else {
+                            //} else {
                             console.log("\n670 else if 2 webchat start")
-                            }         
+                            //}         
                       }         
                           
                   }
