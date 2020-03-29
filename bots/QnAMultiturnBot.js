@@ -8,6 +8,7 @@ const guidanceCard = require('../resources/GuidanceCard.json');
 
 const WELCOMED_USER = 'welcomedUserProperty';
 //const WELCOMED_USER_STATUS = 'welcomedStatus';
+const USER_PROFILE_PROPERTY = 'userProfile';
 
 class QnAMultiturnBot extends ActivityHandler {
 
@@ -23,6 +24,7 @@ class QnAMultiturnBot extends ActivityHandler {
         this.dialogState = this.conversationState.createProperty('DialogState');
         this.welcomedState = this.conversationState.createProperty('WelcomedState');
         this.welcomedUserProperty = userState.createProperty(WELCOMED_USER);
+        this._userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY);
 
 
         this.onMessage(async (context, next) => {
