@@ -84,16 +84,14 @@ class QnAMultiturnBot extends ActivityHandler {
         });
 
         this.onMembersAdded(async (context, next) => { 
-            
-            console.log ("\n_86 in onMembersAdded");
-            
+             
             const membersAdded = context.activity.membersAdded;
+            
+            console.log ("\n_90 in onMembersAdded = " + membersAdded);
 
             for (let cnt = 0; cnt < membersAdded.length; cnt++) {
 
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
-                    
-                    console.log ("\n_94 this.userProfileAccessor.profileName = " + this.userProfileAccessor.profileName)
 
                     await this.welcomedUserProperty.set(context, 2);
 
