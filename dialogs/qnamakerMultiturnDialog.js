@@ -615,13 +615,17 @@ if (this._userProfileAccessor.profileName != undefined)
             const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
             console.log("\n616 didBotWelcomedUser = " + didBotWelcomedUser)   
             if (didBotWelcomedUser == undefined){
-                console.log("\n618 undefined")           
+                console.log("\n618 undefined")    
+                
                 if (response.answers[0] == undefined){  //skype needs no dummy; messenger needs a dummy
+                    
                      console.log("\n620 undefined")
                      //response = {"activeLearning Enabled":false,"answers":[]} 
                      console.log("\n622 undefined") 
-                    //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
+                     response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"start","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
+                     
                      } else { //have a non-error response 
+                         
                      console.log("\n625 undefined")
                      response = {"activeLearning Enabled":false,"answers":[]} 
                      console.log("\n627 undefined") 
