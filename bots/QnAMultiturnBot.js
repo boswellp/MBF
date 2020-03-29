@@ -83,6 +83,7 @@ class QnAMultiturnBot extends ActivityHandler {
                      await this.sendGuidanceCard(context); 
                      await this.sendGuidanceCard1(context);
                      await this.sendGuidanceCard2(context);
+                     await this.sendGuidanceCard3(context);
                      
                      } else {
              
@@ -168,11 +169,21 @@ class QnAMultiturnBot extends ActivityHandler {
         await context.sendActivity({ attachments: [cardGuidance1] });
     }
     
-             async sendGuidanceCard2(context) {
+    async sendGuidanceCard2(context) {
 
         const cardGuidance2 = CardFactory.heroCard(
             '',
             'Shortcut codes that can be submitted at any time are "c1" for Construction 1st Ed 1999 and "p1" for the Plant 1st Ed 1999.',
+            [{}]
+        );
+        await context.sendActivity({ attachments: [cardGuidance2] });
+    }
+    
+        async sendGuidanceCard3(context) {
+
+        const cardGuidance3 = CardFactory.heroCard(
+            '',
+            '',
             [{}],
             [
                 {
@@ -182,7 +193,7 @@ class QnAMultiturnBot extends ActivityHandler {
                 }
             ]
         );
-        await context.sendActivity({ attachments: [cardGuidance2] });
+        await context.sendActivity({ attachments: [cardGuidance3] });
     }
 
     async sendWelcomeCard(context) {
