@@ -621,42 +621,46 @@ if (this._userProfileAccessor.profileName != undefined)
                 console.log("621 didBotWelcomedUser = undefined")    
                 
                 if (response.answers[0] == undefined){  
-                     console.log("624 response.answers[0] = undefined") 
+                     console.log("624 response.answers[0] = " + response.answers[0]) 
                     
                      if (this._userProfileAccessor.profileName == undefined){  //send dummy
-                         console.log("627 profileName = undefined") 
+                         console.log("627 profileName = " + this._userProfileAccessor.profileName) 
                          
                          console.log("629 reponse = none") 
                          //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
-                         } else {  
+                         } else { 
+                         console.log("633 profileName = " + this._userProfileAccessor.profileName) 
                          
                          }
                                                    
                      } else { 
                          
-                     console.log("636 undefined") 
+                     console.log("639 response.answers[0] = " + response.answers[0]) 
                      response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      
                      } 
                 
                  } else {    
                      
-                 console.log("643 didBotWelcomedUser defined")
+                 console.log("646 didBotWelcomedUser = " + didBotWelcomedUser) 
                      
-                 if (didBotWelcomedUser == 1){                    
+                 if (didBotWelcomedUser == 1){
+                      console.log("649 response.answers[0] = " + response.answers[0]) 
                       if (response.answers[0] == undefined){
                                                  
-                          console.log("648 true1") 
+                          console.log("652 response.answers[0] = " + response.answers[0]) 
                           //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                          
                           } else { 
 
-                          console.log("653 true1") 
+                          console.log("657 response.answers[0] = " + response.answers[0])  
                           //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                           } 
                      
-                      } else if (didBotWelcomedUser == 2){ 
+                      } else if (didBotWelcomedUser == 2){
+                          
+                          console.log("663 didBotWelcomedUser = " + didBotWelcomedUser) 
                       
                           if (response.answers[0] == undefined && this._userProfileAccessor.profileName == undefined) 
                             { 
