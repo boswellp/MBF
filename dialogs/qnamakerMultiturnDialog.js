@@ -607,27 +607,28 @@ if (this._userProfileAccessor.profileName != undefined)
 
 //////////////////////////////////////////
         
-         if (this._userProfileAccessor.profileName == undefined){ //send dummy
+        console.log("\n610 response = " + JSON.stringify(response))
+        
+        console.log("\n612 this._userProfileAccessor.profileName = " + this._userProfileAccessor.profileName))
+        
+        if (this._userProfileAccessor.profileName == undefined){ //send dummy
                response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Submit \"start\"","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} }
      
-        
-        console.log("\n610 response = " + JSON.stringify(response))
-        console.log("\n611 response.answers[0] = " + JSON.stringify(response.answers[0]))
-        //console.log("\n610 this._welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty))
+        console.log("\n617 response = " + JSON.stringify(response))
 
         if (this._welcomedUserProperty != undefined){ //first input with xxxx
             const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-            console.log("\n616 didBotWelcomedUser = " + didBotWelcomedUser)   
+            console.log("\n621 didBotWelcomedUser = " + didBotWelcomedUser)   
             if (didBotWelcomedUser == undefined){
-                console.log("\n618 undefined")    
+                console.log("\n623 undefined")    
                 
                 if (response.answers[0] == undefined){  
                     
                      if (this._userProfileAccessor.profileName == undefined){  //send dummy
 
-                         console.log("\n624 undefined")
+                         console.log("\n629 undefined")
                          //response = {"activeLearning Enabled":false,"answers":[]} 
-                         console.log("\n626 undefined") 
+                         console.log("\n631 undefined") 
                          response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                          } else {  //let pass
@@ -636,29 +637,29 @@ if (this._userProfileAccessor.profileName != undefined)
                                                    
                      } else { //have a non-error response 
                          
-                     console.log("\n637 undefined")
+                     console.log("\n640 undefined")
                      response = {"activeLearning Enabled":false,"answers":[]} 
-                     console.log("\n639 undefined") 
+                     console.log("\n642 undefined") 
                      response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      
                      }   
                  } else {              
-                 console.log("\n644 didBotWelcomedUser defined")
+                 console.log("\n647 didBotWelcomedUser defined")
                  if (didBotWelcomedUser == 1){                    
                       if (response.answers[0] == undefined){
                           
                           //webchat on opening and Messenger on second step.
                           
-                          console.log("\n650 true1 : webchat on opening and Messenger on second step")
+                          console.log("\n653 true1 : webchat on opening and Messenger on second step")
                           //response = {"activeLearning Enabled":false,"answers":[]} 
-                          console.log("\n652 true1") 
+                          console.log("\n655 true1") 
                           //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                          
                       
                           } else { //have a non-error response 
-                          console.log("\n657 true1")
+                          console.log("\n660 true1")
                           //response = {"activeLearning Enabled":false,"answers":[]} 
-                          console.log("\n659 true1") 
+                          console.log("\n662 true1") 
                           //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                           }   
                       } else if (didBotWelcomedUser == 2){  //let pass
@@ -666,10 +667,10 @@ if (this._userProfileAccessor.profileName != undefined)
                           //if (response.answers[0] == undefined && this._userProfileAccessor.profileName == undefined) //start xxxxxx: send dummy answer
                             //{ 
                             //console.log("\n666 else if 2 webchat start") //on webchat start send a dummy answer
-                            response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Submit \"start\"","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
+                            //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Submit \"start\"","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
      
                             //} else {
-                            console.log("\n670 else if 2 webchat start")
+                            console.log("\n673 else if 2 webchat start")
                             //}         
                       }         
                           
