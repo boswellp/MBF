@@ -40,7 +40,7 @@ class QnAMultiturnBot extends ActivityHandler {
                  const didBotWelcomedUser0 = await this.welcomedUserProperty.get(context, false);
                  console.log ("\n_41 didBotWelcomedUser0 = " + didBotWelcomedUser0);
 
-                 if (context.activity.channelId == 'skype'){
+                 if (context.activity.channelId == skype){
                      
                      await this.sendWelcomeCard(context);  
                      
