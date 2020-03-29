@@ -94,7 +94,7 @@ class QnAMultiturnBot extends ActivityHandler {
 
                     await this.welcomedUserProperty.set(context, 2);
 
-                    cont channelId = activity.channelId;
+                    const channelId = activity.channelId;
                     console.log ("\n_98 channelId = " + channelId);
                     
                     welcomeCard1.body[1].text = 'Welcome to FIDICchatbot';
