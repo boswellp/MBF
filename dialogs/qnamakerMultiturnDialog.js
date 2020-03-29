@@ -609,7 +609,7 @@ if (this._userProfileAccessor.profileName != undefined)
         
         console.log("\n610 response = " + JSON.stringify(response))
         
-        console.log("\n612 this._userProfileAccessor.profileName = " + this._userProfileAccessor.profileName))
+        console.log("\n612 this._userProfileAccessor.profileName = " + this._userProfileAccessor.profileName)
         
         if (this._userProfileAccessor.profileName == undefined){ //send dummy
                response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Submit \"start\"","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} }
