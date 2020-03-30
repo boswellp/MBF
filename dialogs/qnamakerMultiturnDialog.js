@@ -695,8 +695,9 @@ if (userProfile != false)
                          
                           } else { 
 
-                          console.log("698 response.answers[0] = " + response.answers[0])  
-                          //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
+                          console.log("698 response.answers[0] = " + response.answers[0]) 
+                          console.log("699 response = DUMMY") 
+                          response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                           } 
                      
                       } else if (didBotWelcomedUser == 2){
