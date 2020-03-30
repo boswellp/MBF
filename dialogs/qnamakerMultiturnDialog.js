@@ -616,7 +616,7 @@ if (this._userProfileAccessor.profileName != undefined)
         
         console.log("\n617 userProfile = " + userProfile)
         
-        await this._userProfileAccessor.set(stepContext,'xxxxxxxxxxxxxxx'))
+        await this._userProfileAccessor.set(stepContext,'xxxxxxxxxxxxxxx')
         const userProfile1 = await this._userProfileAccessor.get(stepContext.context)
         console.log("\n621 userProfile1 = " + userProfile1)
     
