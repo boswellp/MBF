@@ -70,7 +70,7 @@ class QnAMultiturnBot extends ActivityHandler {
                  await this.welcomedUserProperty.set(context, 1);
                  await this.userProfileAccessor1.set(context, 1);
                  const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
-                 const diduserProfileAccessor1 = await this.userProfileAccessor1.get(context,false);
+                 diduserProfileAccessor1 = await this.userProfileAccessor1.get(context,false);
                  console.log ("\n_58 didBotWelcomedUser set to " + didBotWelcomedUser);
 
                  } 
