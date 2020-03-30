@@ -73,7 +73,7 @@
   ],
   "actions": [
     {
-      "type":"Action.ImBack",
+      "type":"Action.Submit",
       "title":"start",
       "value":"start"
     }
