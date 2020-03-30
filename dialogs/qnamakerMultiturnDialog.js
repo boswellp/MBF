@@ -318,7 +318,7 @@ if (userProfile != false)
                                stepContext.context.activity.text = 'cons1'; //cons1 into userProfile.name
                                ////this._userProfileAccessor.profileName = 'c1'
                                await this._userProfileAccessor.set(stepContext.context, "c1");
-                               console.log ("240 SENT stepContext.context.activity.text = " + stepContext.context.activity.text);
+                               //console.log ("240 SENT stepContext.context.activity.text = " + stepContext.context.activity.text);
                                }
                                else if (str.indexOf('Plant &',0) != -1 )
                                {
@@ -331,7 +331,7 @@ if (userProfile != false)
 
                                else if (str == 'c1s' || str == 'p1s') //SEARCH
                                {
-                               console.log ("\n252 ...");
+                               //console.log ("\n252 ...");
                                var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false)
                                ////if (str != this._userProfileAccessor.profileName) //changing index for c1s to p1s
                                if (str != profileNameTemp) //changing index for c1s to p1s
@@ -350,11 +350,11 @@ if (userProfile != false)
                                //else if (this._userSearchAccessor.searchType == 'advanced' && profileName != undefined && profileName.indexOf('1s',0) != -1)
                                else if (searchTypeTemp == 'advanced' && profileName != undefined && profileName.indexOf('1s',0) != -1)
                                {
-                               console.log ("\n355 str = " + str); //str = [agreement]
+                               //console.log ("\n355 str = " + str); //str = [agreement]
                                var strTemp = str.replace(/\[/,'');
                                strTemp = strTemp.replace(/\]/,'');
                                strTemp = strTemp.trim();
-                               console.log ("359 strTemp = " + strTemp)
+                               //console.log ("359 strTemp = " + strTemp)
 
 
                                if (categoriesAry.includes(strTemp) && str.indexOf('\[',0) != -1) // categories [ agreement ] in
@@ -369,7 +369,7 @@ if (userProfile != false)
 
                                     //console.log ("370 this._userStringAccessor.stringValue = " + this._userStringAccessor.stringValue)
                                     //console.log ("370 stepContext.context.activity.text = " + stepContext.context.activity.text)
-                                    console.log ("370 str = " + str) //str = xx
+                                    //console.log ("370 str = " + str) //str = xx
 
                                     stepContext.context.activity.text = str;
 
@@ -417,7 +417,7 @@ if (userProfile != false)
                          console.log("\n314 KEYWORD STANDARD STRING str = " + str + '; profileName = ' + profileName);
 
                          var posnSpace = str.indexOf(' ',0);
-                         console.log ("\n317 posnSpace = " + posnSpace);
+                         //console.log ("\n317 posnSpace = " + posnSpace);
 
                          if (posnSpace != -1)  //have space
                                       {
@@ -454,7 +454,7 @@ if (userProfile != false)
                                                         strCon = 'p1';}
                                                     }
                                                  }
-                                           console.log ("\n457 ....");
+                                           //console.log ("\n457 ....");
                                            if (isNaN(strNo) && strCon.indexOf('i',0) == -1){strCon = strCon + 'i';} //"c1i agreement"
                                            var strConNoFull = strCon + ' ' + strNo; 
                                            } 
@@ -482,9 +482,9 @@ if (userProfile != false)
                                                          strCon = 'p1';}
                                                       }
                                                  }
-                                           console.log ("\n485 strCon =  " + strCon);
+                                           //console.log ("\n485 strCon =  " + strCon);
                                            if (isNaN(strNo) && strCon.indexOf('i',0) == -1){strCon = strCon + 'i';} //"c1i agreement" and not c1s
-                                           console.log ("\n487 strCon =  " + strCon);
+                                           //console.log ("\n487 strCon =  " + strCon);
                                            var strConNoFull = strCon + ' ' + strNo;
                                            }
                                        }
@@ -519,7 +519,7 @@ if (userProfile != false)
                          else
                          {
 
-                         console.log("\n422 NUMBER STANDARD STRING  str = " + str);              
+                         //console.log("\n422 NUMBER STANDARD STRING  str = " + str);              
 
                          var strCon = '';
                          var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false)
@@ -561,7 +561,7 @@ if (userProfile != false)
                          if (searchTypeTemp == "advanced"){strConNoFull = 'Search active\n\n' + strConNoFull;}
                          stepContext.context.activity.text = strConNoFull;
 
-                         console.log ("\n458 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
+                         //console.log ("\n458 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
 
                          }
 
@@ -649,7 +649,7 @@ if (userProfile != false)
         //console.log("\n612 this._userProfileAccessor.profileName = " + this._userProfileAccessor.profileName)
         
     
-//deactivate my side
+/*//deactivate my side
      profileName = await this._userProfileAccessor.get(stepContext.context,false)
      if (this._welcomedUserProperty != undefined){ 
             const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
@@ -731,7 +731,7 @@ if (userProfile != false)
               }
 
   
-
+*/
        
         //console.log("\n678 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
                  
@@ -810,7 +810,7 @@ if (userProfile != false)
 
         //console.log("\n553 activity.text = " + stepContext.context.activity.text + '; profileNameStored = ' + this._userProfileAccessor.profileName + '; searchTypeStored = ' + this._userSearchAccessor.searchType);
 
-        console.log("\n553 START META response = " + response)
+        //console.log("\n553 START META response = " + response)
 
 
         var metadataAry = new Array(50).fill(null).map(()=>new Array(5).fill(null));
@@ -822,17 +822,17 @@ if (userProfile != false)
         //if (profileNameTemp != undefined &&  this._userSearchAccessor.searchType == "advanced") 
         if (profileNameTemp != undefined && searchTypeTemp == "advanced") 
            {
-           console.log("\n573 .....");
+           //console.log("\n573 .....");
            if (profileNameTemp.indexOf('1s',0) != -1)  
                {
 
-               console.log("\n574 .....");
+               //console.log("\n574 .....");
 
 
 
               //clear answers and prompts          
 
-               console.log("\n693 START META ADD START PROMPT response.answers[0].answer = " + response.answers[0].answer)
+               //console.log("\n693 START META ADD START PROMPT response.answers[0].answer = " + response.answers[0].answer)
 
                for (var i = 0; i < 50; i++) 
                   {if (response.answers[i] != undefined){delete(response.answers[i].answer);}}
@@ -918,16 +918,16 @@ if (userProfile != false)
 //Stage 1 create prompts
 
 
-               console.log("\n650 pass1 metadataAry = " + JSON.stringify(metadataAry));
-               console.log("\n650 pass1 categoryAry = " + JSON.stringify(categoryAry));
+               //console.log("\n650 pass1 metadataAry = " + JSON.stringify(metadataAry));
+               //console.log("\n650 pass1 categoryAry = " + JSON.stringify(categoryAry));
                //console.log("\n650 END META response = " + JSON.stringify(response))               
-               //console.log("\n650 END META response")
+               console.log("\n650 END META response")
 
 
 
                if (categoryAry.length == 0)
                     {
-                    console.log("\n645 In categoryAry.length = " + categoryAry.length);
+                    //console.log("\n645 In categoryAry.length = " + categoryAry.length);
                     for (var i = 0; i < 20; i++) 
                         {
                         delete response.answers[0].context.prompts[i];
@@ -957,8 +957,8 @@ if (userProfile != false)
 
                } //if
 
-         console.log("\n675 META + PROMPTS response.answers[0].context = " + JSON.stringify(response.answers[0].context));
-         console.log("\n702 META + PROMPTS response = " + JSON.stringify(response));
+         //console.log("\n675 META + PROMPTS response.answers[0].context = " + JSON.stringify(response.answers[0].context));
+         //console.log("\n702 META + PROMPTS response = " + JSON.stringify(response));
 
          console.log("\n678 END PASS 1");
 
@@ -972,7 +972,7 @@ if (userProfile != false)
 //Pass 2 - expands clauses
 
           console.log("\n971 START PASS 2");
-          console.log("\n971 Sresponse.answers[0] = \n" + JSON.stringify(response.answers[0]))
+          //console.log("\n971 Sresponse.answers[0] = \n" + JSON.stringify(response.answers[0]))
 
            var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
            //if (this._userSearchAccessor.searchType == "advanced1") 
@@ -1008,7 +1008,7 @@ if (userProfile != false)
 
                      combinedAnswers = answerTitle + combinedAnswers;
                      
-                     console.log("721 i, combinedAnswers = " + i + " ; "  + JSON.stringify(combinedAnswers))
+                     //console.log("721 i, combinedAnswers = " + i + " ; "  + JSON.stringify(combinedAnswers))
 
                      var answerId = response.answers[i].id;
 
@@ -1028,7 +1028,7 @@ if (userProfile != false)
 
                      var iCount = iTotal-1-i;
 
-                     console.log("\n741 iCount, answerPrompt = " + iCount + " ; "  + JSON.stringify(answerPrompt))
+                     //console.log("\n741 iCount, answerPrompt = " + iCount + " ; "  + JSON.stringify(answerPrompt))
 
                      response.answers[0].context.prompts[iCount] = answerPrompt;
 
@@ -1083,7 +1083,7 @@ if (userProfile != false)
              response.answers[0].answer = 'Search active\n\n' + response.answers[0].answer;
              }
 
-        console.log("\n787 dialogOptions = " + JSON.stringify(dialogOptions));
+        //console.log("\n787 dialogOptions = " + JSON.stringify(dialogOptions));
 
         stepContext.values[QnAData] = response.answers;
 
@@ -1120,7 +1120,7 @@ if (userProfile != false)
                 });
 
 
-                console.log("\n945 After processing .. answer.context.prompts = " + JSON.stringify(answer.context.prompts));
+                //console.log("\n945 After processing .. answer.context.prompts = " + JSON.stringify(answer.context.prompts));
 
 
                 //for search - prompt stop. answer is original unprocessed answer
