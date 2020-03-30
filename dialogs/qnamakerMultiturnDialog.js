@@ -124,13 +124,13 @@ const qnaService = new QnAMaker({
         //const didBotWelcomedUser = this._welcomedUserProperty.welcomedUserProperty;
 
 
-var userProfile1 = await this._userProfileAccessor.get(stepContext.context,false)
-console.log("\n128 userProfile1 = " + userProfile1);
+var userProfile = await this._userProfileAccessor.get(stepContext.context,false)
+console.log("\n128 userProfile = " + userProfile);
 //if (this._userProfileAccessor.profileName != undefined)
-if (userProfile1 != false)
+if (userProfile != false)
     {
     //if (this._userProfileAccessor.profileName.indexOf('p1',0) != -1){
-    if (userProfile1.indexOf('p1',0) != -1){
+    if (userProfile.indexOf('p1',0) != -1){
 
         console.log(".............................................................\n In dialog change knowledge base..p1")         
 
@@ -209,9 +209,9 @@ if (userProfile1 != false)
 
        // var utilInspectstepContext = util.inspect(stepContext);
 
-        var userProfile1 = await this._userProfileAccessor.get(stepContext.context,false)
+        var userProfile = await this._userProfileAccessor.get(stepContext.context,false)
         ////if (this._userProfileAccessor.profileName == undefined && JSONstringifythisuserState.indexOf('cons1',0) != -1) //cons1 comes from QnAMaker and not got profileName
-        if (userProfile1 != false && JSONstringifythisuserState.indexOf('cons1',0) != -1) //cons1 comes from QnAMaker and not got profileName
+        if (userProfile != false && JSONstringifythisuserState.indexOf('cons1',0) != -1) //cons1 comes from QnAMaker and not got profileName
              {
              ////this._userProfileAccessor.profileName = "c1";
              await this._userProfileAccessor.set(stepContext.context, "c1");
@@ -647,7 +647,7 @@ if (userProfile1 != false)
         //console.log("\n612 this._userProfileAccessor.profileName = " + this._userProfileAccessor.profileName)
         
     
-//deactivate my side
+/*//deactivate my side
      if (this._welcomedUserProperty != undefined){ 
             const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
             console.log("618 didBotWelcomedUser = " + didBotWelcomedUser) 
@@ -728,7 +728,7 @@ if (userProfile1 != false)
               }
 
   
-
+*/
        
         //console.log("\n678 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
                  
