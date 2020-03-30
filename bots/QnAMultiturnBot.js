@@ -120,8 +120,9 @@ class QnAMultiturnBot extends ActivityHandler {
                 if (membersAdded[cnt].id !== context.activity.recipient.id) {
 
                     await this.welcomedUserProperty.set(context, 2);
+                    await this.userProfileAccessor1.set(context, 2);
 
-                    console.log ("\n_111 context.activity.channelId = " + context.activity.channelId);
+                    console.log ("\n_125 context.activity.channelId = " + context.activity.channelId);
 
                     if (context.activity.channelId == 'skype'){
                      
