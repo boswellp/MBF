@@ -611,6 +611,10 @@ if (this._userProfileAccessor.profileName != undefined)
         
         console.log("\n612 this._userProfileAccessor.profileName = " + this._userProfileAccessor.profileName)
         
+        const userProfile = await this._userProfileAccessor.get(stepContext.context)
+        
+        console.log("\n616 userProfile = " + userProfile)
+        
     
 
         if (this._welcomedUserProperty != undefined){ 
