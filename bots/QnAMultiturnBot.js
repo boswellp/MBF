@@ -87,7 +87,7 @@ class QnAMultiturnBot extends ActivityHandler {
                      
                      } else {
              
-                    guidanceCard.body[1].title = 'FIDICchatbot guide';
+                    guidanceCard.body[1].text = 'FIDICchatbot guide';
                     guidanceCard.body[2].text = 'After selecting a contract, General Conditions clauses are displayed by submitting a clause number or a keyword.';
                     guidanceCard.body[3].text = 'Keywords search the index of clauses, or in the General Conditions when searching is activated (by submitting \"c1s\" or \"start\" -> \"c1 s\" for the Construction Contract).';
                     guidanceCard.body[4].text = 'Shortcut codes for contracts that can be submitted at any time are "c1" for the Construction Contract 1st Ed 1999 and "p1"for the Plant & Design-Build Contract 1st Ed 1999 (in the process of being uploaded).';
