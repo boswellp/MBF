@@ -615,10 +615,10 @@ if (this._userProfileAccessor.profileName != undefined)
         const userProfile = await this._userProfileAccessor.get(stepContext.context)
         
         console.log("\n617 userProfile = " + userProfile)
-        
-        await this._userProfileAccessor.set(stepContext,'xxxxxxxxxxxxxxx')
-        const userProfile1 = await this._userProfileAccessor.get(stepContext.context)
-        console.log("\n621 userProfile1 = " + userProfile1)
+        if (userProfile != undefined)
+            {await this._userProfileAccessor.set(stepContext,'xxxxxxxxxxxxxxx')
+            const userProfile1 = await this._userProfileAccessor.get(stepContext.context)
+            console.log("\n621 userProfile1 = " + userProfile1)}
     
 
         if (this._welcomedUserProperty != undefined){ 
