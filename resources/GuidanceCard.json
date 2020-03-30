@@ -5,7 +5,18 @@
   "body": [
     {
       "type": "TextBlock",
-       "spacing": "medium",
+      "spacing": "medium",
+      "size": "large",
+      "weight": "bolder",
+      "isSubtle": true,
+      "text": "",
+      "wrap": true,
+      "maxLines": 0,
+      "color":"accent"
+    },
+    {
+      "type": "TextBlock",
+      "spacing": "medium",
       "size": "large",
       "weight": "bolder",
       "isSubtle": true,
