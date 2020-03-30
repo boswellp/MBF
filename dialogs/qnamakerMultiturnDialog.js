@@ -614,7 +614,7 @@ if (this._userProfileAccessor.profileName != undefined)
         
         console.log("\n613 this._userProfileAccessor.profileName = " + this._userProfileAccessor.profileName)
         
-        const userProfile = await this._userProfileAccessor.get(stepContext.context)
+        //const userProfile = await this._userProfileAccessor.get(stepContext.context)
         
         await this._userProfileAccessor1.set(stepContext,'aaaaaaaaaaaaaa')
         const userProfile1 = await this._userProfileAccessor1.get(stepContext.context)
