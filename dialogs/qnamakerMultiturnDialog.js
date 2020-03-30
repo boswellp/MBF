@@ -41,7 +41,7 @@ const QNAMAKER_DIALOG = 'qnamaker-dialog';
 const QNAMAKER_MULTITURN_DIALOG = 'qnamaker-multiturn-dailog';
 const USER_PROFILE_PROPERTY = 'userProfile';
 const USER_SEARCH_TYPE = 'searchType'; 
-const USER_STRING_Value = 'stringValue';
+const USER_STRING_VALUE = 'stringValue';
 //const USER_STRING_ACCESSOR = 'userStringAccessor';
 const WELCOMED_USER = 'welcomedUserProperty';
 //const WELCOMED_USER_STATUS = 'welcomedStatus';
@@ -87,7 +87,7 @@ const qnaService = new QnAMaker({
         this._conversationState = conversationState;
         this._userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY); 
         this._userSearchAccessor = userState.createProperty(USER_SEARCH_TYPE); 
-        this._userStringAccessor = userState.createProperty(USER_STRING_ACCESSOR);
+        this._userStringAccessor = userState.createProperty(USER_STRING_VALUE);
         this._welcomedUserProperty = userState.createProperty(WELCOMED_USER); 
         //this._userWelcomeAccessor = userState.createProperty(WELCOMED_USER_STATUS);  
 
