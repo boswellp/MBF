@@ -7,6 +7,7 @@ const welcomeCard1 = require('../resources/WelcomeCard1.json');
 const guidanceCard = require('../resources/GuidanceCard.json');
 
 const WELCOMED_USER = 'welcomedUserProperty';
+const USER_PROFILE_PROPERTY1 = 'userProfileAccessor1';
 
 class QnAMultiturnBot extends ActivityHandler {
 
@@ -22,6 +23,8 @@ class QnAMultiturnBot extends ActivityHandler {
         this.dialogState = this.conversationState.createProperty('DialogState');
         this.welcomedState = this.conversationState.createProperty('WelcomedState');
         this.welcomedUserProperty = userState.createProperty(WELCOMED_USER);
+        this.userProfileAccessor1 = userState.createProperty(USER_PROFILE_PROPERTY1); 
+
 
 
         this.onMessage(async (context, next) => {
@@ -33,11 +36,13 @@ class QnAMultiturnBot extends ActivityHandler {
         this.onMessage(async (context, next) => {
 
            const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
+           const diduserProfileAccessor1 = await this.userProfileAccessor1.get(context, false);
 
            if (didBotWelcomedUser == 0)
                  {
                      
                  const didBotWelcomedUser0 = await this.welcomedUserProperty.get(context, false);
+                 const diduserProfileAccessor1 = await this.userProfileAccessor1.get(context, false);
                      
                  console.log ("\n_42 context.activity.channelId = " + context.activity.channelId);
 
@@ -63,7 +68,9 @@ class QnAMultiturnBot extends ActivityHandler {
   
 
                  await this.welcomedUserProperty.set(context, 1);
+                 await this.userProfileAccessor1.set(context, 1);
                  const didBotWelcomedUser = await this.welcomedUserProperty.get(context, false);
+                 const diduserProfileAccessor1 = await this.userProfileAccessor1.get(context,false);
                  console.log ("\n_58 didBotWelcomedUser set to " + didBotWelcomedUser);
 
                  } 
