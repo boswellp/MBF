@@ -40,6 +40,7 @@ const PreviousQnAId = 'prevQnAId';
 const QNAMAKER_DIALOG = 'qnamaker-dialog';
 const QNAMAKER_MULTITURN_DIALOG = 'qnamaker-multiturn-dailog';
 const USER_PROFILE_PROPERTY = 'userProfile';
+const USER_PROFILE_PROPERTY1 = 'userProfileAccessor1';
 const USER_SEARCH_TYPE = 'searchType'; 
 const USER_STRING_VALUE = 'stringValue';
 //const USER_STRING_ACCESSOR = 'userStringAccessor';
@@ -85,7 +86,8 @@ const qnaService = new QnAMaker({
         this._qnaMakerService = qnaService;
         this._userState = userState; 
         this._conversationState = conversationState;
-        this._userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY); 
+        this._userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY);
+        this._userProfileAccessor1 = userState.createProperty(USER_PROFILE_PROPERTY1); 
         this._userSearchAccessor = userState.createProperty(USER_SEARCH_TYPE); 
         this._userStringAccessor = userState.createProperty(USER_STRING_VALUE);
         this._welcomedUserProperty = userState.createProperty(WELCOMED_USER); 
@@ -613,12 +615,13 @@ if (this._userProfileAccessor.profileName != undefined)
         console.log("\n613 this._userProfileAccessor.profileName = " + this._userProfileAccessor.profileName)
         
         const userProfile = await this._userProfileAccessor.get(stepContext.context)
+        const userProfile1 = await this._userProfileAccessor1.get(stepContext.context)
         
-        console.log("\n617 userProfile = " + userProfile)
-        if (userProfile != undefined)
-            {await this._userProfileAccessor.set(stepContext,'xxxxxxxxxxxxxxx')
-            const userProfile1 = await this._userProfileAccessor.get(stepContext.context)
-            console.log("\n621 userProfile1 = " + userProfile1)}
+        console.log("\n620 userProfile1 = " + userProfile1)
+        if (userProfile1 != undefined)
+            {await this._userProfileAccessor1.set(stepContext,'xxxxxxxxxxxxxxx')
+            const userProfile2 = await this._userProfileAccessor1.get(stepContext.context)
+            console.log("\n624 userProfile2 = " + userProfile2)}
     
 
         if (this._welcomedUserProperty != undefined){ 
