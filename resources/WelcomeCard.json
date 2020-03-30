@@ -73,10 +73,9 @@
       "color":"accent"
     }
   ],
-  "actions": 
-  [
+  "actions": [
     {
-      "type":"Action.Submit",
+      "type":"Action.ImBack",
       "title":"start",
       "value":"start"
     }
