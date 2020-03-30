@@ -413,7 +413,7 @@ if (userProfile != false)
                    if (isNaN(str))
                          {
                          var strCon, strNo, strConNoFull;
-                         profileName = await this._userProfileAccessor.get(stepContext.context,undefined)
+                         profileName = await this._userProfileAccessor.get(stepContext.context,false)
                          console.log("\n314 KEYWORD STANDARD STRING str = " + str + '; profileName = ' + profileName);
 
                          var posnSpace = str.indexOf(' ',0);
@@ -440,7 +440,7 @@ if (userProfile != false)
                                            }
                                            else
                                            {
-                                           if (profileName != undefined) {
+                                           if (profileName != false) {
                                                 if (profileName == 'c1s' && strCon == 'c1') 
                                                     {} //strCon takes precedence if show clause during search
                                                     else
@@ -472,7 +472,7 @@ if (userProfile != false)
                                            }
                                            else // "agreement" "2.1"
                                            {
-                                           if (profileName != undefined) {
+                                           if (profileName != false) {
                                                 strCon = profileName;}
                                                 else
                                                 {if (str == 'Construction Contract 1st Ed 1999'){
@@ -649,7 +649,7 @@ if (userProfile != false)
         //console.log("\n612 this._userProfileAccessor.profileName = " + this._userProfileAccessor.profileName)
         
     
-//deactivate my side
+/*//deactivate my side
      if (this._welcomedUserProperty != undefined){ 
             const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
             console.log("618 didBotWelcomedUser = " + didBotWelcomedUser) 
@@ -730,7 +730,7 @@ if (userProfile != false)
               }
 
   
-
+*/
        
         //console.log("\n678 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
                  
