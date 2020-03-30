@@ -70,12 +70,5 @@
       "maxLines": 0,
       "color":"accent"
     }
-  ],
-  "actions": [
-    {
-      "type":"Action.Submit",
-      "title":"start",
-      "value":"start"
-    }
   ]
 }
