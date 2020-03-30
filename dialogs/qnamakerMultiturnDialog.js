@@ -414,10 +414,10 @@ if (userProfile != false)
                          {
                          var strCon, strNo, strConNoFull;
                          profileName = await this._userProfileAccessor.get(stepContext.context,false)
-                         //console.log("\n314 KEYWORD STANDARD STRING str = " + str + '; profileName = ' + profileName);
+                         console.log("\n314 KEYWORD STANDARD STRING str = " + str + '; profileName = ' + profileName);
 
                          var posnSpace = str.indexOf(' ',0);
-                         //console.log ("\n317 posnSpace = " + posnSpace);
+                         console.log ("\n317 posnSpace = " + posnSpace);
 
                          if (posnSpace != -1)  //have space
                                       {
