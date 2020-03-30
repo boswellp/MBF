@@ -339,7 +339,7 @@ if (this._userProfileAccessor.profileName != undefined)
                                     qnaMakerOptions.strictFilters = [{name:'category',value:strTemp}]
 
                                     //old str = this._userStringAccessor.stringValue;  // pass 1 stored str agreement
-                                    str = await this._userStringAccessor.get(stepContext.context) //new
+                                    str = await this._userStringAccessor.get(stepContext.stepContext) //new
 
 
                                     //console.log ("370 this._userStringAccessor.stringValue = " + this._userStringAccessor.stringValue)
@@ -718,7 +718,8 @@ if (this._userProfileAccessor.profileName != undefined)
              //console.log("\n552 ..for activity.text == " + textTemp + " and textOrig includes c1s1: " + textOrig );
           
              //store pass 1 str
-             this._userStringAccessor.stringValue = textTemp;
+             // old this._userStringAccessor.stringValue = textTemp;
+             await this.userStringAccessor.set(stepContext, textTemp);
 
 //FIRST PASS search (get categories for xxxxxx into metatDataAry)
 
