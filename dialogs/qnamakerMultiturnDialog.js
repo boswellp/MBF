@@ -649,7 +649,7 @@ if (userProfile != false)
         //console.log("\n612 this._userProfileAccessor.profileName = " + this._userProfileAccessor.profileName)
         
     
-/*//deactivate my side
+//deactivate my side
      profileName = await this._userProfileAccessor.get(stepContext.context,false)
      if (this._welcomedUserProperty != undefined){ 
             const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
@@ -731,7 +731,7 @@ if (userProfile != false)
               }
 
   
-*/
+
        
         //console.log("\n678 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
                  
