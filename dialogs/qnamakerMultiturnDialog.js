@@ -651,78 +651,79 @@ if (userProfile != false)
     
 //deactivate my side
      profileName = await this._userProfileAccessor.get(stepContext.context,false)
+     console.log("654 OPENING profileName = " + profileName) 
      var didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-     console.log("655 didBotWelcomedUser = " + didBotWelcomedUser)
+     console.log("656 OPENING didBotWelcomedUser = " + didBotWelcomedUser) 
      if (this._welcomedUserProperty != undefined){ 
-            const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-            console.log("658 didBotWelcomedUser = " + didBotWelcomedUser) 
+            didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
+            console.log("659 didBotWelcomedUser = " + didBotWelcomedUser) 
             
             if (didBotWelcomedUser == undefined){
-                console.log("661 didBotWelcomedUser = undefined")    
+                console.log("662 didBotWelcomedUser = undefined")    
                 
                 if (response.answers[0] == undefined){  
-                     console.log("664 response.answers[0] = " + response.answers[0]) 
+                     console.log("665 response.answers[0] = " + response.answers[0]) 
                     
                      if (profileName == false){  //send dummy
-                         console.log("667 profileName = " + profileName) 
+                         console.log("668 profileName = " + profileName) 
                          
-                         console.log("669 reponse = default welcome") 
+                         console.log("670 reponse = default welcome") 
                          response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                          } else { 
-                         console.log("673 profileName = " + profileName) 
+                         console.log("674 profileName = " + profileName) 
                          
                          }
                                                    
                      } else { 
                          
-                     console.log("639 response.answers[0] = " + response.answers[0]) 
-                     console.log("680 reponse = let pass") 
+                     console.log("680 response.answers[0] = " + response.answers[0]) 
+                     console.log("681 reponse = let pass") 
                      //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      
                      } 
                 
                  } else {    
                      
-                 console.log("687 didBotWelcomedUser = " + didBotWelcomedUser) 
+                 console.log("646 didBotWelcomedUser = " + didBotWelcomedUser) 
                      
                  if (didBotWelcomedUser == 1){
-                      console.log("690 response.answers[0] = " + response.answers[0]) 
+                      console.log("691 response.answers[0] = " + response.answers[0]) 
                       if (response.answers[0] == undefined){
                                                  
-                          console.log("693 response.answers[0] = " + response.answers[0]) 
+                          console.log("694 response.answers[0] = " + response.answers[0]) 
                           //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                          
                           } else { 
 
-                          console.log("698 response.answers[0] = " + response.answers[0]) 
+                          console.log("699 response.answers[0] = " + response.answers[0])  
                           //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                           } 
                      
                       } else if (didBotWelcomedUser == 2){
                           
-                          console.log("704 didBotWelcomedUser = " + didBotWelcomedUser) 
+                          console.log("705 didBotWelcomedUser = " + didBotWelcomedUser) 
                       
                           if (response.answers[0] == undefined){  
-                               console.log("666 response.answers[0] = " + response.answers[0]) 
+                               console.log("708 response.answers[0] = " + response.answers[0]) 
                     
                                if (profileName == false){  
-                                   console.log("710 profileName = " + profileName) 
+                                   console.log("712 profileName = " + profileName) 
                          
-                                   console.log("713 reponse = default welcome") 
+                                   console.log("671 reponse = default welcome") 
                                    response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                                    } else { 
-                                   console.log("716 profileName = " + profileName)
+                                   console.log("717 profileName = " + profileName)
                                        
-                                   console.log("718 reponse = let pass")
+                                   console.log("719 reponse = let pass")
                          
                                    }
                                                    
                                 } else { 
-                                console.log("723 response.answers[0] = " + response.answers[0])
+                                console.log("724 response.answers[0] = " + response.answers[0])
                                 
-                                console.log("725 reponse = let pass")     
+                                console.log("726 reponse = let pass")     
                                 //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      
                                 }
