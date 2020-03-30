@@ -338,13 +338,13 @@ if (this._userProfileAccessor.profileName != undefined)
                                     {
                                     qnaMakerOptions.strictFilters = [{name:'category',value:strTemp}]
 
-                                    str = this._userStringAccessor.stringValue;  // pass 1 stored str agreement
-                                    //str = stepContext.context.activity.text;
-                                    //str = 'agreement'
+                                    //old str = this._userStringAccessor.stringValue;  // pass 1 stored str agreement
+                                    str = await this._userStringAccessor.get(stepContext.context) //new
+'
 
                                     //console.log ("370 this._userStringAccessor.stringValue = " + this._userStringAccessor.stringValue)
                                     //console.log ("370 stepContext.context.activity.text = " + stepContext.context.activity.text)
-                                    //console.log ("370 str = " + str) //str = xx
+                                    console.log ("\n347 ........................... str = " + str) //str = xx
 
                                     stepContext.context.activity.text = str;
 
