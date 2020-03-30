@@ -650,6 +650,7 @@ if (userProfile != false)
         
     
 /*//deactivate my side
+     profileName = await this._userProfileAccessor.get(stepContext.context,false)
      if (this._welcomedUserProperty != undefined){ 
             const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
             console.log("618 didBotWelcomedUser = " + didBotWelcomedUser) 
@@ -660,14 +661,14 @@ if (userProfile != false)
                 if (response.answers[0] == undefined){  
                      console.log("624 response.answers[0] = " + response.answers[0]) 
                     
-                     if (this._userProfileAccessor.profileName == undefined){  //send dummy
-                         console.log("627 profileName = " + this._userProfileAccessor.profileName) 
+                     if (profileName == false){  //send dummy
+                         console.log("627 profileName = " + profileName) 
                          
                          console.log("629 reponse = default welcome") 
                          response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                          } else { 
-                         console.log("633 profileName = " + this._userProfileAccessor.profileName) 
+                         console.log("633 profileName = " + profileName) 
                          
                          }
                                                    
@@ -703,14 +704,14 @@ if (userProfile != false)
                           if (response.answers[0] == undefined){  
                                console.log("666 response.answers[0] = " + response.answers[0]) 
                     
-                               if (this._userProfileAccessor.profileName == undefined){  
-                                   console.log("669 profileName = " + this._userProfileAccessor.profileName) 
+                               if (profileName == false){  
+                                   console.log("669 profileName = " + profileName) 
                          
                                    console.log("671 reponse = default welcome") 
                                    response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                                    } else { 
-                                   console.log("675 profileName = " + this._userProfileAccessor.profileName)
+                                   console.log("675 profileName = " + profileName)
                                        
                                    console.log("677 reponse = let pass")
                          
