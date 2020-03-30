@@ -41,8 +41,8 @@ const QNAMAKER_DIALOG = 'qnamaker-dialog';
 const QNAMAKER_MULTITURN_DIALOG = 'qnamaker-multiturn-dailog';
 const USER_PROFILE_PROPERTY = 'userProfile';
 const USER_SEARCH_TYPE = 'searchType'; 
-//const USER_STRING_Value = 'stringValue';
-const USER_STRING_ACCESSOR = 'userStringAccessor';
+const USER_STRING_Value = 'stringValue';
+//const USER_STRING_ACCESSOR = 'userStringAccessor';
 const WELCOMED_USER = 'welcomedUserProperty';
 //const WELCOMED_USER_STATUS = 'welcomedStatus';
 //const CONVERSATION_DATA_PROPERTY = 'conversationData'; 
@@ -337,12 +337,12 @@ if (this._userProfileAccessor.profileName != undefined)
 
                                     {
                                     qnaMakerOptions.strictFilters = [{name:'category',value:strTemp}]
-                                    console.log ("340 this._userStringAccessor = " + JSON.stringify(this._userStringAccessor))
-                                    //old str = this._userStringAccessor.stringValue;  // pass 1 stored str agreement
-                                    str = await this._userStringAccessor.get(stepContext,false) //new
+                                    //console.log ("340 this._userStringAccessor = " + JSON.stringify(this._userStringAccessor))
+                                    str = this._userStringAccessor.stringValue;  // pass 1 stored str agreement
+                                    //newstr = await this._userStringAccessor.get(stepContext,false) //new
 
 
-                                    //console.log ("370 this._userStringAccessor.stringValue = " + this._userStringAccessor.stringValue)
+                                   console.log ("345 this._userStringAccessor.stringValue = " + this._userStringAccessor.stringValue)
                                     //console.log ("370 stepContext.context.activity.text = " + stepContext.context.activity.text)
                                     console.log ("\n347 ........................... str = " + str) //str = xx
 
@@ -718,8 +718,8 @@ if (this._userProfileAccessor.profileName != undefined)
              //console.log("\n552 ..for activity.text == " + textTemp + " and textOrig includes c1s1: " + textOrig );
           
              //store pass 1 str
-             // old this._userStringAccessor.stringValue = textTemp;
-             await this._userStringAccessor.set(stepContext, textTemp);
+             this._userStringAccessor.stringValue = textTemp;
+             //new await this._userStringAccessor.set(stepContext, textTemp);
 
 //FIRST PASS search (get categories for xxxxxx into metatDataAry)
 
