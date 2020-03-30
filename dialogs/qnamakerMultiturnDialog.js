@@ -719,7 +719,7 @@ if (this._userProfileAccessor.profileName != undefined)
           
              //store pass 1 str
              // old this._userStringAccessor.stringValue = textTemp;
-             await this.userStringAccessor.set(stepContext, textTemp);
+             await this._userStringAccessor.set(stepContext, textTemp);
 
 //FIRST PASS search (get categories for xxxxxx into metatDataAry)
 
