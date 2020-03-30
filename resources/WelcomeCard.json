@@ -72,12 +72,5 @@
       "maxLines": 0,
       "color":"accent"
     }
-  ],
-  "actions": [
-    {
-      "type":"Action.ImBack",
-      "title":"start",
-      "value":"start"
-    }
   ]
 }
