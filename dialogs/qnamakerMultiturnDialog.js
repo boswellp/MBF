@@ -615,11 +615,13 @@ if (this._userProfileAccessor.profileName != undefined)
         console.log("\n613 this._userProfileAccessor.profileName = " + this._userProfileAccessor.profileName)
         
         const userProfile = await this._userProfileAccessor.get(stepContext.context)
-        const userProfile1 = await this._userProfileAccessor1.get(stepContext.context)
         
+        await this._userProfileAccessor1.set(stepContext,'aaaaaaaaaaaaaa')
+        const userProfile1 = await this._userProfileAccessor1.get(stepContext.context)
+ 
         console.log("\n620 userProfile1 = " + userProfile1)
         if (userProfile1 != undefined)
-            {await this._userProfileAccessor1.set(stepContext,'xxxxxxxxxxxxxxx')
+            {await this._userProfileAccessor1.set(stepContext,'bbbbbbbbbbbbbbbbbb')
             const userProfile2 = await this._userProfileAccessor1.get(stepContext.context)
             console.log("\n624 userProfile2 = " + userProfile2)}
     
