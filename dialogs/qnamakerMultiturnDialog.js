@@ -1082,7 +1082,7 @@ if (userProfile != false)
 
                      console.log("\n1083 answerNoPromptsDeep = \n" + JSON.stringify(answerNoPromptsDeep)) 
 
-                     await stepContext.context.sendActivity(messageNoPromptsDeep);
+                     //await stepContext.context.sendActivity(messageNoPromptsDeep);
 
                      var answerNoAnswerDeep = JSON.parse(JSON.stringify(answer));
 
