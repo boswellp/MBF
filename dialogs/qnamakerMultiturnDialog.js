@@ -749,7 +749,8 @@ if (userProfile != false)
 
 
         //console.log("\n748 PROMPT BEFORE PROCESSING response.answers[0].context = \n" + JSON.stringify(response.answers[0].context))
-        console.log("\n750 BEFORE PROCESSING response = \n" + JSON.stringify(response))
+        //console.log("\n750 BEFORE PROCESSING response = \n" + JSON.stringify(response))
+        console.log("\n750 BEFORE PROCESSING");
  
 
         //console.log("\n754 BEFORE PROCESSING response no prompts = \n" + JSON.stringify(response))
@@ -1079,13 +1080,17 @@ if (userProfile != false)
 
                      var messageNoPromptsDeep = QnACardBuilder.GetQnAPromptsCard(answerNoPromptsDeep); 
 
+                     console.log("\n1083 answerNoPromptsDeep = \n" + JSON.stringify(answerNoPromptsDeep)) 
+
                      await stepContext.context.sendActivity(messageNoPromptsDeep);
 
                      var answerNoAnswerDeep = JSON.parse(JSON.stringify(answer));
 
                      answerNoAnswerDeep.answer = "" //remove answer
 
-                     var messageNoAnswerDeep = QnACardBuilder.GetQnAPromptsCard(answerNoAnswerDeep); 
+                     var messageNoAnswerDeep = QnACardBuilder.GetQnAPromptsCard(answerNoAnswerDeep);
+
+                     console.log("\n1093 answerNoAnswerDeep = \n" + JSON.stringify(answerNoAnswerDeep)) 
 
                      await stepContext.context.sendActivity(messageNoAnswerDeep);
 
