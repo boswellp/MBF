@@ -1,6 +1,6 @@
 // Copyright (c) Bricad Associates 2020
 
-// ver 21mar20 _TESTING2
+// ver 1 April 2020 - BEFORE MESSENGER SPLIT MESSAGE
 
 //alterations use: qnamaker replace alterations --in wordAlterations.json
 
