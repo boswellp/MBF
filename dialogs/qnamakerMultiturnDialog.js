@@ -653,7 +653,7 @@ if (userProfile != false)
                           } else { 
 
                           console.log("699 2nd pass messenger response.answers[0] = " + response.answers[0])  
-                          response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
+                          response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"xxxxxxxxxxxxxxxxx","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
 
                           } 
                      
