@@ -32,9 +32,13 @@ Further details of the implementation will be made available.
 
 Our aim is to have a single app that serves as manay channels as possible. The main difficulties arise with Messenger that only allows for a very short message if prompts are added to the message. The solution is to have the message and its prompts in separate messages.
 
-The Bot Framework multiturn QnA Maker sample bot provided the basis for FIDICchatbot. The corruent code needs cleaning up as the focus to now has been to set up the necessary feautures.
+The Bot Framework multiturn QnA Maker <a href="https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/70.qnamaker-multiturn-sample">sample bot</a> provided the basis for FIDICchatbot. The current code needs cleaning up as the focus up to now has been to set up the necessary feautures.
 
-The various FIDIC contracts are stored in separate QnAMaker knowledgebases. These use the same coding scheme as for FIDICbot's JSON source files .
+The various FIDIC contracts are stored in separate QnAMaker knowledgebases. These use the same coding scheme as for FIDICbot's JSON source files. LUIS messenging and a MongoDB database are available but we prefer to keep all the FIDIC contracts and related information in the knowledgebases so information can be uploaded quickly via Excel spreadsheets.
+
+We find that with appropriate control of QnAMaker dialog settings, full searching of the FIDIC contracts is available. The results of these full searches are separated into standard categories using meta tags that tag FIDIC contract clauses according to standard categories. The DnAMaker knowledgebases also allow the index of each contract to be search. 
+
+FIDIChatbot, like FIDICbot, runs on Node on Heroku with files stored on Github. FIDICchatbot's BotFramework channels on <a href="https://portal.azure.com">Azure</a> are WebChat, Skype, Messenger, and Telegram. LINE is  not useable and WhatsApp via Twilio works in a sandbox. The public release of Messenger is pending.
 
 Updated April 2020
 
