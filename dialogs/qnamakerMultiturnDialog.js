@@ -623,7 +623,7 @@ if (userProfile != false)
                      if (profileName == false){  
                          console.log("668 profileName = " + profileName) 
                          
-                         console.log("670 reponse = default welcome") 
+                         console.log("670 reponse = default welcome 1st pass Messenger") 
                          response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                          } else { 
@@ -652,8 +652,9 @@ if (userProfile != false)
                          
                           } else { 
 
-                          console.log("699 response.answers[0] = " + response.answers[0])  
-                          //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
+                          console.log("699 2nd pass messenger response.answers[0] = " + response.answers[0])  
+                          response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
+
                           } 
                      
                       } else if (didBotWelcomedUser == 2){
