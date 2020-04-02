@@ -688,20 +688,16 @@ if (userProfile != false)
               }
 
   
-
        
         //console.log("\n678 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
+        console.log("\n693 ANSWER BEFORE PROCESSING response");
                  
 
-
-//not yet Heroku side
-////////////////////////////// if got prompts, separate out into a speparate message and add question to prompts
-
-        console.log("\n700 BEFORE LIST PROMPTS response.answers[0].context = " + JSON.stringify(response.answers[0].context))
-        console.log("\n701 response.answers[0].questions[0] = " + JSON.stringify(response.answers[0].questions[0]))
+        //console.log("\n700 BEFORE LIST PROMPTS response.answers[0].context = " + JSON.stringify(response.answers[0].context))
+        //console.log("\n701 response.answers[0].questions[0] = " + JSON.stringify(response.answers[0].questions[0]))
 
         
- 
+        //add clause number to prompts (for Messenger's 2 messages)
         str = response.answers[0].questions[0];
         if (str.indexOf('c1:',0) != -1 || str.indexOf('p1:',0) != -1)  //coming from clauses
              {
@@ -740,7 +736,7 @@ if (userProfile != false)
                   }
               } //end if str
 
-/////////////////////////////
+
 
 
 
