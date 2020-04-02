@@ -928,7 +928,7 @@ if (userProfile != false)
             return await stepContext.replaceDialog(QNAMAKER_DIALOG, dialogOptions);
         }
 
-        console.log("\n1125 END END");
+        console.log("\n931 END END stepContext.result = " +JSON.stringify(stepContext.result));
 
         var responses = stepContext.result;
         if (responses != null) {
