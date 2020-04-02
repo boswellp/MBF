@@ -14,19 +14,14 @@ var viberChannel = new viber.ViberEnabledConnector(viberOptions)
 const winston = require('winston');
 /////////*/
 
-
 const path = require('path');
 const restify = require('restify');
 
 const { MessageFactory, BotFrameworkAdapter, ConversationState, MemoryStorage, UserState } = require('botbuilder');
 const { QnAMaker } = require('botbuilder-ai');
 
-
 const { QnAMultiturnBot } = require('./bots/QnAMultiturnBot');
 const { RootDialog } = require('./dialogs/rootDialog');
-
-
-//const welcomeCard = require('./resources/WelcomeCard.json'); //ADDED TUE
 
 const ENV_FILE = path.join(__dirname, '.env');
 require('dotenv').config({ path: ENV_FILE });
@@ -82,14 +77,11 @@ adapter.onTurnError = async (context, error) => {
         await context.sendActivity(reply);
         }
   
-  
-   
-    // Send a message to the user
+ 
     let onTurnErrorMessage = 'The bot encountered an error or bug.';
     await context.sendActivity(onTurnErrorMessage, onTurnErrorMessage, InputHints.ExpectingInput);
     onTurnErrorMessage = 'To continue to run this bot, please fix the bot source code.';
     await context.sendActivity(onTurnErrorMessage, onTurnErrorMessage, InputHints.ExpectingInput);
-    // Clear out state
     await conversationState.delete(context);
   
   
