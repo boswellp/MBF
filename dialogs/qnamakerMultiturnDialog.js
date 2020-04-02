@@ -697,8 +697,8 @@ if (userProfile != false)
 //not yet Heroku side
 ////////////////////////////// if got prompts, separate out into a speparate message and add question to prompts
 
-        //console.log("\n702 response.answers[0].context.prompts[0] = " + JSON.stringify(response.answers[0].context.prompts[0]))
-        console.log("\n703 response.answers[0].questions[0] = " + JSON.stringify(response.answers[0].questions[0]))
+        console.log("\n700 BEFORE LIST PROMPTS response.answers[0].context = " + JSON.stringify(response.answers[0].context))
+        console.log("\n701 response.answers[0].questions[0] = " + JSON.stringify(response.answers[0].questions[0]))
 
         
  
@@ -721,7 +721,7 @@ if (userProfile != false)
                  {
                  if (response.answers[0].context.prompts[i] != undefined)
                      {
-                     console.log("\n710 i response.answers[0].context.prompts[i] = " + i + "; " + JSON.stringify(response.answers[0].context.prompts[i]))
+                     console.log("\n724 i response.answers[0].context.prompts[i] = " + i + "; " + JSON.stringify(response.answers[0].context.prompts[i]))
                      promptAry[i] =  response.answers[0].context.prompts[i];
                      iTotal = i;
                      } 
@@ -731,11 +731,11 @@ if (userProfile != false)
              response.answers[0].context.prompts[0] = {"displayOrder":0,"qnaId":13499,"qna":null,"displayText":"c1 s"}
              response.answers[0].context.prompts[0].displayText = str
 
-             console.log("\n702 iTotal = " + iTotal)
+             console.log("\n734 iTotal = " + iTotal)
 
              for (var i = 1; i < iTotal + 2; i++)
                   {
-                  console.log("\n739 i promptAry[i-1] = " + i + "; " + JSON.stringify(promptAry[i-1]))
+                  console.log("\n738 i promptAry[i-1] = " + i + "; " + JSON.stringify(promptAry[i-1]))
                   response.answers[0].context.prompts[i] =  promptAry[i-1];
                   }
               } //end if str
@@ -816,7 +816,7 @@ if (userProfile != false)
 
 //Pass 1 - get categories into an array
 
-               console.log("\n593 .....");
+               console.log("\n819 .....");
 
                var categoryAry = []; 
 
@@ -853,9 +853,14 @@ if (userProfile != false)
                          } //for
                     }//for
 
+               console.log("\n856 response = " + JSON.stringify(response))
 
-               if (response.answers[0].answer != undefined) {response.answers[0].answer = "Search - select a category";}  //first pass
-
+               //if (response.answers[0].answer != undefined) 
+                   //{
+                   response.answers[0].answer = "Search - select a category";
+                   //}  //first pass
+ 
+               console.log("\n863response = " + JSON.stringify(response))
 
 //Stage 1 create prompts
 
@@ -863,7 +868,7 @@ if (userProfile != false)
                //console.log("\n650 pass1 metadataAry = " + JSON.stringify(metadataAry));
                //console.log("\n650 pass1 categoryAry = " + JSON.stringify(categoryAry));
                //console.log("\n650 END META response = " + JSON.stringify(response))               
-               console.log("\n650 END META response")
+               console.log("\n871 END META response")
 
 
 
@@ -897,9 +902,9 @@ if (userProfile != false)
                } //if
 
          //console.log("\n675 META + PROMPTS response.answers[0].context = " + JSON.stringify(response.answers[0].context));
-         //console.log("\n702 META + PROMPTS response = " + JSON.stringify(response));
+         console.log("\n905 META + PROMPTS response = " + JSON.stringify(response));
 
-         console.log("\n678 END PASS 1");
+         console.log("\n907 END PASS 1");
 
 
 
@@ -910,7 +915,7 @@ if (userProfile != false)
 
 //Pass 2 - expands clauses
 
-          console.log("\nSTART PASS 2");
+          console.log("\n918 START PASS 2");
 
 
            var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
@@ -924,7 +929,7 @@ if (userProfile != false)
                       break
                       }}
 
-               console.log("\n702 iTotal = " + iTotal)
+               console.log("\n932 iTotal = " + iTotal)
 
 
                var answerTitle, posnTitle, combinedAnswers = ''; 
@@ -939,7 +944,7 @@ if (userProfile != false)
                      answerTitle = answerTitle.substring(0,posnTitle);
                      if (i > 0){combinedAnswers = '\n\n' + combinedAnswers;}
 
-                     console.log("\n  ")
+                     //console.log("\n  ")
 
                      combinedAnswers = answerTitle + combinedAnswers;
 
@@ -968,11 +973,15 @@ if (userProfile != false)
 
                   } 
 
+             console.log("\n976 AFTER PROMPTS response.answers[0].context = \n" + JSON.stringify( response.answers[0].context))
+
              await this._userSearchAccessor.set(stepContext.context, 'advanced')
 
              qnaMakerOptions.strictFilters = null; //reset
 
              response.answers[0].answer = combinedAnswers;
+
+             console.log("\n982 combinedAnswers response.answers[0].answer = \n" + JSON.stringify(response.answers[0].answer))
 
 
              var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
@@ -983,11 +992,13 @@ if (userProfile != false)
                    var conTemp = await this._userProfileAccessor.get(stepContext.context,false)
 
                    conTemp = conTemp.replace('s','')
-                   console.log ("\n870 iTotal = " + iTotal)
-                   response.answers[0].context.prompts[iTotal + 1] = {displayOrder:1,qna:null,displayText:'Stop search [' + conTemp +']'};
+
+                   console.log ("\n995 iTotal = " + iTotal)
+
+                   response.answers[0].context.prompts[iTotal] = {displayOrder:1,qna:null,displayText:'Stop search [' + conTemp +']'};
                    }
 
-             //console.log("\n766 END EXPANSION response.answers[0].answer = \n" + JSON.stringify(response.answers[0].answer))
+             console.log("\n1001 END EXPANSION response = \n" + JSON.stringify(response))
 
              }
 
@@ -995,7 +1006,7 @@ if (userProfile != false)
 
 //End combine clauses for advanced search
 
-        console.log("\n777 After processing ..");
+        console.log("\n1007 After processing ..");
 
         dialogOptions[PreviousQnAId] = -1;
         stepContext.activeDialog.state.options = dialogOptions;
@@ -1016,7 +1027,7 @@ if (userProfile != false)
 
         stepContext.values[QnAData] = result;
 
-        console.log("\n1019 OUT1 NOT PROCESSED result = " + JSON.stringify(result))
+        //console.log("\n1019 OUT1 NOT PROCESSED result = " + JSON.stringify(result))
 
         return await stepContext.next(result); 
 
@@ -1026,77 +1037,30 @@ if (userProfile != false)
 
     async checkForMultiTurnPrompt(stepContext, answerNoAnswerDeep) {
 
-       console.log("\n1029 stepContext.result= " + JSON.stringify(stepContext.result))
-       console.log("\n1030 stepContext.result.length= " + stepContext.result.length)
+       //console.log("\n1029 stepContext.result= " + JSON.stringify(stepContext.result))
+       //console.log("\n1030 stepContext.result.length= " + stepContext.result.length)
 
         if (stepContext.result != null && stepContext.result.length > 0) {
 
             var answer = stepContext.result[0];
 
-            console.log("\n1037 answer= " + JSON.stringify(answer))
+            //console.log("\n1036 answer= " + JSON.stringify(answer))
 
             //Got prompts. For clauses, change result to answerNoAnswerDeep
 
 
             if (answer.questions[0].indexOf('c1:',0) != -1 || answer.questions[0].indexOf('p1:',0) != -1) 
                 {
-                //var answerNoAnswerDeepPrompts = stepContext.context.turnState.get("prompts") //pass prompts
-                //console.log("\n1044 answerNoAnswerDeepPrompts = " + JSON.stringify(answerNoAnswerDeepPrompts))
-                //var answerNoAnswerDeep = answer;
-
                 var answerNoAnswerDeep = JSON.parse(JSON.stringify(answer));
                 var answerNoAnswerDeepStore = JSON.parse(JSON.stringify(answer));
                 answerNoAnswerDeep.answer = "" //remove answer
-
-                //answerNoAnswerDeep.context.prompts = answerNoAnswerDeepPrompts; //add prompts form pass
-                //console.log("\n1086 answerNoAnswerDeep = " + JSON.stringify(answerNoAnswerDeep))
-
-                var answer = JSON.parse(JSON.stringify(answerNoAnswerDeep)); //back to answer
-                //}
-
-
-///////////////////////////
-
-             //Clauses set no prompt (from above)
-             //console.log("\n1061result[0] = " + JSON.stringify(result[0]))
-             //console.log("\n1062 result[0].questions[0] = " + JSON.stringify(result[0].questions[0]))
-
-            //var answerNoAnswerDeep = '';
-
-            //if (result[0].questions[0].indexOf('c1:',0) != -1 || result[0].questions[0].indexOf('p1:',0) != -1) 
-
-                //{
-
-                //var answerNoAnswerDeep = JSON.parse(JSON.stringify(result[0]));
-                //var answerNoPromptsDeep = JSON.parse(JSON.stringify(result[0]));
-
-                //console.log("\n1072answerNoPromptsDeep = " + JSON.stringify(answerNoPromptsDeep))
-
-                //console.log("\n1035 answerNoPromptsDeep.context.prompts = " + JSON.stringify(answerNoPromptsDeep.context.prompts))
-
-                //stepContext.context.turnState.set("prompts",answerNoPromptsDeep.context.prompts) //pass prompts
-
-                //answerNoPromptsDeep.context.prompts = false 
-                //delete answerNoPromptsDeep.context.prompts
-
-                //console.log("\n1042 answerNoPromptsDeep = " + JSON.stringify(answerNoPromptsDeep))
-
-                //result[0] = answerNoPromptsDeep
-
-                //console.log("\n1046 OUT1 PROCESSED result = " + JSON.stringify(result))
-
-                //return await stepContext.next(result); //orig
-
+                var answer = JSON.parse(JSON.stringify(answerNoAnswerDeep)); //back to answe
                 }
-
-//////////////////////////
-
-
 
             //if ((answer.context != null && answer.context.prompts != null && answer.context.prompts.length > 0) || answer.questions[0].indexOf('c1:',0) != -1 || answer.questions[0].indexOf('p1:',0) != -1)
             if (answer.context != null && answer.context.prompts != null && answer.context.prompts.length > 0)
                 {
-                console.log("\n1095 OUT2 PROCESSING PROMPT")
+                console.log("\n1052 OUT2 PROCESSING PROMPT")
 
                 var dialogOptions = getDialogOptionsValue(stepContext);
 
@@ -1112,7 +1076,6 @@ if (userProfile != false)
                        previousContextData[prompt.displayText.toLowerCase()] = prompt.qnaId;
                        });
                     }
-
 
                 //for search - prompt stop. answer is original unprocessed answer
 
@@ -1136,16 +1099,15 @@ if (userProfile != false)
 
                 if (answer.questions[0].indexOf('c1:',0) != -1 || answer.questions[0].indexOf('p1:',0) != -1) 
                    //await stepContext.context.sendActivity("TESTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-                   {await stepContext.context.sendActivity(answerNoAnswerDeepStore.answer);}
+                   {
+                   await stepContext.context.sendActivity(answerNoAnswerDeepStore.answer);
+                   }
 
-
-                console.log("\n1138 answer = " + JSON.stringify(answer)) //shows with prompt
+                console.log("\n1095 answer = " + JSON.stringify(answer)) //shows with prompt
 
                 var message = QnACardBuilder.GetQnAPromptsCard(answer); 
                 await stepContext.context.sendActivity(message);
                    
-                //}
-             
                 return { status: DialogTurnStatus.waiting };
             }
         }
@@ -1171,13 +1133,13 @@ if (userProfile != false)
             return await stepContext.replaceDialog(QNAMAKER_DIALOG, dialogOptions);
         }
 
-        console.log("\n1170 END END stepContext.result = " + JSON.stringify(stepContext.result));
+        console.log("\n1125 END END stepContext.result = " + JSON.stringify(stepContext.result));
 
         var responses = stepContext.result;
         if (responses != null) {
             if (responses.length > 0) {
 
-                console.log("\n1176 END END responses[0].answer = " + JSON.stringify(responses[0].answer));
+                console.log("\n1131 END END responses[0].answer = " + JSON.stringify(responses[0].answer));
 
                 await stepContext.context.sendActivity(responses[0].answer);
 
@@ -1193,7 +1155,7 @@ if (userProfile != false)
 
 async changeContract(stepContext, userState) { 
 
-       console.log("\n\n973 ..........SAVE..............");
+       console.log("\n\n1147..........SAVE..............");
 
        var currentQuery = stepContext._info.values.currentQuery;
        var currentPosn = currentQuery.indexOf(':',0);    
