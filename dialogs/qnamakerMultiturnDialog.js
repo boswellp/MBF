@@ -116,86 +116,14 @@ const qnaService = new QnAMaker({
             qnaMakerOptions.scoreThreshold = qnaMakerOptions.scoreThreshold ? qnaMakerOptions.scoreThreshold : DefaultThreshold;
             qnaMakerOptions.top = qnaMakerOptions.top ? qnaMakerOptions.top : DefaultThreshold;
         }
-
-        //const didBotWelcomedUser = this._welcomedUserProperty.welcomedUserProperty;
-
-
-var userProfile = await this._userProfileAccessor.get(stepContext.context,false)
-console.log("\n128 userProfile = " + userProfile);
-//if (this._userProfileAccessor.profileName != undefined)
-if (userProfile != false)
-    {
-    //if (this._userProfileAccessor.profileName.indexOf('p1',0) != -1){
-    if (userProfile.indexOf('p1',0) != -1){
-
-        console.log(".............................................................\n In dialog change knowledge base..p1")         
-
-        const qnaService = new QnAMaker({
-        knowledgeBaseId: process.env.QnAKnowledgebaseIdp1,
-        endpointKey: process.env.QnAEndpointKey,
-        host: process.env.QnAEndpointHostName
-        });
-
-        } else {
-
-        console.log(".............................................................\n In dialog change knowledge base..other")         
-
-        const qnaService = new QnAMaker({
-        knowledgeBaseId: process.env.QnAKnowledgebaseId,
-        endpointKey: process.env.QnAEndpointKey,
-        host: process.env.QnAEndpointHostName
-        });
-
-        }
-        
-     } else {
-         
-     console.log(".............................................................\n In dialog change knowledge base..other for undefined")         
-
-     const qnaService = new QnAMaker({
-     knowledgeBaseId: process.env.QnAKnowledgebaseId,
-     endpointKey: process.env.QnAEndpointKey,
-     host: process.env.QnAEndpointHostName
-     });
-         
-         
-         
-         
-         
-}
-
-
-
-
-
-     
+  
         console.log("\n\n117 .......MULTITURN......");
-
-
-        //console.log ("\n125 this._userState = " + JSON.stringify(this._userState));
-
-        //console.log("\n\n125 this._welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty))
-        //this._userWelcomeAccessor.welcomedStatus = null;
-
-        //console.log("\n\n129 this._welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty));
-
-        //console.log("\n\n125 this._userState.storage.memory = " + JSON.stringify(this._userState.storage.memory));
-
-        //console.log("\n\n129 this._userWelcomeAccessor.welcomedStatus = " + JSON.stringify(this._userWelcomeAccessor.welcomedStatus));
-
-        //console.log ("\n131 this._welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty));
-
-        //console.log ("\n133 this._welcomedUserProperty.welcomedUserProperty = " + JSON.stringify(this._welcomedUserProperty.welcomedUserProperty));
 
 
         if (this._welcomedUserProperty != undefined && stepContext != undefined){
             const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-            console.log ("\n192 didBotWelcomedUser  = " + didBotWelcomedUser);
+            //console.log ("\n192 didBotWelcomedUser  = " + didBotWelcomedUser);
             }
-
-
-        console.log("\n\n145 .......MULTITURN END......");
-
 
         var JSONstringifythisuserState = JSON.stringify(this._userState);
 
@@ -596,7 +524,25 @@ if (userProfile != false)
 
 //////////////////////////////////////////
 
-        var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
+        var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false);
+
+        //console.log("\n535 profileNameTemp = " + profileNameTemp);
+
+        //console.log("\n537 stepContext.context  = " + JSON.stringify(stepContext.context));
+
+        if (userProfile != false)
+          {
+          if (profileNameTemp.indexOf('c1',0) != -1)
+             {var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);}
+             else if (profileNameTemp.indexOf('p1',0) != -1)
+             {var response = await this._qnaMakerServicePlant1.getAnswersRaw(stepContext.context, qnaMakerOptions);}
+             else
+             {var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);}
+          }
+          else
+          {var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);}
+
+        //var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
 
 //////////////////////////////////////////
         
