@@ -544,8 +544,8 @@ const qnaServicePlant1 = new QnAMaker({
         //if (profileNameTemp  == 'p1' && stepContext.context.activity.text.indexOf('Plant & Design',0) != -1)
         if (profileNameTemp  == 'p1' && stepContext.context.activity.text.indexOf('plant & design',0) != -1)
            {
-           qnaMakerOptions.context.previousQnAId = 1530;
-           qnaMakerOptions.qnaId = 1532;
+           qnaMakerOptions.context.previousQnAId = 2277;
+           qnaMakerOptions.qnaId = 2279;
            }
         //if (profileNameTemp  == 'c1' && stepContext.context.activity.text.indexOf('Construction Contract',0) != -1)
         if (profileNameTemp  == 'c1' && stepContext.context.activity.text.indexOf('construction contract',0) != -1)
