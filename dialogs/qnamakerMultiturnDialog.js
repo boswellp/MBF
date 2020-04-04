@@ -1,6 +1,6 @@
 // Copyright (c) Bricad Associates 2020
 
-// ver 21mar20 _TESTING2
+// ver 5 April 2020
 
 //alterations use: qnamaker replace alterations --in wordAlterations.json
 
@@ -8,7 +8,7 @@ var categoriesAry = ["agreement","certificate","clause","condition","contractor"
 
 const { ComponentDialog, DialogTurnStatus, WaterfallDialog } = require('botbuilder-dialogs');
 
-const { InputHnts } = require('botbuilder'); //added
+const { InputHnts } = require('botbuilder');
 
 const { QnACardBuilder } = require('../utils/qnaCardBuilder');
 
@@ -17,8 +17,6 @@ const { QnAMaker } = require('botbuilder-ai');
 const DefaultThreshold = 0.5;
 const DefaultTopN = 3;
 const DefaultRankerType = '';
-//const DefaultStrictFilters = [{name:'',value:''}];
-//const DefaultStrictFilters = null;
 
 const DefaultNoAnswer = 'Answer not found. Please submit "start" to start again, "help" for help or a contract code (e.g., "c1" for Construction 1st Ed 1999). Or submit a clause number (e.g., "4.2") or a keyword (e.g., "agreement") to search the index.';
 
@@ -37,11 +35,13 @@ const QNAMAKER_DIALOG = 'qnamaker-dialog';
 const QNAMAKER_MULTITURN_DIALOG = 'qnamaker-multiturn-dailog';
 const USER_PROFILE_PROPERTY = 'userProfileAccessor';
 const USER_SEARCH_PROPERTY = 'userSearchAccessor'; 
-//const USER_STRING_VALUE = 'stringValue';
 const USER_STRING_PROPERTY = 'userStringAccessor';
+const USER_QNAIDC1_PROPERTY = 'userQnaidC1Accessor';
+const USER_QNAIDP1_PROPERTY = 'userQnaidP1Accessor';
+const USER_PREVQNAIDC1_PROPERTY = 'userPrevQnaidC1Accessor';
+const USER_PREVQNAIDP1_PROPERTY = 'userPrevQnaidP1Accessor';
 const WELCOMED_USER = 'welcomedUserProperty';
-//const WELCOMED_USER_STATUS = 'welcomedStatus';
-//const CONVERSATION_DATA_PROPERTY = 'conversationData'; 
+
 
 
 class QnAMakerMultiturnDialog extends ComponentDialog {
@@ -52,21 +52,7 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
         super(QNAMAKER_MULTITURN_DIALOG);
 
 
-/*
-var endpointHostName = process.env.QnAEndpointHostName;
-if (!endpointHostName.startsWith('https://')) {
-    endpointHostName = 'https://' + endpointHostName;
-}
 
-if (!endpointHostName.endsWith('/qnamaker')) {
-    endpointHostName = endpointHostName + '/qnamaker';
-}
-
-
-this._userKBAccessor = userState.createProperty('kB'); 
-this._userKBAccessor = 'c1'; 
-console.log(".............................................................\nChange knowledge base = " +             this._userKBAccessor.kB)
-*/
 
 
 const qnaService = new QnAMaker({
@@ -75,18 +61,27 @@ const qnaService = new QnAMaker({
     host: process.env.QnAEndpointHostName
     });
 
+const qnaServicePlant1 = new QnAMaker({
+    knowledgeBaseId: process.env.QnAKnowledgebaseIdp1,
+    endpointKey: process.env.QnAEndpointKey,
+    host: process.env.QnAEndpointHostName
+    });
+
 
    
 
         this._qnaMakerService = qnaService;
+        this._qnaMakerServicePlant1 = qnaServicePlant1;
         this._userState = userState; 
         this._conversationState = conversationState;
         this._userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY); 
         this._userSearchAccessor = userState.createProperty(USER_SEARCH_PROPERTY); 
-        //this._userStringAccessor = userState.createProperty(USER_STRING_VALUE);
         this._userStringAccessor = userState.createProperty(USER_STRING_PROPERTY);
+        this._userQnaidC1Accessor = userState.createProperty(USER_QNAIDC1_PROPERTY);
+        this._userQnaidP1Accessor = userState.createProperty(USER_QNAIDP1_PROPERTY);
+        this._userPrevQnaidC1Accessor = userState.createProperty(USER_PREVQNAIDC1_PROPERTY);
+        this._userPrevQnaidP1Accessor = userState.createProperty(USER_PREVQNAIDP1_PROPERTY);
         this._welcomedUserProperty = userState.createProperty(WELCOMED_USER); 
-        //this._userWelcomeAccessor = userState.createProperty(WELCOMED_USER_STATUS);  
 
         this.addDialog(new WaterfallDialog(QNAMAKER_DIALOG, [
             this.callGenerateAnswerAsync.bind(this),
@@ -99,11 +94,9 @@ const qnaService = new QnAMaker({
     }
 
     async callGenerateAnswerAsync(stepContext) {
-        // Default QnAMakerOptions
         var qnaMakerOptions = {
             scoreThreshold: DefaultThreshold,
-            top: DefaultTopN,
-            //strictFilters: DefaultStrictFilters,  
+            top: DefaultTopN, 
             rankerType: DefaultRankerType,
             context: {},
             qnaId: -1
@@ -122,21 +115,25 @@ const qnaService = new QnAMaker({
 
         if (this._welcomedUserProperty != undefined && stepContext != undefined){
             const didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-            //console.log ("\n192 didBotWelcomedUser  = " + didBotWelcomedUser);
             }
 
         var JSONstringifythisuserState = JSON.stringify(this._userState);
 
 
+        var userQnaidC1 = await this._userQnaidC1Accessor.get(stepContext.context,false)
+        var userQnaidP1 = await this._userQnaidP1Accessor.get(stepContext.context,false)
+        console.log ("\n121 userQnaidC1, userQnaidP1 = " + userQnaidC1 + "; " + userQnaidP1);
+
+
         var userProfile = await this._userProfileAccessor.get(stepContext.context,false)
 
-        if (userProfile != false && JSONstringifythisuserState.indexOf('cons1',0) != -1) //cons1 comes from QnAMaker and not got profileName
+        if (userProfile != false && JSONstringifythisuserState.indexOf('cons1',0) != -1) 
              {
 
              await this._userProfileAccessor.set(stepContext.context, "c1");
 
              await this._userSearchAccessor.set(stepContext.context, "index");
-             console.log ("\n227 MULTITURN cons1 from QnAMaker IN c1");
+             //console.log ("\n139 MULTITURN cons1 from QnAMaker IN c1");
 
              } 
              else if (JSONstringifythisuserState.indexOf('plant1',0) != -1){ 
@@ -144,37 +141,44 @@ const qnaService = new QnAMaker({
              await this._userProfileAccessor.set(stepContext.context, "p1");
 
              await this._userSearchAccessor.set(stepContext.context, "index");
-             console.log ("\n234 MULTITURN plant1 from QnAMake IN p1");
+             //console.log ("\n147 MULTITURN plant1 from QnAMake IN p1");
              } 
 
-///need to check str
+             //Check str
+             function keepCharsAbove(inStr, charCode) {
+		 var goodChars = [];
+            	 for (var x = 0; x < inStr.length; x++) {if (inStr.charCodeAt(x) > charCode) 
+		 {goodChars.push(inStr.charAt(x));}}
+                 return goodChars.join("");}
 
-         var str = stepContext.context.activity.text;
+             var str = stepContext.context.activity.text;
+             str = str.trim();
+             str = str.toLowerCase();
+             keepCharsAbove(str,38);
+             if (str.charAt(str.length - 1) == '.'){str = str.substr(0,str.length - 1)}
 
-         var profileName = await this._userProfileAccessor.get(stepContext.context,false)
+             var profileName = await this._userProfileAccessor.get(stepContext.context,false)
      
-         console.log ("\n157 IN str = " + str);
 
-             //SEARCH
+             //Search
              if ((profileName != '' && str == 'c1s') || (profileName != '' && str == 'c1 s')) 
  
-                   //INDEX c1 i button or c1i typed in
+
                    {
-                   //console.log ("\n164 button c1 s or typed c1s str = " + str + '\n');
+                   //console.log ("\n163 button c1 s or typed c1s str = " + str + '\n');
 
                    stepContext.context.activity.text = 'c1s:0/0/0/0';
 
                    await this._userProfileAccessor.set(stepContext.context, "c1s");
 
                    await this._userSearchAccessor.set(stepContext.context, "advanced");
-                   //console.log ("168 SENT stepContext.context.activity.text = " + stepContext.context.activity.text);
+
                    }
 
                    else if ((profileName != '' && str == 'p1s') || (profileName != '' && str == 'p1 s')) 
 
-                   //INDEX c1 i button or c1i typed in
                    {
-                   console.log ("\n175 button p1 s or typed p1s str = " + str + '\n');
+                   console.log ("\n177 button p1 s or typed p1s str = " + str + '\n');
                    stepContext.context.activity.text = 'p1s:0/0/0/0';
 
                    await this._userProfileAccessor.set(stepContext.context, "p1s");
@@ -182,19 +186,21 @@ const qnaService = new QnAMaker({
                    await this._userSearchAccessor.set(stepContext.context, "advanced");
                    }
 
-                   //change contract if stored c1/p1
-                   else if ((profileName == 'c1' && str.indexOf('Plant & Design-Build Contract 1st Ed 1999',0) != -1) || (profileName == 'c1' && str == 'p1')) 
+                   //else if ((profileName == 'c1' && str.indexOf('Plant & Design-Build Contract 1st Ed 1999',0) != -1) || (profileName == 'c1' && str == 'p1')) 
+                   else if ((profileName == 'c1' && str.indexOf('plant & design-build contract 1st ed 1999',0) != -1) || (profileName == 'c1' && str == 'p1')) 
                    {
-
-                   stepContext.context.activity.text = 'Plant & Design-Build Contract 1st Ed 1999';
+                   console.log ("\n186 = " + str);
+                   //stepContext.context.activity.text = 'Plant & Design-Build Contract 1st Ed 1999';
+                   stepContext.context.activity.text = 'plant & design-build bontract 1st ed 1999';
 
                    await this._userProfileAccessor.set(stepContext.context, "p1");
                    }
 
-                   else if ((profileName == 'p1' && str.indexOf('Construction Contract 1st Ed 1999',0) != -1) || (profileName == 'p1' && str == 'c1'))
+                   //else if ((profileName == 'p1' && str.indexOf('Construction Contract 1st Ed 1999',0) != -1) || (profileName == 'p1' && str == 'c1'))
+                   else if ((profileName == 'p1' && str.indexOf('construction contract 1st ed 1999',0) != -1) || (profileName == 'p1' && str == 'c1'))
                    {
-
-                   stepContext.context.activity.text = 'Construction Contract 1st Ed 1999';
+                   //stepContext.context.activity.text = 'Construction Contract 1st Ed 1999';
+                   stepContext.context.activity.text = 'construction contract 1st cd 1999';
 
                    await this._userProfileAccessor.set(stepContext.context, "c1");
                    } 
@@ -204,7 +210,7 @@ const qnaService = new QnAMaker({
 
                    {              
                    
-                   console.log ("\n204 IN str = " + str);  
+                   console.log ("\n205 IN str = " + str);  
 
                    //keyword1
                    if (isNaN(str)) 
@@ -216,40 +222,37 @@ const qnaService = new QnAMaker({
                                {
                                if (profileName != undefined){profileName = profileName.replace('s','')} //to enable normal clause display
                                }
-                         //console.log("\n227 keyword1 str = " + str + '; profileNameStored = ' + this._userProfileAccessor.profileName + '; searchTypeStored = ' + this._userSearchAccessor.searchType);
  
+
                          if (str == 'start' || str == 'help') ///reset
                                {
-
                                await this._userSearchAccessor.set(stepContext.context, "");
                                }
 
                          var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
-                         if (str.indexOf('Construction Contract',0) != -1)
+                         //if (str.indexOf('Construction Contract',0) != -1)
+                         if (str.indexOf('construction contract',0) != -1)
                                {
-
-                               stepContext.context.activity.text = 'cons1'; //cons1 into userProfile.name
+                               stepContext.context.activity.text = 'cons1'; 
 
                                await this._userProfileAccessor.set(stepContext.context, "c1");
 
                                }
                                else if (str.indexOf('Plant &',0) != -1 )
                                {
-
-                               stepContext.context.activity.text = 'plant1'; //cons1 into userProfile.name
+                               stepContext.context.activity.text = 'plant1'; 
+                               //stepContext.context.activity.text = 'p1'; //TRIED CHANGE
 
                                await this._userProfileAccessor.set(stepContext.context, "p1");
 
                                }
 
-                               else if (str == 'c1s' || str == 'p1s') //SEARCH
+                               else if (str == 'c1s' || str == 'p1s')
                                {
-
                                var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false)
 
-                               if (str != profileNameTemp) //changing index for c1s to p1s
+                               if (str != profileNameTemp) 
                                      {
-
                                      await this._userProfileAccessor.set(stepContext.context, str + ':0/0/0/0');
 
                                      await this._userSearchAccessor.set(stepContext.context, 'advanced');
@@ -261,7 +264,7 @@ const qnaService = new QnAMaker({
           
                                else if (searchTypeTemp == 'advanced' && profileName != undefined && profileName.indexOf('1s',0) != -1)
                                {
-
+                               console.log ("\n262 = " + str);
                                var strTemp = str.replace(/\[/,'');
                                strTemp = strTemp.replace(/\]/,'');
                                strTemp = strTemp.trim();
@@ -271,7 +274,6 @@ const qnaService = new QnAMaker({
 
                                     {
                                     qnaMakerOptions.strictFilters = [{name:'category',value:strTemp}]
-
 
                                     str = await this._userStringAccessor.get(stepContext.context);
 
@@ -285,10 +287,11 @@ const qnaService = new QnAMaker({
 
                                     {
 
-                                    var tempText = stepContext.context.activity.text;
+                                    var tempText = stepContext.context.activity.text.toLowerCase();
 
 
-                                    if (tempText.indexOf('Stop search',0) != -1)
+                                    //if (tempText.indexOf('Stop search',0) != -1)
+                                    if (tempText.indexOf('stop search',0) != -1)
                                          {
 
                                          await this._userSearchAccessor.set(stepContext.context, '');
@@ -311,24 +314,25 @@ const qnaService = new QnAMaker({
                          {
                          var strCon, strNo, strConNoFull;
                          profileName = await this._userProfileAccessor.get(stepContext.context,false)
-                         console.log("\n314 KEYWORD STANDARD STRING str = " + str + '; profileName = ' + profileName);
+                         console.log("\n312 KEYWORD STANDARD STRING str = " + str);
 
                          var posnSpace = str.indexOf(' ',0);
 
-                         if (posnSpace != -1)  //have space
+                         if (posnSpace != -1)
                                       {
                                       strCon = str.substring(0,posnSpace); //for "c1 agree"
                                       strNo = str.substring(posnSpace+1,str.length);
                                       }
-                                      else  //no space
+                                      else 
                                       {
                                       strCon = '';
                                       strNo = str;
                                       }
 
-                         if (posnSpace != -1)  //have space "c1 agreement" "c1i agreement" "c1 2.3" "c1i 2.3
+                         if (posnSpace != -1) 
                                       {
-                                      if (str == 'c1 s' || str== 'p1 s' || str == 'Construction Contract 1st Ed 1999' || str == 'Plant & Design-Build Contract 1st Ed 1999' || str.indexOf('Stop search',0) != -1)  //prompts
+                                      //if (str == 'c1 s' || str== 'p1 s' || str == 'Construction Contract 1st Ed 1999' || str == 'Plant & Design-Build Contract 1st Ed 1999' || str.indexOf('Stop search',0) != -1)  //prompts
+                                      if (str == 'c1 s' || str== 'p1 s' || str == 'construction contract 1st ed 1999' || str == 'plant & design-build contract 1st ed 1999' || str.indexOf('stop search',0) != -1)  //prompts
                                            //standard conversions
                                            {
                                            if (str == 'c1 s'){str = 'c1s:0.0.0.0';}
@@ -343,10 +347,14 @@ const qnaService = new QnAMaker({
                                                     {strCon = profileName;}
                                                 }  
                                                 else
-                                                {if (str == 'Construction Contract 1st Ed 1999'){
+                                                //{if (str == 'Construction Contract 1st Ed 1999'){
+                                                {if (str == 'construction contract 1st ed 1999'){
+                                                   console.log ("\n346 = " + str);
                                                     strCon = 'c1';}
                                                     else 
-                                                    {if (str == 'Plant & Design-Build Contract 1st Ed 1999'){
+                                                    //{if (str == 'Plant & Design-Build Contract 1st Ed 1999'){
+                                                    {if (str == 'plant & design-build contract 1st ed 1999'){
+                                                        console.log ("\n350 = " + str);
                                                         strCon = 'p1';}
                                                     }
                                                  }
@@ -359,27 +367,29 @@ const qnaService = new QnAMaker({
                                        else //no space
 
                                        {
-                                       if (str == 'c1s' || str == 'p1s' ||str == 'c1' || str == 'c2' || str == 'help' || str == 'start')  //prompts
-                                           //standard conversions
+                                       if (str == 'c1s' || str == 'p1s' ||str == 'c1' || str == 'c2' || str == 'help' || str == 'start')
                                            {
+                                           console.log ("\n366 = " + str);
                                            if (str == 'c1'){str = 'cons1';}
                                            if (str == 'p1'){str = 'plant1';}
                                            var strConNoFull = str;
                                            }
-                                           else // "agreement" "2.1"
+                                           else 
                                            {
                                            if (profileName != false) {
                                                 strCon = profileName;}
                                                 else
-                                                {if (str == 'Construction Contract 1st Ed 1999'){
+                                                //{if (str == 'Construction Contract 1st Ed 1999'){
+                                                {if (str == 'construction contract 1st ed 1999'){
                                                       strCon = 'c1';}
                                                       else 
-                                                      {if (str == 'Plant & Design-Build Contract 1st Ed 1999'){
+                                                      //{if (str == 'Plant & Design-Build Contract 1st Ed 1999'){
+                                                      {if (str == 'plant & design-build contract 1st ed 1999'){
                                                          strCon = 'p1';}
                                                       }
                                                  }
  
-                                           if (isNaN(strNo) && strCon.indexOf('i',0) == -1){strCon = strCon + 'i';} //"c1i agreement" and not c1s
+                                           if (isNaN(strNo) && strCon.indexOf('i',0) == -1){strCon = strCon + 'i';} 
                   
                                            var strConNoFull = strCon + ' ' + strNo;
                                            }
@@ -387,9 +397,10 @@ const qnaService = new QnAMaker({
 
                                   if (!isNaN(strNo))
                                        {
-                                       if (strNo.length == 1){strConNoFull = strConNoFull + '.0.0.0';}
-                                       if (strNo.length == 3){strConNoFull = strConNoFull + '.0.0';}
-                                       if (strNo.length == 5){strConNoFull = strConNoFull + '.0';}
+                                       var iC = (strConNoFull.match(/\./g) || []).length;
+                                       if (iC == 0){strConNoFull = strConNoFull + '.0.0.0';}
+                                       if (iC == 1){strConNoFull = strConNoFull + '.0.0';}
+                                       if (iC == 2 ){strConNoFull = strConNoFull + '.0';}
                                        }
                                   strConNoFull = strConNoFull.replace('.','\/');
                                   strConNoFull = strConNoFull.replace('.','\/');
@@ -404,14 +415,14 @@ const qnaService = new QnAMaker({
 
                                        stepContext.context.activity.text = strConNoFull;
 
-                                       //console.log ("\n412 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
+                                      console.log ("\n397 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
                                        }
                                   }
 
                          else
                          {
 
-                         console.log("\n422 NUMBER STANDARD STRING  str = " + str);              
+                         console.log("\n404 NUMBER STANDARD STRING  str = " + str);              
 
                          var strCon = '';
                          var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false)
@@ -427,9 +438,11 @@ const qnaService = new QnAMaker({
 
 
                          var strNoFull = strNo;
-                         if (strNo.length == 1){strNoFull = strNoFull+'.0.0.0';}
-                         if (strNo.length == 3){strNoFull = strNoFull+'.0.0';}
-                         if (strNo.length == 5){strNoFull = strNoFull+'.0';}
+
+                         var iC = (strNoFull.match(/\./g) || []).length;
+                         if (iC == 0){strNoFull = strNoFull+'.0.0.0';}
+                         if (iC == 1){strNoFull = strNoFull+'.0.0';}
+                         if (iC == 2){strNoFull = strNoFull+'.0';}
 
 
                          var strConNoFull = strCon + strNoFull;
@@ -443,14 +456,14 @@ const qnaService = new QnAMaker({
                          strConNoFull = strConNoFull.replace('c1 ','c1:');
                          strConNoFull = strConNoFull.replace('p1 ','p1:');
 
-                         console.log("\n453 A keyword strConNoFull = " + strConNoFull);
+                         //console.log("\n453 A keyword strConNoFull = " + strConNoFull);
 
                          var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
 
                          if (searchTypeTemp == "advanced"){strConNoFull = 'Search active\n\n' + strConNoFull;}
                          stepContext.context.activity.text = strConNoFull;
 
-                         //console.log ("\n458 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
+                         //console.log ("\n456 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
 
                          }
 
@@ -474,10 +487,7 @@ const qnaService = new QnAMaker({
               }
 
 
-//First pass - set metadata
-
-
-        //console.log("\n481 activity.text = " + stepContext.context.activity.text + '; profileNameStored = ' + this._userProfileAccessor.profileName + '; searchTypeStored = ' + this._userSearchAccessor.searchType);
+       //First pass - set metadata
 
 
         profileName = await this._userProfileAccessor.get(stepContext.context,false)
@@ -506,9 +516,50 @@ const qnaService = new QnAMaker({
                  }
              }
 
-        console.log("\n509 qnaMakerOptions END = " + JSON.stringify(qnaMakerOptions));
+        console.log("\n492 qnaMakerOptions= " + JSON.stringify(qnaMakerOptions));
 
-        //remove c1si for search
+        console.log("\n494 qnaMakerOptions.qnaId = " + qnaMakerOptions.qnaId);
+
+        //if (stepContext.context.activity.text.indexOf('Plant & Design',0) != -1)
+        if (stepContext.context.activity.text.indexOf('plant & design',0) != -1)
+               {
+               await this._userQnaidP1Accessor.set(stepContext.context, qnaMakerOptions.qnaId);
+               await this._userPrevQnaidP1Accessor.set(stepContext.context, qnaMakerOptions.context.previousQnAId);
+               var userQnaidP1 = await this._userQnaidP1Accessor.get(stepContext.context,false)
+               var userPrevQnaidP1 = await this._userPrevQnaidP1Accessor.get(stepContext.context,false)
+               console.log ("\n513 userQnaidP1 = " + userQnaidP1 + "; userPrevQnaidP1 = " + userPrevQnaidP1);
+               }
+
+        //if (stepContext.context.activity.text.indexOf('Construction Contract',0) != -1)
+        if (stepContext.context.activity.text.indexOf('construction contract',0) != -1)
+               {
+               await this._userQnaidC1Accessor.set(stepContext.context, qnaMakerOptions.qnaId);
+               await this._userPrevQnaidC1Accessor.set(stepContext.context, qnaMakerOptions.context.previousQnAId);
+               var userQnaidC1 = await this._userQnaidC1Accessor.get(stepContext.context,false)
+               var userPrevQnaidC1 = await this._userPrevQnaidC1Accessor.get(stepContext.context,false)
+               console.log ("\n513 userQnaidC1 = " + userQnaidC1 + "; userPrevQnaidC1 = " + userPrevQnaidC1);
+               }
+
+        var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false);
+        //if (profileNameTemp  == 'p1' && stepContext.context.activity.text.indexOf('Plant & Design',0) != -1)
+        if (profileNameTemp  == 'p1' && stepContext.context.activity.text.indexOf('plant & design',0) != -1)
+           {
+           qnaMakerOptions.context.previousQnAId = 1530;
+           qnaMakerOptions.qnaId = 1532;
+           }
+        //if (profileNameTemp  == 'c1' && stepContext.context.activity.text.indexOf('Construction Contract',0) != -1)
+        if (profileNameTemp  == 'c1' && stepContext.context.activity.text.indexOf('construction contract',0) != -1)
+           {
+           var userQnaidC1 = await this._userQnaidC1Accessor.get(stepContext.context,false)
+           //qnaMakerOptions.context.previousQnAId = 13446;
+            qnaMakerOptions.context.previousQnAId = userPrevQnaidC1;
+           //qnaMakerOptions.qnaId = 13205;
+           qnaMakerOptions.qnaId = userQnaidC1;
+           }
+        //console.log("\n532 qnaMakerOptions END = " + JSON.stringify(qnaMakerOptions));
+
+
+
         var textTemp = stepContext.context.activity.text;
         var textOrig = stepContext.context.activity.text;
 
@@ -516,42 +567,37 @@ const qnaService = new QnAMaker({
         textTemp = textTemp.replace('p1si ','')
         stepContext.context.activity.text = textTemp;
 
-        //kill search for index search (i.e., c1i:agreement")
+
         if (textOrig == 'c1i:'){await this._userSearchAccessor.set(stepContext.context, '');}
         if (textOrig == 'p1i:'){await this._userSearchAccessor.set(stepContext.context, '');}
 
 
 
-//////////////////////////////////////////
+
 
         var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false);
 
-        //console.log("\n535 profileNameTemp = " + profileNameTemp);
-
-        //console.log("\n537 stepContext.context  = " + JSON.stringify(stepContext.context));
+ 
 
         if (userProfile != false)
           {
           if (profileNameTemp.indexOf('c1',0) != -1)
              {var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);}
              else if (profileNameTemp.indexOf('p1',0) != -1)
-             {var response = await this._qnaMakerServicePlant1.getAnswersRaw(stepContext.context, qnaMakerOptions);}
+             { 
+             var response = await this._qnaMakerServicePlant1.getAnswersRaw(stepContext.context, qnaMakerOptions);}
              else
              {var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);}
           }
           else
           {var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);}
 
-        //var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
 
-//////////////////////////////////////////
         
-        //console.log("\n610 response = " + JSON.stringify(response))
+        //console.log("\n552 RESPONSE")
         
-        //console.log("\n612 this._userProfileAccessor.profileName = " + this._userProfileAccessor.profileName)
-        
-    
-//deactivate my side
+
+
      profileName = await this._userProfileAccessor.get(stepContext.context,false)
      console.log("654 OPENING profileName = " + profileName) 
      var didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
@@ -636,17 +682,13 @@ const qnaService = new QnAMaker({
 
   
        
-        //console.log("\n678 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
-        console.log("\n693 ANSWER BEFORE PROCESSING response");
+
+        //console.log("\n693 ANSWER BEFORE PROCESSING response");
                  
-
-        //console.log("\n700 BEFORE LIST PROMPTS response.answers[0].context = " + JSON.stringify(response.answers[0].context))
-        //console.log("\n701 response.answers[0].questions[0] = " + JSON.stringify(response.answers[0].questions[0]))
-
         
         //add clause number to prompts (for Messenger's 2 messages)
         str = response.answers[0].questions[0];
-        if (str.indexOf('c1:',0) != -1 || str.indexOf('p1:',0) != -1)  //coming from clauses
+        if (str.indexOf('c1:',0) != -1 || str.indexOf('p1:',0) != -1)
              {
              str = str.replace('\/','.');
              str = str.replace('\/','.');
@@ -688,12 +730,11 @@ const qnaService = new QnAMaker({
 
 
 
-        //console.log("\n748 PROMPT BEFORE PROCESSING response.answers[0].context = \n" + JSON.stringify(response.answers[0].context))
-        //console.log("\n750 BEFORE PROCESSING response = \n" + JSON.stringify(response))
-        console.log("\n750 BEFORE PROCESSING");
+
+        //console.log("\n750 BEFORE PROCESSING");
  
 
-        //console.log("\n754 BEFORE PROCESSING response no prompts = \n" + JSON.stringify(response))
+
 
 
         if (stepContext.context.activity.text == textTemp && textOrig.indexOf('c1si ',0) != -1)
@@ -701,10 +742,10 @@ const qnaService = new QnAMaker({
 
              await this._userStringAccessor.set(stepContext.context, textTemp);
 
-//FIRST PASS search (get categories for xxxxxx into metatDataAry)
+        //FIRST PASS search (get categories for xxxxxx into metatDataAry)
 
 
-        //console.log("\n553 START META response = " + response)
+
 
 
         var metadataAry = new Array(50).fill(null).map(()=>new Array(5).fill(null));
@@ -796,14 +837,14 @@ const qnaService = new QnAMaker({
                          } //for
                     }//for
 
-               console.log("\n856 response = " + JSON.stringify(response))
+               //console.log("\n856 response = " + JSON.stringify(response))
 
                //if (response.answers[0].answer != undefined) 
                    //{
                    response.answers[0].answer = "Search - select a category";
                    //}  //first pass
  
-               console.log("\n863response = " + JSON.stringify(response))
+               //console.log("\n863response = " + JSON.stringify(response))
 
 //Stage 1 create prompts
 
@@ -845,7 +886,7 @@ const qnaService = new QnAMaker({
                } //if
 
          //console.log("\n675 META + PROMPTS response.answers[0].context = " + JSON.stringify(response.answers[0].context));
-         console.log("\n905 META + PROMPTS response = " + JSON.stringify(response));
+         //console.log("\n905 META + PROMPTS response = " + JSON.stringify(response));
 
          console.log("\n907 END PASS 1");
 
@@ -941,7 +982,7 @@ const qnaService = new QnAMaker({
                    response.answers[0].context.prompts[iTotal] = {displayOrder:1,qna:null,displayText:'Stop search [' + conTemp +']'};
                    }
 
-             console.log("\n1001 END EXPANSION response = \n" + JSON.stringify(response))
+             //console.log("\n1001 END EXPANSION response = \n" + JSON.stringify(response))
 
              }
 
