@@ -152,6 +152,7 @@ const qnaServicePlant1 = new QnAMaker({
                  return goodChars.join("");}
 
              var str = stepContext.context.activity.text;
+             str = str.replace(/\|/g,'');
              str = str.trim();
              str = str.toLowerCase();
              keepCharsAbove(str,38);
@@ -953,7 +954,7 @@ const qnaServicePlant1 = new QnAMaker({
 
                   } 
 
-             console.log("\n933 AFTER PROMPTS response.answers[0].context = \n" + JSON.stringify( response.answers[0].context))
+             //console.log("\n933 AFTER PROMPTS response.answers[0].context = \n" + JSON.stringify( response.answers[0].context))
 
              await this._userSearchAccessor.set(stepContext.context, 'advanced')
 
@@ -961,7 +962,7 @@ const qnaServicePlant1 = new QnAMaker({
 
              response.answers[0].answer = combinedAnswers;
 
-             console.log("\n941 combinedAnswers response.answers[0].answer = \n" + JSON.stringify(response.answers[0].answer))
+             //console.log("\n941 combinedAnswers response.answers[0].answer = \n" + JSON.stringify(response.answers[0].answer))
 
 
 
@@ -970,7 +971,7 @@ const qnaServicePlant1 = new QnAMaker({
                    {
                    var conTemp = await this._userProfileAccessor.get(stepContext.context,false)
                    conTemp = conTemp.replace('s','')
-                   console.log ("\n953 iTotal = " + iTotal)
+                   //console.log ("\n953 iTotal = " + iTotal)
                    response.answers[0].context.prompts[iTotal] = {displayOrder:1,qna:null,displayText:'stop search [' + conTemp +']'};
                    }
 
@@ -1014,14 +1015,12 @@ const qnaServicePlant1 = new QnAMaker({
 
     async checkForMultiTurnPrompt(stepContext, answerNoAnswerDeep) {
 
-       //console.log("\n1029 stepContext.result= " + JSON.stringify(stepContext.result))
-       //console.log("\n1030 stepContext.result.length= " + stepContext.result.length)
+       //console.log("\n1017 stepContext.result= " + JSON.stringify(stepContext.result))
+       //console.log("\n1018 stepContext.result.length= " + stepContext.result.length)
 
         if (stepContext.result != null && stepContext.result.length > 0) {
 
             var answer = stepContext.result[0];
-
-            //console.log("\n1001 answer= " + JSON.stringify(answer))
 
             //Got prompts. For clauses, change result to answerNoAnswerDeep
 
@@ -1031,13 +1030,12 @@ const qnaServicePlant1 = new QnAMaker({
                 var answerNoAnswerDeep = JSON.parse(JSON.stringify(answer));
                 var answerNoAnswerDeepStore = JSON.parse(JSON.stringify(answer));
                 answerNoAnswerDeep.answer = "" //remove answer
-                var answer = JSON.parse(JSON.stringify(answerNoAnswerDeep)); //back to answe
+                var answer = JSON.parse(JSON.stringify(answerNoAnswerDeep)); //back to answer
                 }
 
-            //if ((answer.context != null && answer.context.prompts != null && answer.context.prompts.length > 0) || answer.questions[0].indexOf('c1:',0) != -1 || answer.questions[0].indexOf('p1:',0) != -1)
             if (answer.context != null && answer.context.prompts != null && answer.context.prompts.length > 0)
                 {
-                //console.log("\n1038 OUT2 PROCESSING PROMPT")
+                //console.log("\n1040 OUT2 PROCESSING PROMPT")
 
                 var dialogOptions = getDialogOptionsValue(stepContext);
 
@@ -1083,7 +1081,20 @@ const qnaServicePlant1 = new QnAMaker({
                    await stepContext.context.sendActivity(answerNoAnswerDeepStore.answer);
                    }
 
-                console.log("\n1095 answer = " + JSON.stringify(answer)) //shows with prompt
+                //put bars around clause prompt at top of list
+                var clausePrompt = answer.context.prompts[0].displayText;
+                var clausePromptTemp = clausePrompt;
+                var iC = (clausePromptTemp.match(/\./g) || []).length;
+                if (iC == 0){clausePromptTemp = clausePromptTemp + '.0.0.0';}
+                if (iC == 1){clausePromptTemp = clausePromptTemp + '.0.0';}
+                if (iC == 2){clausePromptTemp = clausePromptTemp + '.0';}
+                clausePromptTemp = clausePromptTemp.replace(/\./g,'\/');
+                clausePromptTemp = clausePromptTemp.replace(' ',':');
+                if (clausePromptTemp == answer.questions[0])
+                   {
+                   clausePrompt= '| ' + clausePrompt + ' |';
+                   answer.context.prompts[0].displayText = clausePrompt;
+                   }
 
                 var message = QnACardBuilder.GetQnAPromptsCard(answer); 
                 await stepContext.context.sendActivity(message);
@@ -1119,7 +1130,7 @@ const qnaServicePlant1 = new QnAMaker({
         if (responses != null) {
             if (responses.length > 0) {
 
-                console.log("\n1131 END END responses[0].answer = " + JSON.stringify(responses[0].answer));
+                //console.log("\n1131 END END responses[0].answer = " + JSON.stringify(responses[0].answer));
 
                 await stepContext.context.sendActivity(responses[0].answer);
 
@@ -1135,7 +1146,7 @@ const qnaServicePlant1 = new QnAMaker({
 
 async changeContract(stepContext, userState) { 
 
-       console.log("\n\n1147..........SAVE..............");
+       //console.log("\n\n1147..........SAVE..............");
 
        var currentQuery = stepContext._info.values.currentQuery;
        var currentPosn = currentQuery.indexOf(':',0);    
