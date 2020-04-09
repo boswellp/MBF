@@ -321,7 +321,7 @@ const qnaServicePlant1 = new QnAMaker({
                          {
                          var strCon, strNo, strConNoFull;
                          profileName = await this._userProfileAccessor.get(stepContext.context,false)
-                         console.log("\n312 KEYWORD STANDARD STRING str = " + str);
+                         console.log("\n324 KEYWORD STANDARD STRING str = " + str);
 
                          var posnSpace = str.indexOf(' ',0);
 
@@ -355,20 +355,21 @@ const qnaServicePlant1 = new QnAMaker({
                                                     {strCon = profileName;}
                                                 }  
                                                 else
-                                                //{if (str == 'Construction Contract 1st Ed 1999'){
                                                 {if (str == 'construction contract 1st ed 1999'){
                                                    console.log ("\n357 = " + str);
                                                     strCon = 'c1';}
                                                     else 
-                                                    //{if (str == 'Plant & Design-Build Contract 1st Ed 1999'){
                                                     {if (str == 'plant & design-build contract 1st ed 1999'){
                                                         console.log ("\n362 = " + str);
                                                         strCon = 'p1';}
                                                     }
                                                  }
+                                           console.log("\n367 strCon = " + strCon + "; strNo = " + strNo); //strCon = p1; strNo = daa.6
 
-                                           if (isNaN(strNo) && strCon.indexOf('i',0) == -1){strCon = strCon + 'i';} //"c1i agreement"
+                                           if (isNaN(strNo) && strCon.indexOf('i',0) == -1 && strNo.indexOf('daa.',0) != -1 && strNo.indexOf('rules.',0) != -1){strCon = strCon + 'i';} // ad ii for index except for daa and rules
                                            var strConNoFull = strCon + ' ' + strNo; 
+
+                                           console.log("\n372 strConNoFull = " + strConNoFull);
                                            } 
                                        }
 
@@ -401,8 +402,9 @@ const qnaServicePlant1 = new QnAMaker({
                                            }
                                        }
 
-                                  if (!isNaN(strNo))
+                                  if (!isNaN(strNo) || strNo.indexOf('daa.',0) != -1 || strNo.indexOf('rules.',0) != -1)
                                        {
+                                       console.log("\n407 strConNoFull = " + strConNoFull);
                                        var iC = (strConNoFull.match(/\./g) || []).length;
                                        if (iC == 0){strConNoFull = strConNoFull + '.0.0.0';}
                                        if (iC == 1){strConNoFull = strConNoFull + '.0.0';}
@@ -1019,7 +1021,7 @@ const qnaServicePlant1 = new QnAMaker({
 
             var answer = stepContext.result[0];
 
-            console.log("\n1001 answer= " + JSON.stringify(answer))
+            //console.log("\n1001 answer= " + JSON.stringify(answer))
 
             //Got prompts. For clauses, change result to answerNoAnswerDeep
 
