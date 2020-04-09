@@ -4,7 +4,7 @@
 
 //alterations use: qnamaker replace alterations --in wordAlterations.json
 
-var categoriesAry = ["agreement","certificate","clause","condition","contractor","dab","defect","definition","document","duty","employer","engineer","equipment","failure","force-majeure","instruction","insurance","measure","obligation","part","particular","payment","personnel","programme","security","site","subcontract","suspension","taking-over","termination","test","time","value","variation"];
+var categoriesAry = ["agreement","certificate","clause","condition","contractor","dab","defect","definition","design","document","duty","employer","engineer","equipment","failure","force-majeure","instruction","insurance","measure","obligation","part","particular","payment","personnel","programme","security","site","subcontract","suspension","taking-over","termination","test","time","value","variation"];
 
 const { ComponentDialog, DialogTurnStatus, WaterfallDialog } = require('botbuilder-dialogs');
 
@@ -120,10 +120,10 @@ const qnaServicePlant1 = new QnAMaker({
         var JSONstringifythisuserState = JSON.stringify(this._userState);
 
 
-        var userQnaidC1 = await this._userQnaidC1Accessor.get(stepContext.context,false)
-        var userQnaidP1 = await this._userQnaidP1Accessor.get(stepContext.context,false)
-        console.log ("\n121 userQnaidC1, userQnaidP1 = " + userQnaidC1 + "; " + userQnaidP1);
-
+        await this._userQnaidC1Accessor.set(stepContext.context, 13205);
+        await this._userPrevQnaidC1Accessor.set(stepContext.context, 13445);
+        await this._userQnaidP1Accessor.set(stepContext.context, 4145);
+        await this._userPrevQnaidP1Accessor.set(stepContext.context, 4143);
 
         var userProfile = await this._userProfileAccessor.get(stepContext.context,false)
 
@@ -291,16 +291,23 @@ const qnaServicePlant1 = new QnAMaker({
 
 
                                     //if (tempText.indexOf('Stop search',0) != -1)
-                                    if (tempText.indexOf('stop search',0) != -1)
+                                    if (tempText.indexOf('stop search [c1]',0) != -1)
                                          {
-
                                          await this._userSearchAccessor.set(stepContext.context, '');
                                          await this._userProfileAccessor.set(stepContext.context,'c1');
                                          if (tempText.indexOf('[c1]',0) != -1){profileName = 'c1'}
                                          qnaMakerOptions.scoreThreshold = 0.5;  
                                          qnaMakerOptions.top = 3; 
                                          qnaMakerOptions.strictFilters = null;
-
+                                         }
+                                         else if (tempText.indexOf('stop search [p1]',0) != -1)
+                                         {
+                                         await this._userSearchAccessor.set(stepContext.context, '');
+                                         await this._userProfileAccessor.set(stepContext.context,'p1');
+                                         if (tempText.indexOf('[p1]',0) != -1){profileName = 'p1'}
+                                         qnaMakerOptions.scoreThreshold = 0.5;  
+                                         qnaMakerOptions.top = 3; 
+                                         qnaMakerOptions.strictFilters = null;
                                          }
                                     }                              
                                 }
@@ -331,17 +338,18 @@ const qnaServicePlant1 = new QnAMaker({
 
                          if (posnSpace != -1) 
                                       {
-                                      //if (str == 'c1 s' || str== 'p1 s' || str == 'Construction Contract 1st Ed 1999' || str == 'Plant & Design-Build Contract 1st Ed 1999' || str.indexOf('Stop search',0) != -1)  //prompts
+
                                       if (str == 'c1 s' || str== 'p1 s' || str == 'construction contract 1st ed 1999' || str == 'plant & design-build contract 1st ed 1999' || str.indexOf('stop search',0) != -1)  //prompts
                                            //standard conversions
                                            {
                                            if (str == 'c1 s'){str = 'c1s:0.0.0.0';}
+                                           if (str == 'p1 s'){str = 'p1s:0.0.0.0';}
                                            var strConNoFull = str;
                                            }
                                            else
                                            {
                                            if (profileName != false) {
-                                                if (profileName == 'c1s' && strCon == 'c1') 
+                                                if ((profileName == 'c1s' && strCon == 'c1') || (profileName == 'p1s' && strCon == 'p1'))
                                                     {} //strCon takes precedence if show clause during search
                                                     else
                                                     {strCon = profileName;}
@@ -349,12 +357,12 @@ const qnaServicePlant1 = new QnAMaker({
                                                 else
                                                 //{if (str == 'Construction Contract 1st Ed 1999'){
                                                 {if (str == 'construction contract 1st ed 1999'){
-                                                   console.log ("\n346 = " + str);
+                                                   console.log ("\n357 = " + str);
                                                     strCon = 'c1';}
                                                     else 
                                                     //{if (str == 'Plant & Design-Build Contract 1st Ed 1999'){
                                                     {if (str == 'plant & design-build contract 1st ed 1999'){
-                                                        console.log ("\n350 = " + str);
+                                                        console.log ("\n362 = " + str);
                                                         strCon = 'p1';}
                                                     }
                                                  }
@@ -367,7 +375,7 @@ const qnaServicePlant1 = new QnAMaker({
                                        else //no space
 
                                        {
-                                       if (str == 'c1s' || str == 'p1s' ||str == 'c1' || str == 'c2' || str == 'help' || str == 'start')
+                                       if (str == 'c1s' || str == 'p1s' ||str == 'c1' || str == 'p1' || str == 'help' || str == 'start')
                                            {
                                            console.log ("\n366 = " + str);
                                            if (str == 'c1'){str = 'cons1';}
@@ -379,11 +387,9 @@ const qnaServicePlant1 = new QnAMaker({
                                            if (profileName != false) {
                                                 strCon = profileName;}
                                                 else
-                                                //{if (str == 'Construction Contract 1st Ed 1999'){
                                                 {if (str == 'construction contract 1st ed 1999'){
                                                       strCon = 'c1';}
                                                       else 
-                                                      //{if (str == 'Plant & Design-Build Contract 1st Ed 1999'){
                                                       {if (str == 'plant & design-build contract 1st ed 1999'){
                                                          strCon = 'p1';}
                                                       }
@@ -411,18 +417,18 @@ const qnaServicePlant1 = new QnAMaker({
                                   strConNoFull = strConNoFull.replace('c1i ','c1i:');
                                   strConNoFull = strConNoFull.replace('p1i ','p1i:');
 
-                                  if (strConNoFull != 'c1s:0/0/0/0'){
+                                  if ((strConNoFull != 'c1s:0/0/0/0') && (strConNoFull != 'p1s:0/0/0/0')){
 
                                        stepContext.context.activity.text = strConNoFull;
 
-                                      console.log ("\n397 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
+                                      console.log ("\n423 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
                                        }
                                   }
 
                          else
                          {
 
-                         console.log("\n404 NUMBER STANDARD STRING  str = " + str);              
+                         console.log("\n430 NUMBER STANDARD STRING  str = " + str);              
 
                          var strCon = '';
                          var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false)
@@ -447,7 +453,7 @@ const qnaServicePlant1 = new QnAMaker({
 
                          var strConNoFull = strCon + strNoFull;
 
-                         //console.log("\n444 strConNoFull = " + strConNoFull);
+                         console.log("\n455 strConNoFull = " + strConNoFull);
 
                          strConNoFull = strConNoFull.replace('.','\/');
                          strConNoFull = strConNoFull.replace('.','\/');
@@ -456,14 +462,14 @@ const qnaServicePlant1 = new QnAMaker({
                          strConNoFull = strConNoFull.replace('c1 ','c1:');
                          strConNoFull = strConNoFull.replace('p1 ','p1:');
 
-                         //console.log("\n453 A keyword strConNoFull = " + strConNoFull);
+                         console.log("\n464 A keyword strConNoFull = " + strConNoFull);
 
                          var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
 
                          if (searchTypeTemp == "advanced"){strConNoFull = 'Search active\n\n' + strConNoFull;}
                          stepContext.context.activity.text = strConNoFull;
 
-                         //console.log ("\n456 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
+                         console.log ("\n471 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
 
                          }
 
@@ -516,49 +522,29 @@ const qnaServicePlant1 = new QnAMaker({
                  }
              }
 
-        console.log("\n492 qnaMakerOptions= " + JSON.stringify(qnaMakerOptions));
-
-        console.log("\n494 qnaMakerOptions.qnaId = " + qnaMakerOptions.qnaId);
-
-        //if (stepContext.context.activity.text.indexOf('Plant & Design',0) != -1)
-        if (stepContext.context.activity.text.indexOf('plant & design',0) != -1)
-               {
-               await this._userQnaidP1Accessor.set(stepContext.context, qnaMakerOptions.qnaId);
-               await this._userPrevQnaidP1Accessor.set(stepContext.context, qnaMakerOptions.context.previousQnAId);
-               var userQnaidP1 = await this._userQnaidP1Accessor.get(stepContext.context,false)
-               var userPrevQnaidP1 = await this._userPrevQnaidP1Accessor.get(stepContext.context,false)
-               console.log ("\n513 userQnaidP1 = " + userQnaidP1 + "; userPrevQnaidP1 = " + userPrevQnaidP1);
-               }
-
-        //if (stepContext.context.activity.text.indexOf('Construction Contract',0) != -1)
-        if (stepContext.context.activity.text.indexOf('construction contract',0) != -1)
-               {
-               await this._userQnaidC1Accessor.set(stepContext.context, qnaMakerOptions.qnaId);
-               await this._userPrevQnaidC1Accessor.set(stepContext.context, qnaMakerOptions.context.previousQnAId);
-               var userQnaidC1 = await this._userQnaidC1Accessor.get(stepContext.context,false)
-               var userPrevQnaidC1 = await this._userPrevQnaidC1Accessor.get(stepContext.context,false)
-               console.log ("\n513 userQnaidC1 = " + userQnaidC1 + "; userPrevQnaidC1 = " + userPrevQnaidC1);
-               }
-
         var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false);
-        //if (profileNameTemp  == 'p1' && stepContext.context.activity.text.indexOf('Plant & Design',0) != -1)
+        console.log("\n523 profileNameTemp = " + profileNameTemp);
+        console.log("524 qnaMakerOptions = " + JSON.stringify(qnaMakerOptions));
+        console.log("525stepContext.context.activity.text = " + stepContext.context.activity.text);
+        console.log("526 qnaMakerOptions.qnaId = " + qnaMakerOptions.qnaId);
+
+
+
         if (profileNameTemp  == 'p1' && stepContext.context.activity.text.indexOf('plant & design',0) != -1)
            {
-           qnaMakerOptions.context.previousQnAId = 2277;
-           qnaMakerOptions.qnaId = 2279;
+           var userQnaidP1 = await this._userQnaidP1Accessor.get(stepContext.context,false)
+           var userPrevQnaidP1 = await this._userPrevQnaidP1Accessor.get(stepContext.context,false)
+           qnaMakerOptions.context.previousQnAId = userPrevQnaidP1;
+           qnaMakerOptions.qnaId = userQnaidP1;
            }
-        //if (profileNameTemp  == 'c1' && stepContext.context.activity.text.indexOf('Construction Contract',0) != -1)
+
         if (profileNameTemp  == 'c1' && stepContext.context.activity.text.indexOf('construction contract',0) != -1)
            {
            var userQnaidC1 = await this._userQnaidC1Accessor.get(stepContext.context,false)
-           //qnaMakerOptions.context.previousQnAId = 13446;
-            qnaMakerOptions.context.previousQnAId = userPrevQnaidC1;
-           //qnaMakerOptions.qnaId = 13205;
+           var userPrevQnaidC1 = await this._userPrevQnaidC1Accessor.get(stepContext.context,false)
+           qnaMakerOptions.context.previousQnAId = userPrevQnaidC1;
            qnaMakerOptions.qnaId = userQnaidC1;
            }
-        //console.log("\n532 qnaMakerOptions END = " + JSON.stringify(qnaMakerOptions));
-
-
 
         var textTemp = stepContext.context.activity.text;
         var textOrig = stepContext.context.activity.text;
@@ -571,13 +557,7 @@ const qnaServicePlant1 = new QnAMaker({
         if (textOrig == 'c1i:'){await this._userSearchAccessor.set(stepContext.context, '');}
         if (textOrig == 'p1i:'){await this._userSearchAccessor.set(stepContext.context, '');}
 
-
-
-
-
         var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false);
-
- 
 
         if (userProfile != false)
           {
@@ -594,85 +574,86 @@ const qnaServicePlant1 = new QnAMaker({
 
 
         
-        //console.log("\n552 RESPONSE")
+        console.log("\n577 RESPONSE =" + JSON.stringify(response));
         
 
 
      profileName = await this._userProfileAccessor.get(stepContext.context,false)
-     console.log("654 OPENING profileName = " + profileName) 
+     console.log("582 OPENING profileName = " + profileName) 
      var didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-     console.log("656 OPENING didBotWelcomedUser = " + didBotWelcomedUser) 
+     console.log("584 OPENING didBotWelcomedUser = " + didBotWelcomedUser) 
+
      if (this._welcomedUserProperty != undefined){ 
             didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-            console.log("659 didBotWelcomedUser = " + didBotWelcomedUser) 
+            console.log("687 didBotWelcomedUser = " + didBotWelcomedUser) 
             
             if (didBotWelcomedUser == undefined){
-                console.log("662 didBotWelcomedUser = undefined")    
+                console.log("590 didBotWelcomedUser = undefined")    
                 
                 if (response.answers[0] == undefined){  
-                     console.log("665 response.answers[0] = " + response.answers[0]) 
+                     console.log("593 response.answers[0] = " + response.answers[0]) 
                     
                      if (profileName == false){  
-                         console.log("668 profileName = " + profileName) 
+                         console.log("596 profileName = " + profileName) 
                          
-                         console.log("670 reponse = default welcome 1st pass Messenger") 
+                         console.log("598 reponse = default welcome 1st pass Messenger") 
                          response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                          } else { 
-                         console.log("674 profileName = " + profileName) 
+                         console.log("602 profileName = " + profileName) 
                          
                          }
                                                    
                      } else { 
                          
-                     console.log("680 response.answers[0] = " + response.answers[0]) 
-                     console.log("681 reponse = let pass") 
+                     console.log("608 response.answers[0] = " + response.answers[0]) 
+                     console.log("609 reponse = let pass") 
                      //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      
                      } 
                 
                  } else {    
                      
-                 console.log("646 didBotWelcomedUser = " + didBotWelcomedUser) 
+                 console.log("616 didBotWelcomedUser = " + didBotWelcomedUser) 
                      
                  if (didBotWelcomedUser == 1){
-                      console.log("691 response.answers[0] = " + response.answers[0]) 
+                      console.log("619 response.answers[0] = " + response.answers[0]) 
                       if (response.answers[0] == undefined){
                                                  
-                          console.log("694 response.answers[0] = " + response.answers[0]) 
+                          console.log("622 response.answers[0] = " + response.answers[0]) 
                           //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                          
                           } else { 
 
-                          console.log("699 2nd pass messenger response.answers[0] = " + response.answers[0])  
+                          console.log("627 2nd pass messenger response.answers[0] = " + response.answers[0])  
                           response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Guide","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
 
                           } 
                      
                       } else if (didBotWelcomedUser == 2){
                           
-                          console.log("705 didBotWelcomedUser = " + didBotWelcomedUser) 
+                          console.log("634 didBotWelcomedUser = " + didBotWelcomedUser) 
                       
                           if (response.answers[0] == undefined){  
-                               console.log("708 response.answers[0] = " + response.answers[0]) 
+                               console.log("637 response.answers[0] = " + response.answers[0]) 
                     
                                if (profileName == false){  
-                                   console.log("712 profileName = " + profileName) 
+                                   console.log("640 profileName = " + profileName) 
                          
-                                   console.log("671 reponse = default welcome") 
+                                   console.log("642 reponse = default welcome") 
                                    response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                                    } else { 
-                                   console.log("717 profileName = " + profileName)
+                                   console.log("646 profileName = " + profileName)
                                        
-                                   console.log("719 reponse = let pass")
+                                   console.log("648 reponse = let pass")
                          
                                    }
                                                    
                                 } else { 
-                                console.log("724 response.answers[0] = " + response.answers[0])
+                                console.log("7653 response.answers[0] = " + response.answers[0])
                                 
-                                console.log("726 reponse = let pass")     
+                                console.log("655 reponse = let pass")     
                                 //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      
                                 }
@@ -681,16 +662,15 @@ const qnaServicePlant1 = new QnAMaker({
               }
 
   
-       
-
-        //console.log("\n693 ANSWER BEFORE PROCESSING response");
+        console.log("\n665 ANSWER BEFORE PROCESSING response");
                  
-        
-        //add clause number to prompts (for Messenger's 2 messages)
-        str = response.answers[0].questions[0];
-        if (str.indexOf('c1:',0) != -1 || str.indexOf('p1:',0) != -1)
+        if (response.answers[0] != undefined)
              {
-             str = str.replace('\/','.');
+             //add clause number to prompts (for Messenger's 2 messages)
+             str = response.answers[0].questions[0];
+             if (str.indexOf('c1:',0) != -1 || str.indexOf('p1:',0) != -1)
+                {
+                str = str.replace('\/','.');
              str = str.replace('\/','.');
              str = str.replace('\/','.');
              str = str.replace('\/','.');
@@ -700,53 +680,52 @@ const qnaServicePlant1 = new QnAMaker({
              str = str.replace('c1:','c1 ');
              str = str.replace('p1:','p1 ');
 
-             var promptAry = []; 
+                var promptAry = []; 
 
-             for (var i = 0; i < 50; i++)
-                 {
-                 if (response.answers[0].context.prompts[i] != undefined)
-                     {
-                     console.log("\n724 i response.answers[0].context.prompts[i] = " + i + "; " + JSON.stringify(response.answers[0].context.prompts[i]))
-                     promptAry[i] =  response.answers[0].context.prompts[i];
-                     iTotal = i;
+                for (var i = 0; i < 50; i++)
+                    {
+                    if (response.answers[0].context.prompts[i] != undefined)
+                         {
+                         console.log("\n689 i response.answers[0].context.prompts[i] = " + i + "; " + JSON.stringify(response.answers[0].context.prompts[i]))
+                         promptAry[i] =  response.answers[0].context.prompts[i];
+                         iTotal = i;
+                         } 
+                         else {break}
                      } 
-                     else {break}
-                  } 
+                 profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false);
+                 if (profileNameTemp.indexOf('c1',0) != -1)
+                     {userPrevQnaidC1 = await this._userPrevQnaidC1Accessor.get(stepContext.context,false)
+                     response.answers[0].context.prompts[0] = {"displayOrder":0,"qnaId":userPrevQnaidC1,"qna":null,"displayText":"c1 s"}}
+                 if (profileNameTemp.indexOf('p1',0) != -1)
+                     {userPrevQnaidP1 = await this._userPrevQnaidP1Accessor.get(stepContext.context,false)
+                     response.answers[0].context.prompts[0] = {"displayOrder":0,"qnaId":userPrevQnaidP1,"qna":null,"displayText":"p1 s"}}
 
-             response.answers[0].context.prompts[0] = {"displayOrder":0,"qnaId":13499,"qna":null,"displayText":"c1 s"}
-             response.answers[0].context.prompts[0].displayText = str
+                 response.answers[0].context.prompts[0].displayText = str
 
-             console.log("\n734 iTotal = " + iTotal)
+                 console.log("\n699 iTotal = " + iTotal)
 
-             for (var i = 1; i < iTotal + 2; i++)
-                  {
-                  console.log("\n738 i promptAry[i-1] = " + i + "; " + JSON.stringify(promptAry[i-1]))
-                  response.answers[0].context.prompts[i] =  promptAry[i-1];
-                  }
-              } //end if str
-
-
+                 for (var i = 1; i < iTotal + 2; i++)
+                    {
+                    console.log("\n703 i promptAry[i-1] = " + i + "; " + JSON.stringify(promptAry[i-1]))
+                    response.answers[0].context.prompts[i] =  promptAry[i-1];
+                    }
+                } //end if str
+            } //end if response
 
 
 
 
-
-        //console.log("\n750 BEFORE PROCESSING");
+     console.log("\n710 BEFORE PROCESSING");
  
+     if (response.answers[0] != undefined)
+        {
 
-
-
-
-        if (stepContext.context.activity.text == textTemp && textOrig.indexOf('c1si ',0) != -1)
+        if ((stepContext.context.activity.text == textTemp && textOrig.indexOf('c1si ',0) != -1) || (stepContext.context.activity.text == textTemp && textOrig.indexOf('p1si ',0) != -1))
              {
 
              await this._userStringAccessor.set(stepContext.context, textTemp);
 
-        //FIRST PASS search (get categories for xxxxxx into metatDataAry)
-
-
-
-
+             //FIRST PASS search (get categories for xxxxxx into metatDataAry)
 
         var metadataAry = new Array(50).fill(null).map(()=>new Array(5).fill(null));
 
@@ -760,7 +739,7 @@ const qnaServicePlant1 = new QnAMaker({
            if (profileNameTemp.indexOf('1s',0) != -1)  
                {       
 
-               //console.log("\n693 START META ADD START PROMPT response.answers[0].answer = " + response.answers[0].answer)
+               console.log("\n736 START META ADD START PROMPT response.answers[0].answer = " + response.answers[0].answer)
 
                for (var i = 0; i < 50; i++) 
                   {if (response.answers[i] != undefined){delete(response.answers[i].answer);}}
@@ -800,7 +779,7 @@ const qnaServicePlant1 = new QnAMaker({
 
 //Pass 1 - get categories into an array
 
-               console.log("\n819 .....");
+               console.log("\n776 .....");
 
                var categoryAry = []; 
 
@@ -849,10 +828,10 @@ const qnaServicePlant1 = new QnAMaker({
 //Stage 1 create prompts
 
 
-               //console.log("\n650 pass1 metadataAry = " + JSON.stringify(metadataAry));
-               //console.log("\n650 pass1 categoryAry = " + JSON.stringify(categoryAry));
-               //console.log("\n650 END META response = " + JSON.stringify(response))               
-               console.log("\n871 END META response")
+               console.log("\n831 pass1 metadataAry = " + JSON.stringify(metadataAry));
+               console.log("\n832 pass1 categoryAry = " + JSON.stringify(categoryAry));
+               //console.log("\n833 END META response = " + JSON.stringify(response))               
+               console.log("\n834 END META response")
 
 
 
@@ -885,21 +864,21 @@ const qnaServicePlant1 = new QnAMaker({
 
                } //if
 
-         //console.log("\n675 META + PROMPTS response.answers[0].context = " + JSON.stringify(response.answers[0].context));
-         //console.log("\n905 META + PROMPTS response = " + JSON.stringify(response));
+         //console.log("\n861 META + PROMPTS response.answers[0].context = " + JSON.stringify(response.answers[0].context));
+         console.log("\n862 META + PROMPTS response = " + JSON.stringify(response));
 
-         console.log("\n907 END PASS 1");
-
-
+         console.log("\n864 END PASS 1");
 
          } //if
+
+    } //end if response
 
 //End pass 1
 
 
 //Pass 2 - expands clauses
 
-          console.log("\n918 START PASS 2");
+          console.log("\n875 START PASS 2");
 
 
            var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
@@ -913,7 +892,7 @@ const qnaServicePlant1 = new QnAMaker({
                       break
                       }}
 
-               console.log("\n932 iTotal = " + iTotal)
+               console.log("\n889 iTotal = " + iTotal)
 
 
                var answerTitle, posnTitle, combinedAnswers = ''; 
@@ -957,7 +936,7 @@ const qnaServicePlant1 = new QnAMaker({
 
                   } 
 
-             console.log("\n976 AFTER PROMPTS response.answers[0].context = \n" + JSON.stringify( response.answers[0].context))
+             console.log("\n933 AFTER PROMPTS response.answers[0].context = \n" + JSON.stringify( response.answers[0].context))
 
              await this._userSearchAccessor.set(stepContext.context, 'advanced')
 
@@ -965,24 +944,21 @@ const qnaServicePlant1 = new QnAMaker({
 
              response.answers[0].answer = combinedAnswers;
 
-             console.log("\n982 combinedAnswers response.answers[0].answer = \n" + JSON.stringify(response.answers[0].answer))
+             console.log("\n941 combinedAnswers response.answers[0].answer = \n" + JSON.stringify(response.answers[0].answer))
+
 
 
              var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
-
              if (searchTypeTemp == 'advanced')
                    {
-
                    var conTemp = await this._userProfileAccessor.get(stepContext.context,false)
-
                    conTemp = conTemp.replace('s','')
-
-                   console.log ("\n995 iTotal = " + iTotal)
-
-                   response.answers[0].context.prompts[iTotal] = {displayOrder:1,qna:null,displayText:'Stop search [' + conTemp +']'};
+                   console.log ("\n953 iTotal = " + iTotal)
+                   response.answers[0].context.prompts[iTotal] = {displayOrder:1,qna:null,displayText:'stop search [' + conTemp +']'};
                    }
 
-             //console.log("\n1001 END EXPANSION response = \n" + JSON.stringify(response))
+
+
 
              }
 
@@ -990,14 +966,14 @@ const qnaServicePlant1 = new QnAMaker({
 
 //End combine clauses for advanced search
 
-        console.log("\n1007 After processing ..");
+        console.log("\n966 After processing response.answers = " + JSON.stringify(response.answers));
 
         dialogOptions[PreviousQnAId] = -1;
         stepContext.activeDialog.state.options = dialogOptions;
 
         var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
 
-        if (searchTypeTemp == 'advanced')
+        if (searchTypeTemp == 'advanced' && response.answers[0] != undefined)
              {
              response.answers[0].answer = 'Search active\n\n' + response.answers[0].answer;
              }
@@ -1011,7 +987,7 @@ const qnaServicePlant1 = new QnAMaker({
 
         stepContext.values[QnAData] = result;
 
-        //console.log("\n1019 OUT1 NOT PROCESSED result = " + JSON.stringify(result))
+        console.log("\n984 OUT1 NOT PROCESSED result = " + JSON.stringify(result))
 
         return await stepContext.next(result); 
 
@@ -1028,7 +1004,7 @@ const qnaServicePlant1 = new QnAMaker({
 
             var answer = stepContext.result[0];
 
-            //console.log("\n1036 answer= " + JSON.stringify(answer))
+            console.log("\n1001 answer= " + JSON.stringify(answer))
 
             //Got prompts. For clauses, change result to answerNoAnswerDeep
 
@@ -1044,7 +1020,7 @@ const qnaServicePlant1 = new QnAMaker({
             //if ((answer.context != null && answer.context.prompts != null && answer.context.prompts.length > 0) || answer.questions[0].indexOf('c1:',0) != -1 || answer.questions[0].indexOf('p1:',0) != -1)
             if (answer.context != null && answer.context.prompts != null && answer.context.prompts.length > 0)
                 {
-                console.log("\n1052 OUT2 PROCESSING PROMPT")
+                console.log("\n1017 OUT2 PROCESSING PROMPT")
 
                 var dialogOptions = getDialogOptionsValue(stepContext);
 
@@ -1063,8 +1039,9 @@ const qnaServicePlant1 = new QnAMaker({
 
                 //for search - prompt stop. answer is original unprocessed answer
 
+//maybe only need for consolidated with no prompts
+/*
                  var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false)
-
                  if (profileNameTemp != undefined && this._userSearchAccessor.searchType != undefined){
 
                     var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
@@ -1073,9 +1050,11 @@ const qnaServicePlant1 = new QnAMaker({
                         var conTemp = profileNameTemp;
                         conTemp = conTemp.replace('s','')
                         var lenPrompts = Object.keys(answer.context.prompts).length;
-                        answer.context.prompts[lenPrompts] = {displayOrder:1,qna:null,displayText:'Stop search [' + conTemp +']'};
+                        answer.context.prompts[lenPrompts] = {displayOrder:1,qna:null,displayText:'stop search [' + conTemp +']'};
                        }
+
                  }
+*/
 
                 dialogOptions[QnAContextData] = previousContextData;
                 dialogOptions[PreviousQnAId] = answer.id;
