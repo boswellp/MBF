@@ -120,8 +120,8 @@ const qnaServicePlant1 = new QnAMaker({
         var JSONstringifythisuserState = JSON.stringify(this._userState);
 
 
-        await this._userQnaidC1Accessor.set(stepContext.context, 13205);
-        await this._userPrevQnaidC1Accessor.set(stepContext.context, 13445);
+        await this._userQnaidC1Accessor.set(stepContext.context, 13879);
+        await this._userPrevQnaidC1Accessor.set(stepContext.context, 14119);
         await this._userQnaidP1Accessor.set(stepContext.context, 4145);
         await this._userPrevQnaidP1Accessor.set(stepContext.context, 4143);
 
@@ -161,7 +161,7 @@ const qnaServicePlant1 = new QnAMaker({
      
 
              //Search
-             if ((profileName != '' && str == 'c1s') || (profileName != '' && str == 'c1 s')) 
+             if ((profileName != '' && str == 'c1s') || (profileName != '' && str == 'c1 search') || (profileName != '' && str == 'c1 s')) 
  
 
                    {
@@ -175,7 +175,7 @@ const qnaServicePlant1 = new QnAMaker({
 
                    }
 
-                   else if ((profileName != '' && str == 'p1s') || (profileName != '' && str == 'p1 s')) 
+                   else if ((profileName != '' && str == 'p1s') || (profileName != '' && str == 'p1 search') || (profileName != '' && str == 'p1 s')) 
 
                    {
                    console.log ("\n177 button p1 s or typed p1s str = " + str + '\n');
@@ -339,11 +339,11 @@ const qnaServicePlant1 = new QnAMaker({
                          if (posnSpace != -1) 
                                       {
 
-                                      if (str == 'c1 s' || str== 'p1 s' || str == 'construction contract 1st ed 1999' || str == 'plant & design-build contract 1st ed 1999' || str.indexOf('stop search',0) != -1)  //prompts
+                                      if (str == 'c1 s' || str == 'c1 search' || str== 'p1 s' || str == 'p1 search' || str == 'construction contract 1st ed 1999' || str == 'plant & design-build contract 1st ed 1999' || str.indexOf('stop search',0) != -1)  //prompts
                                            //standard conversions
                                            {
-                                           if (str == 'c1 s'){str = 'c1s:0.0.0.0';}
-                                           if (str == 'p1 s'){str = 'p1s:0.0.0.0';}
+                                           if (str == 'c1 s' || str == 'c1 search'){str = 'c1s:0.0.0.0';}
+                                           if (str == 'p1 s' || str == 'p1 search'){str = 'p1s:0.0.0.0';}
                                            var strConNoFull = str;
                                            }
                                            else
@@ -697,10 +697,10 @@ const qnaServicePlant1 = new QnAMaker({
                  profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false);
                  if (profileNameTemp.indexOf('c1',0) != -1)
                      {userPrevQnaidC1 = await this._userPrevQnaidC1Accessor.get(stepContext.context,false)
-                     response.answers[0].context.prompts[0] = {"displayOrder":0,"qnaId":userPrevQnaidC1,"qna":null,"displayText":"c1 s"}}
+                     response.answers[0].context.prompts[0] = {"displayOrder":0,"qnaId":userPrevQnaidC1,"qna":null,"displayText":"c1 search"}}
                  if (profileNameTemp.indexOf('p1',0) != -1)
                      {userPrevQnaidP1 = await this._userPrevQnaidP1Accessor.get(stepContext.context,false)
-                     response.answers[0].context.prompts[0] = {"displayOrder":0,"qnaId":userPrevQnaidP1,"qna":null,"displayText":"p1 s"}}
+                     response.answers[0].context.prompts[0] = {"displayOrder":0,"qnaId":userPrevQnaidP1,"qna":null,"displayText":"p1 search"}}
 
                  response.answers[0].context.prompts[0].displayText = str
 
@@ -844,7 +844,7 @@ const qnaServicePlant1 = new QnAMaker({
                         }
                     response.answers[0].answer = 'No search categories for keyword = \"' + stepContext.context.activity.text + '\". Try again?';
 
-                    response.answers[0].context.prompts[0] = {displayOrder:0,qna:null,displayText:'c1 s'};
+                    response.answers[0].context.prompts[0] = {displayOrder:0,qna:null,displayText:'c1 search'};
                     }
                     else
                     {
