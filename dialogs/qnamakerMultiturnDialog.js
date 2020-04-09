@@ -574,7 +574,7 @@ const qnaServicePlant1 = new QnAMaker({
 
 
         
-        console.log("\n577 RESPONSE =" + JSON.stringify(response));
+        //console.log("\n577 RESPONSE =" + JSON.stringify(response));
         
 
 
@@ -828,14 +828,13 @@ const qnaServicePlant1 = new QnAMaker({
 //Stage 1 create prompts
 
 
-               console.log("\n831 pass1 metadataAry = " + JSON.stringify(metadataAry));
-               console.log("\n832 pass1 categoryAry = " + JSON.stringify(categoryAry));
-               //console.log("\n833 END META response = " + JSON.stringify(response))               
-               console.log("\n834 END META response")
+               //console.log("\n831 pass1 metadataAry = " + JSON.stringify(metadataAry));
+               //console.log("\n832 pass1 categoryAry = " + JSON.stringify(categoryAry));
+               //console.log("\n833 categoryAry.length" + categoryAry.length) 
+               //console.log("\n834 END META response.answers[0] = " + JSON.stringify(response.answers[0])) 
+             
 
-
-
-               if (categoryAry.length == 0)
+               if (categoryAry.length == 0) //check no category situation?? There will always be a category??
                     {
                     for (var i = 0; i < 20; i++) 
                         {
@@ -847,8 +846,24 @@ const qnaServicePlant1 = new QnAMaker({
                     }
                     else
                     {
+                    //clean out questions
+
+                    for (var i = 1; i < 20; i++)
+                       {
+                       delete response.answers[0].questions[i];
+                       }
+
+                    //console.log("\n856 cleaning 1111 questions - response.answers[0] = " + JSON.stringify(response.answers[0])) 
+
+                    //clean out prompts
+
+                     response.answers[0].context.prompts = [];
+
+                    //console.log("\n863 cleaning 2222 prompts - response.answers[0] = " + JSON.stringify(response.answers[0])) 
+                    
                     for (var i = 0; i < categoryAry.length; i++) 
                          {
+                         console.log("\n868 i, categoryAry[i] = " + categoryAry[i]) 
                          //shows all clauses, not collapsed clauses
                          var displayTextTemp = '[ ' + categoryAry[i] + ' ]'; //str in memoryfor advanced search pass 2
                          var qnaIdTemp = 2000 + i
@@ -864,10 +879,10 @@ const qnaServicePlant1 = new QnAMaker({
 
                } //if
 
-         //console.log("\n861 META + PROMPTS response.answers[0].context = " + JSON.stringify(response.answers[0].context));
-         console.log("\n862 META + PROMPTS response = " + JSON.stringify(response));
+         //console.log("\n884 META + PROMPTS response.answers[0].context = " + JSON.stringify(response.answers[0].context));
+         //console.log("\n885 META + PROMPTS response = " + JSON.stringify(response));
 
-         console.log("\n864 END PASS 1");
+         console.log("\n887 END PASS 1");
 
          } //if
 
@@ -892,7 +907,7 @@ const qnaServicePlant1 = new QnAMaker({
                       break
                       }}
 
-               console.log("\n889 iTotal = " + iTotal)
+               //console.log("\n889 iTotal = " + iTotal)
 
 
                var answerTitle, posnTitle, combinedAnswers = ''; 
@@ -966,7 +981,7 @@ const qnaServicePlant1 = new QnAMaker({
 
 //End combine clauses for advanced search
 
-        console.log("\n966 After processing response.answers = " + JSON.stringify(response.answers));
+        //console.log("\n984 After processing response.answers = " + JSON.stringify(response.answers));
 
         dialogOptions[PreviousQnAId] = -1;
         stepContext.activeDialog.state.options = dialogOptions;
@@ -987,7 +1002,7 @@ const qnaServicePlant1 = new QnAMaker({
 
         stepContext.values[QnAData] = result;
 
-        console.log("\n984 OUT1 NOT PROCESSED result = " + JSON.stringify(result))
+        //console.log("\n1005 OUT1 NOT PROCESSED result = " + JSON.stringify(result))
 
         return await stepContext.next(result); 
 
@@ -1020,7 +1035,7 @@ const qnaServicePlant1 = new QnAMaker({
             //if ((answer.context != null && answer.context.prompts != null && answer.context.prompts.length > 0) || answer.questions[0].indexOf('c1:',0) != -1 || answer.questions[0].indexOf('p1:',0) != -1)
             if (answer.context != null && answer.context.prompts != null && answer.context.prompts.length > 0)
                 {
-                console.log("\n1017 OUT2 PROCESSING PROMPT")
+                //console.log("\n1038 OUT2 PROCESSING PROMPT")
 
                 var dialogOptions = getDialogOptionsValue(stepContext);
 
