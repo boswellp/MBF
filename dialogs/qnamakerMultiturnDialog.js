@@ -611,7 +611,7 @@ const qnaServicePlant1 = new QnAMaker({
                          console.log("596 profileName = " + profileName) 
                          
                          console.log("598 reponse = default welcome 1st pass Messenger; xyz on first webchat submit.") 
-                         response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot. Submit \"start\" to start.","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
+                         response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot. Please submit \"start\" to start.","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                          } else { 
                          console.log("602 profileName = " + profileName) 
@@ -655,7 +655,7 @@ const qnaServicePlant1 = new QnAMaker({
                                    console.log("655 profileName = " + profileName) 
                          
                                    console.log("657 reponse = default welcome") 
-                                   response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
+                                   response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot. Please submit \"start\" to start.","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                                    } else { 
                                    console.log("661 profileName = " + profileName)
@@ -679,98 +679,104 @@ const qnaServicePlant1 = new QnAMaker({
 
         console.log("\n680 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
         console.log("\n681 ANSWER BEFORE PROCESSING response.answers[0] = " + JSON.stringify(response.answers[0]));
-        //console.log("\n682 ANSWER BEFORE PROCESSING response.answers[0].context.prompts[0] = " + JSON.stringify(response.answers[0].context.prompts[0]));
 
         //Add extended index link
         //if (response.answers[0] != undefined && response.answers[0].context.prompts[0] != undefined) //if index entry has no prompts
         if (response.answers[0] != undefined) //if index entry has no prompts
              {
              console.log("\n680 ..");
-             var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false);
 
-             str = stepContext.context.activity.text;
+             //if (response.answers[0].context.prompts[0] != undefined) 
+             if (response.answers[0].context != undefined) 
+                 {
 
-             if (str.indexOf('i:',0) != -1)
-                {
+                 var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false);
 
-                await this._userProfileAccessor.set(stepContext.context,profileNameTemp + 'x'); //set extended index code
+                 str = stepContext.context.activity.text;
 
-                var promptAry = []; 
-                for (var i = 0; i < 20; i++)
-                    {
-
-                    if (response.answers[0].context.prompts[i] != undefined)
-                         {
-
-                         promptAry[i] =  response.answers[0].context.prompts[i];
-
-                         iTotal = i;
-                         } 
-                         else {break}
-                     }
-
-                 await this._userIndexAccessor.set(stepContext.context, promptAry); //save index string
-
-                 var responsePromptTemp = JSON.parse(JSON.stringify(response.answers[0].context.prompts[0]));
-
-
-                 //Do not add extended index link if no metadata
-                 if (response.answers[0].metadata[0] != undefined)
+                 if (str.indexOf('i:',0) != -1)
                      {
-                     //responsePromptTemp.displayText = str.replace('1i:','1x:'); //works
-                     responsePromptTemp.displayText = str.replace('i:',' details: ');
 
-                     response.answers[0].context.prompts[0] = responsePromptTemp;  //this is the link to the extended index e.g. c1x:accepted = c1 details:
+                     await this._userProfileAccessor.set(stepContext.context,profileNameTemp + 'x'); //set extended index code
 
-                     for (var i = 1; i < iTotal + 2; i++)
+                     var promptAry = []; 
+                     for (var i = 0; i < 20; i++)
                          {
-                         response.answers[0].context.prompts[i] =  promptAry[i-1];
 
+                         if (response.answers[0].context.prompts[i] != undefined)
+                             {
+
+                             promptAry[i] =  response.answers[0].context.prompts[i];
+
+                             iTotal = i;
+                             } 
+                             else {break}
+                          }
+
+                      await this._userIndexAccessor.set(stepContext.context, promptAry); //save index string
+
+                      var responsePromptTemp = JSON.parse(JSON.stringify(response.answers[0].context.prompts[0]));
+
+
+                      //Do not add extended index link if no metadata
+                      if (response.answers[0].metadata[0] != undefined)
+                          {
+                          //responsePromptTemp.displayText = str.replace('1i:','1x:'); //works
+                          responsePromptTemp.displayText = str.replace('i:',' details: ');
+
+                          response.answers[0].context.prompts[0] = responsePromptTemp;  //this is the link to the extended index e.g. c1x:accepted = c1 details:
+
+                          for (var i = 1; i < iTotal + 2; i++)
+                              {
+                              response.answers[0].context.prompts[i] =  promptAry[i-1];
+
+                              }
+                          }
+                          else //No index prompt
+                          {
+                          for (var i = 0; i < iTotal + 1; i++)
+                              {
+                              response.answers[0].context.prompts[i] =  promptAry[i];
+
+                             }
                          }
                      }
-                     else //No index prompt
-                     {
-                     for (var i = 0; i < iTotal + 1; i++)
-                        {
-                        response.answers[0].context.prompts[i] =  promptAry[i];
-
-                        }
-                    }
-                 }
 
 
-             //Output extended index
+                   //Output extended index
 
 
-                 else if (str.indexOf('x:',0) != -1)
-                    {
-                    console.log("\n745 ..");
-                    if (profileNameTemp.indexOf('x',0) != -1) 
+                     else if (str.indexOf('x:',0) != -1)
                          {
+                         console.log("\n745 ..");
+                         if (profileNameTemp.indexOf('x',0) != -1) 
+                              {
 
-                         console.log("\n749 response = " + JSON.stringify(response));
-                         await this._userProfileAccessor.set(stepContext.context,profileNameTemp.replace('x','')); //reset code
-                         profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false);
-                         console.log("\n752 profileNameTemp = " + profileNameTemp);
+                              console.log("\n749 response = " + JSON.stringify(response));
+                              await this._userProfileAccessor.set(stepContext.context,profileNameTemp.replace('x','')); //reset code
+                              profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false);
+                              console.log("\n752 profileNameTemp = " + profileNameTemp);
 
-                         var promptAry = [], combinedAnswers = '';
-                         for (var i = 0; i < 20; i++)
-                            {
+                              var promptAry = [], combinedAnswers = '';
+                              for (var i = 0; i < 20; i++)
+                                 {
 
-                            if (response.answers[0].context.prompts[i] != undefined && response.answers[0].metadata[i].name != undefined)  //no prompts and no metadata
-                                {
-                                promptAry[i] =  response.answers[0].context.prompts[i].displayText.split(" ").splice(-1)
+                                 if (response.answers[0].context.prompts[i] != undefined && response.answers[0].metadata[i].name != undefined)  //no prompts and no metadata
+                                     {
+                                     promptAry[i] =  response.answers[0].context.prompts[i].displayText.split(" ").splice(-1)
 
-                                combinedAnswers = combinedAnswers + response.answers[0].metadata[i].value + ' (' + response.answers[0].metadata[i].name.replace(/\_/g,'.') + ')\n\n';
+                                     combinedAnswers = combinedAnswers + response.answers[0].metadata[i].value + ' (' + response.answers[0].metadata[i].name.replace(/\_/g,'.') + ')\n\n';
 
-                                iTotal = i;
-                                } 
-                                else {break}
+                                     iTotal = i;
+                                     } 
+                                     else {break}
+                                     }
                                 }
-                           }
-                    response.answers[0].answer = combinedAnswers;
-                    }
-                }
+                         response.answers[0].answer = combinedAnswers;
+                         }
+                     }
+
+               }
         //End extended index link
 
         console.log("\n774 ..");
