@@ -1103,21 +1103,23 @@ const qnaServicePlant1 = new QnAMaker({
 
 //End combine clauses for advanced search
 
-        //console.log("\n984 After processing response.answers = " + JSON.stringify(response.answers));
+        console.log("\n1106 After processing response.answers = " + JSON.stringify(response.answers));
 
         dialogOptions[PreviousQnAId] = -1;
         stepContext.activeDialog.state.options = dialogOptions;
 
         var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
-
-        if (searchTypeTemp == 'advanced' && response.answers[0] != undefined)
-             {
-             response.answers[0].answer = 'Search active.\n\n' + response.answers[0].answer;
-             }
-             else
-             {
-             response.answers[0].answer = 'Search not active.\n\n' + response.answers[0].answer;
-             }
+        if (response.answers[0].answer.indexOf('Welcome',0) == -1 && response.answers[0].answer.indexOf('Guide',0) == -1)
+              {
+              if (searchTypeTemp == 'advanced' && response.answers[0] != undefined)
+                 {
+                 response.answers[0].answer = 'Search active.\n\n' + response.answers[0].answer;
+                 }
+                 else
+                 {
+                 response.answers[0].answer = 'Search not active.\n\n' + response.answers[0].answer;
+                 }
+         }
 
         stepContext.values[QnAData] = response.answers;
 
