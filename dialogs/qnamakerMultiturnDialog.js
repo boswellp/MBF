@@ -290,14 +290,14 @@ const qnaServicePlant1 = new QnAMaker({
 
 
                                     }
-                                    else //for stop search
+                                    else //for stop search for "stop search" and for "[c1]" from QnMaker clause
 
                                     {
 
                                     var tempText = stepContext.context.activity.text.toLowerCase();
 
 
-                                    if (tempText.indexOf('stop search [c1]',0) != -1)
+                                    if (tempText.indexOf('stop search [c1]',0) != -1 || tempText == '[ c1 ]')
                                          {
                                          await this._userSearchAccessor.set(stepContext.context, '');
                                          await this._userProfileAccessor.set(stepContext.context,'c1');
@@ -306,7 +306,7 @@ const qnaServicePlant1 = new QnAMaker({
                                          qnaMakerOptions.top = 3; 
                                          qnaMakerOptions.strictFilters = null;
                                          }
-                                         else if (tempText.indexOf('stop search [p1]',0) != -1)
+                                         else if (tempText.indexOf('stop search [p1]',0) != -1 || tempText == '[ p1 ]')
                                          {
                                          await this._userSearchAccessor.set(stepContext.context, '');
                                          await this._userProfileAccessor.set(stepContext.context,'p1');
@@ -345,11 +345,13 @@ const qnaServicePlant1 = new QnAMaker({
                          if (posnSpace != -1) 
                                       {
 
-                                      if (str == 'c1 s' || str == 'c1 search' || str== 'p1 s' || str == 'p1 search' || str == 'construction contract 1st ed 1999' || str == 'plant & design-build contract 1st ed 1999' || str.indexOf('stop search',0) != -1)  //prompts
+                                      if (str == 'c1 s' || str == 'c1 search' || str== 'p1 s' || str == 'p1 search' || str == 'construction contract 1st ed 1999' || str == 'plant & design-build contract 1st ed 1999' || str.indexOf('stop search',0) != -1  || str == '[ c1 ]' || str == '[ p1 ]')//prompts
                                            //standard conversions
                                            {
                                            if (str == 'c1 s' || str == 'c1 search'){str = 'c1s:0.0.0.0';}
                                            if (str == 'p1 s' || str == 'p1 search'){str = 'p1s:0.0.0.0';}
+                                           if (str == '[ c1 ]'){str = 'c1';}
+                                           if (str == '[ p1 ]'){str = 'p1';}
                                            var strConNoFull = str;
                                            }
                                            else
@@ -480,7 +482,10 @@ const qnaServicePlant1 = new QnAMaker({
 
                          var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
 
-                         if (searchTypeTemp == "advanced"){strConNoFull = 'Search active\n\n' + strConNoFull;}
+                         if (searchTypeTemp == "advanced")
+                            {strConNoFull = 'Search active\n\n' + strConNoFull;}
+                            else
+                            {strConNoFull = 'Search not active\n\n' + strConNoFull;}
                          stepContext.context.activity.text = strConNoFull;
 
                          //console.log ("\n475 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
@@ -1107,7 +1112,11 @@ const qnaServicePlant1 = new QnAMaker({
 
         if (searchTypeTemp == 'advanced' && response.answers[0] != undefined)
              {
-             response.answers[0].answer = 'Search active\n\n' + response.answers[0].answer;
+             response.answers[0].answer = 'Search active.\n\n' + response.answers[0].answer;
+             }
+             else
+             {
+             response.answers[0].answer = 'Search not active.\n\n' + response.answers[0].answer;
              }
 
         stepContext.values[QnAData] = response.answers;
@@ -1192,18 +1201,19 @@ const qnaServicePlant1 = new QnAMaker({
 
                 //first message - sends stored answer (for clauses with c1:1.1.1.4 and for extended index with c1i:accepted). Use c1 for both. OK?
 
-                console.log("\n1187 FIRST MESSAGE - CARD MESSAGE - answer.questions[0]= " + JSON.stringify(answer.questions[0]))
+                console.log("\n1202 FIRST MESSAGE - CARD MESSAGE - answer.questions[0]= " + JSON.stringify(answer.questions[0]))
 
                 if (answer.questions[0].indexOf('c1:',0) != -1 || answer.questions[0].indexOf('p1:',0) != -1 || answer.questions[0].indexOf('c1i:',0) != -1 || answer.questions[0].indexOf('p1i:',0) != -1) 
                    //await stepContext.context.sendActivity("TESTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
                    {
-                   console.log("\n1192 FIRST MESSAGE - CARD MESSAGE - answerNoAnswerDeepStore.answer = " + JSON.stringify(answerNoAnswerDeepStore.answer))
+                   console.log("\n1207 FIRST MESSAGE - CARD MESSAGE - answerNoAnswerDeepStore.answer = " + JSON.stringify(answerNoAnswerDeepStore.answer))
                    await stepContext.context.sendActivity(answerNoAnswerDeepStore.answer);
                    }
 
                 //put bars around clause prompt at top of list
                 var clausePrompt = answer.context.prompts[0].displayText;
                 var clausePromptTemp = clausePrompt;
+
                 var iC = (clausePromptTemp.match(/\./g) || []).length;
                 if (iC == 0){clausePromptTemp = clausePromptTemp + '.0.0.0';}
                 if (iC == 1){clausePromptTemp = clausePromptTemp + '.0.0';}
