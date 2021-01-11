@@ -156,6 +156,7 @@ const qnaServicePlant1 = new QnAMaker({
 	    
 console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 	    
+	     str = str.replace(/\[-]/g,'');  //the back icon [-]
              str = str.replace(/\|/g,'');
              str = str.trim();
              str = str.toLowerCase();
