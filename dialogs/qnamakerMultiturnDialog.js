@@ -55,15 +55,21 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
 
 
 
-
+//Construction 1
 const qnaService = new QnAMaker({
-    knowledgeBaseId: process.env.QnAKnowledgebaseId,
+    knowledgeBaseId: process.env.QnAKnowledgebaseIdci,
     endpointKey: process.env.QnAEndpointKey,
     host: process.env.QnAEndpointHostName
     });
-
+//Plant 1
 const qnaServicePlant1 = new QnAMaker({
     knowledgeBaseId: process.env.QnAKnowledgebaseIdp1,
+    endpointKey: process.env.QnAEndpointKey,
+    host: process.env.QnAEndpointHostName
+    });	    
+//EPCT 1
+const qnaServicePlant1 = new QnAMaker({
+    knowledgeBaseId: process.env.QnAKnowledgebaseIde1,
     endpointKey: process.env.QnAEndpointKey,
     host: process.env.QnAEndpointHostName
     });
