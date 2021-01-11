@@ -596,86 +596,86 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
 
         
-      //console.log("\n588 RESPONSE =" + JSON.stringify(response));
+      console.log("\n599 RESPONSE =" + JSON.stringify(response));
         
 
      //Welcome
      profileName = await this._userProfileAccessor.get(stepContext.context,false)
-     console.log("582 OPENING profileName = " + profileName) 
+     console.log("604 OPENING profileName = " + profileName) 
      var didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-     console.log("584 OPENING didBotWelcomedUser = " + didBotWelcomedUser) 
+     console.log("606 OPENING didBotWelcomedUser = " + didBotWelcomedUser) 
 
      if (this._welcomedUserProperty != undefined){ 
             didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-            console.log("687 didBotWelcomedUser = " + didBotWelcomedUser) 
+            console.log("610 didBotWelcomedUser = " + didBotWelcomedUser) 
             
             if (didBotWelcomedUser == undefined){
-                console.log("590 didBotWelcomedUser = undefined")    
+                console.log("613 didBotWelcomedUser = undefined")    
                 
                 if (response.answers[0] == undefined){  
-                     console.log("593 response.answers[0] = " + response.answers[0]) 
+                     console.log("616 response.answers[0] = " + response.answers[0]) 
                     
                      if (profileName == false){  
-                         console.log("596 profileName = " + profileName) 
+                         console.log("619 profileName = " + profileName) 
                          
-                         console.log("598 reponse = default welcome 1st pass Messenger; xyz on first webchat submit.") 
+                         console.log("621 reponse = default welcome 1st pass Messenger; xyz on first webchat submit.") 
                          response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot. Please submit \"start\" to start.","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                          } else { 
-                         console.log("602 profileName = " + profileName) 
+                         console.log("625 profileName = " + profileName) 
                          
                          }
                                                    
                      } else { 
                          
-                     console.log("608 response.answers[0] = " + response.answers[0]) 
-                     console.log("609 reponse = let pass") 
+                     console.log("631 response.answers[0] = " + response.answers[0]) 
+                     console.log("632 reponse = let pass") 
                      //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      
                      } 
                 
                  } else {    
                      
-                 console.log("616 didBotWelcomedUser = " + didBotWelcomedUser) 
+                 console.log("639 didBotWelcomedUser = " + didBotWelcomedUser) 
                      
                  if (didBotWelcomedUser == 1){
-                      console.log("619 response.answers[0] = " + response.answers[0]) 
+                      console.log("642 response.answers[0] = " + response.answers[0]) 
                       if (response.answers[0] == undefined){
                                                  
-                          console.log("622 response.answers[0] = " + response.answers[0]) 
+                          console.log("646 response.answers[0] = " + response.answers[0]) 
                           //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                          
                           } else { 
 
-                          console.log("642 2nd pass messenger response.answers[0] = " + response.answers[0])  
+                          console.log("650 2nd pass messenger response.answers[0] = " + response.answers[0])  
                           response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Guide","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
 
                           } 
                      
                       } else if (didBotWelcomedUser == 2){
                           
-                          console.log("649 didBotWelcomedUser = " + didBotWelcomedUser) 
+                          console.log("657 didBotWelcomedUser = " + didBotWelcomedUser) 
                       
                           if (response.answers[0] == undefined){  
-                               console.log("652 response.answers[0] = " + response.answers[0]) 
+                               console.log("660 response.answers[0] = " + response.answers[0]) 
                     
                                if (profileName == false){  
-                                   console.log("655 profileName = " + profileName) 
+                                   console.log("662 profileName = " + profileName) 
                          
                                    console.log("657 reponse = default welcome") 
                                    response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot. Please submit \"start\" to start.","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                                    } else { 
-                                   console.log("661 profileName = " + profileName)
+                                   console.log("669 profileName = " + profileName)
                                        
-                                   console.log("663 reponse = let pass")
+                                   console.log("671 reponse = let pass")
                          
                                    }
                                                    
                                 } else { 
-                                console.log("668 response.answers[0] = " + response.answers[0])
+                                console.log("676 response.answers[0] = " + response.answers[0])
                                 
-                                console.log("670 reponse = let pass")     
+                                console.log("678 reponse = let pass")     
                                 //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      
                                 }
@@ -685,14 +685,14 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
         //welcome end
 
-        console.log("\n680 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
-        console.log("\n681 ANSWER BEFORE PROCESSING response.answers[0] = " + JSON.stringify(response.answers[0]));
+        console.log("\n688 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
+        console.log("\n689 ANSWER BEFORE PROCESSING response.answers[0] = " + JSON.stringify(response.answers[0]));
 
         //Add extended index link
         //if (response.answers[0] != undefined && response.answers[0].context.prompts[0] != undefined) //if index entry has no prompts
         if (response.answers[0] != undefined) //if index entry has no prompts
              {
-             console.log("\n680 ..");
+             console.log("\n695 ..");
 
              //if (response.answers[0].context.prompts[0] != undefined) 
              if (response.answers[0].context != undefined) 
