@@ -419,7 +419,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                                            }
                                        }
 
-                                  if (!isNaN(strNo) || strNo.indexOf('daa',0) != -1 || strNo.indexOf('rules',0) != -1) ///1.1.1 is not a number! replace a .
+                                  if (!isNaN(strNo.replace('.','')) || strNo.indexOf('daa',0) != -1 || strNo.indexOf('rules',0) != -1) ///1.1.1 is not a number! replace a .
                                        {
                                        console.log("\n419 strConNoFull = " + strConNoFull);
                                        var iC = (strConNoFull.match(/\./g) || []).length;
