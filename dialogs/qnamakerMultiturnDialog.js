@@ -1227,7 +1227,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                 clausePromptTemp = clausePromptTemp.replace(' ',':');
                 if (clausePromptTemp == answer.questions[0])
                    {
-                   clausePrompt= '->  ' + clausePrompt + '  <-';
+                   clausePrompt= '\/  ' + clausePrompt + '  \/';
                    answer.context.prompts[0].displayText = clausePrompt;
                    }
 
