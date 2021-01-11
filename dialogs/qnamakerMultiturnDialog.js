@@ -57,7 +57,7 @@ class QnAMakerMultiturnDialog extends ComponentDialog {
 
 //Construction 1
 const qnaServiceCons1 = new QnAMaker({
-    knowledgeBaseId: process.env.QnAKnowledgebaseIdci,
+    knowledgeBaseId: process.env.QnAKnowledgebaseIdc1,
     endpointKey: process.env.QnAEndpointKey,
     host: process.env.QnAEndpointHostName
     });
