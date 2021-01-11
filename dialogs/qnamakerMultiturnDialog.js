@@ -153,6 +153,9 @@ const qnaServicePlant1 = new QnAMaker({
                  return goodChars.join("");}
 
              var str = stepContext.context.activity.text;
+	    
+console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
+	    
              str = str.replace(/\|/g,'');
              str = str.trim();
              str = str.toLowerCase();
