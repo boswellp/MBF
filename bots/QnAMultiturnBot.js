@@ -210,7 +210,7 @@ class QnAMultiturnBot extends ActivityHandler {
                 {
                     type: ActionTypes.OpenUrl,
                     title: 'Web version',
-                    value: 'https://fidic.tips/fidicbotalone'
+                    value: 'https://fidic.tips/fidicchatbot'
                 },
                 {
                     type: ActionTypes.PostBack,
