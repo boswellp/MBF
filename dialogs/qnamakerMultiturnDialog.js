@@ -689,7 +689,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
           {
           if (profileNameTemp.indexOf('c1',0) != -1)
              {        
-	     console.log("\n692 stepContext.context = " + stepContext.context);
+	     console.log("\n692 stepContext.context = " + JSON.stringify(stepContext.context));
 	      var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
 	      console.log("\n694 RESPONSE =" + JSON.stringify(response));
 	     }		  
