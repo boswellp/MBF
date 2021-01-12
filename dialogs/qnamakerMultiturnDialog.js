@@ -474,11 +474,12 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                                        else //no space
 
                                        {
-                                       if (str == 'c1s' || str == 'p1s' ||str == 'c1' || str == 'p1' || str == 'help' || str == 'start')
+                                       if (str == 'c1s' || str == 'p1s' || str == 'e1s' || str == 'c1' || str == 'p1' || str == 'e1' || str == 'help' || str == 'start')
                                            {
                                            console.log ("\n387= " + str);
                                            if (str == 'c1'){str = 'cons1';}
                                            if (str == 'p1'){str = 'plant1';}
+					   if (str == 'e1'){str = 'epct1';}
                                            var strConNoFull = str;
                                            }
                                            else 
@@ -495,8 +496,9 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                                                 {if (str == 'construction contract 1st ed 1999'){
                                                       strCon = 'c1';}
                                                       else 
-                                                      {if (str == 'plant & design-build contract 1st ed 1999'){
-                                                         strCon = 'p1';}
+                                                      {
+						      if (str == 'plant & design-build contract 1st ed 1999'){strCon = 'p1';}
+						      if (str == 'epc/turnkey contract 1st ed 1999'){strCon = 'e1';}
                                                       }
                                                  }
  
@@ -520,10 +522,12 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                                   strConNoFull = strConNoFull.replace('.','\/');
                                   strConNoFull = strConNoFull.replace('c1 ','c1:');
                                   strConNoFull = strConNoFull.replace('p1 ','p1:');
+				  strConNoFull = strConNoFull.replace('e1 ','e1:');
                                   strConNoFull = strConNoFull.replace('c1i ','c1i:');
                                   strConNoFull = strConNoFull.replace('p1i ','p1i:');
+				  strConNoFull = strConNoFull.replace('e1i ','e1i:');
 
-                                  if ((strConNoFull != 'c1s:0/0/0/0') && (strConNoFull != 'p1s:0/0/0/0')){
+                                  if ((strConNoFull != 'c1s:0/0/0/0') && (strConNoFull != 'p1s:0/0/0/0') && (strConNoFull != 'e1s:0/0/0/0')){
 
                                        stepContext.context.activity.text = strConNoFull;
 
@@ -539,7 +543,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                          var strCon = '';
                          var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false)
 
-                         if (profileNameTemp == "c1" || profileNameTemp== "p1" )
+                         if (profileNameTemp == "c1" || profileNameTemp== "p1" || profileNameTemp== "e1")
                                {
 
                                strCon = profileNameTemp + ":";
@@ -567,6 +571,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                          strConNoFull = strConNoFull.replace('.','\/');
                          strConNoFull = strConNoFull.replace('c1 ','c1:');
                          strConNoFull = strConNoFull.replace('p1 ','p1:');
+			 strConNoFull = strConNoFull.replace('e1 ','e1:');
 
                          //console.log("\n464 A keyword strConNoFull = " + strConNoFull);
 
@@ -632,10 +637,10 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
              }
 
         var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false);
-        console.log("\n529 profileNameTemp = " + profileNameTemp);
-        console.log("530 qnaMakerOptions = " + JSON.stringify(qnaMakerOptions));
-        console.log("531 stepContext.context.activity.text = " + stepContext.context.activity.text);
-        console.log("532  qnaMakerOptions.qnaId = " + qnaMakerOptions.qnaId);
+        console.log("\n640 profileNameTemp = " + profileNameTemp);
+        console.log("641 qnaMakerOptions = " + JSON.stringify(qnaMakerOptions));
+        console.log("642 stepContext.context.activity.text = " + stepContext.context.activity.text);
+        console.log("643  qnaMakerOptions.qnaId = " + qnaMakerOptions.qnaId);
 
 
 
@@ -654,17 +659,27 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
            qnaMakerOptions.context.previousQnAId = userPrevQnaidC1;
            qnaMakerOptions.qnaId = userQnaidC1;
            }
+	    
+	if (profileNameTemp  == 'e1' && stepContext.context.activity.text.indexOf('epc/turnkey contract',0) != -1)
+           {
+           var userQnaidE1 = await this._userQnaidE1Accessor.get(stepContext.context,false)
+           var userPrevQnaidE1 = await this._userPrevQnaidE1Accessor.get(stepContext.context,false)
+           qnaMakerOptions.context.previousQnAId = userPrevQnaidE1;
+           qnaMakerOptions.qnaId = userQnaidE1;
+           }
 
         var textTemp = stepContext.context.activity.text;
         var textOrig = stepContext.context.activity.text;
 
         textTemp = textTemp.replace('c1si ','')
         textTemp = textTemp.replace('p1si ','')
+	textTemp = textTemp.replace('e1si ','')
         stepContext.context.activity.text = textTemp;
 
 
         if (textOrig == 'c1i:'){await this._userSearchAccessor.set(stepContext.context, '');}
         if (textOrig == 'p1i:'){await this._userSearchAccessor.set(stepContext.context, '');}
+	if (textOrig == 'e1i:'){await this._userSearchAccessor.set(stepContext.context, '');}
 
         var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false);
 
@@ -672,9 +687,15 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
           {
           if (profileNameTemp.indexOf('c1',0) != -1)
              {var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);}
+		  
              else if (profileNameTemp.indexOf('p1',0) != -1)
              { 
              var response = await this._qnaMakerServicePlant1.getAnswersRaw(stepContext.context, qnaMakerOptions);}
+		  
+	     else if (profileNameTemp.indexOf('e1',0) != -1)
+             { 
+             var response = await this._qnaMakerServiceEPCT1.getAnswersRaw(stepContext.context, qnaMakerOptions);}
+		  
              else
              {var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);}
           }
@@ -683,86 +704,86 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
 
         
-      console.log("\n599 RESPONSE =" + JSON.stringify(response));
+      console.log("\n707 RESPONSE =" + JSON.stringify(response));
         
 
      //Welcome
      profileName = await this._userProfileAccessor.get(stepContext.context,false)
-     console.log("604 OPENING profileName = " + profileName) 
+     console.log("712 OPENING profileName = " + profileName) 
      var didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-     console.log("606 OPENING didBotWelcomedUser = " + didBotWelcomedUser) 
+     console.log("714 OPENING didBotWelcomedUser = " + didBotWelcomedUser) 
 
      if (this._welcomedUserProperty != undefined){ 
             didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-            console.log("610 didBotWelcomedUser = " + didBotWelcomedUser) 
+            console.log("718 didBotWelcomedUser = " + didBotWelcomedUser) 
             
             if (didBotWelcomedUser == undefined){
-                console.log("613 didBotWelcomedUser = undefined")    
+                console.log("721 didBotWelcomedUser = undefined")    
                 
                 if (response.answers[0] == undefined){  
-                     console.log("616 response.answers[0] = " + response.answers[0]) 
+                     console.log("724 response.answers[0] = " + response.answers[0]) 
                     
                      if (profileName == false){  
-                         console.log("619 profileName = " + profileName) 
+                         console.log("727 profileName = " + profileName) 
                          
-                         console.log("621 reponse = default welcome 1st pass Messenger; xyz on first webchat submit.") 
+                         console.log("729 reponse = default welcome 1st pass Messenger; xyz on first webchat submit.") 
                          response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot. Please submit \"start\" to start.","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                          } else { 
-                         console.log("625 profileName = " + profileName) 
+                         console.log("733 profileName = " + profileName) 
                          
                          }
                                                    
                      } else { 
                          
-                     console.log("631 response.answers[0] = " + response.answers[0]) 
-                     console.log("632 reponse = let pass") 
+                     console.log("739 response.answers[0] = " + response.answers[0]) 
+                     console.log("740 reponse = let pass") 
                      //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      
                      } 
                 
                  } else {    
                      
-                 console.log("639 didBotWelcomedUser = " + didBotWelcomedUser) 
+                 console.log("747 didBotWelcomedUser = " + didBotWelcomedUser) 
                      
                  if (didBotWelcomedUser == 1){
-                      console.log("642 response.answers[0] = " + response.answers[0]) 
+                      console.log("750 response.answers[0] = " + response.answers[0]) 
                       if (response.answers[0] == undefined){
                                                  
-                          console.log("646 response.answers[0] = " + response.answers[0]) 
+                          console.log("753 response.answers[0] = " + response.answers[0]) 
                           //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                          
                           } else { 
 
-                          console.log("650 2nd pass messenger response.answers[0] = " + response.answers[0])  
+                          console.log("758 2nd pass messenger response.answers[0] = " + response.answers[0])  
                           response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Guide","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
 
                           } 
                      
                       } else if (didBotWelcomedUser == 2){
                           
-                          console.log("657 didBotWelcomedUser = " + didBotWelcomedUser) 
+                          console.log("765 didBotWelcomedUser = " + didBotWelcomedUser) 
                       
                           if (response.answers[0] == undefined){  
-                               console.log("660 response.answers[0] = " + response.answers[0]) 
+                               console.log("768 response.answers[0] = " + response.answers[0]) 
                     
                                if (profileName == false){  
-                                   console.log("662 profileName = " + profileName) 
+                                   console.log("771 profileName = " + profileName) 
                          
-                                   console.log("657 reponse = default welcome") 
+                                   console.log("772 reponse = default welcome") 
                                    response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot. Please submit \"start\" to start.","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                                    } else { 
-                                   console.log("669 profileName = " + profileName)
+                                   console.log("777 profileName = " + profileName)
                                        
-                                   console.log("671 reponse = let pass")
+                                   console.log("779 reponse = let pass")
                          
                                    }
                                                    
                                 } else { 
-                                console.log("676 response.answers[0] = " + response.answers[0])
+                                console.log("784 response.answers[0] = " + response.answers[0])
                                 
-                                console.log("678 reponse = let pass")     
+                                console.log("786 reponse = let pass")     
                                 //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      
                                 }
@@ -772,14 +793,14 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
         //welcome end
 
-        console.log("\n688 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
-        console.log("\n689 ANSWER BEFORE PROCESSING response.answers[0] = " + JSON.stringify(response.answers[0]));
+        console.log("\n796 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
+        console.log("\n797 ANSWER BEFORE PROCESSING response.answers[0] = " + JSON.stringify(response.answers[0]));
 
         //Add extended index link
         //if (response.answers[0] != undefined && response.answers[0].context.prompts[0] != undefined) //if index entry has no prompts
         if (response.answers[0] != undefined) //if index entry has no prompts
              {
-             console.log("\n695 ..");
+             console.log("\n803 ..");
 
              //if (response.answers[0].context.prompts[0] != undefined) 
              if (response.answers[0].context != undefined) 
@@ -843,14 +864,14 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
                      else if (str.indexOf('x:',0) != -1)
                          {
-                         console.log("\n745 ..");
+                         console.log("\n867 ..");
                          if (profileNameTemp.indexOf('x',0) != -1) 
                               {
 
-                              console.log("\n749 response = " + JSON.stringify(response));
+                              console.log("\n871 response = " + JSON.stringify(response));
                               await this._userProfileAccessor.set(stepContext.context,profileNameTemp.replace('x','')); //reset code
                               profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false);
-                              console.log("\n752 profileNameTemp = " + profileNameTemp);
+                              console.log("\n874 profileNameTemp = " + profileNameTemp);
 
                               var promptAry = [], combinedAnswers = '';
                               for (var i = 0; i < 20; i++)
@@ -879,10 +900,10 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
               
         if (response.answers[0] != undefined)
              {
-             console.log("\n779 ..");
+             console.log("\n903 ..");
              //add clause number to prompts (for Messenger's 2 messages)
              str = response.answers[0].questions[0];
-             if (str.indexOf('c1:',0) != -1 || str.indexOf('p1:',0) != -1)
+             if (str.indexOf('c1:',0) != -1 || str.indexOf('p1:',0) != -1 || str.indexOf('e1:',0) != -1)
                 {
                 str = str.replace('\/','.');
              str = str.replace('\/','.');
@@ -893,6 +914,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
              str = str.replace('.0','');
              str = str.replace('c1:','c1 ');
              str = str.replace('p1:','p1 ');
+	     str = str.replace('e1:','e1 ');
 
                 var promptAry = []; 
 
@@ -913,10 +935,14 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                  if (profileNameTemp.indexOf('p1',0) != -1)
                      {userPrevQnaidP1 = await this._userPrevQnaidP1Accessor.get(stepContext.context,false)
                      response.answers[0].context.prompts[0] = {"displayOrder":0,"qnaId":userPrevQnaidP1,"qna":null,"displayText":"p1 search"}}
+			
+		 if (profileNameTemp.indexOf('e1',0) != -1)
+                     {userPrevQnaidP1 = await this._userPrevQnaidE1Accessor.get(stepContext.context,false)
+                     response.answers[0].context.prompts[0] = {"displayOrder":0,"qnaId":userPrevQnaidE1,"qna":null,"displayText":"e1 search"}}
 
                  response.answers[0].context.prompts[0].displayText = str
 
-                 console.log("\n817 iTotal = " + iTotal)
+                 console.log("\n945 iTotal = " + iTotal)
 
                  for (var i = 1; i < iTotal + 2; i++)
                     {
@@ -928,12 +954,12 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
 
 
-     console.log("\n828 BEFORE PROCESSING");
+     console.log("\n957 BEFORE PROCESSING");
  
      if (response.answers[0] != undefined)
         {
 
-        if ((stepContext.context.activity.text == textTemp && textOrig.indexOf('c1si ',0) != -1) || (stepContext.context.activity.text == textTemp && textOrig.indexOf('p1si ',0) != -1))
+        if ((stepContext.context.activity.text == textTemp && textOrig.indexOf('c1si ',0) != -1) || (stepContext.context.activity.text == textTemp && textOrig.indexOf('p1si ',0) != -1) || (stepContext.context.activity.text == textTemp && textOrig.indexOf('e1si ',0) != -1))
              {
 
              await this._userStringAccessor.set(stepContext.context, textTemp);
@@ -992,7 +1018,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
 //Pass 1 - get categories into an array
 
-               console.log("\n892 .....");
+               console.log("\n1021 .....");
 
                var categoryAry = []; 
 
@@ -1043,7 +1069,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                //console.log("\n831 pass1 metadataAry = " + JSON.stringify(metadataAry));
                //console.log("\n832 pass1 categoryAry = " + JSON.stringify(categoryAry));
                //console.log("\n833 categoryAry.length" + categoryAry.length) 
-               console.log("\n943 END META response.answers[0] = " + JSON.stringify(response.answers[0])) 
+               console.log("\n1072 END META response.answers[0] = " + JSON.stringify(response.answers[0])) 
              
 
                if (categoryAry.length == 0) //check no category situation?? There will always be a category??
@@ -1065,7 +1091,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                        delete response.answers[0].questions[i];
                        }
 
-                    console.log("\n965 cleaning 1111 questions - response.answers[0] = " + JSON.stringify(response.answers[0])) 
+                    console.log("\n194 cleaning 1111 questions - response.answers[0] = " + JSON.stringify(response.answers[0])) 
 
                     //clean out prompts
 
@@ -1075,7 +1101,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                     
                     for (var i = 0; i < categoryAry.length; i++) 
                          {
-                         console.log("\n976 i, categoryAry[i] = " + categoryAry[i]) 
+                         console.log("\n1104 i, categoryAry[i] = " + categoryAry[i]) 
                          //shows all clauses, not collapsed clauses
                          var displayTextTemp = '[ ' + categoryAry[i] + ' ]'; //str in memoryfor advanced search pass 2
                          var qnaIdTemp = 2000 + i
@@ -1094,7 +1120,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
          //console.log("\n884 META + PROMPTS response.answers[0].context = " + JSON.stringify(response.answers[0].context));
          //console.log("\n885 META + PROMPTS response = " + JSON.stringify(response));
 
-         console.log("\n887 END PASS 1");
+         console.log("\n1123 END PASS 1");
 
          } //if
 
@@ -1105,7 +1131,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
 //Pass 2 - expands clauses
 
-          console.log("\n1005 START PASS 2");
+          console.log("\n1134 START PASS 2");
 
 
            var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
@@ -1119,7 +1145,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                       break
                       }}
 
-               console.log("\n1019 iTotal = " + iTotal)
+               console.log("\n1148 iTotal = " + iTotal)
 
 
                var answerTitle, posnTitle, combinedAnswers = ''; 
@@ -1134,7 +1160,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                      answerTitle = answerTitle.substring(0,posnTitle);
                      if (i > 0){combinedAnswers = '\n\n' + combinedAnswers;}
 
-                     console.log("\n1034  ")
+                     console.log("\n1163  ")
 
                      combinedAnswers = answerTitle + combinedAnswers;
 
@@ -1163,7 +1189,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
                   } 
 
-             console.log("\n1063 AFTER PROMPTS response.answers[0].context = \n" + JSON.stringify( response.answers[0].context))
+             console.log("\n1192 AFTER PROMPTS response.answers[0].context = \n" + JSON.stringify( response.answers[0].context))
 
              await this._userSearchAccessor.set(stepContext.context, 'advanced')
 
@@ -1193,7 +1219,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
 //End combine clauses for advanced search
 
-        console.log("\n1106 After processing response.answers = " + JSON.stringify(response.answers));
+        console.log("\n1222 After processing response.answers = " + JSON.stringify(response.answers));
 
         dialogOptions[PreviousQnAId] = -1;
         stepContext.activeDialog.state.options = dialogOptions;
@@ -1220,7 +1246,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
         stepContext.values[QnAData] = result;
 
-        console.log("\n1114 OUT1 NOT PROCESSED result = " + JSON.stringify(result))
+        console.log("\n1249 OUT1 NOT PROCESSED result = " + JSON.stringify(result))
 
         return await stepContext.next(result); 
 
@@ -1230,8 +1256,8 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
     //need extended index here
     async checkForMultiTurnPrompt(stepContext, answerNoAnswerDeep) {
 
-        console.log("\n1124 stepContext.result= " + JSON.stringify(stepContext.result))
-        console.log("\n1125 stepContext.result.length= " + stepContext.result.length)
+        console.log("\n1259 stepContext.result= " + JSON.stringify(stepContext.result))
+        console.log("\n1259 stepContext.result.length= " + stepContext.result.length)
 
         if (stepContext.result != null && stepContext.result.length > 0) {
 
@@ -1241,7 +1267,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
 
             //if (answer.questions[0].indexOf('c1:',0) != -1 || answer.questions[0].indexOf('p1:',0) != -1) 
-            if (answer.questions[0].indexOf('c1:',0) != -1 || answer.questions[0].indexOf('p1:',0) != -1 || answer.questions[0].indexOf('c1i:',0) != -1 || answer.questions[0].indexOf('p1i:',0) != -1) //use for extended as well
+            if (answer.questions[0].indexOf('c1:',0) != -1 || answer.questions[0].indexOf('p1:',0) != -1 || answer.questions[0].indexOf('e1:',0) != -1 || answer.questions[0].indexOf('c1i:',0) != -1 || answer.questions[0].indexOf('p1i:',0) != -1 || answer.questions[0].indexOf('e1i:',0) != -1) //use for extended as well
                 {
                 var answerNoAnswerDeep = JSON.parse(JSON.stringify(answer));
                 var answerNoAnswerDeepStore = JSON.parse(JSON.stringify(answer));
@@ -1251,7 +1277,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
             if (answer.context != null && answer.context.prompts != null && answer.context.prompts.length > 0)
                 {
-                console.log("\n1145 OUT2 PROCESSING 2 MESSAGES - STORED ANSWER + PROMPT CARD MESSAGE")
+                console.log("\n1280 OUT2 PROCESSING 2 MESSAGES - STORED ANSWER + PROMPT CARD MESSAGE")
 
                 var dialogOptions = getDialogOptionsValue(stepContext);
 
@@ -1261,7 +1287,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                     previousContextData = dialogOptions[QnAContextData];
                 }
 
-                if (answer.questions[0].indexOf('c1:',0) == -1 && answer.questions[0].indexOf('p1:',0) == -1) //not for passed prompts
+                if (answer.questions[0].indexOf('c1:',0) == -1 && answer.questions[0].indexOf('p1:',0) == -1 && answer.questions[0].indexOf('e1:',0) == -1) //not for passed prompts
                     {
                      answer.context.prompts.forEach(prompt => {
                        previousContextData[prompt.displayText.toLowerCase()] = prompt.qnaId;
@@ -1293,12 +1319,12 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
                 //first message - sends stored answer (for clauses with c1:1.1.1.4 and for extended index with c1i:accepted). Use c1 for both. OK?
 
-                console.log("\n1202 FIRST MESSAGE - CARD MESSAGE - answer.questions[0]= " + JSON.stringify(answer.questions[0]))
+                console.log("\n1322 FIRST MESSAGE - CARD MESSAGE - answer.questions[0]= " + JSON.stringify(answer.questions[0]))
 
-                if (answer.questions[0].indexOf('c1:',0) != -1 || answer.questions[0].indexOf('p1:',0) != -1 || answer.questions[0].indexOf('c1i:',0) != -1 || answer.questions[0].indexOf('p1i:',0) != -1) 
+                if (answer.questions[0].indexOf('c1:',0) != -1 || answer.questions[0].indexOf('p1:',0) != -1 || answer.questions[0].indexOf('e1:',0) != -1 || answer.questions[0].indexOf('c1i:',0) != -1 || answer.questions[0].indexOf('p1i:',0) != -1 || answer.questions[0].indexOf('e1i:',0) != -1) 
                    //await stepContext.context.sendActivity("TESTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
                    {
-                   console.log("\n1207 FIRST MESSAGE - CARD MESSAGE - answerNoAnswerDeepStore.answer = " + JSON.stringify(answerNoAnswerDeepStore.answer))
+                   console.log("\n1327 FIRST MESSAGE - CARD MESSAGE - answerNoAnswerDeepStore.answer = " + JSON.stringify(answerNoAnswerDeepStore.answer))
                    await stepContext.context.sendActivity(answerNoAnswerDeepStore.answer);
                    }
 
@@ -1354,7 +1380,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
         if (responses != null) {
             if (responses.length > 0) {
 
-                console.log("\n1247 END END responses[0].answer = " + JSON.stringify(responses[0].answer));
+                console.log("\n1383 END END responses[0].answer = " + JSON.stringify(responses[0].answer));
 
                 await stepContext.context.sendActivity(responses[0].answer);
 
