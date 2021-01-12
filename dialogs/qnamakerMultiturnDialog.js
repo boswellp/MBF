@@ -79,6 +79,7 @@ const qnaServiceEPCT1 = new QnAMaker({
 
         this._qnaMakerService = qnaServiceCons1;
         this._qnaMakerServicePlant1 = qnaServicePlant1;
+	this._qnaMakerServiceEPCT1 = qnaServiceEPCT1;
         this._userState = userState; 
         this._conversationState = conversationState;
         this._userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY); 
@@ -86,8 +87,10 @@ const qnaServiceEPCT1 = new QnAMaker({
         this._userStringAccessor = userState.createProperty(USER_STRING_PROPERTY);
         this._userQnaidC1Accessor = userState.createProperty(USER_QNAIDC1_PROPERTY);
         this._userQnaidP1Accessor = userState.createProperty(USER_QNAIDP1_PROPERTY);
+	this._userQnaidE1Accessor = userState.createProperty(USER_QNAIDE1_PROPERTY);
         this._userPrevQnaidC1Accessor = userState.createProperty(USER_PREVQNAIDC1_PROPERTY);
         this._userPrevQnaidP1Accessor = userState.createProperty(USER_PREVQNAIDP1_PROPERTY);
+	this._userPrevQnaidE1Accessor = userState.createProperty(USER_PREVQNAIDE1_PROPERTY);
         this._userIndexAccessor = userState.createProperty(USER_INDEX_PROPERTY);
         this._welcomedUserProperty = userState.createProperty(WELCOMED_USER); 
 
