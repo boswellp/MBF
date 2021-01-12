@@ -693,19 +693,21 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
         if (userProfile != false)
           {
-          if (profileNameTemp.indexOf('c1',0) != -1)
+          if (profileNameTemp.indexOf('c1',0) != -1) //ON FIRST INDEX
              {        
 	     console.log("\n692 stepContext.context = " + JSON.stringify(stepContext.context));
 	      var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
-	      console.log("\n694 RESPONSE =" + JSON.stringify(response));
+	      console.log("\n694 RESPONSE =" + JSON.stringify(response));  
 	     }		  
              else if (profileNameTemp.indexOf('p1',0) != -1)
              { 
 	     console.log("\n698 stepContext.context = " + JSON.stringify(stepContext.context));
-             var response = await this._qnaMakerServicePlant1.getAnswersRaw(stepContext.context, qnaMakerOptions);}		  
+             var response = await this._qnaMakerServicePlant1.getAnswersRaw(stepContext.context, qnaMakerOptions);
+	     }		  
 	     else if (profileNameTemp.indexOf('e1',0) != -1)
              { 
-             var response = await this._qnaMakerServiceEPCT1.getAnswersRaw(stepContext.context, qnaMakerOptions);}
+             var response = await this._qnaMakerServiceEPCT1.getAnswersRaw(stepContext.context, qnaMakerOptions);
+	     }
 		  
              else
              {
