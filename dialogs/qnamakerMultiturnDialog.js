@@ -653,7 +653,6 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
            }
         if (profileNameTemp  == 'c1' && stepContext.context.activity.text.indexOf('construction contract',0) != -1)
            {
-	   console.log("656 stepContext.context.activity.text only for construction contract = " + stepContext.context.activity.text);
            var userQnaidC1 = await this._userQnaidC1Accessor.get(stepContext.context,false)
            var userPrevQnaidC1 = await this._userPrevQnaidC1Accessor.get(stepContext.context,false)
            qnaMakerOptions.context.previousQnAId = userPrevQnaidC1;
@@ -673,6 +672,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
         textTemp = textTemp.replace('c1si ','')
         textTemp = textTemp.replace('p1si ','')
 	textTemp = textTemp.replace('e1si ','')
+        if (textTemp.indexOf('1/1/1/1',0) != -1){textTemp = textTemp + '/'}  //to handle 1.1.1.1 and 1.1.1.10. Better to close codes with a / TO DO
         stepContext.context.activity.text = textTemp;
 
 
