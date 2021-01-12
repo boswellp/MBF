@@ -226,36 +226,71 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
                    {
 
-                   stepContext.context.activity.text = 'p1s:0/0/0/0';
+                   stepContext.context.activity.text = 'e1s:0/0/0/0';
 
                    await this._userProfileAccessor.set(stepContext.context, "e1s");
                    this._userSearchAccessor.searchType = 'advanced';
                    await this._userSearchAccessor.set(stepContext.context, "advanced");
                    }
  
+	    
+	    //////
+	           //orig
                    else if ((profileName == 'c1' && str.indexOf('plant & design-build contract 1st ed 1999',0) != -1) || (profileName == 'c1' && str == 'p1')) 
                    {
 
-                   stepContext.context.activity.text = 'plant & design-build bontract 1st ed 1999';
+                   stepContext.context.activity.text = 'plant & design-build contract 1st ed 1999';
+			   
+		   await this._userProfileAccessor.set(stepContext.context, "c1");
+			   
+                   //added for epc
+			   
+		   else if ((profileName == 'c1' && str.indexOf('epc/turnkey contract 1st ed 1999',0) != -1) || (profileName == 'c1' && str == 'e1')) 
+                   {
 
+                   stepContext.context.activity.text = 'epc/turnkey contract 1st ed 1999';
+			   	   
                    await this._userProfileAccessor.set(stepContext.context, "p1");
                    }
 
+		    ///orig
                    else if ((profileName == 'p1' && str.indexOf('construction contract 1st ed 1999',0) != -1) || (profileName == 'p1' && str == 'c1'))
+                   {
+                   stepContext.context.activity.text = 'construction contract 1st ed 1999';
+
+                   await this._userProfileAccessor.set(stepContext.context, "e1");
+                   } 
+	    
+		   //added for epc
+	           else if ((profileName == 'p1' && str.indexOf('epc/turnkey contract 1st ed 1999',0) != -1) || (profileName == 'p1' && str == 'e1'))
+                   {
+                   stepContext.context.activity.text = 'construction contract 1st ed 1999';
+
+                   await this._userProfileAccessor.set(stepContext.context, "e1");
+                   } 
+			
+			   
+		   ///added for epc
+                   else if ((profileName == 'e1' && str.indexOf('construction contract 1st ed 1999',0) != -1) || (profileName == 'e1' && str == 'c1'))
                    {
                    stepContext.context.activity.text = 'construction contract 1st ed 1999';
 
                    await this._userProfileAccessor.set(stepContext.context, "c1");
                    } 
 	    
-	           else if ((profileName == 'e1' && str.indexOf('epc/turnkey contract 1st ed 1999',0) != -1) || (profileName == 'e1' && str == 'c1'))
+		   //added for epc
+	           else if ((profileName == 'e1' && str.indexOf('plant & design-build contract 1st ed 1999',0) != -1) || (profileName == 'e1' && str == 'p1'))
                    {
-                   stepContext.context.activity.text = 'construction contract 1st ed 1999';
+                   stepContext.context.activity.text = 'plant & design-build contract 1st ed 1999';
 
                    await this._userProfileAccessor.set(stepContext.context, "c1");
                    } 
+			   
+			   
+			   
  
-                    
+           /////////   
+	    
                    else
 
                    {              
