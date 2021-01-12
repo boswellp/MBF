@@ -324,12 +324,12 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                                stepContext.context.activity.text = 'cons1'; 
                                await this._userProfileAccessor.set(stepContext.context, "c1");
                                }
-                               else if (str.indexOf('Plant &',0) != -1 )
+                               else if (str.indexOf('plant &',0) != -1 )
                                {
                                stepContext.context.activity.text = 'plant1'; 
                                await this._userProfileAccessor.set(stepContext.context, "p1");
                                }
-			       else if (str.indexOf('EPC/Turnkey &',0) != -1 )
+			       else if (str.indexOf('epc/turnkey &',0) != -1 )
                                {
                                stepContext.context.activity.text = 'epct1'; 
                                await this._userProfileAccessor.set(stepContext.context, "e1");
