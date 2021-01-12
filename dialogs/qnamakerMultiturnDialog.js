@@ -123,7 +123,7 @@ const qnaServiceEPCT1 = new QnAMaker({
             qnaMakerOptions.top = qnaMakerOptions.top ? qnaMakerOptions.top : DefaultThreshold;
         }
   
-        console.log("\n\n117 .......MULTITURN......");
+        console.log("\n\n126 .......MULTITURN......");
 
 
         if (this._welcomedUserProperty != undefined && stepContext != undefined){
@@ -196,7 +196,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                       await this._userProfileAccessor.set(stepContext.context, profileName.replace('x',''));}
                    } 
 
-             console.log ("\n173 str = " + str + '\n');
+             console.log ("\n199 str = " + str + '\n');
 
              //Search
              if ((profileName != '' && str == 'c1s') || (profileName != '' && str == 'c1 search') || (profileName != '' && str == 'c1 s')) 
@@ -296,7 +296,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
                    {              
                    
-                   console.log ("\n205 IN str = " + str);  
+                   console.log ("\n299 IN str = " + str);  
 
                    //keyword1
                    if (isNaN(str)) 
@@ -415,7 +415,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                          {
                          var strCon, strNo, strConNoFull;
                          profileName = await this._userProfileAccessor.get(stepContext.context,false)
-                         console.log("\n330 KEYWORD STANDARD STRING str = " + str);
+                         console.log("\n418 KEYWORD STANDARD STRING str = " + str);
 
                          var posnSpace = str.indexOf(' ',0);
 
