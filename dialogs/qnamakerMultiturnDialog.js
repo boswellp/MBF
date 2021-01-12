@@ -433,39 +433,40 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                          if (posnSpace != -1) 
                                       {
 
-                                      if (str == 'c1 s' || str == 'c1 search' || str== 'p1 s' || str == 'p1 search' || str == 'construction contract 1st ed 1999' || str == 'plant & design-build contract 1st ed 1999' || str.indexOf('stop search',0) != -1  || str == '[ c1 ]' || str == '[ p1 ]')//prompts
+                                      if (str == 'c1 s' || str == 'c1 search' || str== 'p1 s' || str == 'p1 search' || str== 'e1 s' || str == 'e1 search' || str == 'construction contract 1st ed 1999' || str == 'plant & design-build contract 1st ed 1999' || str == 'epc/turnkey contract 1st ed 1999' || str.indexOf('stop search',0) != -1  || str == '[ c1 ]' || str == '[ p1 ]' || str == '[ e1 ]')//prompts
                                            //standard conversions
                                            {
                                            if (str == 'c1 s' || str == 'c1 search'){str = 'c1s:0.0.0.0';}
                                            if (str == 'p1 s' || str == 'p1 search'){str = 'p1s:0.0.0.0';}
+					   if (str == 'e1 s' || str == 'e1 search'){str = 'e1s:0.0.0.0';}
                                            if (str == '[ c1 ]'){str = 'c1';}
                                            if (str == '[ p1 ]'){str = 'p1';}
+					   if (str == '[ e1 ]'){str = 'e1';}
                                            var strConNoFull = str;
                                            }
                                            else
                                            {
                                            if (profileName != false) {
-                                                if ((profileName == 'c1s' && strCon == 'c1') || (profileName == 'p1s' && strCon == 'p1'))
+                                                if ((profileName == 'c1s' && strCon == 'c1') || (profileName == 'p1s' && strCon == 'p1')) || (profileName == 'e1s' && strCon == 'e1'))
                                                     {} //strCon takes precedence if show clause during search
                                                     else
                                                     {strCon = profileName;}
                                                 }  
                                                 else
                                                 {if (str == 'construction contract 1st ed 1999'){
-                                                   console.log ("\n365 = " + str);
+                                                   console.log ("\n457 = " + str);
                                                     strCon = 'c1';}
                                                     else 
-                                                    {if (str == 'plant & design-build contract 1st ed 1999'){
-                                                        console.log ("\n369 = " + str);
-                                                        strCon = 'p1';}
-                                                    }
+						    {if (str == 'plant & design-build contract 1st ed 1999'){console.log ("\n460 = " + str); strCon = 'p1';}
+						    {if (str == 'epc/turnkey contract 1st ed 1999'){console.log ("\n461 = " + str); strCon = 'e1';}
+                                                    }						 
                                                  }
-                                           console.log("\n373 strCon = " + strCon + "; strNo = " + strNo); //strCon = p1; strNo = daa.6
+                                           console.log("\n464 strCon = " + strCon + "; strNo = " + strNo); //strCon = p1; strNo = daa.6
 
                                            if (isNaN(strNo) && strCon.indexOf('i',0) == -1 && strNo.indexOf('daa.',0) != -1 && strNo.indexOf('rules.',0) != -1){strCon = strCon + 'i';} // ad ii for index except for daa and rules
                                            var strConNoFull = strCon + ' ' + strNo; 
 
-                                           console.log("\n378 strConNoFull = " + strConNoFull);
+                                           console.log("\n468 strConNoFull = " + strConNoFull);
                                            } 
                                        }
 
