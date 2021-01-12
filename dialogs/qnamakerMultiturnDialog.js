@@ -675,6 +675,12 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
         textTemp = textTemp.replace('c1si ','')
         textTemp = textTemp.replace('p1si ','')
 	textTemp = textTemp.replace('e1si ','')
+	    
+	if (textTemp.indexOf('/',0) != -1){  //for typed codes, remove i
+	    textTemp = textTemp.replace('c1i ','c1')
+            textTemp = textTemp.replace('p1i ','p1')
+	    textTemp = textTemp.replace('e1i ','e1')
+	    }
 
         console.log("\n681 textTemp = " + textTemp);
 	stepContext.context.activity.text = textTemp;
