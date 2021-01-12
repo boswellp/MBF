@@ -137,8 +137,8 @@ const qnaServiceEPCT1 = new QnAMaker({
         await this._userPrevQnaidC1Accessor.set(stepContext.context, 14119);
         await this._userQnaidP1Accessor.set(stepContext.context, 4145);
         await this._userPrevQnaidP1Accessor.set(stepContext.context, 4143);
-	await this._userQnaidP1Accessor.set(stepContext.context, 3);
-        await this._userPrevQnaidP1Accessor.set(stepContext.context, 1);
+	await this._userQnaidE1Accessor.set(stepContext.context, 3);
+        await this._userPrevQnaidE1Accessor.set(stepContext.context, 1);
 
         var userProfile = await this._userProfileAccessor.get(stepContext.context,false)
 
