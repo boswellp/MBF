@@ -241,7 +241,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
                    stepContext.context.activity.text = 'plant & design-build contract 1st ed 1999';
 			   
-		   await this._userProfileAccessor.set(stepContext.context, "c1");
+		   await this._userProfileAccessor.set(stepContext.context, "p1");
 			
 		   } 
                    //added for epc
@@ -251,7 +251,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
                    stepContext.context.activity.text = 'epc/turnkey contract 1st ed 1999';
 			   	   
-                   await this._userProfileAccessor.set(stepContext.context, "p1");
+                   await this._userProfileAccessor.set(stepContext.context, "e1");
                    }
 
 		    ///orig
@@ -259,13 +259,13 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                    {
                    stepContext.context.activity.text = 'construction contract 1st ed 1999';
 
-                   await this._userProfileAccessor.set(stepContext.context, "e1");
+                   await this._userProfileAccessor.set(stepContext.context, "c1");
                    } 
 	    
 		   //added for epc
 	           else if ((profileName == 'p1' && str.indexOf('epc/turnkey contract 1st ed 1999',0) != -1) || (profileName == 'p1' && str == 'e1'))
                    {
-                   stepContext.context.activity.text = 'construction contract 1st ed 1999';
+                   stepContext.context.activity.text = 'epc/turnkey contract 1st ed 1999';
 
                    await this._userProfileAccessor.set(stepContext.context, "e1");
                    } 
@@ -284,7 +284,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                    {
                    stepContext.context.activity.text = 'plant & design-build contract 1st ed 1999';
 
-                   await this._userProfileAccessor.set(stepContext.context, "c1");
+                   await this._userProfileAccessor.set(stepContext.context, "p1");
                    } 
 			   
 			   
