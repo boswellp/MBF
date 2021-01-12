@@ -447,7 +447,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                                            else
                                            {
                                            if (profileName != false) {
-                                                if ((profileName == 'c1s' && strCon == 'c1') || (profileName == 'p1s' && strCon == 'p1')) || (profileName == 'e1s' && strCon == 'e1'))
+                                                if ((profileName == 'c1s' && strCon == 'c1') || (profileName == 'p1s' && strCon == 'p1') || (profileName == 'e1s' && strCon == 'e1'))
                                                     {} //strCon takes precedence if show clause during search
                                                     else
                                                     {strCon = profileName;}
