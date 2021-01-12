@@ -157,6 +157,14 @@ const qnaServiceEPCT1 = new QnAMaker({
              await this._userSearchAccessor.set(stepContext.context, "index");
 
              } 
+	    
+	    else if (JSONstringifythisuserState.indexOf('epct1',0) != -1){ 
+  
+             await this._userProfileAccessor.set(stepContext.context, "e1");
+
+             await this._userSearchAccessor.set(stepContext.context, "index");
+
+             } 
 
              //Check str
              function keepCharsAbove(inStr, charCode) {
@@ -213,6 +221,17 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                    this._userSearchAccessor.searchType = 'advanced';
                    await this._userSearchAccessor.set(stepContext.context, "advanced");
                    }
+	    
+	           else if ((profileName != '' && str == 'e1s') || (profileName != '' && str == 'e1 search') || (profileName != '' && str == 'e1 s')) 
+
+                   {
+
+                   stepContext.context.activity.text = 'p1s:0/0/0/0';
+
+                   await this._userProfileAccessor.set(stepContext.context, "e1s");
+                   this._userSearchAccessor.searchType = 'advanced';
+                   await this._userSearchAccessor.set(stepContext.context, "advanced");
+                   }
  
                    else if ((profileName == 'c1' && str.indexOf('plant & design-build contract 1st ed 1999',0) != -1) || (profileName == 'c1' && str == 'p1')) 
                    {
@@ -224,7 +243,14 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
                    else if ((profileName == 'p1' && str.indexOf('construction contract 1st ed 1999',0) != -1) || (profileName == 'p1' && str == 'c1'))
                    {
-                   stepContext.context.activity.text = 'construction contract 1st cd 1999';
+                   stepContext.context.activity.text = 'construction contract 1st ed 1999';
+
+                   await this._userProfileAccessor.set(stepContext.context, "c1");
+                   } 
+	    
+	           else if ((profileName == 'e1' && str.indexOf('epc/turnkey contract 1st ed 1999',0) != -1) || (profileName == 'e1' && str == 'c1'))
+                   {
+                   stepContext.context.activity.text = 'construction contract 1st ed 1999';
 
                    await this._userProfileAccessor.set(stepContext.context, "c1");
                    } 
@@ -270,8 +296,17 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                                await this._userProfileAccessor.set(stepContext.context, "p1");
 
                                }
+				 
+			       else if (str.indexOf('EPC &',0) != -1 )
+                               {
+                               stepContext.context.activity.text = 'epct1'; 
 
-                               else if (str == 'c1s' || str == 'p1s')
+
+                               await this._userProfileAccessor.set(stepContext.context, "e1");
+
+                               }
+
+                               else if (str == 'c1s' || str == 'p1s' || str == 'e1s')
                                {
                                var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false)
 
@@ -328,6 +363,15 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                                          await this._userSearchAccessor.set(stepContext.context, '');
                                          await this._userProfileAccessor.set(stepContext.context,'p1');
                                          if (tempText.indexOf('[p1]',0) != -1){profileName = 'p1'}
+                                         qnaMakerOptions.scoreThreshold = 0.5;  
+                                         qnaMakerOptions.top = 3; 
+                                         qnaMakerOptions.strictFilters = null;
+                                         }
+					  else if (tempText.indexOf('stop search [e1]',0) != -1 || tempText == '[ e1 ]')
+                                         {
+                                         await this._userSearchAccessor.set(stepContext.context, '');
+                                         await this._userProfileAccessor.set(stepContext.context,'p1');
+                                         if (tempText.indexOf('[e1]',0) != -1){profileName = 'e1'}
                                          qnaMakerOptions.scoreThreshold = 0.5;  
                                          qnaMakerOptions.top = 3; 
                                          qnaMakerOptions.strictFilters = null;
