@@ -682,7 +682,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 	    textTemp = textTemp.replace('e1i','e1')
 	    }
 
-        console.log("\n681 textTemp = " + textTemp);
+        console.log("\n685 textTemp = " + textTemp);
 	stepContext.context.activity.text = textTemp;
 
         if (textOrig == 'c1i:'){await this._userSearchAccessor.set(stepContext.context, '');}
@@ -690,18 +690,19 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 	if (textOrig == 'e1i:'){await this._userSearchAccessor.set(stepContext.context, '');}
 
         var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false);
-
+        console.log("\n693 profileNameTemp = " + profileNameTemp);
+	    
         if (userProfile != false)
           {
           if (profileNameTemp.indexOf('c1',0) != -1) //ON FIRST INDEX
              {        
-	     console.log("\n692 stepContext.context = " + JSON.stringify(stepContext.context));
+	     console.log("\n699 stepContext.context = " + JSON.stringify(stepContext.context));
 	      var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
-	      console.log("\n694 RESPONSE =" + JSON.stringify(response));  
+	      console.log("\n701 RESPONSE =" + JSON.stringify(response));  
 	     }		  
              else if (profileNameTemp.indexOf('p1',0) != -1)
              { 
-	     console.log("\n698 stepContext.context = " + JSON.stringify(stepContext.context));
+	     console.log("\n705 stepContext.context = " + JSON.stringify(stepContext.context));
              var response = await this._qnaMakerServicePlant1.getAnswersRaw(stepContext.context, qnaMakerOptions);
 	     }		  
 	     else if (profileNameTemp.indexOf('e1',0) != -1)
@@ -711,49 +712,49 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 		  
              else
              {
-	     console.log("\n706 stepContext.context = " + JSON.stringify(stepContext.context));     
+	     console.log("\n715 stepContext.context = " + JSON.stringify(stepContext.context));     
              var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);}
           }
           else
           {
-	  console.log("\n711 stepContext.context = " + JSON.stringify(stepContext.context));	  
+	  console.log("\n720 stepContext.context = " + JSON.stringify(stepContext.context));	  
           var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);}
 
 
         
-      console.log("\n707 RESPONSE =" + JSON.stringify(response));
+      console.log("\n725 RESPONSE =" + JSON.stringify(response));
         
 
      //Welcome
      profileName = await this._userProfileAccessor.get(stepContext.context,false)
-     console.log("712 OPENING profileName = " + profileName) 
+     console.log("730 OPENING profileName = " + profileName) 
      var didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-     console.log("714 OPENING didBotWelcomedUser = " + didBotWelcomedUser) 
+     console.log("732 OPENING didBotWelcomedUser = " + didBotWelcomedUser) 
 
      if (this._welcomedUserProperty != undefined){ 
             didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-            console.log("718 didBotWelcomedUser = " + didBotWelcomedUser) 
+            console.log("736 didBotWelcomedUser = " + didBotWelcomedUser) 
             
             if (didBotWelcomedUser == undefined){
-                console.log("721 didBotWelcomedUser = undefined")    
+                console.log("739 didBotWelcomedUser = undefined")    
                 
                 if (response.answers[0] == undefined){  
-                     console.log("724 response.answers[0] = " + response.answers[0]) 
+                     console.log("742 response.answers[0] = " + response.answers[0]) 
                     
                      if (profileName == false){  
-                         console.log("727 profileName = " + profileName) 
+                         console.log("745 profileName = " + profileName) 
                          
-                         console.log("729 reponse = default welcome 1st pass Messenger; xyz on first webchat submit.") 
+                         console.log("747 reponse = default welcome 1st pass Messenger; xyz on first webchat submit.") 
                          response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot. Please submit \"start\" to start.","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                          } else { 
-                         console.log("733 profileName = " + profileName) 
+                         console.log("751 profileName = " + profileName) 
                          
                          }
                                                    
                      } else { 
                          
-                     console.log("739 response.answers[0] = " + response.answers[0]) 
+                     console.log("757 response.answers[0] = " + response.answers[0]) 
                      console.log("740 reponse = let pass") 
                      //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      
