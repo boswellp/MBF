@@ -669,12 +669,13 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
         var textTemp = stepContext.context.activity.text;
         var textOrig = stepContext.context.activity.text;
 
+	if (textTemp.indexOf('1/1/1/1',0) != -1){textTemp = textTemp + '/'}  //to handle 1.1.1.1 and 1.1.1.10. Better to close codes with a / TO DO
+        
         textTemp = textTemp.replace('c1si ','')
         textTemp = textTemp.replace('p1si ','')
 	textTemp = textTemp.replace('e1si ','')
-	console.log("\n675 textTemp = " + textTemp);
-        if (textTemp.indexOf('1/1/1/1',0) != -1){textTemp = textTemp + '/'}  //to handle 1.1.1.1 and 1.1.1.10. Better to close codes with a / TO DO
-        console.log("\n677 textTemp = " + textTemp);
+
+        console.log("\n681 textTemp = " + textTemp);
 	stepContext.context.activity.text = textTemp;
 
         if (textOrig == 'c1i:'){await this._userSearchAccessor.set(stepContext.context, '');}
