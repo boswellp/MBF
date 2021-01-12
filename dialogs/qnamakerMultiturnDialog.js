@@ -457,8 +457,9 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                                                    console.log ("\n457 = " + str);
                                                     strCon = 'c1';}
                                                     else 
-						    {if (str == 'plant & design-build contract 1st ed 1999'){console.log ("\n460 = " + str); strCon = 'p1';}
-						    {if (str == 'epc/turnkey contract 1st ed 1999'){console.log ("\n461 = " + str); strCon = 'e1';}
+						    {
+						     if (str == 'plant & design-build contract 1st ed 1999'){console.log ("\n460 = " + str); strCon = 'p1';}
+						     if (str == 'epc/turnkey contract 1st ed 1999'){console.log ("\n461 = " + str); strCon = 'e1';}
                                                     }						 
                                                  }
                                            console.log("\n464 strCon = " + strCon + "; strNo = " + strNo); //strCon = p1; strNo = daa.6
@@ -469,7 +470,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                                            console.log("\n468 strConNoFull = " + strConNoFull);
                                            } 
                                        }
-
+/////////////
                                        else //no space
 
                                        {
