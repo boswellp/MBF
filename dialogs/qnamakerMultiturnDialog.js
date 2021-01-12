@@ -315,31 +315,24 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                                await this._userSearchAccessor.set(stepContext.context, "");
                                }
 
+				 
+				 
                          var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
 
                          if (str.indexOf('construction contract',0) != -1)
                                {
                                stepContext.context.activity.text = 'cons1'; 
-
                                await this._userProfileAccessor.set(stepContext.context, "c1");
-
                                }
                                else if (str.indexOf('Plant &',0) != -1 )
                                {
                                stepContext.context.activity.text = 'plant1'; 
-
-
                                await this._userProfileAccessor.set(stepContext.context, "p1");
-
                                }
-				 
-			       else if (str.indexOf('EPC &',0) != -1 )
+			       else if (str.indexOf('EPC/Turnkey &',0) != -1 )
                                {
                                stepContext.context.activity.text = 'epct1'; 
-
-
                                await this._userProfileAccessor.set(stepContext.context, "e1");
-
                                }
 
                                else if (str == 'c1s' || str == 'p1s' || str == 'e1s')
@@ -349,10 +342,8 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                                if (str != profileNameTemp) 
                                      {
                                      await this._userProfileAccessor.set(stepContext.context, str + ':0/0/0/0');
-
                                      await this._userSearchAccessor.set(stepContext.context, 'advanced');
-                                     stepContext.context.activity.text = str;
-                                     
+                                     stepContext.context.activity.text = str;                                
                                      }
 
                                 } 
@@ -406,7 +397,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 					  else if (tempText.indexOf('stop search [e1]',0) != -1 || tempText == '[ e1 ]')
                                          {
                                          await this._userSearchAccessor.set(stepContext.context, '');
-                                         await this._userProfileAccessor.set(stepContext.context,'p1');
+                                         await this._userProfileAccessor.set(stepContext.context,'e1');
                                          if (tempText.indexOf('[e1]',0) != -1){profileName = 'e1'}
                                          qnaMakerOptions.scoreThreshold = 0.5;  
                                          qnaMakerOptions.top = 3; 
