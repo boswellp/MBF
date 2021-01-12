@@ -640,7 +640,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
         console.log("\n640 profileNameTemp = " + profileNameTemp);
         console.log("641 qnaMakerOptions = " + JSON.stringify(qnaMakerOptions));
         console.log("642 stepContext.context.activity.text = " + stepContext.context.activity.text);
-        console.log("643  qnaMakerOptions.qnaId = " + qnaMakerOptions.qnaId);
+        console.log("643 qnaMakerOptions.qnaId = " + qnaMakerOptions.qnaId);
 
 
 
@@ -651,15 +651,14 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
            qnaMakerOptions.context.previousQnAId = userPrevQnaidP1;
            qnaMakerOptions.qnaId = userQnaidP1;
            }
-
         if (profileNameTemp  == 'c1' && stepContext.context.activity.text.indexOf('construction contract',0) != -1)
            {
+	   console.log("656 stepContext.context.activity.text only for construction contract = " + stepContext.context.activity.text);
            var userQnaidC1 = await this._userQnaidC1Accessor.get(stepContext.context,false)
            var userPrevQnaidC1 = await this._userPrevQnaidC1Accessor.get(stepContext.context,false)
            qnaMakerOptions.context.previousQnAId = userPrevQnaidC1;
            qnaMakerOptions.qnaId = userQnaidC1;
-           }
-	    
+           } 
 	if (profileNameTemp  == 'e1' && stepContext.context.activity.text.indexOf('epc/turnkey contract',0) != -1)
            {
            var userQnaidE1 = await this._userQnaidE1Accessor.get(stepContext.context,false)
@@ -686,12 +685,12 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
         if (userProfile != false)
           {
           if (profileNameTemp.indexOf('c1',0) != -1)
-             {var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);}
-		  
+             {var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
+	      console.log("\n690 RESPONSE =" + JSON.stringify(response));
+	     }		  
              else if (profileNameTemp.indexOf('p1',0) != -1)
              { 
-             var response = await this._qnaMakerServicePlant1.getAnswersRaw(stepContext.context, qnaMakerOptions);}
-		  
+             var response = await this._qnaMakerServicePlant1.getAnswersRaw(stepContext.context, qnaMakerOptions);}		  
 	     else if (profileNameTemp.indexOf('e1',0) != -1)
              { 
              var response = await this._qnaMakerServiceEPCT1.getAnswersRaw(stepContext.context, qnaMakerOptions);}
