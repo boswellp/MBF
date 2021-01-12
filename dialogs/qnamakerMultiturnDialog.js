@@ -673,8 +673,8 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
         textTemp = textTemp.replace('p1si ','')
 	textTemp = textTemp.replace('e1si ','')
         if (textTemp.indexOf('1/1/1/1',0) != -1){textTemp = textTemp + '/'}  //to handle 1.1.1.1 and 1.1.1.10. Better to close codes with a / TO DO
-        stepContext.context.activity.text = textTemp;
-
+        console.log("\n676 textTemp = " + textTemp);
+	stepContext.context.activity.text = textTemp;
 
         if (textOrig == 'c1i:'){await this._userSearchAccessor.set(stepContext.context, '');}
         if (textOrig == 'p1i:'){await this._userSearchAccessor.set(stepContext.context, '');}
