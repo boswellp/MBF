@@ -667,7 +667,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
            }
 	    
 	if (stepContext.context.activity.text.indexOf('1/1/1/1',0) != -1){stepContext.context.activity.text = stepContext.context.activity.text + '/'}  //to handle 1.1.1.1 and 1.1.1.10. Better to close codes with a / TO DO
-        
+        console.log("\n670 stepContext.context.activity.text = " + stepContext.context.activity.text);
         var textTemp = stepContext.context.activity.text;
         var textOrig = stepContext.context.activity.text;
 
@@ -688,8 +688,10 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
         if (userProfile != false)
           {
           if (profileNameTemp.indexOf('c1',0) != -1)
-             {var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
-	      console.log("\n690 RESPONSE =" + JSON.stringify(response));
+             {        
+	     console.log("\n692 stepContext.context = " + stepContext.context);
+	      var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
+	      console.log("\n694 RESPONSE =" + JSON.stringify(response));
 	     }		  
              else if (profileNameTemp.indexOf('p1',0) != -1)
              { 
