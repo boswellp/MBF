@@ -242,7 +242,8 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                    stepContext.context.activity.text = 'plant & design-build contract 1st ed 1999';
 			   
 		   await this._userProfileAccessor.set(stepContext.context, "c1");
-			   
+			
+		   } 
                    //added for epc
 			   
 		   else if ((profileName == 'c1' && str.indexOf('epc/turnkey contract 1st ed 1999',0) != -1) || (profileName == 'c1' && str == 'e1')) 
