@@ -38,8 +38,10 @@ const USER_SEARCH_PROPERTY = 'userSearchAccessor';
 const USER_STRING_PROPERTY = 'userStringAccessor';
 const USER_QNAIDC1_PROPERTY = 'userQnaidC1Accessor';
 const USER_QNAIDP1_PROPERTY = 'userQnaidP1Accessor';
+const USER_QNAIDE1_PROPERTY = 'userQnaidE1Accessor';
 const USER_PREVQNAIDC1_PROPERTY = 'userPrevQnaidC1Accessor';
 const USER_PREVQNAIDP1_PROPERTY = 'userPrevQnaidP1Accessor';
+const USER_PREVQNAIDE1_PROPERTY = 'userPrevQnaidE1Accessor';
 const USER_INDEX_PROPERTY = 'userIndexAccessor';
 const WELCOMED_USER = 'welcomedUserProperty';
 
