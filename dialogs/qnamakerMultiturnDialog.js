@@ -665,12 +665,13 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
            qnaMakerOptions.context.previousQnAId = userPrevQnaidE1;
            qnaMakerOptions.qnaId = userQnaidE1;
            }
-
+	    
+	if (stepContext.context.activity.text.indexOf('1/1/1/1',0) != -1){stepContext.context.activity.text = stepContext.context.activity.text + '/'}  //to handle 1.1.1.1 and 1.1.1.10. Better to close codes with a / TO DO
+        
         var textTemp = stepContext.context.activity.text;
         var textOrig = stepContext.context.activity.text;
 
-	if (textTemp.indexOf('1/1/1/1',0) != -1){textTemp = textTemp + '/'}  //to handle 1.1.1.1 and 1.1.1.10. Better to close codes with a / TO DO
-        
+
         textTemp = textTemp.replace('c1si ','')
         textTemp = textTemp.replace('p1si ','')
 	textTemp = textTemp.replace('e1si ','')
