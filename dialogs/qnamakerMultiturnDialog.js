@@ -70,11 +70,11 @@ const qnaServicePlant1 = new QnAMaker({
     host: process.env.QnAEndpointHostName
     });	    
 //EPCT 1
-const qnaServiceEPCT1 = new QnAMaker({
-    knowledgeBaseId: process.env.QnAKnowledgebaseIde1,
-    endpointKey: process.env.QnAEndpointKey,
-    host: process.env.QnAEndpointHostName
-    });
+//const qnaServiceEPCT1 = new QnAMaker({
+    //knowledgeBaseId: process.env.QnAKnowledgebaseIde1,
+    //endpointKey: process.env.QnAEndpointKey,
+    //host: process.env.QnAEndpointHostName
+    //});
 
 
    
