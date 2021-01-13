@@ -747,20 +747,20 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                      console.log("742 response.answers[0] = " + response.answers[0]) 
                     
                      if (profileName == false){  
-                         console.log("745 profileName = " + profileName) 
+                         console.log("750 profileName = " + profileName) 
                          
-                         console.log("747 reponse = default welcome 1st pass Messenger; xyz on first webchat submit.") 
+                         console.log("752 reponse = default welcome 1st pass Messenger; xyz on first webchat submit.") 
                          response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot. Please submit \"start\" to start.","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                          } else { 
-                         console.log("751 profileName = " + profileName) 
+                         console.log("756 profileName = " + profileName) 
                          
                          }
                                                    
                      } else { 
                          
-                     console.log("757 response.answers[0] = " + response.answers[0]) 
-                     console.log("740 reponse = let pass") 
+                     //console.log("757 response.answers[0] = " + response.answers[0]) 
+                     console.log("763 reponse = let pass") 
                      //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      
                      } 
@@ -891,7 +891,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                          if (profileNameTemp.indexOf('x',0) != -1) 
                               {
 
-                              console.log("\n871 response = " + JSON.stringify(response));
+                              //console.log("\n871 response = " + JSON.stringify(response));
                               await this._userProfileAccessor.set(stepContext.context,profileNameTemp.replace('x','')); //reset code
                               profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false);
                               console.log("\n874 profileNameTemp = " + profileNameTemp);
