@@ -572,14 +572,14 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                          strConNoFull = strConNoFull.replace('c1 ','c1:');
                          strConNoFull = strConNoFull.replace('p1 ','p1:');
 			 strConNoFull = strConNoFull.replace('e1 ','e1:');
-
-                         //console.log("\n464 A keyword strConNoFull = " + strConNoFull);
-
+				 
                          var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
 
 			 var searchWord = strConNoFull;
 			 
 		         if (searchWord.indexOf('/',0) != -1){searchWord = ' (for ' + searchWord + ')'}
+
+                         console.log("\n582 strConNoFull = " + strConNoFull + "; searchWord = " + searchWord);
 				 
                          if (searchTypeTemp == "advanced")
 				 
