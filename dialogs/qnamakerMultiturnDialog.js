@@ -577,17 +577,22 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
                          var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
 
+			 var searchWord = strConNoFull;
+			 
+		         if (searchWord.indexOf('/',0) != -1){searchWord = ' (for ' + searchWord + ')'}
+				 
                          if (searchTypeTemp == "advanced")
-                            {strConNoFull = 'Search active\n\n' + strConNoFull;}
+				 
+                            {strConNoFull = 'Search active\n\n' + searchWord;}
                             else
-                            {strConNoFull = 'Search not active\n\n' + strConNoFull;}
+                            {strConNoFull = 'Search not active\n\n';}
+				 
                          stepContext.context.activity.text = strConNoFull;
 
                          //console.log ("\n475 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
 
                          }
 
- 
                     stepContext.values[CurrentQuery] = stepContext.context.activity.text;
 
                     var previousContextData = dialogOptions[QnAContextData];
