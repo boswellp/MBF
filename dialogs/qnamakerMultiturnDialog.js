@@ -1254,7 +1254,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
               if (searchTypeTemp == 'advanced' && response.answers[0] != undefined)
                  {
 		 var searchWord = stepContext.context.activity.text;
-			 
+		  console.log("\n1246 search coming ......................" + searchWord + " index = " + searchWord.indexOf('/',0)); 
 		 if (searchWord.indexOf('/',0) == -1)
 		         {		 
 		         if (strTemp != searchWord)
