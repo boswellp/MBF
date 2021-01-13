@@ -996,7 +996,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
            if (profileNameTemp.indexOf('1s',0) != -1)  
                {       
 
-               console.log("\n852 START META ADD START PROMPT response.answers[0].answer = " + response.answers[0].answer)
+               //console.log("\n852 START META ADD START PROMPT response.answers[0].answer = " + response.answers[0].answer)
 
                for (var i = 0; i < 50; i++) 
                   {if (response.answers[i] != undefined){delete(response.answers[i].answer);}}
@@ -1079,7 +1079,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                response.answers[0].answer = "Select a category";
 
  
-               console.log("\n935response = " + JSON.stringify(response))
+               //console.log("\n935response = " + JSON.stringify(response))
 
 //Stage 1 create prompts
 
@@ -1087,7 +1087,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                //console.log("\n831 pass1 metadataAry = " + JSON.stringify(metadataAry));
                //console.log("\n832 pass1 categoryAry = " + JSON.stringify(categoryAry));
                //console.log("\n833 categoryAry.length" + categoryAry.length) 
-               console.log("\n1072 END META response.answers[0] = " + JSON.stringify(response.answers[0])) 
+               //console.log("\n1072 END META response.answers[0] = " + JSON.stringify(response.answers[0])) 
              
 
                if (categoryAry.length == 0) //check no category situation?? There will always be a category??
@@ -1178,7 +1178,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                      answerTitle = answerTitle.substring(0,posnTitle);
                      if (i > 0){combinedAnswers = '\n\n' + combinedAnswers;}
 
-                     console.log("\n1163  ")
+                     console.log("\n1181  ")
 
                      combinedAnswers = answerTitle + combinedAnswers;
 
@@ -1207,7 +1207,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
                   } 
 
-             console.log("\n1210 AFTER PROMPTS response.answers[0].context = \n" + JSON.stringify( response.answers[0].context))
+             //console.log("\n1210 AFTER PROMPTS response.answers[0].context = \n" + JSON.stringify( response.answers[0].context))
 
              await this._userSearchAccessor.set(stepContext.context, 'advanced')
 
@@ -1215,9 +1215,9 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
              response.answers[0].answer = combinedAnswers;
 
-             console.log("\n1218 combinedAnswers response.answers[0].answer = \n" + JSON.stringify(response.answers[0].answer))
+             //console.log("\n1218 combinedAnswers response.answers[0].answer = \n" + JSON.stringify(response.answers[0].answer))
 		       
-	     console.log("\n12201 stepContext.context.activity.text = " + stepContext.context.activity.text)
+	     console.log("\n12201 ................stepContext.context.activity.text = " + stepContext.context.activity.text)
 
              var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
              if (searchTypeTemp == 'advanced')
@@ -1264,7 +1264,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
         stepContext.values[QnAData] = result;
 
-        console.log("\n1249 OUT1 NOT PROCESSED result = " + JSON.stringify(result))
+        //console.log("\n1249 OUT1 NOT PROCESSED result = " + JSON.stringify(result))
 
         return await stepContext.next(result); 
 
@@ -1274,8 +1274,8 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
     //need extended index here
     async checkForMultiTurnPrompt(stepContext, answerNoAnswerDeep) {
 
-        console.log("\n1259 stepContext.result= " + JSON.stringify(stepContext.result))
-        console.log("\n1259 stepContext.result.length= " + stepContext.result.length)
+        //console.log("\n1259 stepContext.result= " + JSON.stringify(stepContext.result))
+        //console.log("\n1259 stepContext.result.length= " + stepContext.result.length)
 
         if (stepContext.result != null && stepContext.result.length > 0) {
 
@@ -1295,7 +1295,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
             if (answer.context != null && answer.context.prompts != null && answer.context.prompts.length > 0)
                 {
-                console.log("\n1280 OUT2 PROCESSING 2 MESSAGES - STORED ANSWER + PROMPT CARD MESSAGE")
+                //console.log("\n1280 OUT2 PROCESSING 2 MESSAGES - STORED ANSWER + PROMPT CARD MESSAGE")
 
                 var dialogOptions = getDialogOptionsValue(stepContext);
 
@@ -1337,12 +1337,12 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
                 //first message - sends stored answer (for clauses with c1:1.1.1.4 and for extended index with c1i:accepted). Use c1 for both. OK?
 
-                console.log("\n1322 FIRST MESSAGE - CARD MESSAGE - answer.questions[0]= " + JSON.stringify(answer.questions[0]))
+                //console.log("\n1322 FIRST MESSAGE - CARD MESSAGE - answer.questions[0]= " + JSON.stringify(answer.questions[0]))
 
                 if (answer.questions[0].indexOf('c1:',0) != -1 || answer.questions[0].indexOf('p1:',0) != -1 || answer.questions[0].indexOf('e1:',0) != -1 || answer.questions[0].indexOf('c1i:',0) != -1 || answer.questions[0].indexOf('p1i:',0) != -1 || answer.questions[0].indexOf('e1i:',0) != -1) 
                    //await stepContext.context.sendActivity("TESTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
                    {
-                   console.log("\n1327 FIRST MESSAGE - CARD MESSAGE - answerNoAnswerDeepStore.answer = " + JSON.stringify(answerNoAnswerDeepStore.answer))
+                   //console.log("\n1327 FIRST MESSAGE - CARD MESSAGE - answerNoAnswerDeepStore.answer = " + JSON.stringify(answerNoAnswerDeepStore.answer))
                    await stepContext.context.sendActivity(answerNoAnswerDeepStore.answer);
                    }
 
@@ -1364,7 +1364,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
                 //second message - uses card for prompts
                 var message = QnACardBuilder.GetQnAPromptsCard(answer); 
-                console.log("\n1213 SECOND - MESSAGE CARD MESSAGE = " + JSON.stringify(message))
+                //console.log("\n1213 SECOND - MESSAGE CARD MESSAGE = " + JSON.stringify(message))
                 await stepContext.context.sendActivity(message);
                    
                 return { status: DialogTurnStatus.waiting };
@@ -1392,13 +1392,13 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
             return await stepContext.replaceDialog(QNAMAKER_DIALOG, dialogOptions);
         }
 
-        console.log("\n1125 END END stepContext.result = " + JSON.stringify(stepContext.result));
+        //console.log("\n1125 END END stepContext.result = " + JSON.stringify(stepContext.result));
 
         var responses = stepContext.result;
         if (responses != null) {
             if (responses.length > 0) {
 
-                console.log("\n1383 END END responses[0].answer = " + JSON.stringify(responses[0].answer));
+                //console.log("\n1383 END END responses[0].answer = " + JSON.stringify(responses[0].answer));
 
                 await stepContext.context.sendActivity(responses[0].answer);
 
