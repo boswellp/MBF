@@ -804,7 +804,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                                    }
                                                    
                                 } else { 
-                                console.log("784 response.answers[0] = " + response.answers[0])
+                               // console.log("784 response.answers[0] = " + response.answers[0])
                                 
                                 console.log("786 reponse = let pass")     
                                 //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
@@ -816,8 +816,8 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
         //welcome end
 
-        console.log("\n796 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
-        console.log("\n797 ANSWER BEFORE PROCESSING response.answers[0] = " + JSON.stringify(response.answers[0]));
+        //console.log("\n796 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
+        //console.log("\n797 ANSWER BEFORE PROCESSING response.answers[0] = " + JSON.stringify(response.answers[0]));
 
         //Add extended index link
         //if (response.answers[0] != undefined && response.answers[0].context.prompts[0] != undefined) //if index entry has no prompts
@@ -1222,7 +1222,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
              //console.log("\n1218 combinedAnswers response.answers[0].answer = \n" + JSON.stringify(response.answers[0].answer))
 		       
-	     console.log("\n12201 ................stepContext.context.activity.text = " + stepContext.context.activity.text)
+	     console.log("\n1225 ................stepContext.context.activity.text = " + stepContext.context.activity.text)
 
              var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
              if (searchTypeTemp == 'advanced')
@@ -1242,7 +1242,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
 //End combine clauses for advanced search
 
-        console.log("\n1240 After processing response.answers = " + JSON.stringify(response.answers));
+        //console.log("\n1240 After processing response.answers = " + JSON.stringify(response.answers));
 
         dialogOptions[PreviousQnAId] = -1;
         stepContext.activeDialog.state.options = dialogOptions;
