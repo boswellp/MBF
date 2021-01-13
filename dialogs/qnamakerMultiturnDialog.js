@@ -1207,7 +1207,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
                   } 
 
-             console.log("\n1192 AFTER PROMPTS response.answers[0].context = \n" + JSON.stringify( response.answers[0].context))
+             console.log("\n1210 AFTER PROMPTS response.answers[0].context = \n" + JSON.stringify( response.answers[0].context))
 
              await this._userSearchAccessor.set(stepContext.context, 'advanced')
 
@@ -1215,9 +1215,9 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
              response.answers[0].answer = combinedAnswers;
 
-             console.log("\n1071 combinedAnswers response.answers[0].answer = \n" + JSON.stringify(response.answers[0].answer))
-
-
+             console.log("\n1218 combinedAnswers response.answers[0].answer = \n" + JSON.stringify(response.answers[0].answer))
+		       
+	     console.log("\n12201 stepContext.context.activity.text = " + stepContext.context.activity.text)
 
              var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
              if (searchTypeTemp == 'advanced')
@@ -1237,7 +1237,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
 //End combine clauses for advanced search
 
-        console.log("\n1222 After processing response.answers = " + JSON.stringify(response.answers));
+        console.log("\n1240 After processing response.answers = " + JSON.stringify(response.answers));
 
         dialogOptions[PreviousQnAId] = -1;
         stepContext.activeDialog.state.options = dialogOptions;
