@@ -1,4 +1,4 @@
-// Copyright (c) Bricad Associates 2020
+/ Copyright (c) Bricad Associates 2020
 
 // ver 5 April 2020
 
