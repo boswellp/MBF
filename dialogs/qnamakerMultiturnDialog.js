@@ -1254,12 +1254,13 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                  {
 		 var searchWord = stepContext.context.activity.text;
 			 
-		 if (searchWord.indexOf('/',0) == -1){
-			 		 
+		 if (searchWord.indexOf('/',0) == -1)
+		         {		 
 		         if (strTemp != searchWord)
-			       {searchWord = ' (for ' + searchWord + ' in category' + strTemp + ')' }  //add category
+			       {searchWord = ' (for ' + searchWord + ' in category ' + strTemp + ')' }  //add category
 			       else
 			       {searchWord = ' (for ' + searchWord + ')' }
+			 }
 				 			 
                  response.answers[0].answer = 'Search active' + searchWord + '\n\n' + response.answers[0].answer;
                  }
