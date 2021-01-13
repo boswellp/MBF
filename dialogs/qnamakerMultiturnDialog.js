@@ -1242,6 +1242,8 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 //End combine clauses for advanced search
 
         //console.log("\n1240 After processing response.answers = " + JSON.stringify(response.answers));
+	    
+	console.log("\n1246 search coming ......................");
 
         dialogOptions[PreviousQnAId] = -1;
         stepContext.activeDialog.state.options = dialogOptions;
