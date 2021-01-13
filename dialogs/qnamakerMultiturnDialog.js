@@ -1247,7 +1247,11 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
               {
               if (searchTypeTemp == 'advanced' && response.answers[0] != undefined)
                  {
-                 response.answers[0].answer = 'Search active for ' + stepContext.context.activity.text + ').\n\n' + response.answers[0].answer;
+		 var searchWord = stepContext.context.activity.text;
+			 
+		 if (searchWord.IndexOf('/',0) != -1){searchWord = ' (for ' + searchWord + ')'}
+			 
+                 response.answers[0].answer = 'Search active' + searchWord + ')\n\n' + response.answers[0].answer;
                  }
                  else
                  {
