@@ -577,13 +577,12 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 
 			 var searchWord = strConNoFull;
 			 
-		         if (searchWord.indexOf('/',0) == -1){searchWord = ' (for ' + searchWord + ')'}
-
                          console.log("\n582 strConNoFull = " + strConNoFull + "; searchWord = " + searchWord);
 				 
                          if (searchTypeTemp == "advanced")
-				 
-                            {strConNoFull = 'Search active\n\n' + searchWord;}
+			    {
+			    if (searchWord.indexOf('/',0) == -1){searchWord = ' (for ' + searchWord + ')'}
+                            strConNoFull = 'Search active\n\n' + searchWord;}
                             else
                             {strConNoFull = 'Search not active\n\n';}
 				 
