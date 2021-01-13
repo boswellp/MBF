@@ -1249,7 +1249,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
                  {
 		 var searchWord = stepContext.context.activity.text;
 			 
-		 if (searchWord.IndexOf('/',0) != -1){searchWord = ' (for ' + searchWord + ')'}
+		 if (searchWord.indexOf('/',0) != -1){searchWord = ' (for ' + searchWord + ')'}
 			 
                  response.answers[0].answer = 'Search active' + searchWord + ')\n\n' + response.answers[0].answer;
                  }
