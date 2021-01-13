@@ -672,7 +672,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
            }
 	    
 	if (stepContext.context.activity.text.indexOf('1/1/1/1',0) != -1){stepContext.context.activity.text = stepContext.context.activity.text + '/'}  //to handle 1.1.1.1 and 1.1.1.10. Better to close codes with a / TO DO
-        console.log("\n670 stepContext.context.activity.text = " + stepContext.context.activity.text);
+        //console.log("\n670 stepContext.context.activity.text = " + stepContext.context.activity.text);
         var textTemp = stepContext.context.activity.text;
         var textOrig = stepContext.context.activity.text;
 
@@ -701,13 +701,13 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
           {
           if (profileNameTemp.indexOf('c1',0) != -1) //ON FIRST INDEX
              {        
-	     console.log("\n699 stepContext.context = " + JSON.stringify(stepContext.context));
+	     //console.log("\n699 stepContext.context = " + JSON.stringify(stepContext.context));
 	      var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
-	      console.log("\n701 RESPONSE =" + JSON.stringify(response));  
+	      //console.log("\n701 RESPONSE =" + JSON.stringify(response));  
 	     }		  
              else if (profileNameTemp.indexOf('p1',0) != -1)
              { 
-	     console.log("\n705 stepContext.context = " + JSON.stringify(stepContext.context));
+	     //console.log("\n705 stepContext.context = " + JSON.stringify(stepContext.context));
              var response = await this._qnaMakerServicePlant1.getAnswersRaw(stepContext.context, qnaMakerOptions);
 	     }		  
 	     else if (profileNameTemp.indexOf('e1',0) != -1)
@@ -717,31 +717,31 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 		  
              else
              {
-	     console.log("\n715 stepContext.context = " + JSON.stringify(stepContext.context));     
+	     //console.log("\n715 stepContext.context = " + JSON.stringify(stepContext.context));     
              var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);}
           }
           else
           {
-	  console.log("\n720 stepContext.context = " + JSON.stringify(stepContext.context));	  
+	  //console.log("\n720 stepContext.context = " + JSON.stringify(stepContext.context));	  
           var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);}
 
 
         
-      console.log("\n725 RESPONSE =" + JSON.stringify(response));
+      //console.log("\n725 RESPONSE =" + JSON.stringify(response));
         
 
      //Welcome
      profileName = await this._userProfileAccessor.get(stepContext.context,false)
      console.log("730 OPENING profileName = " + profileName) 
      var didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-     console.log("732 OPENING didBotWelcomedUser = " + didBotWelcomedUser) 
+     //console.log("732 OPENING didBotWelcomedUser = " + didBotWelcomedUser) 
 
      if (this._welcomedUserProperty != undefined){ 
             didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-            console.log("736 didBotWelcomedUser = " + didBotWelcomedUser) 
+            //console.log("736 didBotWelcomedUser = " + didBotWelcomedUser) 
             
             if (didBotWelcomedUser == undefined){
-                console.log("739 didBotWelcomedUser = undefined")    
+                //console.log("739 didBotWelcomedUser = undefined")    
                 
                 if (response.answers[0] == undefined){  
                      console.log("742 response.answers[0] = " + response.answers[0]) 
