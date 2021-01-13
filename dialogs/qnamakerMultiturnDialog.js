@@ -1256,7 +1256,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 			 
 		 if (searchWord.indexOf('/',0) == -1){searchWord = ' (for ' + searchWord + ')'}
 			 
-                 response.answers[0].answer = 'Search active' + searchWord + ')\n\n' + response.answers[0].answer;
+                 response.answers[0].answer = 'Search active' + searchWord + '\n\n' + response.answers[0].answer;
                  }
                  else
                  {
