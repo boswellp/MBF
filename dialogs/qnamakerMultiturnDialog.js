@@ -1,6 +1,6 @@
-/ Copyright (c) Bricad Associates 2020
+// Copyright (c) Bricad Associates 2021
 
-// ver 5 April 2020
+// ver 13 Jan 2021
 
 //alterations use: qnamaker replace alterations --in wordAlterations.json
 
