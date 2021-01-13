@@ -1261,9 +1261,14 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 			       {searchWord = ' (for ' + searchWord + ' in category ' + strTemp + ')' }  //add category
 			       else
 			       {searchWord = ' (for ' + searchWord + ')' }
+				 
+			 response.answers[0].answer = 'Search active' + searchWord + '\n\n' + response.answers[0].answer;
+			 }
+			 else
+			 {
+			 response.answers[0].answer = 'Search active' + '\n\n' + response.answers[0].answer;
 			 }
 				 			 
-                 response.answers[0].answer = 'Search active' + searchWord + '\n\n' + response.answers[0].answer;
                  }
                  else
                  {
