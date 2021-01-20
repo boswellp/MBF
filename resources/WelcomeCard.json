@@ -11,7 +11,8 @@
     {
       "type": "TextBlock",
       "spacing": "medium",
-      "size": "large",
+      "size": "auto",
+      "width": "auto",
       "weight": "bolder",
       "text": "",
       "wrap": true,
@@ -20,7 +21,8 @@
     },
     {
       "type": "TextBlock",
-      "size": "default",
+      "size": "auto",
+      "width": "auto",
       "isSubtle": true,
       "text": "",
       "wrap": true,
@@ -29,7 +31,8 @@
     },
     {
       "type": "TextBlock",
-      "size": "default",
+      "size": "auto",
+      "width": "auto",
       "isSubtle": true,
       "text": "",
       "wrap": true,
@@ -38,7 +41,8 @@
     },
     {
       "type": "TextBlock",
-      "size": "default",
+      "size": "auto",
+      "width": "auto",
       "isSubtle": true,
       "text": "",
       "wrap": true,
@@ -47,7 +51,8 @@
     },
     {
       "type": "TextBlock",
-      "size": "default",
+      "size": "auto",
+      "width": "auto",
       "isSubtle": true,
       "text": "",
       "wrap": true,
@@ -56,7 +61,8 @@
     },
     {
       "type": "TextBlock",
-      "size": "default",
+      "size": "auto",
+      "width": "auto",
       "isSubtle": true,
       "text": "",
       "wrap": true,
@@ -65,7 +71,8 @@
     },
     {
       "type": "TextBlock",
-      "size": "default",
+      "size": "auto",
+      "width": "auto",
       "isSubtle": true,
       "text": "",
       "wrap": true,
