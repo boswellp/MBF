@@ -1259,14 +1259,14 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 		         {		 
 		         if (strTemp != searchWord)
 			       { 
-			       if (searchWord.indexOf('1s',0) == -1)
-			               {
+			       //if (searchWord.indexOf('1s',0) == -1)
+			               //{
 				       searchWord = ' (for ' + searchWord + ' in category ' + strTemp + ')' }  //add category
-			               }
-				       else
-				       {
-				       searchWord = '';
-				       }
+			               //}
+				       //else
+				       // {
+				       //searchWord = '';
+				       //}
 			       }
 			       else
 			       {searchWord = ' (for ' + searchWord + ')' }
