@@ -1,7 +1,7 @@
 {
-  "$schema": "http://adaptivecards.io/schemas/x.x.x/adaptive-card.json",
+  "$schema": "http://adaptivecards.io/schemas/1.2.0/adaptive-card.json",
   "type": "AdaptiveCard",
-  "version": "1.3",
+  "version": "1.2",
   "body": [
     {
       "type": "Image",
@@ -11,9 +11,7 @@
     {
       "type": "TextBlock",
       "spacing": "medium",
-      "size": "auto",
-      "width": "auto",
-      "maxWidth": 500,
+      "size": "large",
       "weight": "bolder",
       "text": "",
       "wrap": true,
@@ -22,9 +20,7 @@
     },
     {
       "type": "TextBlock",
-      "size": "auto",
-      "width": "auto",
-      "maxWidth": 500,
+      "size": "default",
       "isSubtle": true,
       "text": "",
       "wrap": true,
@@ -33,9 +29,7 @@
     },
     {
       "type": "TextBlock",
-      "size": "auto",
-      "width": "auto",
-      "maxWidth": 500,
+      "size": "default",
       "isSubtle": true,
       "text": "",
       "wrap": true,
@@ -44,8 +38,7 @@
     },
     {
       "type": "TextBlock",
-      "size": "auto",
-      "width": "auto",
+      "size": "default",
       "isSubtle": true,
       "text": "",
       "wrap": true,
@@ -54,8 +47,7 @@
     },
     {
       "type": "TextBlock",
-      "size": "auto",
-      "width": "auto",
+      "size": "default",
       "isSubtle": true,
       "text": "",
       "wrap": true,
@@ -64,8 +56,7 @@
     },
     {
       "type": "TextBlock",
-      "size": "auto",
-      "width": "auto",
+      "size": "default",
       "isSubtle": true,
       "text": "",
       "wrap": true,
@@ -74,8 +65,7 @@
     },
     {
       "type": "TextBlock",
-      "size": "auto",
-      "width": "auto",
+      "size": "default",
       "isSubtle": true,
       "text": "",
       "wrap": true,
