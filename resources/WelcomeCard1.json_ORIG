@@ -1,0 +1,92 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.0",
+  "body": [
+     {
+      "type": "Image",
+      "url": "https://fidic.tips/fidicchatbot/fidicchatbot_logo.png",
+      "size": "stretch"
+    },
+    {
+      "type": "TextBlock",
+      "size": "large",
+      "weight": "bolder",
+      "isSubtle": true,
+      "text": "",
+      "wrap": true,
+      "maxLines": 0,
+      "color":"accent"
+    },
+    {
+      "type": "TextBlock",
+      "size": "default",
+      "isSubtle": true,
+      "text": "",
+      "wrap": true,
+      "maxLines": 0,
+      "color":"accent"
+    },
+    {
+      "type": "TextBlock",
+      "size": "default",
+      "isSubtle": true,
+      "text": "",
+      "wrap": true,
+      "maxLines": 0,
+      "color":"accent"
+    },
+    {
+      "type": "TextBlock",
+      "size": "default",
+      "isSubtle": true,
+      "text": "",
+      "wrap": true,
+      "maxLines": 0,
+      "color":"accent"
+    },
+    {
+      "type": "TextBlock",
+      "size": "default",
+      "isSubtle": true,
+      "text": "",
+      "wrap": true,
+      "maxLines": 0,
+      "color":"accent"
+    },
+    {
+      "type": "TextBlock",
+      "size": "default",
+      "isSubtle": true,
+      "text": "",
+      "wrap": true,
+      "maxLines": 0,
+      "color":"accent"
+    },
+    {
+      "type": "TextBlock",
+      "size": "default",
+      "isSubtle": true,
+      "text": "",
+      "wrap": true,
+      "maxLines": 0,
+      "color":"accent"
+    },
+    {
+      "type": "TextBlock",
+      "size": "default",
+      "isSubtle": true,
+      "text": "",
+      "wrap": true,
+      "maxLines": 0,
+      "color":"accent"
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title":"start",
+      "data": "start"
+    }
+  ]
+}
