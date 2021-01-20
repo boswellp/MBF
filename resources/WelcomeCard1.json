@@ -10,7 +10,9 @@
     },
     {
       "type": "TextBlock",
-      "size": "large",
+      "size": "auto",
+      "width": "auto",
+      "maxWidth": 500,
       "weight": "bolder",
       "isSubtle": true,
       "text": "",
@@ -20,7 +22,9 @@
     },
     {
       "type": "TextBlock",
-      "size": "default",
+      "size": "auto",
+      "width": "auto",
+      "maxWidth": 500,
       "isSubtle": true,
       "text": "",
       "wrap": true,
@@ -29,7 +33,9 @@
     },
     {
       "type": "TextBlock",
-      "size": "default",
+      "size": "auto",
+      "width": "auto",
+      "maxWidth": 500,
       "isSubtle": true,
       "text": "",
       "wrap": true,
