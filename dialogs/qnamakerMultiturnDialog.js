@@ -693,7 +693,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
              {        
 	     //console.log("\n699 stepContext.context = " + JSON.stringify(stepContext.context));
 	      var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
-	      console.log("\n696 RESPONSE c1 //ON FIRST INDEX = " + JSON.stringify(response));  
+	      console.log("\n696 RESPONSE c1 GOT USERPROFILE = " + JSON.stringify(response));  
 	     }		  
              else if (userProfile.indexOf('p1',0) != -1) //ON FIRST INDEX
              { 
@@ -704,18 +704,13 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
              { 
              var response = await this._qnaMakerServiceEPCT1.getAnswersRaw(stepContext.context, qnaMakerOptions);
 	     }
-		  
-             else
-             {
-	     //console.log("\n715 stepContext.context = " + JSON.stringify(stepContext.context));     
-             var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);}
           }
           else
           {
 	  //console.log("\n720 stepContext.context = " + JSON.stringify(stepContext.context));	  
           var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);}
 
-          console.log("\n718 RESPONSE - GOT USER PROFILE = " + userProfile + "; response = " + JSON.stringify(response));
+          console.log("\n718 RESPONSE - NO USERPROFILE = " + userProfile + "; response = " + JSON.stringify(response));
         
 
      //Welcome
