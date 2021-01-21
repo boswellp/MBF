@@ -286,24 +286,21 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                   
                    if (isNaN(str)) 
                          {
-				 
-			 console.log("\n293 keyword1 - SHOW CLAUSE str IS NaN i.e., A NUMBER = " + str);
-				 
+				 	 
                          var userProfile = await this._userProfileAccessor.get(stepContext.context,false)
-
                          var searchType = await this._userSearchAccessor.get(stepContext.context);
 				 
-			 console.log("\n302 keyword1 IS NaN = str = " + str + "; userProfile = " + userProfile + "; searchType = " + searchType);
+			 console.log("\n293 keyword1 - SHOW CLAUSE str IS NaN i.e., A STRING = " + str + "; userProfile = " + userProfile + "; searchType = " + searchType);
 			
 			 if (str.indexOf('c1',0) != -1 ){userProfile = 'c1'}
 				 else if (str.indexOf('p1',0) != -1 ){userProfile = 'p1'}
 				 else if (str.indexOf('e1',0) != -1 ){userProfile = 'e1'}
 				 else {userProfile = 'c1'}
 			 if (str.indexOf('1s',0) != -1 || str.indexOf(' 1s',0) != -1 || str.indexOf('1 search',0) != -1){userProfile = userProfile + 's'}
-
 				 
 			 await this._userProfileAccessor.set(stepContext.context, userProfile)
-			 console.log("\n308 keyword1 IS NaN = str = " + str + "; userProfile = " + userProfile + "; searchType = " + searchType);						
+				 
+			 console.log("\n303 keyword1 IS NaN = str = " + str + "; userProfile = " + userProfile + "; searchType = " + searchType);						
                          if (searchType == 'advanced2') ///delete this?????
                                {
                                if (userProfile != undefined){userProfile = userProfile.replace('s','')} //to enable normal clause display
