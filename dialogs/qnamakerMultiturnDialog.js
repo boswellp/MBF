@@ -617,11 +617,11 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                        qnaMakerOptions.scoreThreshold = 0.05; 
                        qnaMakerOptions.top = 50;
                        }
-                       else
+                       else     
                        {
                        qnaMakerOptions.scoreThreshold = 0.01; 
                        qnaMakerOptions.top = 1;
-		       qnaMakerOptions.strictFilters = [{"name": "category","value": "api"}]
+		       qnaMakerOptions.strictFilters = {"name": "category","value": "api"}
 		       }
                    //}
             }
@@ -631,7 +631,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                  {
                       qnaMakerOptions.scoreThreshold = 0.01; 
                       qnaMakerOptions.top = 1;
-		      qnaMakerOptions.strictFilters = [{"name": "category","value": "api"}]
+		      qnaMakerOptions.strictFilters = {"name": "category","value": "api"}
                  }
              }
 
