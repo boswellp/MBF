@@ -206,7 +206,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
              //Search
 	     var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
-	     console.log ("\n209 SEARCH str = " + str + "; searchTypeTemp = " + searchTypeTemp + ", userProfile = " + userProfile + "\n");
+	     console.log ("\n209 SEARCH CHANGE TO ADVANCED str = " + str + "; searchTypeTemp = " + searchTypeTemp + ", userProfile = " + userProfile + "\n");
 	    
              if ((userProfile != '' && str == 'c1s') || (userProfile != '' && str == 'c1 search') || (userProfile != '' && str == 'c1 s')) 
  
@@ -1401,6 +1401,10 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                 return { status: DialogTurnStatus.waiting };
             }
         }
+	    
+	var userProfile = await this._userProfileAccessor.get(stepContext.context,false)
+        var searchType = await this._userSearchAccessor.get(stepContext.context);
+	console.log("\n1407 END???? userProfile = " + userProfile + "; searchType = " searchType )
 
         return await stepContext.next(stepContext.result);
     }
