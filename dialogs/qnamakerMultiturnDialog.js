@@ -577,12 +577,12 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                             strConNoFull = 'Search active\n\n' + searchWord;}
                             else
                             {
-			    strConNoFull = 'Search not active\n\n';  //put somewhere else??
+			    //strConNoFull = 'Search not active\n\n';  //put somewhere else??
 			    }
 				 
                          stepContext.context.activity.text = strConNoFull;
 
-                         console.log ("\n583 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
+                         console.log ("\n585 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
 
                          }
 
