@@ -531,18 +531,17 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                                        }
                                   }
 
-                         else
+                         else   //////// NUMBER
                          {
-
                          console.log("\n545 NUMBER STRING str = " + str);              
 
                          var strCon = '';
-                         var userProfileTemp = await this._userProfileAccessor.get(stepContext.context,false)
+                         userProfile = await this._userProfileAccessor.get(stepContext.context,false)
 
-                         if (userProfileTemp == "c1" || userProfileTemp== "p1" || userProfileTemp== "e1")
+                         if (userProfile == "c1" || userProfile == "p1" || userProfile== "e1")
                                {
 
-                               strCon = userProfileTemp + ":";
+                               strCon = userProfile + ":";
 
                                }
 
@@ -557,7 +556,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 
                          var strConNoFull = strCon + strNoFull;
 
-                         console.log("\n556 strConNoFull = " + strConNoFull);
+                         console.log("\n559 strConNoFull = " + strConNoFull);
 
                          strConNoFull = strConNoFull.replace('.','\/');
                          strConNoFull = strConNoFull.replace('.','\/');
@@ -567,14 +566,12 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                          strConNoFull = strConNoFull.replace('p1 ','p1:');
 			 strConNoFull = strConNoFull.replace('e1 ','e1:');
 				 
-                         var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
-
+                         var searchType = await this._userSearchAccessor.get(stepContext.context);
 			 var searchWord = strConNoFull;
-			 
-                         console.log("\n579 ADVANCED SEARCH strConNoFull = " + strConNoFull + "; searchWord = " + searchWord);
-
 				 
-                         if (searchTypeTemp == "advanced")
+			 console.log("\n572 ADVANCED SEARCH strConNoFull = " + strConNoFull + "; searchWord = " + searchWord);
+			 
+                         if (searchType == "advanced")
 			    {
 			    if (searchWord.indexOf('/',0) == -1){searchWord = ' (for ' + searchWord + ')'}
                             strConNoFull = 'Search active\n\n' + searchWord;}
@@ -583,7 +580,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 				 
                          stepContext.context.activity.text = strConNoFull;
 
-                         console.log ("\n593 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
+                         console.log ("\n583 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
 
                          }
 
