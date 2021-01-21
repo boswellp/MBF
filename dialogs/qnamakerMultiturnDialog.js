@@ -1458,8 +1458,8 @@ async changeContract(stepContext, userState) {
        var currentPosn = currentQuery.indexOf(':',0);    
        var currentContract = currentQuery.substring(0, currentPosn); 
 
-       userProfile = await this._userProfileAccessor.get(stepContext.context,false)
-       searchType = await this._userSearchAccessor.get(stepContext.context);
+       var userProfile = await this._userProfileAccessor.get(stepContext.context,false)
+       var searchType = await this._userSearchAccessor.get(stepContext.context);
        console.log("1464 ProfileAccessor.profileName = " +  userProfile);
        console.log("1464 userSearchAccessor.searchType = " + searchType);
 
