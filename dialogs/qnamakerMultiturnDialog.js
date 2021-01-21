@@ -569,14 +569,16 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                          var searchType = await this._userSearchAccessor.get(stepContext.context);
 			 var searchWord = strConNoFull;
 				 
-			 console.log("\n572 ADVANCED SEARCH strConNoFull = " + strConNoFull + "; searchWord = " + searchWord);
+			 console.log("\n572 ADVANCED SEARCH??? strConNoFull = " + strConNoFull + "; searchWord = " + searchWord + "; searchType = " + searchType);
 			 
                          if (searchType == "advanced")
 			    {
 			    if (searchWord.indexOf('/',0) == -1){searchWord = ' (for ' + searchWord + ')'}
                             strConNoFull = 'Search active\n\n' + searchWord;}
                             else
-                            {strConNoFull = 'Search not active\n\n';}
+                            {
+			    strConNoFull = 'Search not active\n\n';  //put somewhere else??
+			    }
 				 
                          stepContext.context.activity.text = strConNoFull;
 
