@@ -610,8 +610,10 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
         searchType = await this._userSearchAccessor.get(stepContext.context);
 	    
 	console.log ("\n617 FIRST PASS SET METADATA userProfile = " + userProfile + "; searchTypeTemp = " + searchTypeTemp)
-	    
-        if (searchType == "advanced" || searchType == "advanced1") //first pass
+	
+	var strTemp = searchWord.replace(':','_'); 
+        
+	if (searchType == "advanced" || searchType == "advanced1") //first pass
              {
 
              if (userProfile.indexOf('1s',0) != -1 && stepContext.context.activity.text.indexOf('1:',0) == -1)  
@@ -634,6 +636,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                       qnaMakerOptions.scoreThreshold = 0.92; 
                       qnaMakerOptions.top = 1;
 		      //qnaMakerOptions.strictFilters = [{"name": "category","value": "start"}]
+		      qnaMakerOptions.strictFilters = [{name:'category',value:strTemp}];
                  }
              }
 
@@ -698,9 +701,9 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
           if (userProfile.indexOf('c1',0) != -1)
              {   
 		     
-	      //console.log("\n\n701 RESPONSE c1 GOT USERPROFILE stepContext.context= " + JSON.stringify(stepContext.context)); 
+	      console.log("\n\n704 RESPONSE c1 GOT USERPROFILE stepContext.context= " + JSON.stringify(stepContext.context)); 
 	      var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
-	      console.log("\n\n703 RESPONSE c1 GOT USERPROFILE = " + JSON.stringify(response)); 
+	      console.log("\n\n706 RESPONSE c1 GOT USERPROFILE = " + JSON.stringify(response)); 
 	     }		  
              else if (userProfile.indexOf('p1',0) != -1)
              { 
@@ -720,7 +723,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 
           var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
 		  
-	  console.log("\n\n723 WHY REPEAT??? FOR START RESPONSE - USERPROFILE FALSE; userProfile = " + userProfile + "; response = " + JSON.stringify(response));
+	  console.log("\n\n726 WHY REPEAT??? FOR START RESPONSE - USERPROFILE FALSE; userProfile = " + userProfile + "; response = " + JSON.stringify(response));
 		  
 	  }
 
