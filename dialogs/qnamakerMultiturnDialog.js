@@ -144,14 +144,14 @@ const qnaServiceEPCT1 = new QnAMaker({
 
         if (userProfile != false && JSONstringifythisuserState.indexOf('cons1',0) != -1) 
              {
-
+             console.log("\n\n147 CONS1");
              await this._userProfileAccessor.set(stepContext.context, "c1");
 
              await this._userSearchAccessor.set(stepContext.context, "index");
 
              } 
              else if (JSONstringifythisuserState.indexOf('plant1',0) != -1){ 
-  
+             console.log("\n\n154 PLANTI ");
              await this._userProfileAccessor.set(stepContext.context, "p1");
 
              await this._userSearchAccessor.set(stepContext.context, "index");
@@ -159,7 +159,7 @@ const qnaServiceEPCT1 = new QnAMaker({
              } 
 	    
 	    else if (JSONstringifythisuserState.indexOf('epct1',0) != -1){ 
-  
+            console.log("\n\n162 EPCT1 ");
              await this._userProfileAccessor.set(stepContext.context, "e1");
 
              await this._userSearchAccessor.set(stepContext.context, "index");
@@ -175,7 +175,7 @@ const qnaServiceEPCT1 = new QnAMaker({
 
              var str = stepContext.context.activity.text;
 	    
-console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
+console.log ("\n178 str  to repalce ¦ ??????? = " + str + '\n');
 	    
 	     str = str.replace(/\[-]/g,'');  //the back icon [-]
              str = str.replace(/\|/g,'');
