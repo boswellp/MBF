@@ -603,11 +603,11 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
               }
 
         userProfile = await this._userProfileAccessor.get(stepContext.context,false)
-        searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
+        searchType = await this._userSearchAccessor.get(stepContext.context);
 	    
 	console.log ("\n617 FIRST PASS SET METADATA userProfile = " + userProfile + "; searchTypeTemp = " + searchTypeTemp)
 	    
-        if (searchTypeTemp == "advanced" || searchTypeTemp == "advanced1") //first pass
+        if (searchType == "advanced" || searchType == "advanced1") //first pass
              {
 
              if (userProfile.indexOf('1s',0) != -1 && stepContext.context.activity.text.indexOf('1:',0) == -1)  
@@ -631,29 +631,28 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                  }
              }
 
-        var userProfileTemp = await this._userProfileAccessor.get(stepContext.context,false);
-        console.log("\n645 userProfileTemp = " + userProfileTemp);
-        console.log("646 qnaMakerOptions = " + JSON.stringify(qnaMakerOptions));
-        console.log("647 stepContext.context.activity.text = " + stepContext.context.activity.text);
-        console.log("648 qnaMakerOptions.qnaId = " + qnaMakerOptions.qnaId);
+	    
+        console.log("\n635 userProfile = " + userProfile);
+        console.log("635 qnaMakerOptions = " + JSON.stringify(qnaMakerOptions));
+        console.log("635 stepContext.context.activity.text = " + stepContext.context.activity.text);
+        console.log("635 qnaMakerOptions.qnaId = " + qnaMakerOptions.qnaId);
 
 
-
-        if (userProfileTemp  == 'p1' && stepContext.context.activity.text.indexOf('plant & design',0) != -1)
+        if (userProfile  == 'p1' && stepContext.context.activity.text.indexOf('plant & design',0) != -1)
            {
            var userQnaidP1 = await this._userQnaidP1Accessor.get(stepContext.context,false)
            var userPrevQnaidP1 = await this._userPrevQnaidP1Accessor.get(stepContext.context,false)
            qnaMakerOptions.context.previousQnAId = userPrevQnaidP1;
            qnaMakerOptions.qnaId = userQnaidP1;
            }
-        if (userProfileTemp  == 'c1' && stepContext.context.activity.text.indexOf('construction contract',0) != -1)
+        if (userProfile  == 'c1' && stepContext.context.activity.text.indexOf('construction contract',0) != -1)
            {
            var userQnaidC1 = await this._userQnaidC1Accessor.get(stepContext.context,false)
            var userPrevQnaidC1 = await this._userPrevQnaidC1Accessor.get(stepContext.context,false)
            qnaMakerOptions.context.previousQnAId = userPrevQnaidC1;
            qnaMakerOptions.qnaId = userQnaidC1;
            } 
-	if (userProfileTemp  == 'e1' && stepContext.context.activity.text.indexOf('epc/turnkey contract',0) != -1)
+	if (userProfile  == 'e1' && stepContext.context.activity.text.indexOf('epc/turnkey contract',0) != -1)
            {
            var userQnaidE1 = await this._userQnaidE1Accessor.get(stepContext.context,false)
            var userPrevQnaidE1 = await this._userPrevQnaidE1Accessor.get(stepContext.context,false)
@@ -677,32 +676,29 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 	    textTemp = textTemp.replace('e1i','e1')
 	    }
 
-        console.log("\n685 textTemp = " + textTemp);
+        console.log("\n679 textTemp = " + textTemp);
 	stepContext.context.activity.text = textTemp;
 
         if (textOrig == 'c1i:'){await this._userSearchAccessor.set(stepContext.context, '');}
         if (textOrig == 'p1i:'){await this._userSearchAccessor.set(stepContext.context, '');}
 	if (textOrig == 'e1i:'){await this._userSearchAccessor.set(stepContext.context, '');}
 
-        var userProfile = await this._userProfileAccessor.get(stepContext.context,false);
-        console.log("\n688 userProfile = " + userProfile);
+        //var userProfile = await this._userProfileAccessor.get(stepContext.context,false);
+        console.log("\n687 userProfile = " + userProfile);
 	    
-        //if (userProfile != false)
-	if (userProfile != '')
+        if (userProfile != false)
           {
-	  console.log("\n692 USERPROFILE NOT FALSE; userProfile = " + userProfile); 
-          if (userProfile.indexOf('c1',0) != -1) //ON FIRST INDEX
+	  console.log("\n691 USERPROFILE NOT FALSE; userProfile = " + userProfile); 
+          if (userProfile.indexOf('c1',0) != -1)
              {        
-	     //console.log("\n699 stepContext.context = " + JSON.stringify(stepContext.context));
 	      var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
-	      console.log("\n696 RESPONSE c1 GOT USERPROFILE = " + JSON.stringify(response));  
+	      console.log("\n695 RESPONSE c1 GOT USERPROFILE = " + JSON.stringify(response));  
 	     }		  
-             else if (userProfile.indexOf('p1',0) != -1) //ON FIRST INDEX
+             else if (userProfile.indexOf('p1',0) != -1)
              { 
-	     //console.log("\n705 stepContext.context = " + JSON.stringify(stepContext.context));
              var response = await this._qnaMakerServicePlant1.getAnswersRaw(stepContext.context, qnaMakerOptions);
 	     }		  
-	     else if (userProfile.indexOf('e1',0) != -1) //ON FIRST INDEX
+	     else if (userProfile.indexOf('e1',0) != -1)
              { 
              var response = await this._qnaMakerServiceEPCT1.getAnswersRaw(stepContext.context, qnaMakerOptions);
 	     }
@@ -716,14 +712,14 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 
           var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);}
 
-          console.log("\n718 RESPONSE - USERPROFILE FALSE; userProfile = " + userProfile + "; response = " + JSON.stringify(response));
+          console.log("\n715 WHY REPEAT??? RESPONSE - USERPROFILE FALSE; userProfile = " + userProfile + "; response = " + JSON.stringify(response));
         
 
      //Welcome
      userProfile = await this._userProfileAccessor.get(stepContext.context,false)
-     console.log("735 OPENING userProfile = " + userProfile) 
+     console.log("720 OPENING userProfile = " + userProfile) 
      var didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-     //console.log("737 OPENING didBotWelcomedUser = " + didBotWelcomedUser) 
+     console.log("722 OPENING didBotWelcomedUser = " + didBotWelcomedUser) 
 
      if (this._welcomedUserProperty != undefined){ 
             didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
