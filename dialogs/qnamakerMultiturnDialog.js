@@ -621,7 +621,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                        }
                        else     
                        {
-                       qnaMakerOptions.scoreThreshold = 0.9; 
+                       qnaMakerOptions.scoreThreshold = 0.91; 
                        qnaMakerOptions.top = 1;
 		       //qnaMakerOptions.strictFilters = [{"name": "category","value": "start"}]
 		       }
@@ -631,7 +631,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
             {
 
                  {
-                      qnaMakerOptions.scoreThreshold = 0.9; 
+                      qnaMakerOptions.scoreThreshold = 0.92; 
                       qnaMakerOptions.top = 1;
 		      //qnaMakerOptions.strictFilters = [{"name": "category","value": "start"}]
                  }
