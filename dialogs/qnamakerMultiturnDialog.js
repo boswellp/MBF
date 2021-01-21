@@ -894,7 +894,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                               //console.log("\n871 response = " + JSON.stringify(response));
                               await this._userProfileAccessor.set(stepContext.context,userProfileTemp.replace('x','')); //reset code
                               userProfileTemp = await this._userProfileAccessor.get(stepContext.context,false);
-                              console.log("\n874 profileNameTemp = " + userProfileTemp);
+                              console.log("\n874 userProfileTemp = " + userProfileTemp);
 
                               var promptAry = [], combinedAnswers = '';
                               for (var i = 0; i < 20; i++)
@@ -1347,8 +1347,8 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
 //maybe only need for consolidated with no prompts
 /*
-                 var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false)
-                 if (profileNameTemp != undefined && this._userSearchAccessor.searchType != undefined){
+                 var userProfileTemp = await this._userProfileAccessor.get(stepContext.context,false)
+                 if (userProfileTemp != undefined && this._userSearchAccessor.searchType != undefined){
 
                     var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
                     if (searchTypeTemp == 'advanced')
