@@ -685,10 +685,11 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 	if (textOrig == 'e1i:'){await this._userSearchAccessor.set(stepContext.context, '');}
 
         var userProfile = await this._userProfileAccessor.get(stepContext.context,false);
-        console.log("\n698 userProfile = " + userProfile);
+        console.log("\n688 userProfile = " + userProfile);
 	    
         if (userProfile != false)
           {
+	  console.log("\n692 USERPROFILE NOT FALSE; userProfile = " + userProfile); 
           if (userProfile.indexOf('c1',0) != -1) //ON FIRST INDEX
              {        
 	     //console.log("\n699 stepContext.context = " + JSON.stringify(stepContext.context));
@@ -704,13 +705,17 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
              { 
              var response = await this._qnaMakerServiceEPCT1.getAnswersRaw(stepContext.context, qnaMakerOptions);
 	     }
+	     else
+	     {        
+	     var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
+	     }
           }
           else
           {
-	  //console.log("\n720 stepContext.context = " + JSON.stringify(stepContext.context));	  
+
           var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);}
 
-          console.log("\n718 RESPONSE - NO USERPROFILE = " + userProfile + "; response = " + JSON.stringify(response));
+          console.log("\n718 RESPONSE - USERPROFILE FALSE; userProfile = " + userProfile + "; response = " + JSON.stringify(response));
         
 
      //Welcome
