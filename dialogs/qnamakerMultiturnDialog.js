@@ -185,7 +185,7 @@ console.log("\n\n172 CONS1 FOR FALSE");
 
              var str = stepContext.context.activity.text;
 	    
-console.log ("\n178 str  to repalce ¦ ??????? = " + str + '\n');
+console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 	    
 	     str = str.replace(/\[-]/g,'');  //the back icon [-]
              str = str.replace(/\|/g,'');
@@ -198,15 +198,13 @@ console.log ("\n178 str  to repalce ¦ ??????? = " + str + '\n');
     
              if (profileName != false){
 
-             //rename extended index code
-             if (str.indexOf('details:',0) != -1){str = str.replace(' details: ','x:')} 
-
-             //end extended index
-                   if (str.indexOf('x',0) == -1 && profileName.indexOf('x',0) != -1){
+             if (str.indexOf('details:',0) != -1){str = str.replace(' details: ','x:')}    //rename extended index code
+  
+                   if (str.indexOf('x',0) == -1 && profileName.indexOf('x',0) != -1){     //end extended index
                       await this._userProfileAccessor.set(stepContext.context, profileName.replace('x',''));}
                    } 
 
-             console.log ("\n199 str = " + str + '\n');
+             console.log ("\n207 str = " + str + '\n');
 
              //Search
              if ((profileName != '' && str == 'c1s') || (profileName != '' && str == 'c1 search') || (profileName != '' && str == 'c1 s')) 
@@ -243,9 +241,6 @@ console.log ("\n178 str  to repalce ¦ ??????? = " + str + '\n');
                    await this._userSearchAccessor.set(stepContext.context, "advanced");
                    }
  
-	    
-	    //////
-	           //orig
                    else if ((profileName == 'c1' && str.indexOf('plant & design-build contract 1st ed 1999',0) != -1) || (profileName == 'c1' && str == 'p1')) 
                    {
 
@@ -254,8 +249,7 @@ console.log ("\n178 str  to repalce ¦ ??????? = " + str + '\n');
 		   await this._userProfileAccessor.set(stepContext.context, "p1");
 			
 		   } 
-                   //added for epc
-			   
+                			   
 		   else if ((profileName == 'c1' && str.indexOf('epc/turnkey contract 1st ed 1999',0) != -1) || (profileName == 'c1' && str == 'e1')) 
                    {
 
@@ -264,7 +258,6 @@ console.log ("\n178 str  to repalce ¦ ??????? = " + str + '\n');
                    await this._userProfileAccessor.set(stepContext.context, "e1");
                    }
 
-		    ///orig
                    else if ((profileName == 'p1' && str.indexOf('construction contract 1st ed 1999',0) != -1) || (profileName == 'p1' && str == 'c1'))
                    {
                    stepContext.context.activity.text = 'construction contract 1st ed 1999';
@@ -272,16 +265,13 @@ console.log ("\n178 str  to repalce ¦ ??????? = " + str + '\n');
                    await this._userProfileAccessor.set(stepContext.context, "c1");
                    } 
 	    
-		   //added for epc
 	           else if ((profileName == 'p1' && str.indexOf('epc/turnkey contract 1st ed 1999',0) != -1) || (profileName == 'p1' && str == 'e1'))
                    {
                    stepContext.context.activity.text = 'epc/turnkey contract 1st ed 1999';
 
                    await this._userProfileAccessor.set(stepContext.context, "e1");
                    } 
-			
-			   
-		   ///added for epc
+			  
                    else if ((profileName == 'e1' && str.indexOf('construction contract 1st ed 1999',0) != -1) || (profileName == 'e1' && str == 'c1'))
                    {
                    stepContext.context.activity.text = 'construction contract 1st ed 1999';
@@ -289,24 +279,18 @@ console.log ("\n178 str  to repalce ¦ ??????? = " + str + '\n');
                    await this._userProfileAccessor.set(stepContext.context, "c1");
                    } 
 	    
-		   //added for epc
 	           else if ((profileName == 'e1' && str.indexOf('plant & design-build contract 1st ed 1999',0) != -1) || (profileName == 'e1' && str == 'p1'))
                    {
                    stepContext.context.activity.text = 'plant & design-build contract 1st ed 1999';
 
                    await this._userProfileAccessor.set(stepContext.context, "p1");
                    } 
-			   
-			   
-			   
- 
-           /////////   
-	    
+			     	    
                    else
 
                    {              
                    
-                   console.log ("\n299 IN str = " + str);  
+                   console.log ("\n293 IN str = " + str);  
 
                    //keyword1
                    if (isNaN(str)) 
@@ -324,9 +308,7 @@ console.log ("\n178 str  to repalce ¦ ??????? = " + str + '\n');
                                {
                                await this._userSearchAccessor.set(stepContext.context, "");
                                }
-
-				 
-				 
+ 				 
                          var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
 
                          if (str.indexOf('construction contract',0) != -1)
