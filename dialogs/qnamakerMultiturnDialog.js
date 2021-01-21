@@ -1427,7 +1427,10 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
             return await stepContext.replaceDialog(QNAMAKER_DIALOG, dialogOptions);
         }
 
-        //console.log("\n1125 END END stepContext.result = " + JSON.stringify(stepContext.result));
+        console.log("\n1430 END END stepContext.result");
+	var userProfile = await this._userProfileAccessor.get(stepContext.context,false)
+        var searchType = await this._userSearchAccessor.get(stepContext.context);
+	console.log("\n1433 END???? userProfile = " + userProfile + "; searchType = " + searchType )
 
         var responses = stepContext.result;
         if (responses != null) {
