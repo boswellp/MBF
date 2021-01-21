@@ -140,8 +140,10 @@ const qnaServiceEPCT1 = new QnAMaker({
         await this._userPrevQnaidE1Accessor.set(stepContext.context, 1);
 
         var userProfile = await this._userProfileAccessor.get(stepContext.context,false)
-console.log("\n\n143 JSONstringifythisuserState = " + JSONstringifythisuserState);
-console.log("\n\n144 userProfile = " + userProfile);
+
+console.log("\n\n144 GET CONTRACT JSONstringifythisuserState = " + JSONstringifythisuserState);
+console.log("\n\n144 GET CONTRACT userProfile = " + userProfile);
+	    
         if (userProfile != false && JSONstringifythisuserState.indexOf('cons1',0) != -1) 
              {
 console.log("\n\n147 CONS1");
@@ -166,15 +168,6 @@ console.log("\n\n162 EPCT1 ");
 
              }
 	    
-	    else
-		    
-             {
-console.log("\n\n172 CONS1 FOR FALSE");
-             await this._userProfileAccessor.set(stepContext.context, "c1");
-
-             await this._userSearchAccessor.set(stepContext.context, "index");
-
-             }
 
              //Check str
              function keepCharsAbove(inStr, charCode) {
@@ -185,7 +178,7 @@ console.log("\n\n172 CONS1 FOR FALSE");
 
              var str = stepContext.context.activity.text;
 	    
-console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
+console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 	    
 	     str = str.replace(/\[-]/g,'');  //the back icon [-]
              str = str.replace(/\|/g,'');
