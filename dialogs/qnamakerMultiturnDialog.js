@@ -1404,7 +1404,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 	    
 	var userProfile = await this._userProfileAccessor.get(stepContext.context,false)
         var searchType = await this._userSearchAccessor.get(stepContext.context);
-	console.log("\n1407 END???? userProfile = " + userProfile + "; searchType = " searchType )
+	console.log("\n1407 END???? userProfile = " + userProfile + "; searchType = " + searchType )
 
         return await stepContext.next(stepContext.result);
     }
