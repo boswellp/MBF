@@ -301,12 +301,11 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 				 
 			 console.log("\n302 keyword1 IS NaN = str = " + str + "; profileName = " + profileName + "; searchType = " + searchType);
 			
-			  if (str.indexOf('c1',0) != -1 ){profileName = 'c1'}
+			 if (str.indexOf('c1',0) != -1 ){profileName = 'c1'}
 				 else if (str.indexOf('p1',0) != -1 ){profileName = 'p1'}
 				 else if (str.indexOf('e1',0) != -1 ){profileName = 'e1'}
 				 else {profileName = 'c1'}
-					
-					
+			 console.log("\n308 keyword1 IS NaN = str = " + str + "; profileName = " + profileName + "; searchType = " + searchType);						
                          if (searchType == 'advanced2') ///delete this?????
                                {
                                if (profileName != undefined){profileName = profileName.replace('s','')} //to enable normal clause display
