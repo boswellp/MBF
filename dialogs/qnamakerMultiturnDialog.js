@@ -407,7 +407,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                     }
 
 	    	   searchType = await this._userSearchAccessor.get(stepContext.context);
-                   console.log("\n410 keyword2 - SHOW CLAUSE str IS NaN (i.e., a string) = " + str + "; searchType = + + serachType);
+                   console.log("\n410 keyword2 - SHOW CLAUSE str IS NaN (i.e., a string) = " + str + "; searchType = " + searchType);
                    
                    if (isNaN(str) && searchType.indexOf('advanced',0) == -1))
                          {
