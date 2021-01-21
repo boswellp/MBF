@@ -611,10 +611,11 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                     }
               }
 
-        console.log ("\n603 FIRST PASS SET METADATA")
-
         profileName = await this._userProfileAccessor.get(stepContext.context,false)
         var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
+	    
+	console.log ("\n617 FIRST PASS SET METADATA profileName = " + profileName + "; searchTypeTemp = " + searchTypeTemp)
+	    
         if (searchTypeTemp == "advanced" || searchTypeTemp == "advanced1") //first pass
              {
 
