@@ -685,7 +685,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 	if (textOrig == 'e1i:'){await this._userSearchAccessor.set(stepContext.context, '');}
 
         var userProfileTemp = await this._userProfileAccessor.get(stepContext.context,false);
-        console.log("\n698 userProfileTemp = " + userProfileTemp);
+        console.log("\n698 userProfileTemp = " + userProfileTemp + "; userProfile = " + userProfile);
 	    
         if (userProfile != false)
           {
