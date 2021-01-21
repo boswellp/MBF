@@ -698,9 +698,9 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
           if (userProfile.indexOf('c1',0) != -1)
              {   
 		     
-	      console.log("\n695 RESPONSE c1 GOT USERPROFILE stepContext.context= " + JSON.stringify(stepContext.context)); 
+	      //console.log("\n\n701 RESPONSE c1 GOT USERPROFILE stepContext.context= " + JSON.stringify(stepContext.context)); 
 	      var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
-	      console.log("\n699 RESPONSE c1 GOT USERPROFILE = " + JSON.stringify(response)); 
+	      console.log("\n\n703 RESPONSE c1 GOT USERPROFILE = " + JSON.stringify(response)); 
 	     }		  
              else if (userProfile.indexOf('p1',0) != -1)
              { 
@@ -720,7 +720,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 
           var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
 		  
-	  console.log("\n715 WHY REPEAT??? FOR START RESPONSE - USERPROFILE FALSE; userProfile = " + userProfile + "; response = " + JSON.stringify(response));
+	  console.log("\n\n723 WHY REPEAT??? FOR START RESPONSE - USERPROFILE FALSE; userProfile = " + userProfile + "; response = " + JSON.stringify(response));
 		  
 	  }
 
