@@ -141,17 +141,17 @@ const qnaServiceEPCT1 = new QnAMaker({
         await this._userPrevQnaidE1Accessor.set(stepContext.context, 1);
 
         var userProfile = await this._userProfileAccessor.get(stepContext.context,false)
-
+console.log("\n\n144 userProfile = " + userProfile);
         if (userProfile != false && JSONstringifythisuserState.indexOf('cons1',0) != -1) 
              {
-             console.log("\n\n147 CONS1");
+console.log("\n\n147 CONS1");
              await this._userProfileAccessor.set(stepContext.context, "c1");
 
              await this._userSearchAccessor.set(stepContext.context, "index");
 
              } 
              else if (JSONstringifythisuserState.indexOf('plant1',0) != -1){ 
-             console.log("\n\n154 PLANTI ");
+console.log("\n\n154 PLANTI ");
              await this._userProfileAccessor.set(stepContext.context, "p1");
 
              await this._userSearchAccessor.set(stepContext.context, "index");
@@ -159,7 +159,7 @@ const qnaServiceEPCT1 = new QnAMaker({
              } 
 	    
 	    else if (JSONstringifythisuserState.indexOf('epct1',0) != -1){ 
-            console.log("\n\n162 EPCT1 ");
+console.log("\n\n162 EPCT1 ");
              await this._userProfileAccessor.set(stepContext.context, "e1");
 
              await this._userSearchAccessor.set(stepContext.context, "index");
