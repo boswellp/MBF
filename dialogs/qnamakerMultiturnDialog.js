@@ -290,9 +290,8 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
                    {              
                    
-                   console.log ("\n293 IN str = " + str);  
+		   console.log("\n293 keyword1 - SHOW CLAUSE str IS NaN = " + str);
 
-                   //keyword1
                    if (isNaN(str)) 
                          {
                          var profileName = await this._userProfileAccessor.get(stepContext.context,false)
@@ -400,9 +399,8 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                           }
                     }
 
-
-                   //keyword2 -show clause
-
+                   console.log("\n410 keyword2 - SHOW CLAUSE str NOT NaN = " + str);
+                   
                    if (isNaN(str))
                          {
                          var strCon, strNo, strConNoFull;
