@@ -1452,18 +1452,18 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
 async changeContract(stepContext, userState) { 
 
-       console.log("\n\n1148..........SAVE..............");
+       console.log("\n\n1155..........SAVE..............");
 
        var currentQuery = stepContext._info.values.currentQuery;
        var currentPosn = currentQuery.indexOf(':',0);    
        var currentContract = currentQuery.substring(0, currentPosn); 
 
-       //console.log("\n920 currentQuery  = " + currentQuery);
-       //console.log("\n921 currentContract  = " + currentContract + "\n");
-       //console.log("\n922 ProfileAccessor.profileName = " + this._userProfileAccessor.profileName);
-       //console.log("\n923 userSearchAccessor.searchType = " + this._userSearchAccessor.searchType);
-       //console.log("\n924 userWelcomAccessor.welcomedStatus = " + this._userWelcomeAccessor.welcomedStatus);
-
+       console.log("\n1461 currentQuery  = " + currentQuery);
+       console.log("1461 ProfileAccessor.profileName = " + this._userProfileAccessor.profileName);
+       console.log("1461 userSearchAccessor.searchType = " + this._userSearchAccessor.searchType);
+       console.log("1461 currentContract  = " + currentContract + "\n");
+       console.log("1461 userWelcomAccessor.welcomedStatus = " + this._userWelcomeAccessor.welcomedStatus);
+	
        return await stepContext.endDialog(); 
        } 
 }
