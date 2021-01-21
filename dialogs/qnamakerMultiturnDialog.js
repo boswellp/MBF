@@ -294,9 +294,13 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
                    if (isNaN(str)) 
                          {
+				 
                          var profileName = await this._userProfileAccessor.get(stepContext.context,false)
 
                          var searchType = await this._userSearchAccessor.get(stepContext.context);
+				 
+			 console.log("\n302 keyword1 IS NaN = str = " + str + "; profileName = " + profileName + "; searchType = " + searchType);
+				 
                          if (searchType == 'advanced2') ///delete this?????
                                {
                                if (profileName != undefined){profileName = profileName.replace('s','')} //to enable normal clause display
