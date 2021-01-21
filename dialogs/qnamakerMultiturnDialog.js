@@ -194,21 +194,21 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
              keepCharsAbove(str,38);
              if (str.charAt(str.length - 1) == '.'){str = str.substr(0,str.length - 1)}
 
-             var profileName = await this._userProfileAccessor.get(stepContext.context,false)
+             var userProfile = await this._userProfileAccessor.get(stepContext.context,false)
     
-             if (profileName != false){
+             if (userProfile != false){
 
              if (str.indexOf('details:',0) != -1){str = str.replace(' details: ','x:')}    //rename extended index code
   
-                   if (str.indexOf('x',0) == -1 && profileName.indexOf('x',0) != -1){     //end extended index
-                      await this._userProfileAccessor.set(stepContext.context, profileName.replace('x',''));}
+                   if (str.indexOf('x',0) == -1 && userProfile.indexOf('x',0) != -1){     //end extended index
+                      await this._userProfileAccessor.set(stepContext.context, userProfile.replace('x',''));}
                    } 
 
              //Search
 	     var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
-	     console.log ("\n209 SEARCH str = " + str + "; searchTypeTemp = " + searchTypeTemp + ", profileName = " + profileName + "\n");
+	     console.log ("\n209 SEARCH str = " + str + "; searchTypeTemp = " + searchTypeTemp + ", userProfile = " + userProfile + "\n");
 	    
-             if ((profileName != '' && str == 'c1s') || (profileName != '' && str == 'c1 search') || (profileName != '' && str == 'c1 s')) 
+             if ((userProfile != '' && str == 'c1s') || (userProfile != '' && str == 'c1 search') || (userProfile != '' && str == 'c1 s')) 
  
                    {
 
@@ -220,7 +220,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
                    }
 
-                   else if ((profileName != '' && str == 'p1s') || (profileName != '' && str == 'p1 search') || (profileName != '' && str == 'p1 s')) 
+                   else if ((userProfile != '' && str == 'p1s') || (userProfile != '' && str == 'p1 search') || (userProfile != '' && str == 'p1 s')) 
 
                    {
 
@@ -231,7 +231,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                    await this._userSearchAccessor.set(stepContext.context, "advanced");
                    }
 	    
-	           else if ((profileName != '' && str == 'e1s') || (profileName != '' && str == 'e1 search') || (profileName != '' && str == 'e1 s')) 
+	           else if ((userProfile != '' && str == 'e1s') || (userProfile != '' && str == 'e1 search') || (userProfile != '' && str == 'e1 s')) 
 
                    {
 
@@ -242,7 +242,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                    await this._userSearchAccessor.set(stepContext.context, "advanced");
                    }
  
-                   else if ((profileName == 'c1' && str.indexOf('plant & design-build contract 1st ed 1999',0) != -1) || (profileName == 'c1' && str == 'p1')) 
+                   else if ((userProfile == 'c1' && str.indexOf('plant & design-build contract 1st ed 1999',0) != -1) || (userProfile == 'c1' && str == 'p1')) 
                    {
 
                    stepContext.context.activity.text = 'plant & design-build contract 1st ed 1999';
@@ -251,7 +251,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 			
 		   } 
                 			   
-		   else if ((profileName == 'c1' && str.indexOf('epc/turnkey contract 1st ed 1999',0) != -1) || (profileName == 'c1' && str == 'e1')) 
+		   else if ((userProfile == 'c1' && str.indexOf('epc/turnkey contract 1st ed 1999',0) != -1) || (userProfile == 'c1' && str == 'e1')) 
                    {
 
                    stepContext.context.activity.text = 'epc/turnkey contract 1st ed 1999';
@@ -259,28 +259,28 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                    await this._userProfileAccessor.set(stepContext.context, "e1");
                    }
 
-                   else if ((profileName == 'p1' && str.indexOf('construction contract 1st ed 1999',0) != -1) || (profileName == 'p1' && str == 'c1'))
+                   else if ((userProfile == 'p1' && str.indexOf('construction contract 1st ed 1999',0) != -1) || (userProfile == 'p1' && str == 'c1'))
                    {
                    stepContext.context.activity.text = 'construction contract 1st ed 1999';
 
                    await this._userProfileAccessor.set(stepContext.context, "c1");
                    } 
 	    
-	           else if ((profileName == 'p1' && str.indexOf('epc/turnkey contract 1st ed 1999',0) != -1) || (profileName == 'p1' && str == 'e1'))
+	           else if ((userProfile == 'p1' && str.indexOf('epc/turnkey contract 1st ed 1999',0) != -1) || (userProfile == 'p1' && str == 'e1'))
                    {
                    stepContext.context.activity.text = 'epc/turnkey contract 1st ed 1999';
 
                    await this._userProfileAccessor.set(stepContext.context, "e1");
                    } 
 			  
-                   else if ((profileName == 'e1' && str.indexOf('construction contract 1st ed 1999',0) != -1) || (profileName == 'e1' && str == 'c1'))
+                   else if ((userProfile == 'e1' && str.indexOf('construction contract 1st ed 1999',0) != -1) || (userProfile == 'e1' && str == 'c1'))
                    {
                    stepContext.context.activity.text = 'construction contract 1st ed 1999';
 
                    await this._userProfileAccessor.set(stepContext.context, "c1");
                    } 
 	    
-	           else if ((profileName == 'e1' && str.indexOf('plant & design-build contract 1st ed 1999',0) != -1) || (profileName == 'e1' && str == 'p1'))
+	           else if ((userProfile == 'e1' && str.indexOf('plant & design-build contract 1st ed 1999',0) != -1) || (userProfile == 'e1' && str == 'p1'))
                    {
                    stepContext.context.activity.text = 'plant & design-build contract 1st ed 1999';
 
@@ -296,24 +296,24 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                    if (isNaN(str)) 
                          {
 				 
-                         var profileName = await this._userProfileAccessor.get(stepContext.context,false)
+                         var userProfile = await this._userProfileAccessor.get(stepContext.context,false)
 
                          var searchType = await this._userSearchAccessor.get(stepContext.context);
 				 
-			 console.log("\n302 keyword1 IS NaN = str = " + str + "; profileName = " + profileName + "; searchType = " + searchType);
+			 console.log("\n302 keyword1 IS NaN = str = " + str + "; userProfile = " + userProfile + "; searchType = " + searchType);
 			
-			 if (str.indexOf('c1',0) != -1 ){profileName = 'c1'}
-				 else if (str.indexOf('p1',0) != -1 ){profileName = 'p1'}
-				 else if (str.indexOf('e1',0) != -1 ){profileName = 'e1'}
+			 if (str.indexOf('c1',0) != -1 ){userProfile = 'c1'}
+				 else if (str.indexOf('p1',0) != -1 ){userProfile = 'p1'}
+				 else if (str.indexOf('e1',0) != -1 ){userProfile = 'e1'}
 				 else {profileName = 'c1'}
-			 if (str.indexOf('1s',0) != -1 || str.indexOf(' 1s',0) != -1 || str.indexOf('1 search',0) != -1){profileName = profileName + 's'}
+			 if (str.indexOf('1s',0) != -1 || str.indexOf(' 1s',0) != -1 || str.indexOf('1 search',0) != -1){userProfile = userProfile + 's'}
 
 				 
-			 await this._userProfileAccessor.set(stepContext.context, profileName)
-			 console.log("\n308 keyword1 IS NaN = str = " + str + "; profileName = " + profileName + "; searchType = " + searchType);						
+			 await this._userProfileAccessor.set(stepContext.context, userProfile)
+			 console.log("\n308 keyword1 IS NaN = str = " + str + "; userProfile = " + userProfile + "; searchType = " + searchType);						
                          if (searchType == 'advanced2') ///delete this?????
                                {
-                               if (profileName != undefined){profileName = profileName.replace('s','')} //to enable normal clause display
+                               if (userProfile != undefined){userProfile = userProfile.replace('s','')} //to enable normal clause display
                                }
  
 
@@ -342,9 +342,9 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
                                else if (str == 'c1s' || str == 'p1s' || str == 'e1s')
                                {
-                               var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false)
+                               var userProfileTemp = await this._userProfileAccessor.get(stepContext.context,false)
 
-                               if (str != profileNameTemp) 
+                               if (str != userProfileTemp) 
                                      {
                                      await this._userProfileAccessor.set(stepContext.context, str + ':0/0/0/0');
                                      await this._userSearchAccessor.set(stepContext.context, 'advanced');
@@ -353,7 +353,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
                                 } 
           
-                               else if (searchTypeTemp == 'advanced' && profileName != undefined && profileName.indexOf('1s',0) != -1)
+                               else if (searchTypeTemp == 'advanced' && userProfile != undefined && userProfile.indexOf('1s',0) != -1)
                                {
 
                                var strTemp = str.replace(/\[/,'');
@@ -385,7 +385,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                                          {
                                          await this._userSearchAccessor.set(stepContext.context, '');
                                          await this._userProfileAccessor.set(stepContext.context,'c1');
-                                         if (tempText.indexOf('[c1]',0) != -1){profileName = 'c1'}
+                                         if (tempText.indexOf('[c1]',0) != -1){userProfile = 'c1'}
                                          qnaMakerOptions.scoreThreshold = 0.5;  
                                          qnaMakerOptions.top = 3; 
                                          qnaMakerOptions.strictFilters = null;
@@ -394,7 +394,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                                          {
                                          await this._userSearchAccessor.set(stepContext.context, '');
                                          await this._userProfileAccessor.set(stepContext.context,'p1');
-                                         if (tempText.indexOf('[p1]',0) != -1){profileName = 'p1'}
+                                         if (tempText.indexOf('[p1]',0) != -1){userProfile = 'p1'}
                                          qnaMakerOptions.scoreThreshold = 0.5;  
                                          qnaMakerOptions.top = 3; 
                                          qnaMakerOptions.strictFilters = null;
@@ -403,7 +403,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                                          {
                                          await this._userSearchAccessor.set(stepContext.context, '');
                                          await this._userProfileAccessor.set(stepContext.context,'e1');
-                                         if (tempText.indexOf('[e1]',0) != -1){profileName = 'e1'}
+                                         if (tempText.indexOf('[e1]',0) != -1){userProfile = 'e1'}
                                          qnaMakerOptions.scoreThreshold = 0.5;  
                                          qnaMakerOptions.top = 3; 
                                          qnaMakerOptions.strictFilters = null;
@@ -418,9 +418,9 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                    if (isNaN(str))
                          {
                          var strCon, strNo, strConNoFull;
-                         profileName = await this._userProfileAccessor.get(stepContext.context,false)
+                         userProfile = await this._userProfileAccessor.get(stepContext.context,false)
                          console.log("\n410 KEYWORD STANDARD STRING str = " + str);
-                         console.log("\n411 KEYWORD STANDARD STRING profileName = " + profileName);
+                         console.log("\n411 KEYWORD STANDARD STRING userProfile = " + userProfile);
                          var posnSpace = str.indexOf(' ',0);
 
                          if (posnSpace != -1)
@@ -450,11 +450,11 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                                            }
                                            else
                                            {
-                                           if (profileName != false) {
-                                                if ((profileName == 'c1s' && strCon == 'c1') || (profileName == 'p1s' && strCon == 'p1') || (profileName == 'e1s' && strCon == 'e1'))
+                                           if (userProfile != false) {
+                                                if ((userProfile == 'c1s' && strCon == 'c1') || (userProfile == 'p1s' && strCon == 'p1') || (userProfile == 'e1s' && strCon == 'e1'))
                                                     {} //strCon takes precedence if show clause during search
                                                     else
-                                                    {strCon = profileName;}
+                                                    {strCon = userProfile;}
                                                 }  
                                                 else
                                                 {if (str == 'construction contract 1st ed 1999'){
@@ -488,12 +488,12 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                                            }
                                            else 
                                            {
-                                           if (profileName != false) 
+                                           if (userProfile != false) 
                                                 {
                                                 strCon = '';
                                                 if (str.indexOf('x:',0) == -1) //for extended index (not c1x)
                                                      {
-                                                     strCon = profileName;
+                                                     strCon = userProfile;
                                                      }
                                                 }
                                                 else
@@ -535,22 +535,22 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
                                        stepContext.context.activity.text = strConNoFull;
 
-                                       console.log ("\n526 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
+                                       console.log ("\n538 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
                                        }
                                   }
 
                          else
                          {
 
-                         console.log("\n533 NUMBER STANDARD STRING  str = " + str);              
+                         console.log("\n545 NUMBER STANDARD STRING  str = " + str);              
 
                          var strCon = '';
-                         var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false)
+                         var userProfileTemp = await this._userProfileAccessor.get(stepContext.context,false)
 
-                         if (profileNameTemp == "c1" || profileNameTemp== "p1" || profileNameTemp== "e1")
+                         if (userProfileTemp == "c1" || userProfileTemp== "p1" || userProfileTemp== "e1")
                                {
 
-                               strCon = profileNameTemp + ":";
+                               strCon = userProfileTemp + ":";
 
                                }
 
@@ -579,7 +579,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
 			 var searchWord = strConNoFull;
 			 
-                         console.log("\n570 strConNoFull = " + strConNoFull + "; searchWord = " + searchWord);
+                         console.log("\n582 strConNoFull = " + strConNoFull + "; searchWord = " + searchWord);
 				 
                          if (searchTypeTemp == "advanced")
 			    {
@@ -590,7 +590,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 				 
                          stepContext.context.activity.text = strConNoFull;
 
-                         console.log ("\n581 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
+                         console.log ("\n593 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
 
                          }
 
@@ -612,15 +612,15 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                     }
               }
 
-        profileName = await this._userProfileAccessor.get(stepContext.context,false)
+        userProfile = await this._userProfileAccessor.get(stepContext.context,false)
         searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
 	    
-	console.log ("\n617 FIRST PASS SET METADATA profileName = " + profileName + "; searchTypeTemp = " + searchTypeTemp)
+	console.log ("\n617 FIRST PASS SET METADATA userProfile = " + userProfile + "; searchTypeTemp = " + searchTypeTemp)
 	    
         if (searchTypeTemp == "advanced" || searchTypeTemp == "advanced1") //first pass
              {
 
-             if (profileName.indexOf('1s',0) != -1 && stepContext.context.activity.text.indexOf('1:',0) == -1)  
+             if (userProfile.indexOf('1s',0) != -1 && stepContext.context.activity.text.indexOf('1:',0) == -1)  
                        {
                        qnaMakerOptions.scoreThreshold = 0.05; 
                        qnaMakerOptions.top = 50;
@@ -641,29 +641,29 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                  }
              }
 
-        var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false);
-        console.log("\n640 profileNameTemp = " + profileNameTemp);
-        console.log("641 qnaMakerOptions = " + JSON.stringify(qnaMakerOptions));
-        console.log("642 stepContext.context.activity.text = " + stepContext.context.activity.text);
-        console.log("643 qnaMakerOptions.qnaId = " + qnaMakerOptions.qnaId);
+        var userProfileTemp = await this._userProfileAccessor.get(stepContext.context,false);
+        console.log("\n645 userProfileTemp = " + userProfileTemp);
+        console.log("646 qnaMakerOptions = " + JSON.stringify(qnaMakerOptions));
+        console.log("647 stepContext.context.activity.text = " + stepContext.context.activity.text);
+        console.log("648 qnaMakerOptions.qnaId = " + qnaMakerOptions.qnaId);
 
 
 
-        if (profileNameTemp  == 'p1' && stepContext.context.activity.text.indexOf('plant & design',0) != -1)
+        if (userProfileTemp  == 'p1' && stepContext.context.activity.text.indexOf('plant & design',0) != -1)
            {
            var userQnaidP1 = await this._userQnaidP1Accessor.get(stepContext.context,false)
            var userPrevQnaidP1 = await this._userPrevQnaidP1Accessor.get(stepContext.context,false)
            qnaMakerOptions.context.previousQnAId = userPrevQnaidP1;
            qnaMakerOptions.qnaId = userQnaidP1;
            }
-        if (profileNameTemp  == 'c1' && stepContext.context.activity.text.indexOf('construction contract',0) != -1)
+        if (userProfileTemp  == 'c1' && stepContext.context.activity.text.indexOf('construction contract',0) != -1)
            {
            var userQnaidC1 = await this._userQnaidC1Accessor.get(stepContext.context,false)
            var userPrevQnaidC1 = await this._userPrevQnaidC1Accessor.get(stepContext.context,false)
            qnaMakerOptions.context.previousQnAId = userPrevQnaidC1;
            qnaMakerOptions.qnaId = userQnaidC1;
            } 
-	if (profileNameTemp  == 'e1' && stepContext.context.activity.text.indexOf('epc/turnkey contract',0) != -1)
+	if (userProfileTemp  == 'e1' && stepContext.context.activity.text.indexOf('epc/turnkey contract',0) != -1)
            {
            var userQnaidE1 = await this._userQnaidE1Accessor.get(stepContext.context,false)
            var userPrevQnaidE1 = await this._userPrevQnaidE1Accessor.get(stepContext.context,false)
@@ -672,7 +672,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
            }
 	    
 	if (stepContext.context.activity.text.indexOf('1/1/1/1',0) != -1){stepContext.context.activity.text = stepContext.context.activity.text + '/'}  //to handle 1.1.1.1 and 1.1.1.10. Better to close codes with a / TO DO
-        //console.log("\n670 stepContext.context.activity.text = " + stepContext.context.activity.text);
+        //console.log("\n675 stepContext.context.activity.text = " + stepContext.context.activity.text);
         var textTemp = stepContext.context.activity.text;
         var textOrig = stepContext.context.activity.text;
 
@@ -694,23 +694,23 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
         if (textOrig == 'p1i:'){await this._userSearchAccessor.set(stepContext.context, '');}
 	if (textOrig == 'e1i:'){await this._userSearchAccessor.set(stepContext.context, '');}
 
-        var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false);
-        console.log("\n693 profileNameTemp = " + profileNameTemp);
+        var userProfileTemp = await this._userProfileAccessor.get(stepContext.context,false);
+        console.log("\n698 userProfileTemp = " + userProfileTemp);
 	    
         if (userProfile != false)
           {
-          if (profileNameTemp.indexOf('c1',0) != -1) //ON FIRST INDEX
+          if (userProfileTemp.indexOf('c1',0) != -1) //ON FIRST INDEX
              {        
 	     //console.log("\n699 stepContext.context = " + JSON.stringify(stepContext.context));
 	      var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
 	      //console.log("\n701 RESPONSE =" + JSON.stringify(response));  
 	     }		  
-             else if (profileNameTemp.indexOf('p1',0) != -1)
+             else if (userProfileTemp.indexOf('p1',0) != -1)
              { 
 	     //console.log("\n705 stepContext.context = " + JSON.stringify(stepContext.context));
              var response = await this._qnaMakerServicePlant1.getAnswersRaw(stepContext.context, qnaMakerOptions);
 	     }		  
-	     else if (profileNameTemp.indexOf('e1',0) != -1)
+	     else if (userProfileTemp.indexOf('e1',0) != -1)
              { 
              var response = await this._qnaMakerServiceEPCT1.getAnswersRaw(stepContext.context, qnaMakerOptions);
 	     }
@@ -731,8 +731,8 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
         
 
      //Welcome
-     profileName = await this._userProfileAccessor.get(stepContext.context,false)
-     console.log("730 OPENING profileName = " + profileName) 
+     userProfile = await this._userProfileAccessor.get(stepContext.context,false)
+     console.log("730 OPENING profileName = " + userProfile) 
      var didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
      //console.log("732 OPENING didBotWelcomedUser = " + didBotWelcomedUser) 
 
@@ -746,14 +746,14 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                 if (response.answers[0] == undefined){  
                      console.log("742 response.answers[0] = " + response.answers[0]) 
                     
-                     if (profileName == false){  
-                         console.log("750 profileName = " + profileName) 
+                     if (userProfile == false){  
+                         console.log("750 userProfile = " + userProfile) 
                          
                          console.log("752 reponse = default welcome 1st pass Messenger; xyz on first webchat submit.") 
                          response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot. Please submit \"start\" to start.","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                          } else { 
-                         console.log("756 profileName = " + profileName) 
+                         console.log("756 userProfile = " + userProfile) 
                          
                          }
                                                    
@@ -773,40 +773,40 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                       console.log("750 response.answers[0] = " + response.answers[0]) 
                       if (response.answers[0] == undefined){
                                                  
-                          console.log("753 response.answers[0] = " + response.answers[0]) 
+                          console.log("777 response.answers[0] = " + response.answers[0]) 
                           //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                          
                           } else { 
 
-                          console.log("758 2nd pass messenger response.answers[0] = " + response.answers[0])  
+                          console.log("781 2nd pass messenger response.answers[0] = " + response.answers[0])  
                           response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Guide","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
 
                           } 
                      
                       } else if (didBotWelcomedUser == 2){
                           
-                          console.log("765 didBotWelcomedUser = " + didBotWelcomedUser) 
+                          console.log("788 didBotWelcomedUser = " + didBotWelcomedUser) 
                       
                           if (response.answers[0] == undefined){  
-                               console.log("768 response.answers[0] = " + response.answers[0]) 
+                               console.log("792 response.answers[0] = " + response.answers[0]) 
                     
-                               if (profileName == false){  
-                                   console.log("771 profileName = " + profileName) 
+                               if (userProfile == false){  
+                                   console.log("794 userProfile = " + userProfile) 
                          
-                                   console.log("772 reponse = default welcome") 
+                                   console.log("796 reponse = default welcome") 
                                    response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot. Please submit \"start\" to start.","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                                    } else { 
-                                   console.log("777 profileName = " + profileName)
+                                   console.log("800 userProfile = " + userProfile)
                                        
-                                   console.log("779 reponse = let pass")
+                                   console.log("802 reponse = let pass")
                          
                                    }
                                                    
                                 } else { 
                                // console.log("784 response.answers[0] = " + response.answers[0])
                                 
-                                console.log("786 reponse = let pass")     
+                                console.log("809 reponse = let pass")     
                                 //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      
                                 }
@@ -823,20 +823,20 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
         //if (response.answers[0] != undefined && response.answers[0].context.prompts[0] != undefined) //if index entry has no prompts
         if (response.answers[0] != undefined) //if index entry has no prompts
              {
-             console.log("\n803 ..");
+             console.log("\n826 ..");
 
              //if (response.answers[0].context.prompts[0] != undefined) 
              if (response.answers[0].context != undefined) 
                  {
 
-                 var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false);
+                 var userProfileTemp = await this._userProfileAccessor.get(stepContext.context,false);
 
                  str = stepContext.context.activity.text;
 
                  if (str.indexOf('i:',0) != -1)
                      {
 
-                     await this._userProfileAccessor.set(stepContext.context,profileNameTemp + 'x'); //set extended index code
+                     await this._userProfileAccessor.set(stepContext.context,userProfileTemp + 'x'); //set extended index code
 
                      var promptAry = []; 
                      for (var i = 0; i < 20; i++)
@@ -847,7 +847,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
                              promptAry[i] =  response.answers[0].context.prompts[i];
 
-                             iTotal = i;
+                             var iTotal = i;
                              } 
                              else {break}
                           }
@@ -888,13 +888,13 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                      else if (str.indexOf('x:',0) != -1)
                          {
                          console.log("\n867 ..");
-                         if (profileNameTemp.indexOf('x',0) != -1) 
+                         if (userProfileTemp.indexOf('x',0) != -1) 
                               {
 
                               //console.log("\n871 response = " + JSON.stringify(response));
-                              await this._userProfileAccessor.set(stepContext.context,profileNameTemp.replace('x','')); //reset code
-                              profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false);
-                              console.log("\n874 profileNameTemp = " + profileNameTemp);
+                              await this._userProfileAccessor.set(stepContext.context,userProfileTemp.replace('x','')); //reset code
+                              userProfileTemp = await this._userProfileAccessor.get(stepContext.context,false);
+                              console.log("\n874 profileNameTemp = " + userProfileTemp);
 
                               var promptAry = [], combinedAnswers = '';
                               for (var i = 0; i < 20; i++)
@@ -918,12 +918,12 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                }
         //End extended index link
 
-        console.log("\n774 ..");
+        console.log("\n921 ..");
 
               
         if (response.answers[0] != undefined)
              {
-             console.log("\n903 ..");
+             console.log("\n926 ..");
              //add clause number to prompts (for Messenger's 2 messages)
              str = response.answers[0].questions[0];
              if (str.indexOf('c1:',0) != -1 || str.indexOf('p1:',0) != -1 || str.indexOf('e1:',0) != -1)
@@ -951,25 +951,25 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                          } 
                          else {break}
                      } 
-                 profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false);
-                 if (profileNameTemp.indexOf('c1',0) != -1)
+                 userProfileTemp = await this._userProfileAccessor.get(stepContext.context,false);
+                 if (userProfileTemp.indexOf('c1',0) != -1)
                      {userPrevQnaidC1 = await this._userPrevQnaidC1Accessor.get(stepContext.context,false)
                      response.answers[0].context.prompts[0] = {"displayOrder":0,"qnaId":userPrevQnaidC1,"qna":null,"displayText":"c1 search"}}
-                 if (profileNameTemp.indexOf('p1',0) != -1)
+                 if (userProfileTemp.indexOf('p1',0) != -1)
                      {userPrevQnaidP1 = await this._userPrevQnaidP1Accessor.get(stepContext.context,false)
                      response.answers[0].context.prompts[0] = {"displayOrder":0,"qnaId":userPrevQnaidP1,"qna":null,"displayText":"p1 search"}}
 			
-		 if (profileNameTemp.indexOf('e1',0) != -1)
+		 if (userProfileTemp.indexOf('e1',0) != -1)
                      {userPrevQnaidP1 = await this._userPrevQnaidE1Accessor.get(stepContext.context,false)
                      response.answers[0].context.prompts[0] = {"displayOrder":0,"qnaId":userPrevQnaidE1,"qna":null,"displayText":"e1 search"}}
 
                  response.answers[0].context.prompts[0].displayText = str
 
-                 console.log("\n945 iTotal = " + iTotal)
+                 console.log("\n968 iTotal = " + iTotal)
 
                  for (var i = 1; i < iTotal + 2; i++)
                     {
-                    console.log("\n819 i promptAry[i-1] = " + i + "; " + JSON.stringify(promptAry[i-1]))
+                    console.log("\n972 i promptAry[i-1] = " + i + "; " + JSON.stringify(promptAry[i-1]))
                     response.answers[0].context.prompts[i] =  promptAry[i-1];
                     }
                 } //end if str
@@ -977,7 +977,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
 
 
-     console.log("\n957 BEFORE PROCESSING");
+     console.log("\n980 BEFORE PROCESSING");
  
      if (response.answers[0] != undefined)
         {
@@ -991,14 +991,14 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
         var metadataAry = new Array(50).fill(null).map(()=>new Array(5).fill(null));
 
-        var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false)
+        var userProfileTemp = await this._userProfileAccessor.get(stepContext.context,false)
  
         var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
 
-        if (profileNameTemp != undefined && searchTypeTemp == "advanced") 
+        if (userProfileTemp != undefined && searchTypeTemp == "advanced") 
            {
 
-           if (profileNameTemp.indexOf('1s',0) != -1)  
+           if (userProfileTemp.indexOf('1s',0) != -1)  
                {       
 
                //console.log("\n852 START META ADD START PROMPT response.answers[0].answer = " + response.answers[0].answer)
@@ -1020,9 +1020,9 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                           {
                           var qCon = response.answers[i].questions[0];
                           qCon = qCon.substring(0, qCon.indexOf(':',0));
-                          var profileNameTemp = profileName.replace('s','')
+                          var userProfileTemp = userProfile.replace('s','')
 
-                          if (response.answers[i].metadata[j] != undefined && profileNameTemp == qCon)
+                          if (response.answers[i].metadata[j] != undefined && userProfileTemp == qCon)
                               {
                               metadataAry[i][j] = response.answers[i].metadata[j];
                               }
@@ -1041,7 +1041,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
 //Pass 1 - get categories into an array
 
-               console.log("\n1021 .....");
+               console.log("\n1044 .....");
 
                var categoryAry = []; 
 
@@ -1143,7 +1143,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
          //console.log("\n884 META + PROMPTS response.answers[0].context = " + JSON.stringify(response.answers[0].context));
          //console.log("\n885 META + PROMPTS response = " + JSON.stringify(response));
 
-         console.log("\n1123 END PASS 1");
+         console.log("\n1146 END PASS 1");
 
          } //if
 
@@ -1154,7 +1154,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
 //Pass 2 - expands clauses
 
-          console.log("\n1134 START PASS 2");
+          console.log("\n1157 START PASS 2");
 
 
            var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
@@ -1168,7 +1168,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                       break
                       }}
 
-               console.log("\n1148 iTotal = " + iTotal)
+               console.log("\n1171 iTotal = " + iTotal)
 
 
                var answerTitle, posnTitle, combinedAnswers = ''; 
@@ -1244,7 +1244,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
         //console.log("\n1240 After processing response.answers = " + JSON.stringify(response.answers));
 	    
-	console.log("\n1246 search coming ......................");
+	console.log("\n1247 search coming ......................");
 
         dialogOptions[PreviousQnAId] = -1;
         stepContext.activeDialog.state.options = dialogOptions;
@@ -1255,7 +1255,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
               if (searchTypeTemp == 'advanced' && response.answers[0] != undefined)
                  {
 		 var searchWord = stepContext.context.activity.text;
-		  console.log("\n1246 search coming ......................" + searchWord + " index = " + searchWord.indexOf('/',0)); 
+		  console.log("\n1258 search coming ......................" + searchWord + " index = " + searchWord.indexOf('/',0)); 
 		 if (searchWord.indexOf('/',0) == -1)
 		         {		 
 		         if (strTemp != searchWord)
@@ -1445,7 +1445,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
 async changeContract(stepContext, userState) { 
 
-       //console.log("\n\n1147..........SAVE..............");
+       console.log("\n\n1148..........SAVE..............");
 
        var currentQuery = stepContext._info.values.currentQuery;
        var currentPosn = currentQuery.indexOf(':',0);    
