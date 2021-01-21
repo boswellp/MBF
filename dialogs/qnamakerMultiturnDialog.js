@@ -305,6 +305,8 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 				 else if (str.indexOf('p1',0) != -1 ){profileName = 'p1'}
 				 else if (str.indexOf('e1',0) != -1 ){profileName = 'e1'}
 				 else {profileName = 'c1'}
+			 if (str.indexOf('1s',0) != -1 || str.indexOf(' 1s',0) != -1 || str.indexOf('1 search',0) != -1){profileName = profileName + 's'}
+
 				 
 			 await this._userProfileAccessor.set(stepContext.context, profileName)
 			 console.log("\n308 keyword1 IS NaN = str = " + str + "; profileName = " + profileName + "; searchType = " + searchType);						
