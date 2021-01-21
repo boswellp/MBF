@@ -406,14 +406,16 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                           }
                     }
 
-                   console.log("\n410 keyword2 - SHOW CLAUSE str NOT NaN = " + str);
+	    	   searchType = await this._userSearchAccessor.get(stepContext.context);
+                   console.log("\n410 keyword2 - SHOW CLAUSE str IS NaN (i.e., a string) = " + str + "; searchType = + + serachType);
                    
-                   if (isNaN(str))
+                   if (isNaN(str) && searchType.indexOf('advanced',0) == -1))
                          {
                          var strCon, strNo, strConNoFull;
+
                          userProfile = await this._userProfileAccessor.get(stepContext.context,false)
-                         console.log("\n410 KEYWORD STANDARD STRING str = " + str);
-                         console.log("\n411 KEYWORD STANDARD STRING userProfile = " + userProfile);
+                         console.log("\n410 KEYWORD STRING str = " + str);
+                         console.log("\n411 KEYWORD STRING userProfile = " + userProfile);
                          var posnSpace = str.indexOf(' ',0);
 
                          if (posnSpace != -1)
