@@ -1261,7 +1261,7 @@ console.log ("\n157 str  to repalce ¦ ??????? = " + str + '\n');
 			       { 
 			       //if (searchWord.indexOf('1s',0) == -1)
 			               //{
-				       searchWord = ' (for ' + searchWord + ' in category ' + strTemp + ')' }  //add category
+				       searchWord = ' (for ' + searchWord + ' in category ' + strTemp + ')'   //add category
 			               //}
 				       //else
 				       // {
