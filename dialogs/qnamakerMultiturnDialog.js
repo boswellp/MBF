@@ -135,8 +135,8 @@ const qnaServiceEPCT1 = new QnAMaker({
 
         await this._userQnaidC1Accessor.set(stepContext.context, 13879); //c1 kb cons1
         await this._userPrevQnaidC1Accessor.set(stepContext.context, 14119); //c1 kb start
-        await this._userQnaidP1Accessor.set(stepContext.context, 4145);
-        await this._userPrevQnaidP1Accessor.set(stepContext.context, 4143);
+        await this._userQnaidP1Accessor.set(stepContext.context, 4145);  //p1 kb plant1
+        await this._userPrevQnaidP1Accessor.set(stepContext.context, 4143); //p1 kb start
 	await this._userQnaidE1Accessor.set(stepContext.context, 3);
         await this._userPrevQnaidE1Accessor.set(stepContext.context, 1);
 
