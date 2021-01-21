@@ -131,7 +131,6 @@ const qnaServiceEPCT1 = new QnAMaker({
             }
 
         var JSONstringifythisuserState = JSON.stringify(this._userState);
-        console.log("\n\n134 stepContext.context = " + JSON.stringify(stepContext.context));
 
         await this._userQnaidC1Accessor.set(stepContext.context, 13879); //c1 kb cons1
         await this._userPrevQnaidC1Accessor.set(stepContext.context, 14119); //c1 kb start
@@ -141,6 +140,7 @@ const qnaServiceEPCT1 = new QnAMaker({
         await this._userPrevQnaidE1Accessor.set(stepContext.context, 1);
 
         var userProfile = await this._userProfileAccessor.get(stepContext.context,false)
+console.log("\n\n143 JSONstringifythisuserState = " + JSONstringifythisuserState);
 console.log("\n\n144 userProfile = " + userProfile);
         if (userProfile != false && JSONstringifythisuserState.indexOf('cons1',0) != -1) 
              {
