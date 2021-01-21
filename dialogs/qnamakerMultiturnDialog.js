@@ -1458,12 +1458,9 @@ async changeContract(stepContext, userState) {
        var currentPosn = currentQuery.indexOf(':',0);    
        var currentContract = currentQuery.substring(0, currentPosn); 
 
-       console.log("\n1461 currentQuery  = " + currentQuery);
        console.log("1461 ProfileAccessor.profileName = " + this._userProfileAccessor.profileName);
        console.log("1461 userSearchAccessor.searchType = " + this._userSearchAccessor.searchType);
-       console.log("1461 currentContract  = " + currentContract + "\n");
-       console.log("1461 userWelcomAccessor.welcomedStatus = " + this._userWelcomeAccessor.welcomedStatus);
-	
+
        return await stepContext.endDialog(); 
        } 
 }
