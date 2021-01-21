@@ -290,7 +290,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                          var userProfile = await this._userProfileAccessor.get(stepContext.context,false)
                          var searchType = await this._userSearchAccessor.get(stepContext.context);
 				 
-			 console.log("\n293 keyword1 - SHOW CLAUSE str IS NaN i.e., A STRING = " + str + "; userProfile = " + userProfile + "; searchType = " + searchType);
+			 console.log("\n293 KEYWORD1 - SHOW CLAUSE str IS NaN i.e., A STRING = " + str + "; userProfile = " + userProfile + "; searchType = " + searchType);
 			
 			 if (str.indexOf('c1',0) != -1 ){userProfile = 'c1'}
 				 else if (str.indexOf('p1',0) != -1 ){userProfile = 'p1'}
@@ -410,7 +410,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                          userProfile = await this._userProfileAccessor.get(stepContext.context,false)
 		         searchType = await this._userSearchAccessor.get(stepContext.context);	 
 			 
-			 console.log("\n418 keyword2 - SHOW CLAUSE str IS NaN i.e., A STRING = " + str + "; searchType = " + searchType + "; userProfile = " +userProfile);
+			 console.log("\n418 KEYWORD2 - SHOW CLAUSE str IS NaN i.e., A STRING = " + str + "; searchType = " + searchType + "; userProfile = " +userProfile);
                          
 			 var strCon, strNo, strConNoFull;
                          var posnSpace = str.indexOf(' ',0);
