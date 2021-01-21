@@ -305,7 +305,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 			 if (str.indexOf('c1',0) != -1 ){userProfile = 'c1'}
 				 else if (str.indexOf('p1',0) != -1 ){userProfile = 'p1'}
 				 else if (str.indexOf('e1',0) != -1 ){userProfile = 'e1'}
-				 else {profileName = 'c1'}
+				 else {userProfile = 'c1'}
 			 if (str.indexOf('1s',0) != -1 || str.indexOf(' 1s',0) != -1 || str.indexOf('1 search',0) != -1){userProfile = userProfile + 's'}
 
 				 
@@ -732,19 +732,19 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
      //Welcome
      userProfile = await this._userProfileAccessor.get(stepContext.context,false)
-     console.log("730 OPENING profileName = " + userProfile) 
+     console.log("735 OPENING userProfile = " + userProfile) 
      var didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-     //console.log("732 OPENING didBotWelcomedUser = " + didBotWelcomedUser) 
+     //console.log("737 OPENING didBotWelcomedUser = " + didBotWelcomedUser) 
 
      if (this._welcomedUserProperty != undefined){ 
             didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-            //console.log("736 didBotWelcomedUser = " + didBotWelcomedUser) 
+            //console.log("741 didBotWelcomedUser = " + didBotWelcomedUser) 
             
             if (didBotWelcomedUser == undefined){
-                //console.log("739 didBotWelcomedUser = undefined")    
+                //console.log("744 didBotWelcomedUser = undefined")    
                 
                 if (response.answers[0] == undefined){  
-                     console.log("742 response.answers[0] = " + response.answers[0]) 
+                     console.log("747 response.answers[0] = " + response.answers[0]) 
                     
                      if (userProfile == false){  
                          console.log("750 userProfile = " + userProfile) 
