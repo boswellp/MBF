@@ -409,13 +409,15 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 	    	   searchType = await this._userSearchAccessor.get(stepContext.context);
                    console.log("\n410 keyword2 - SHOW CLAUSE str IS NaN (i.e., a string) = " + str + "; searchType = " + searchType);
                    
-                   if (isNaN(str) && searchType.indexOf('advanced',0) == -1)
+                   //if (isNaN(str) && searchType.indexOf('advanced',0) == -1)
+	           if (isNaN(str))
                          {
                          var strCon, strNo, strConNoFull;
 
                          userProfile = await this._userProfileAccessor.get(stepContext.context,false)
-                         console.log("\n410 KEYWORD STRING str = " + str);
-                         console.log("\n411 KEYWORD STRING userProfile = " + userProfile);
+				 
+                         console.log("\n418 KEYWORD STRING str = " + str + "; userProfile = " + userProfile);
+
                          var posnSpace = str.indexOf(' ',0);
 
                          if (posnSpace != -1)
@@ -537,7 +539,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                          else
                          {
 
-                         console.log("\n545 NUMBER STANDARD STRING  str = " + str);              
+                         console.log("\n545 NUMBER STRING str = " + str);              
 
                          var strCon = '';
                          var userProfileTemp = await this._userProfileAccessor.get(stepContext.context,false)
@@ -574,7 +576,8 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 
 			 var searchWord = strConNoFull;
 			 
-                         console.log("\n582 strConNoFull = " + strConNoFull + "; searchWord = " + searchWord);
+                         console.log("\n579 ADVANCED SEARCH strConNoFull = " + strConNoFull + "; searchWord = " + searchWord);
+
 				 
                          if (searchTypeTemp == "advanced")
 			    {
