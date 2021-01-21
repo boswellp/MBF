@@ -619,9 +619,9 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                        }
                        else     
                        {
-                       qnaMakerOptions.scoreThreshold = 0.01; 
+                       qnaMakerOptions.scoreThreshold = 0.9; 
                        qnaMakerOptions.top = 1;
-		       qnaMakerOptions.strictFilters = {"name": "category","value": "start"}
+		       qnaMakerOptions.strictFilters = [{"name": "category","value": "start"}]
 		       }
                    //}
             }
@@ -629,9 +629,9 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
             {
 
                  {
-                      qnaMakerOptions.scoreThreshold = 0.01; 
+                      qnaMakerOptions.scoreThreshold = 0.9; 
                       qnaMakerOptions.top = 1;
-		      qnaMakerOptions.strictFilters = {"name": "category","value": "start"}
+		      qnaMakerOptions.strictFilters = [{"name": "category","value": "start"}]
                  }
              }
 
