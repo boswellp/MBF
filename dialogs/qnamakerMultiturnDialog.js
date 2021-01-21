@@ -283,11 +283,11 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                    else
 
                    {              
-                   
-		   console.log("\n293 keyword1 - SHOW CLAUSE str IS NaN = " + str);
-
+                  
                    if (isNaN(str)) 
                          {
+				 
+			 console.log("\n293 keyword1 - SHOW CLAUSE str IS NaN i.e., A NUMBER = " + str);
 				 
                          var userProfile = await this._userProfileAccessor.get(stepContext.context,false)
 
@@ -406,18 +406,16 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                           }
                     }
 
-	    	   searchType = await this._userSearchAccessor.get(stepContext.context);
-                   console.log("\n410 keyword2 - SHOW CLAUSE str IS NaN (i.e., a string) = " + str + "; searchType = " + searchType);
                    
                    //if (isNaN(str) && searchType.indexOf('advanced',0) == -1)
 	           if (isNaN(str))
                          {
-                         var strCon, strNo, strConNoFull;
-
                          userProfile = await this._userProfileAccessor.get(stepContext.context,false)
-				 
-                         console.log("\n418 KEYWORD STRING str = " + str + "; userProfile = " + userProfile);
-
+		         searchType = await this._userSearchAccessor.get(stepContext.context);	 
+			 
+			 console.log("\n418 keyword2 - SHOW CLAUSE str IS NaN i.e., A STRING = " + str + "; searchType = " + searchType + "; userProfile = " +userProfile);
+                         
+			 var strCon, strNo, strConNoFull;
                          var posnSpace = str.indexOf(' ',0);
 
                          if (posnSpace != -1)
