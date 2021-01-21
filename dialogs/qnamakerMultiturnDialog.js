@@ -687,7 +687,8 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
         var userProfile = await this._userProfileAccessor.get(stepContext.context,false);
         console.log("\n688 userProfile = " + userProfile);
 	    
-        if (userProfile != false)
+        //if (userProfile != false)
+	if (userProfile != '')
           {
 	  console.log("\n692 USERPROFILE NOT FALSE; userProfile = " + userProfile); 
           if (userProfile.indexOf('c1',0) != -1) //ON FIRST INDEX
