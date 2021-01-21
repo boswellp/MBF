@@ -131,7 +131,7 @@ const qnaServiceEPCT1 = new QnAMaker({
             }
 
         var JSONstringifythisuserState = JSON.stringify(this._userState);
-        console.log("\n\n134 stepContext.context = " + stepContext.context);
+        console.log("\n\n134 stepContext.context = " + JSON.stringify(stepContext.context));
 
         await this._userQnaidC1Accessor.set(stepContext.context, 13879); //c1 kb cons1
         await this._userPrevQnaidC1Accessor.set(stepContext.context, 14119); //c1 kb start
