@@ -292,6 +292,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 				 
 			 console.log("\n293 KEYWORD1 - SHOW CLAUSE str IS NaN i.e., A STRING = " + str + "; userProfile = " + userProfile + "; searchType = " + searchType);
 			
+			 /*
 			 if (str.indexOf('c1',0) != -1 ){userProfile = 'c1'}
 				 else if (str.indexOf('p1',0) != -1 ){userProfile = 'p1'}
 				 else if (str.indexOf('e1',0) != -1 ){userProfile = 'e1'}
@@ -299,6 +300,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 			 if (str.indexOf('1s',0) != -1 || str.indexOf(' 1s',0) != -1 || str.indexOf('1 search',0) != -1){userProfile = userProfile + 's'}
 				 
 			 await this._userProfileAccessor.set(stepContext.context, userProfile)
+			 */
 				 
 			 console.log("\n303 keyword1 IS NaN = str = " + str + "; userProfile = " + userProfile + "; searchType = " + searchType);						
                          if (searchType == 'advanced2') ///delete this?????
