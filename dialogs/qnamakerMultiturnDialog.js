@@ -619,7 +619,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                        }
                        else
                        {
-                       qnaMakerOptions.scoreThreshold = 0.5; 
+                       qnaMakerOptions.scoreThreshold = 90; 
                        qnaMakerOptions.top = 1;
                         }
                    //}
@@ -628,7 +628,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
             {
 
                  {
-                      qnaMakerOptions.scoreThreshold = 0.5; 
+                      qnaMakerOptions.scoreThreshold = 90; 
                       qnaMakerOptions.top = 1;
                  }
              }
