@@ -164,7 +164,17 @@ console.log("\n\n162 EPCT1 ");
 
              await this._userSearchAccessor.set(stepContext.context, "index");
 
-             } 
+             }
+	    
+	    else
+		    
+             {
+console.log("\n\n172 CONS1 FOR FALSE");
+             await this._userProfileAccessor.set(stepContext.context, "c1");
+
+             await this._userSearchAccessor.set(stepContext.context, "index");
+
+             }
 
              //Check str
              function keepCharsAbove(inStr, charCode) {
