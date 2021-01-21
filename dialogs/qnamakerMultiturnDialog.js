@@ -686,18 +686,17 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 	if (textOrig == 'e1i:'){await this._userSearchAccessor.set(stepContext.context, '');}
 
         //var userProfile = await this._userProfileAccessor.get(stepContext.context,false);
-        console.log("\n687 userProfile = " + userProfile);
+        console.log("\n689 userProfile = " + userProfile);
 	    
         if (userProfile != false)
           {
-	  console.log("\n691 USERPROFILE NOT FALSE; userProfile = " + userProfile); 
+	  console.log("\n693 USERPROFILE NOT FALSE; userProfile = " + userProfile); 
           if (userProfile.indexOf('c1',0) != -1)
              {   
 		     
 	      console.log("\n695 RESPONSE c1 GOT USERPROFILE stepContext.context= " + JSON.stringify(stepContext.context)); 
 	      var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
-	      //console.log("\n695 RESPONSE c1 GOT USERPROFILE = " + JSON.stringify(response)); 
-	      //var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOptions)
+	      console.log("\n699 RESPONSE c1 GOT USERPROFILE = " + JSON.stringify(response)); 
 	     }		  
              else if (userProfile.indexOf('p1',0) != -1)
              { 
