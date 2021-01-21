@@ -407,8 +407,8 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                          {
                          var strCon, strNo, strConNoFull;
                          profileName = await this._userProfileAccessor.get(stepContext.context,false)
-                         console.log("\n418 KEYWORD STANDARD STRING str = " + str);
-
+                         console.log("\n410 KEYWORD STANDARD STRING str = " + str);
+                         console.log("\n411 KEYWORD STANDARD STRING profileName = " + profileName);
                          var posnSpace = str.indexOf(' ',0);
 
                          if (posnSpace != -1)
@@ -428,9 +428,9 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                                       if (str == 'c1 s' || str == 'c1 search' || str== 'p1 s' || str == 'p1 search' || str== 'e1 s' || str == 'e1 search' || str == 'construction contract 1st ed 1999' || str == 'plant & design-build contract 1st ed 1999' || str == 'epc/turnkey contract 1st ed 1999' || str.indexOf('stop search',0) != -1  || str == '[ c1 ]' || str == '[ p1 ]' || str == '[ e1 ]')//prompts
                                            //standard conversions
                                            {
-                                           if (str == 'c1 s' || str == 'c1 search'){str = 'c1s:0.0.0.0';}
-                                           if (str == 'p1 s' || str == 'p1 search'){str = 'p1s:0.0.0.0';}
-					   if (str == 'e1 s' || str == 'e1 search'){str = 'e1s:0.0.0.0';}
+                                           if (str == 'c1 s' || str == 'c1s' || str == 'c1 search'){str = 'c1s:0.0.0.0';}
+                                           if (str == 'p1 s' || str == 'p1s' || str == 'p1 search'){str = 'p1s:0.0.0.0';}
+					   if (str == 'e1 s' || str == 'e1s' || str == 'e1 search'){str = 'e1s:0.0.0.0';}
                                            if (str == '[ c1 ]'){str = 'c1';}
                                            if (str == '[ p1 ]'){str = 'p1';}
 					   if (str == '[ e1 ]'){str = 'e1';}
@@ -446,29 +446,29 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                                                 }  
                                                 else
                                                 {if (str == 'construction contract 1st ed 1999'){
-                                                   console.log ("\n457 = " + str);
+                                                    console.log ("\n449 = " + str);
                                                     strCon = 'c1';}
                                                     else 
 						    {
-						     if (str == 'plant & design-build contract 1st ed 1999'){console.log ("\n460 = " + str); strCon = 'p1';}
-						     if (str == 'epc/turnkey contract 1st ed 1999'){console.log ("\n461 = " + str); strCon = 'e1';}
+						    if (str == 'plant & design-build contract 1st ed 1999'){console.log ("\n453 = " + str); strCon = 'p1';}
+						    if (str == 'epc/turnkey contract 1st ed 1999'){console.log ("\n454 = " + str); strCon = 'e1';}
                                                     }						 
                                                  }
-                                           console.log("\n464 strCon = " + strCon + "; strNo = " + strNo); //strCon = p1; strNo = daa.6
+                                           console.log("\n457 strCon = " + strCon + "; strNo = " + strNo); //strCon = p1; strNo = daa.6
 
                                            if (isNaN(strNo) && strCon.indexOf('i',0) == -1 && strNo.indexOf('daa.',0) != -1 && strNo.indexOf('rules.',0) != -1){strCon = strCon + 'i';} // ad ii for index except for daa and rules
                                            var strConNoFull = strCon + ' ' + strNo; 
 
-                                           console.log("\n468 strConNoFull = " + strConNoFull);
+                                           console.log("\n462 strConNoFull = " + strConNoFull);
                                            } 
                                        }
 /////////////
                                        else //no space
 
                                        {
-                                       if (str == 'c1s' || str == 'p1s' || str == 'e1s' || str == 'c1' || str == 'p1' || str == 'e1' || str == 'help' || str == 'start')
+                                       if (str == 'c1s' || str == 'p1s' || str == 'e1s' || str == 'c1 s' || str == 'p1 s' || str == 'e1 s' || str == 'c1' || str == 'p1' || str == 'e1' || str == 'help' || str == 'start')
                                            {
-                                           console.log ("\n387= " + str);
+                                           console.log ("\n471 = " + str);
                                            if (str == 'c1'){str = 'cons1';}
                                            if (str == 'p1'){str = 'plant1';}
 					   if (str == 'e1'){str = 'epct1';}
@@ -502,7 +502,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
                                   if (!isNaN(strNo.replace('.','')) || strNo.indexOf('daa',0) != -1 || strNo.indexOf('rules',0) != -1) ///1.1.1 is not a number! replace a .
                                        {
-                                       console.log("\n419 strConNoFull = " + strConNoFull);
+                                       console.log("\n505 strConNoFull = " + strConNoFull);
                                        var iC = (strConNoFull.match(/\./g) || []).length;
                                        if (iC == 0){strConNoFull = strConNoFull + '.0.0.0';}
                                        if (iC == 1){strConNoFull = strConNoFull + '.0.0';}
@@ -523,14 +523,14 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
                                        stepContext.context.activity.text = strConNoFull;
 
-                                      console.log ("\n438 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
+                                       console.log ("\n526 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
                                        }
                                   }
 
                          else
                          {
 
-                         //console.log("\n430 NUMBER STANDARD STRING  str = " + str);              
+                         console.log("\n533 NUMBER STANDARD STRING  str = " + str);              
 
                          var strCon = '';
                          var profileNameTemp = await this._userProfileAccessor.get(stepContext.context,false)
@@ -544,7 +544,6 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
                          var strNo = str.toString();
 
-
                          var strNoFull = strNo;
 
                          var iC = (strNoFull.match(/\./g) || []).length;
@@ -552,10 +551,9 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                          if (iC == 1){strNoFull = strNoFull+'.0.0';}
                          if (iC == 2){strNoFull = strNoFull+'.0';}
 
-
                          var strConNoFull = strCon + strNoFull;
 
-                         //console.log("\n455 strConNoFull = " + strConNoFull);
+                         console.log("\n556 strConNoFull = " + strConNoFull);
 
                          strConNoFull = strConNoFull.replace('.','\/');
                          strConNoFull = strConNoFull.replace('.','\/');
@@ -569,7 +567,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 
 			 var searchWord = strConNoFull;
 			 
-                         console.log("\n582 strConNoFull = " + strConNoFull + "; searchWord = " + searchWord);
+                         console.log("\n570 strConNoFull = " + strConNoFull + "; searchWord = " + searchWord);
 				 
                          if (searchTypeTemp == "advanced")
 			    {
@@ -580,7 +578,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
 				 
                          stepContext.context.activity.text = strConNoFull;
 
-                         //console.log ("\n475 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
+                         console.log ("\n581 SENT STANDARD STRING stepContext.context.activity.text = " + stepContext.context.activity.text);
 
                          }
 
@@ -602,9 +600,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                     }
               }
 
-
-       //First pass - set metadata
-
+        console.log ("\n603 FIRST PASS SET METADATA")
 
         profileName = await this._userProfileAccessor.get(stepContext.context,false)
         var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
