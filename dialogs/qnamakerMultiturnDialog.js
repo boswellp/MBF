@@ -204,9 +204,10 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
                       await this._userProfileAccessor.set(stepContext.context, profileName.replace('x',''));}
                    } 
 
-             console.log ("\n207 str = " + str + '\n');
-
              //Search
+	     var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
+	     console.log ("\n209 SEARCH str = " + str + "; searchTypeTemp = " + searchTypeTemp + ", profileName = " + profileName + "\n");
+	    
              if ((profileName != '' && str == 'c1s') || (profileName != '' && str == 'c1 search') || (profileName != '' && str == 'c1 s')) 
  
                    {
@@ -612,7 +613,7 @@ console.log ("\n188 str  to repalce ¦ ??????? = " + str + '\n');
               }
 
         profileName = await this._userProfileAccessor.get(stepContext.context,false)
-        var searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
+        searchTypeTemp = await this._userSearchAccessor.get(stepContext.context);
 	    
 	console.log ("\n617 FIRST PASS SET METADATA profileName = " + profileName + "; searchTypeTemp = " + searchTypeTemp)
 	    
