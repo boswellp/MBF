@@ -729,10 +729,9 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
           }
           else
           {
-
-          var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
-		  
-	  console.log("\n\n726 WHY REPEAT??? FOR START RESPONSE - USERPROFILE FALSE; userProfile = " + userProfile + "; response = " + JSON.stringify(response));
+          console.log("\n\n732 WHY REPEAT??? FOR START RESPONSE - USERPROFILE FALSE; stepContext.context= " + JSON.stringify(stepContext.context)); 
+          var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);  
+	  console.log("\n\n734 WHY REPEAT??? FOR START RESPONSE - USERPROFILE FALSE; userProfile = " + userProfile + "; response = " + JSON.stringify(response));
 		  
 	  }
 
