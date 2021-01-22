@@ -709,10 +709,10 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 	  console.log("\n693 USERPROFILE NOT FALSE; userProfile = " + userProfile); 
           if (userProfile.indexOf('c1',0) != -1)
              {   
-		     
-	      console.log("\n\n704 RESPONSE c1 GOT USERPROFILE stepContext.context= " + JSON.stringify(stepContext.context)); 
+	      console.log("\n\n712 RESPONSE c1 GOT USERPROFILE: qnaMakerOptions = " + qnaMakerOptions);     
+	      console.log("\n\n703 RESPONSE c1 GOT USERPROFILE: stepContext.context= " + JSON.stringify(stepContext.context)); 
 	      var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
-	      console.log("\n\n706 RESPONSE c1 GOT USERPROFILE = " + JSON.stringify(response)); 
+	      console.log("\n\n715 RESPONSE c1 GOT USERPROFILE: = " + JSON.stringify(response)); 
 	     }		  
              else if (userProfile.indexOf('p1',0) != -1)
              { 
@@ -729,9 +729,10 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
           }
           else
           {
-          console.log("\n\n732 WHY REPEAT??? FOR START RESPONSE - USERPROFILE FALSE; stepContext.context= " + JSON.stringify(stepContext.context)); 
+	  console.log("\n\n732 FOR START RESPONSE - USERPROFILE FALSE: qnaMakerOptions = " + qnaMakerOptions);
+          console.log("\n\n733 FOR START RESPONSE - USERPROFILE FALSE: stepContext.context= " + JSON.stringify(stepContext.context)); 
           var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);  
-	  console.log("\n\n734 WHY REPEAT??? FOR START RESPONSE - USERPROFILE FALSE; userProfile = " + userProfile + "; response = " + JSON.stringify(response));
+	  console.log("\n\n735 FOR START RESPONSE - USERPROFILE FALSE: userProfile = " + userProfile + "; response = " + JSON.stringify(response));
 		  
 	  }
 
