@@ -613,7 +613,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 	console.log ("\n617 FIRST PASS SET METADATA stepContext.context.activity.text = " + stepContext.context.activity.text)
 
 	var strOpt = stepContext.context.activity.text; //for meta subclause
-	if (strOpt.indexOf('1:',0) != -1){strOpt = strOpt.replace('1:','_');} 
+	if (strOpt.indexOf('1:',0) != -1){strOpt = strOpt.replace('1:','1_');} 
         
 	if (searchType == "advanced" || searchType == "advanced1") //first pass
              {
