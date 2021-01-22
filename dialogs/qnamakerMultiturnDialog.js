@@ -610,8 +610,9 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
         searchType = await this._userSearchAccessor.get(stepContext.context);
 	    
 	console.log ("\n617 FIRST PASS SET METADATA userProfile = " + userProfile + "; searchTypeTemp = " + searchTypeTemp)
-	
-	var strTemp = searchWord.replace(':','_'); 
+	console.log ("\n617 FIRST PASS SET METADATA stepContext.context.activity.text = " + stepContext.context.activity.text)
+
+	var strTemp = stepContext.context.activity.text.replace(':','_'); 
         
 	if (searchType == "advanced" || searchType == "advanced1") //first pass
              {
