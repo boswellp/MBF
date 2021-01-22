@@ -630,7 +630,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 		       }
                    //}
             }
-            else if (strOpt.indexOf('1:',0) != -1) //meta subclause
+            else if (strOpt.indexOf('1_',0) != -1) //meta subclause
             {
 
                  {
