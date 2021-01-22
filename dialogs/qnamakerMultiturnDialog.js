@@ -612,8 +612,8 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 	console.log ("\n617 FIRST PASS SET METADATA userProfile = " + userProfile + "; searchTypeTemp = " + searchTypeTemp)
 	console.log ("\n617 FIRST PASS SET METADATA stepContext.context.activity.text = " + stepContext.context.activity.text)
 
-	var strTemp = stepContext.context.activity.text; 
-	if (strTemp.indexOf('c1',0) != -1){strTemp = stepContext.context.activity.text.replace(':','_');} 
+	var strOpt = stepContext.context.activity.text; //for meta subclause
+	if (strOpt.indexOf('1:',0) != -1){strOpt = strOpt.replace('1:','_');} 
         
 	if (searchType == "advanced" || searchType == "advanced1") //first pass
              {
@@ -631,7 +631,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 		       }
                    //}
             }
-            else if (strTemp.indexOf('c1',0) != -1)
+            else if (strTemp.indexOf('1:',0) != -1) //meta subclause
             {
 
                  {
