@@ -630,13 +630,13 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 		       }
                    //}
             }
-            else if (strTemp.indexOf('1:',0) != -1) //meta subclause
+            else if (strOpt.indexOf('1:',0) != -1) //meta subclause
             {
 
                  {
                       qnaMakerOptions.scoreThreshold = 0.92; 
                       qnaMakerOptions.top = 1;
-		      qnaMakerOptions.strictFilters = [{name:'clause',value:strTemp}];
+		      qnaMakerOptions.strictFilters = [{name:'clause',value:strOpt}];
                  }
              }
 	     else
