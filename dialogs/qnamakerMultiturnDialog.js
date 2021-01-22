@@ -641,7 +641,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
              }
 	     else //not a clause
             {
-	    stepContext.context = '';
+	    stepContext.context = {};
 
                  {
                       qnaMakerOptions.scoreThreshold = 0.93; 
