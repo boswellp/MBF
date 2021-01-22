@@ -314,6 +314,10 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                                await this._userSearchAccessor.set(stepContext.context, "");
      
 			       console.log("\n\n316 ..... for start - set qnaoptions here?????????"); 
+				       
+			       qnaMakerOptions.scoreThreshold = 0.89;  
+                               qnaMakerOptions.top = 1; 
+                               qnaMakerOptions.strictFilters = null;
 					
                                }
  				 
