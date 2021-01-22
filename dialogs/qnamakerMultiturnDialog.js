@@ -637,8 +637,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                  {
                       qnaMakerOptions.scoreThreshold = 0.92; 
                       qnaMakerOptions.top = 1;
-		      //qnaMakerOptions.strictFilters = [{"name": "category","value": "start"}]
-		      qnaMakerOptions.strictFilters = [{name:'category',value:strTemp}];
+		      qnaMakerOptions.strictFilters = [{name:'subclause',value:strTemp}];
                  }
              }
 	     else
