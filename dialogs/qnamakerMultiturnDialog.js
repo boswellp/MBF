@@ -612,7 +612,8 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 	console.log ("\n617 FIRST PASS SET METADATA userProfile = " + userProfile + "; searchTypeTemp = " + searchTypeTemp)
 	console.log ("\n617 FIRST PASS SET METADATA stepContext.context.activity.text = " + stepContext.context.activity.text)
 
-	var strTemp = stepContext.context.activity.text.replace(':','_'); 
+	var strTemp = stepContext.context.activity.text; 
+	if (strTemp.indexOf('c1',0) != -1){strTemp = stepContext.context.activity.text.replace(':','_');} 
         
 	if (searchType == "advanced" || searchType == "advanced1") //first pass
              {
@@ -630,7 +631,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 		       }
                    //}
             }
-            else
+            else if (strTemp.indexOf('c1',0) != -1)
             {
 
                  {
@@ -638,6 +639,15 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                       qnaMakerOptions.top = 1;
 		      //qnaMakerOptions.strictFilters = [{"name": "category","value": "start"}]
 		      qnaMakerOptions.strictFilters = [{name:'category',value:strTemp}];
+                 }
+             }
+	     else
+            {
+
+                 {
+                      qnaMakerOptions.scoreThreshold = 0.93; 
+                      qnaMakerOptions.top = 1;
+
                  }
              }
 
