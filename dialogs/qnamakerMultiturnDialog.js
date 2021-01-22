@@ -400,6 +400,10 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                                          qnaMakerOptions.top = 3; 
                                          qnaMakerOptions.strictFilters = null;
                                          }
+					 else if (tempText.indexOf('search',0) != -1)
+                                         {
+					  console.log("\n\n405 ..... in start - set options"); 
+					 }
                                     }                              
                                 }
                           }
