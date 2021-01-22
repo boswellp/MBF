@@ -639,7 +639,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 		      qnaMakerOptions.strictFilters = [{name:'clause',value:strOpt}];
                  }
              }
-	     else //not a clause
+	     else //a prompt, so clear out context
             {
 	    qnaMakerOptions.context = {} 
 	    
