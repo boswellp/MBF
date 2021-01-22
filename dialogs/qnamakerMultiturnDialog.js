@@ -641,16 +641,12 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
              }
 	     else //a prompt, so clear out context
             {
-	    console.log("\n\n644 ...... qnaMakerOptions = " + JSON.stringify(qnaMakerOptions));
-	    qnaMakerOptions.context = {} 
-	    console.log("\n\n646 ...... qnaMakerOptions = " + JSON.stringify(qnaMakerOptions));
-	    
-
+/*
                  {
                       qnaMakerOptions.scoreThreshold = 0.93; 
                       qnaMakerOptions.top = 1;
-
                  }
+*/
              }
 
 	  
