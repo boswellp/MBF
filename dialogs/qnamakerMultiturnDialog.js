@@ -639,8 +639,9 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 		      qnaMakerOptions.strictFilters = [{name:'clause',value:strOpt}];
                  }
              }
-	     else
+	     else //not a clause
             {
+	    stepContext.context = '';
 
                  {
                       qnaMakerOptions.scoreThreshold = 0.93; 
