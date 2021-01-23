@@ -717,7 +717,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
           if (userProfile.indexOf('c1',0) != -1)
              {   
 	      console.log("\n\n ......... 712 RESPONSE c1 GOT USERPROFILE: qnaMakerOptions = " + JSON.stringify(qnaMakerOptions));     
-	      //console.log("\n\n703 RESPONSE c1 GOT USERPROFILE: stepContext.context= " + JSON.stringify(stepContext.context)); 
+	      console.log("\n\n703 RESPONSE c1 GOT USERPROFILE: stepContext.context= " + JSON.stringify(stepContext.context)); 
 	      var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
 	      console.log("\n\n722 RESPONSE c1 GOT USERPROFILE: = " + JSON.stringify(response));
 	      if (response.answers == ''){
