@@ -767,9 +767,9 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 
      //Welcome
      userProfile = await this._userProfileAccessor.get(stepContext.context,false)
-     console.log("720 OPENING userProfile = " + userProfile) 
+     console.log("770 OPENING userProfile = " + userProfile) 
      var didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-     console.log("722 OPENING didBotWelcomedUser = " + didBotWelcomedUser) 
+     console.log("772 OPENING didBotWelcomedUser = " + didBotWelcomedUser) 
 
      if (this._welcomedUserProperty != undefined){ 
             didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
@@ -779,69 +779,69 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                 //console.log("764 didBotWelcomedUser = undefined")    
                 
                 if (response.answers[0] == undefined){  
-                     console.log("767 response.answers[0] = " + response.answers[0]) 
+                     console.log("782 response.answers[0] = " + response.answers[0]) 
                     
                      if (userProfile == false){  
-                         console.log("770 userProfile = " + userProfile) 
+                         console.log("785 userProfile = " + userProfile) 
                          
-                         console.log("772 reponse = default welcome 1st pass Messenger; xyz on first webchat submit.") 
+                         console.log("787 reponse = default welcome 1st pass Messenger; xyz on first webchat submit.") 
                          response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot. Please submit \"start\" to start.","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                          } else { 
-                         console.log("776 userProfile = " + userProfile) 
+                         console.log("791 userProfile = " + userProfile) 
                          
                          }
                                                    
                      } else { 
                          
                      //console.log("782 response.answers[0] = " + response.answers[0]) 
-                     console.log("783 reponse = let pass") 
+                     console.log("798 reponse = let pass") 
                      //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      
                      } 
                 
                  } else {    
                      
-                 console.log("747 didBotWelcomedUser = " + didBotWelcomedUser) 
+                 console.log("805 didBotWelcomedUser = " + didBotWelcomedUser) 
                      
                  if (didBotWelcomedUser == 1){
-                      console.log("750 response.answers[0] = " + response.answers[0]) 
+                      console.log("808 response.answers[0] = " + response.answers[0]) 
                       if (response.answers[0] == undefined){
                                                  
-                          console.log("777 response.answers[0] = " + response.answers[0]) 
+                          console.log("811 response.answers[0] = " + response.answers[0]) 
                           //response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                          
                           } else { 
 
-                          console.log("781 2nd pass messenger response.answers[0] = " + response.answers[0])  
+                          console.log("817 2nd pass messenger response.answers[0] = " + response.answers[0])  
                           response = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Guide","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
 
                           } 
                      
                       } else if (didBotWelcomedUser == 2){
                           
-                          console.log("788 didBotWelcomedUser = " + didBotWelcomedUser) 
+                          console.log("823 didBotWelcomedUser = " + didBotWelcomedUser) 
                       
                           if (response.answers[0] == undefined){  
-                               console.log("792 response.answers[0] = " + response.answers[0]) 
+                               console.log("826 response.answers[0] = " + response.answers[0]) 
                     
                                if (userProfile == false){  
-                                   console.log("794 userProfile = " + userProfile) 
+                                   console.log("829 userProfile = " + userProfile) 
                          
-                                   console.log("796 reponse = default welcome") 
+                                   console.log("831 reponse = default welcome") 
                                    response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot. Please submit \"start\" to start.","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                                    } else { 
-                                   console.log("800 userProfile = " + userProfile)
+                                   console.log("836 userProfile = " + userProfile)
                                        
-                                   console.log("802 reponse = let pass")
+                                   console.log("837 reponse = let pass")
                          
                                    }
                                                    
                                 } else { 
                                // console.log("784 response.answers[0] = " + response.answers[0])
                                 
-                                console.log("809 reponse = let pass")     
+                                console.log("844 reponse = let pass")     
                                 //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      
                                 }
@@ -850,7 +850,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
               }
 
         //welcome end
-
+        console.log("853 welcome end response.answers[0] = " + response.answers[0])
         //console.log("\n796 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
         //console.log("\n797 ANSWER BEFORE PROCESSING response.answers[0] = " + JSON.stringify(response.answers[0]));
 
@@ -858,7 +858,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
         //if (response.answers[0] != undefined && response.answers[0].context.prompts[0] != undefined) //if index entry has no prompts
         if (response.answers[0] != undefined) //if index entry has no prompts
              {
-             console.log("\n826 ..");
+             console.log("\n861 ..");
 
              //if (response.answers[0].context.prompts[0] != undefined) 
              if (response.answers[0].context != undefined) 
@@ -922,14 +922,14 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 
                      else if (str.indexOf('x:',0) != -1)
                          {
-                         console.log("\n867 ..");
+                         console.log("\n925 ..");
                          if (userProfileTemp.indexOf('x',0) != -1) 
                               {
 
                               //console.log("\n871 response = " + JSON.stringify(response));
                               await this._userProfileAccessor.set(stepContext.context,userProfileTemp.replace('x','')); //reset code
                               userProfileTemp = await this._userProfileAccessor.get(stepContext.context,false);
-                              console.log("\n874 userProfileTemp = " + userProfileTemp);
+                              console.log("\n932 userProfileTemp = " + userProfileTemp);
 
                               var promptAry = [], combinedAnswers = '';
                               for (var i = 0; i < 20; i++)
@@ -953,7 +953,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
                }
         //End extended index link
 
-        console.log("\n921 ..");
+        console.log("\n956 ..");
 
               
         if (response.answers[0] != undefined)
