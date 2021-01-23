@@ -720,9 +720,9 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 	      console.log("\n\n\n ...... 720 RESPONSE c1 GOT USERPROFILE: stepContext.context= " + JSON.stringify(stepContext.context)); 
 	      var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
 	      console.log("\n\n\n ..... 722 RESPONSE c1 GOT USERPROFILE: = " + JSON.stringify(response));
-	      console.log("\n\n\n ..... 723 response.answers: = " + response.answers);
-	      console.log("\n\n\n ..... 724 JSON.stringify(response.answers): = " + JSON.stringify(response.answers));
-	      console.log("\n\n\n ..... 725 response.answers[]: = " + response.answers[]);
+	      console.log("\n\n\n ..... 723 response.answers = " + response.answers);
+	      console.log("\n\n\n ..... 724 JSON.stringify(response.answers) = " + JSON.stringify(response.answers));
+	      console.log("\n\n\n ..... 725 response.answers[0] = " + response.answers[0]);
 	      //if (response.answers == ''){
 	      if (response.answers[0] == ''){
 		      //console.log("\n724 response blank")
