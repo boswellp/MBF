@@ -722,7 +722,9 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 	      console.log("\n\n722 RESPONSE c1 GOT USERPROFILE: = " + JSON.stringify(response));
 	      if (response.answers == ''){
 		      console.log("\n724 response blank")
-		      response.answers[0] = 'Clause number or keyword entry in index does not exist. Please try again.'
+		      //response.answers[0] = 'Clause number or keyword entry in index does not exist. Please try again.'
+		      response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Clause number or keyword entry in index does not exist. Please try again.","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
+                         
 	              }		      
 	     }		  
              else if (userProfile.indexOf('p1',0) != -1)
