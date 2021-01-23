@@ -721,17 +721,9 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 	      var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
 	      console.log("\n\n722 RESPONSE c1 GOT USERPROFILE: = " + JSON.stringify(response));
 	      if (response.answers == ''){
-		      console.log("\n724 blank")
+		      console.log("\n724 response blank")
 		      response.answers = 'Clause number or keyword entry in index does not exist. Please try again.'
-	              }
-		      else if (response.answers == ''){
-		      console.log("\n728 false")
-		      response.answers = 'Clause number or keyword entry in index does not exist. Please try again.'
-	              }
-		      else if (response.answers == ''){
-		      console.log("\n732 else")
-		      response.answers = 'Clause number or keyword entry in index does not exist. Please try again.'
-	              }
+	              }		      
 	     }		  
              else if (userProfile.indexOf('p1',0) != -1)
              { 
