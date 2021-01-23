@@ -724,7 +724,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 	      console.log("\n\n\n ..... 724 JSON.stringify(response.answers) = " + JSON.stringify(response.answers));
 	      console.log("\n\n\n ..... 725 response.answers[0] = " + response.answers[0]);
 	      //if (response.answers == ''){
-	      if (response.answers == undefined){
+	      if (response.answers[0] == undefined){
 		      //console.log("\n724 response blank")
 		      //response.answers[0] = 'Clause number or keyword entry in index does not exist. Please try again.'
 		      response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Clause number or keyword entry in index does not exist. Please try again.","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
