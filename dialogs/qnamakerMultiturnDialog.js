@@ -850,7 +850,8 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
               }
 
         //welcome end
-        console.log("853 welcome end response.answers[0] = " + response.answers[0])
+        console.log("853 welcome end response.answers[0] = " + JSON.stringify(response.answers[0]))
+	console.log("853 welcome end response.answers[0].answer = " + response.answers[0].answer)
         //console.log("\n796 ANSWER BEFORE PROCESSING response = " + JSON.stringify(response));
         //console.log("\n797 ANSWER BEFORE PROCESSING response.answers[0] = " + JSON.stringify(response.answers[0]));
 
