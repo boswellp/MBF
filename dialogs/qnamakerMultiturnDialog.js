@@ -734,14 +734,14 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
              else if (userProfile.indexOf('p1',0) != -1)
              { 
              var response = await this._qnaMakerServicePlant1.getAnswersRaw(stepContext.context, qnaMakerOptions);
-	     if (response.answers == ''){
+	     if (response.answers[0] == undefined){
 		      response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Clause number or keyword entry in index does not exist. Please try again.","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
 	              }
 	     }		  
 	     else if (userProfile.indexOf('e1',0) != -1)
              { 
              var response = await this._qnaMakerServiceEPCT1.getAnswersRaw(stepContext.context, qnaMakerOptions);
-	     if (response.answers == ''){
+	     if (response.answers[0] == undefined){
 	     response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Clause number or keyword entry in index does not exist. Please try again.","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
 	              }
 	     }
