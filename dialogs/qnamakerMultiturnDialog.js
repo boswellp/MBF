@@ -719,8 +719,19 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 	      console.log("\n\n ......... 712 RESPONSE c1 GOT USERPROFILE: qnaMakerOptions = " + JSON.stringify(qnaMakerOptions));     
 	      //console.log("\n\n703 RESPONSE c1 GOT USERPROFILE: stepContext.context= " + JSON.stringify(stepContext.context)); 
 	      var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);
-	      console.log("\n\n715 RESPONSE c1 GOT USERPROFILE: = " + JSON.stringify(response));
-	      if (response.answers == ''){response.answers = 'Clause number or keyword entry in index does not exist. Please try again.'}
+	      console.log("\n\n722 RESPONSE c1 GOT USERPROFILE: = " + JSON.stringify(response));
+	      if (response.answers == ''){
+		      console.log("\n724 blank")
+		      response.answers = 'Clause number or keyword entry in index does not exist. Please try again.'
+	              }
+		      else if (response.answers == ''){
+		      console.log("\n728 false")
+		      response.answers = 'Clause number or keyword entry in index does not exist. Please try again.'
+	              }
+		      else if (response.answers == ''){
+		      console.log("\n732 else")
+		      response.answers = 'Clause number or keyword entry in index does not exist. Please try again.'
+	              }
 	     }		  
              else if (userProfile.indexOf('p1',0) != -1)
              { 
@@ -737,10 +748,10 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
           }
           else
           {
-	  console.log("\n\n732 ........ FOR START RESPONSE - USERPROFILE FALSE: qnaMakerOptions = " + JSON.stringify(qnaMakerOptions));
+	  console.log("\n\n751 ........ FOR START RESPONSE - USERPROFILE FALSE: qnaMakerOptions = " + JSON.stringify(qnaMakerOptions));
           //////console.log("\n\n733 FOR START RESPONSE - USERPROFILE FALSE: stepContext.context= " + JSON.stringify(stepContext.context)); 
           var response = await this._qnaMakerService.getAnswersRaw(stepContext.context, qnaMakerOptions);  
-	  console.log("\n\n735 FOR START RESPONSE - USERPROFILE FALSE: userProfile = " + userProfile + "; response = " + JSON.stringify(response));
+	  console.log("\n\n754 FOR START RESPONSE - USERPROFILE FALSE: userProfile = " + userProfile + "; response = " + JSON.stringify(response));
 		  
 	  }
 
