@@ -722,7 +722,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 	      console.log("\n\n722 RESPONSE c1 GOT USERPROFILE: = " + JSON.stringify(response));
 	      if (response.answers == ''){
 		      console.log("\n724 response blank")
-		      response.answers = 'Clause number or keyword entry in index does not exist. Please try again.'
+		      response.answers[0] = 'Clause number or keyword entry in index does not exist. Please try again.'
 	              }		      
 	     }		  
              else if (userProfile.indexOf('p1',0) != -1)
@@ -758,29 +758,29 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 
      if (this._welcomedUserProperty != undefined){ 
             didBotWelcomedUser = await this._welcomedUserProperty.get(stepContext.context);
-            //console.log("741 didBotWelcomedUser = " + didBotWelcomedUser) 
+            //console.log("761 didBotWelcomedUser = " + didBotWelcomedUser) 
             
             if (didBotWelcomedUser == undefined){
-                //console.log("744 didBotWelcomedUser = undefined")    
+                //console.log("764 didBotWelcomedUser = undefined")    
                 
                 if (response.answers[0] == undefined){  
-                     console.log("747 response.answers[0] = " + response.answers[0]) 
+                     console.log("767 response.answers[0] = " + response.answers[0]) 
                     
                      if (userProfile == false){  
-                         console.log("750 userProfile = " + userProfile) 
+                         console.log("770 userProfile = " + userProfile) 
                          
-                         console.log("752 reponse = default welcome 1st pass Messenger; xyz on first webchat submit.") 
+                         console.log("772 reponse = default welcome 1st pass Messenger; xyz on first webchat submit.") 
                          response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"Welcome to FIDICchatbot. Please submit \"start\" to start.","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]} 
                          
                          } else { 
-                         console.log("756 userProfile = " + userProfile) 
+                         console.log("776 userProfile = " + userProfile) 
                          
                          }
                                                    
                      } else { 
                          
-                     //console.log("757 response.answers[0] = " + response.answers[0]) 
-                     console.log("763 reponse = let pass") 
+                     //console.log("782 response.answers[0] = " + response.answers[0]) 
+                     console.log("783 reponse = let pass") 
                      //response  = {"activeLearning Enabled":false,"answers":[{"questions":["none"],"answer":"  ","score":1,"id":13446, "source":"Editorial","metadata":[],"context":{"isContextOnly":false}}]}  
                      
                      } 
