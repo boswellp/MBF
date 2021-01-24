@@ -621,6 +621,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 
 	var strOpt = stepContext.context.activity.text; //for meta subclause
 	if (strOpt.indexOf('1:',0) != -1){strOpt = strOpt.replace('1:','1_');} 
+	if (strOpt.indexOf('1i:',0) != -1){strOpt = strOpt.replace('1i:','1_');}
         
 	if (searchType == "advanced" || searchType == "advanced1") //first pass
              {
