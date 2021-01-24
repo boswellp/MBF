@@ -629,7 +629,7 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 	            }
 		    else
 		    {
-		    strOpt = strOpt.substring(3,length(strOpt);  //text
+		    strOpt = strOpt.substring(3,strOpt.length);  //text
 	            } 
                  }
         
