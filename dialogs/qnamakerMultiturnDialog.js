@@ -621,7 +621,17 @@ console.log ("\n181 str to replace ¦ ??????? = " + str + '\n');
 
 	var strOpt = stepContext.context.activity.text; //for meta subclause
 	if (strOpt.indexOf('1:',0) != -1){strOpt = strOpt.replace('1:','1_');} 
-	if (strOpt.indexOf('1i:',0) != -1){strOpt = strOpt.replace('1i:','1_');}
+	if (strOpt.indexOf('1i:',0) != -1){   //dab as index search comes as c1i:dab. Need to remove cli
+		var posTemp = strOpt.indexOf('1i',0)
+		if (isNaN(strOpt.substring(posTemp,1)))  // number  so replace 
+		    {    
+		     strOpt = strOpt.replace('1i:','1_');
+	            }
+		    else
+		    {
+		    strOpt = strOpt.substring(3,length(strOpt);  //text
+	            } 
+                 }
         
 	if (searchType == "advanced" || searchType == "advanced1") //first pass
              {
